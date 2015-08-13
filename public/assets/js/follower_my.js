@@ -1,0 +1,139 @@
+function checkClick(status,u_id){
+  $('#u_img').css({'display': 'none'});
+  if(status == 2){
+    $('#confirm').css({'display': 'none'});
+    $('#delete').css({'display': ''});
+  }else{
+    $('#delete').css({'display': 'none'});
+    $('#confirm').css({'display': ''});
+  }
+  $('#u_'+u_id+' .status').css({'display': 'none'});
+  $('#u_'+u_id+' .chkbox').css({'display': ''});
+  $('#u_'+u_id+' .chkbox').attr('checked', 'checked'); 
+}
+
+$('#delete').click(function(){
+  r = confirm('削除します');
+  if(r){
+    var arr_u=[];
+    $('[name="u_id"]:checked').each(function(){
+      arr_u.push($(this).val());
+    });
+    var param = {
+      csrf : $.cookie('csrf')
+      ,arr_u : arr_u
+      ,who : 'follower'
+      ,do : 'delete'
+    };
+    $.post('/followdo/',param,function(){},"json")
+    .always(function(res){
+      if(res[0]==1){
+        location.href='';
+      }else{
+        alert('通信エラー');
+      }
+    });  
+  }
+});
+
+$('#confirm').click(function(){
+  r = confirm('承認します');
+  if(r){
+    var arr_u=[];
+    $('[name="u_id"]:checked').each(function(){
+      arr_u.push($(this).val());
+    });
+    var param = {
+      csrf : $.cookie('csrf')
+      ,arr_u : arr_u
+      ,who : 'follower'
+      ,do : 'confirm'
+    };
+    $.post('/followdo/',param,function(){},"json")
+    .always(function(res){
+      if(res[0]==1){
+        location.href='';
+      }else{
+        alert('通信エラー');
+      }
+    });  
+  }
+});
+
+var endNum = 0;
+var addLimit = 20;
+var celNum = 0;
+var resData = [];
+function addCel(resData){
+  var cellTxt = '';
+  var celImg = '';
+  var statusImg = '';
+  while(celNum < addLimit){
+    cellId = resData[celNum][0];
+    cellTxt = resData[celNum][1];
+    if(resData[celNum][2]){
+      celImg = resData[celNum][2];
+    }else{
+      celImg = '/assets/img/icon/guest.png';
+    }
+    if(resData[celNum][3] == 2){
+      statusImg = '<img src="/assets/img/icon/success.png" alt="confirmed" class="icon status">';
+    }else{
+      statusImg = '<img src="/assets/img/icon/hourglass.png" alt="pending request" class="icon status">';
+    }
+    var append = 
+      '<tr><td class="td_15_c">'
+      +'<a href="/profile/?u='+cellId+'" >'
+      +'<img src="'+celImg+'" alt="follower photo" class="icon"></a>'
+      +'</td><td class="td_68_ct">'
+      +'<a href="/profile/?u='+cellId+'" >'
+      +'<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'
+      +'</td><td class="td_15_c" onClick="checkClick('+resData[celNum][3]+','+cellId+')" id="u_'+cellId+'">'+statusImg
+      +'<input type="checkbox" name="u_id" class="icon chkbox" value="'+cellId+'" style="display:none;">'
+      +'</td></tr>'
+    ;
+    $('#cel').append(append);
+    ++celNum;
+    if(!resData[celNum]){
+      return;
+    }
+  }
+}
+
+function getData(first){
+  var param = {
+    endNum : endNum,
+    receiver : receiver
+  };
+  $.get('/followershow/',param,function(res){
+    if(res[0]==1){
+      resData = $.merge($.merge([], resData), res[1]);
+      endNum = res[1].pop()[0];
+      if(first == 1){
+        addCel(resData);
+      }
+    }else if(res[0]==2){
+    }
+  }, "json");
+}
+
+var dataLimit = 80;
+$(function(){
+  getData(1);
+  var detect = 300;
+  $(window).scroll(function(){
+    var scrTop = $(document).scrollTop();
+    if(scrTop > detect){
+      detect = detect + 300;
+      addLimit = addLimit + 20;
+      if(addLimit > dataLimit){
+        dataLimit = dataLimit + 80;
+        getData();
+      }
+      if(resData[celNum]){
+        addCel(resData);
+      }
+    }
+  });
+});
+ga('send', 'pageview');

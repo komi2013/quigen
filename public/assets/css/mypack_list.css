@@ -1,0 +1,61 @@
+#pack_txt {
+  height:48px;
+  width: 80%;
+  font-size: 15pt;
+}
+.num_txt {
+  height:50px;
+  width: 34%;
+}
+#cel {
+  border-collapse: collapse;
+}
+.td_15_0{
+  background-color: #F5F5F5;
+  width: 15%;
+  height: 48px;
+  text-align:center;
+  border-width: 1px 0px;
+  border-color: white;
+  border-style: solid;
+}
+
+.pack_title_0{
+  background-color: #F5F5F5;
+  width: 84%;
+  border-width: 1px 0px;
+  border-color: white;
+  border-style: solid;
+  
+}
+.pack_title_1{
+  background-color: #F5F5F5;
+  height: 48px;
+  width: 98%;
+  border-width: 1px 0px;
+  border-color: white;
+  border-style: solid;
+}
+.input_txt_0{
+  font-size: 20px;
+  background-color: #F5F5F5;
+  height: 45px;
+  width: 90%;
+  border: none;
+  cursor: pointer;
+}
+.input_txt_1{
+  font-size: 20px;
+  background-color: #F5F5F5;
+  height: 48px;
+  width: 98%;
+  border: none;
+  cursor: pointer;
+}
+.td_49{
+  width: 49%;
+  border-width: 1px 0px;
+  border-color: white;
+  border-style: solid;
+  height: 50px;
+}

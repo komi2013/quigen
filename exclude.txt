@@ -1,0 +1,12 @@
+- fuel/app/logs*
+- fuel/app/bootstrap.php
+- public/assets/img/quiz*
+- public/assets/img/profile*
+- public/sitemap*
+- public/robots.txt
+- public/BingSiteAuth.xml
+- .git*
+- public/data*
+- db_data*
+- monitor_log*
+- httpd_log*

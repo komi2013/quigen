@@ -1,0 +1,27 @@
+body {
+  margin: 0 auto;
+  font-size: 15pt;
+  //display: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.font_8 {
+  font-size: 8pt;
+}
+#center {
+  font-size: 13pt;
+}
+#drawer {
+  width: 80%;
+  overflow: scroll;
+  position: absolute;
+  z-index: 10;
+  margin: 0;
+  background-color: white;
+  left: -100%;
+  top : 53px;
+  float: left;
+}
+

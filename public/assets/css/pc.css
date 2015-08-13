@@ -1,0 +1,31 @@
+* {
+  margin: 0; 
+  padding: 0; 
+}
+body {
+  font-size: 15pt;
+  margin: 10px;
+}
+table {
+  width: 400px;
+  border-collapse: collapse;
+}
+div {
+  width: 400px;
+}
+#content{
+  margin-left: 310px;
+}
+#menu{
+  display: none;
+}
+#header {
+  width: 710px;
+}
+#drawer {
+  position : absolute;
+  left : 10px;
+  top : 61px;
+  width : 300px;   
+  background-color: white;
+}

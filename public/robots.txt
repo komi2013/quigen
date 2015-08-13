@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: http://juken-stg.quigen.info/sitemap/index.xml
+Disallow: /*$

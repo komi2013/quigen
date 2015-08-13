@@ -1,0 +1,42 @@
+.choice{
+  background-color: #F5F5F5;
+  width: 99%;
+  cursor: pointer;
+}
+#photo{
+  max-height: 300px;
+  max-width: 300px;
+}
+#div_photo{
+  text-align: center;
+  width:99%;
+}
+.ans_u_correct{
+  height: 50px;
+  width: 12%;
+  text-align: center;
+  background-color: rgba(0,255,0,0.2);
+  border-width: 0px 0px;
+}
+.ans_u_incorrect{
+  height: 50px;
+  width: 12.5%;
+  text-align: center;
+  background-color: rgba(255,0,0,0.2);
+  border-width: 0px 0px;
+}
+.ans_icon{
+  max-width: 35px;
+  text-align: center;
+}
+#big_result{
+  position: relative;
+}
+.big_icon{
+  position: absolute;
+  top: -60px;
+  left: 10px;
+  height: 300px;
+  z-index: 3;
+  opacity: 0.6;
+}
