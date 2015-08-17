@@ -79,7 +79,7 @@ $clip_url = 'http://'
 </tr>
 <?php if( isset($rank) ){ $i = 0; foreach($rank as $k => $d){  if($i < 5){ ?>
 <tr>
-  <td class="td_68_c"><a href="/htm/?p=search&tag=<?=$d['tag']?>"><?=$d['tag']?></a></td>
+  <td class="td_68_c"><a href="/htm/search/?tag=<?=$d['tag']?>"><?=$d['tag']?></a></td>
   <td class="td_15"><?=$d['cnt']?></td>
   <td class="td_15"><?=$d['rank']?></td>
 </tr>

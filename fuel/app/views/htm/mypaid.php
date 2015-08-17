@@ -1,22 +1,12 @@
-<?php
-if ( isset($_GET['tag']) ) {
-  $tag = $_GET['tag'];
-}else{
-  $tag = '';
-}
-?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><?=$tag?></title>
+    <title>購入したクイズ</title>
+    <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
-    <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <meta property="og:title" content="<?=$tag?>" />
-    <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/htm/search/?tag='.urlencode($tag)?>" />
-    <meta property="og:description" content="<?=$tag?>のクイズ一覧です。他のタグでも検索できます。" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=30"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=30" />
@@ -28,8 +18,8 @@ if ( isset($_GET['tag']) ) {
 
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread"><?=$tag?></h1></td>
-  <td class="edge"><img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search"></td>
+  <td id="center"><h1 class="font_8 unread">購入したクイズ</h1></td>
+  <td class="edge"></td>
 </table>
 <?php
   $side = View::forge('side');
@@ -37,19 +27,14 @@ if ( isset($_GET['tag']) ) {
   echo $side;
 ?>
 <div id="content">
-
 <table>
-  <tr><td style="text-align: center;">
-    <input type="text" list="tag_list" value="<?=$tag?>" maxlength="50" id="tag_name" class="txt_84">
-    <datalist id="tag_list"></datalist>
-  </td></tr>
+<tr><td class="td_49">所持ポイント</td><td class="td_49" id="point"></td></tr>
 </table>
-<?= View::forge('ad_load') ?>
+
 <table id="cel"></table>
 </div>
-<script> var tag = '<?=$tag?>'; </script>
 <script src="/assets/js/basic.js?ver=30"></script>
 <script src="/assets/js/check_news.js?ver=30"></script>
-<script src="/assets/js/search.js?ver=30"></script>
+<script src="/assets/js/mypaid.js?ver=30"></script>
 </body>
 </html>

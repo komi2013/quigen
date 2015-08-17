@@ -1,22 +1,12 @@
-<?php
-if ( isset($_GET['tag']) ) {
-  $tag = $_GET['tag'];
-}else{
-  $tag = '';
-}
-?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><?=$tag?></title>
-    <meta name="robots" content="noindex">
+    <title>ランク</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
+    <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <meta property="og:title" content="<?=$tag?>" />
-    <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/htm/search/?tag='.urlencode($tag)?>" />
-    <meta property="og:description" content="<?=$tag?>のクイズ一覧です。他のタグでも検索できます。" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=30"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=30" />
@@ -25,31 +15,41 @@ if ( isset($_GET['tag']) ) {
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread"><?=$tag?></h1></td>
+  <td id="center"><h1 class="unread font_8">ランク</h1></td>
   <td class="edge"><img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search"></td>
 </table>
 <?php
   $side = View::forge('side');
-  $side->this_page = '';
+  $side->this_page = 'rank';
   echo $side;
 ?>
-<div id="content">
 
+<div id="content">
 <table>
   <tr><td style="text-align: center;">
-    <input type="text" list="tag_list" value="<?=$tag?>" maxlength="50" id="tag_name" class="txt_84">
-    <datalist id="tag_list"></datalist>
+    <select class="txt_84" id="tag_name">
+      <option value="#中学歴史">#中学歴史</option>
+      <option value="#センター日本史">#センター日本史</option>
+      <option value="#センター生物">#センター生物</option>
+      <option value="#センター化学">#センター化学</option>
+      <option value="#センター英語重要">#センター英語重要</option>
+      <option value="#センター英語基本">#センター英語基本</option>
+      <option value="#ジャニストあるある">#ジャニストあるある</option>
+      <option value="#センター英語必須">#センター英語必須</option>
+      <option value="#女子高あるある" >#女子高あるある</option>
+      <option value="#大学受験英熟語">#大学受験英熟語</option>
+      <option value="#少女漫画">#少女漫画</option>
+      <option value="#kinkan">#kinkan</option>
+    </select>
   </td></tr>
 </table>
-<?= View::forge('ad_load') ?>
 <table id="cel"></table>
+<?= View::forge('ad_load') ?>
 </div>
-<script> var tag = '<?=$tag?>'; </script>
 <script src="/assets/js/basic.js?ver=30"></script>
 <script src="/assets/js/check_news.js?ver=30"></script>
-<script src="/assets/js/search.js?ver=30"></script>
+<script src="/assets/js/rank.js?ver=30"></script>
 </body>
 </html>

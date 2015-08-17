@@ -79,8 +79,8 @@ class Controller_AdminSnsPost extends Controller
 
     $param  = array( 
       'message' => $msg
-      ,'link' => 'http://generator.komahana.info/quiz/?q='.$post_question_id
-      //,'link' => 'http://generator.komahana.info/?q='.$arr_sns_post[0]['question_id']
+      ,'link' => 'http://juken.quigen.info/quiz/?q='.$post_question_id
+      //,'link' => 'http://juken.quigen.info/?q='.$arr_sns_post[0]['question_id']
       ,'access_token' => $token
     );
 
@@ -91,7 +91,7 @@ class Controller_AdminSnsPost extends Controller
       var_dump($response);
       //die();
       $to = new TwitterOAuth($tw_key,$tw_secret,$tw_access,$tw_access_secret);
-      $content = 'http://generator.komahana.info/quiz/?q='.$post_question_id.' '.$msg;
+      $content = 'http://juken.quigen.info/quiz/?q='.$post_question_id.' '.$msg;
       $req = $to->OAuthRequest("https://api.twitter.com/1.1/statuses/update.json","POST",array("status"=>$content));
       $result = json_decode($req);
       

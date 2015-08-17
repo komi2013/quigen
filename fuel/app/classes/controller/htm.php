@@ -16,8 +16,12 @@ class Controller_Htm extends Controller
   {
     Model_Csrf::setcsrf();
     $slash = explode( '/', $_SERVER['REQUEST_URI'] );
-    $view = @View::forge('htm/'.$slash[2]);
-    die();
+    if ( isset($slash[2]) ) {
+      $view = @View::forge('htm/'.$slash[2]);
+      die($view);
+    } else {
+      die( View::forge('404') );
+    }
     $view->u_id = Model_Cookie::get_usr();
     die($view);
   }

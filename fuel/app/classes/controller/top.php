@@ -4,7 +4,7 @@ class Controller_Top extends Controller
   public function action_index()
   {
     $view = View::forge('top');
-    $res = DB::query("select count(*) from question")
+    $res = DB::query("select count(*) from question where open_time < '2115-01-01'")
       ->execute()->as_array();
     $this->cnt = ceil($res[0]['count']/20);
     if (isset($_GET['page']))

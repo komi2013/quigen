@@ -39,7 +39,7 @@
 
 <table>
   <tr>
-    <td class="td_68">&nbsp;</td>
+    <td class="td_68"><a id="pre_quiz" href="/top/">クイズに戻る</a></td>
     <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
     <td class="td_15" id="ticket" style="color:red;">0</td>
   </tr>
@@ -55,21 +55,12 @@
   <tr><td class="quest_1 td_99_c"><a href="/myanswer/">マイアンサー(復習)を確認</a></td><td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/myprofile/">マイプロファイルを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 
-  <tr><td class="quest_2 td_99_c"><a href="/htm/?p=rank">ランクを確認</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_2 td_99_c"><a href="/htm/?p=rule">使い方と規約を確認</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c"><a href="/htm/rank/">ランクを確認</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">使い方と規約を確認</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c">クイズをシェア</td>                                   <td class="quest_2 td_15_c" id="img_quest_5"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c">クイズにコメント</td>                                 <td class="quest_2 td_15_c" id="img_quest_6"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c">クイズを作成</td>                                     <td class="quest_2 td_15_c" id="img_quest_7"><img src="/assets/img/icon/star_0.png"></td></tr>
 </table>
-
-<table>
-  <tr><td><a id="pre_quiz" href="/top/">クイズに戻る</a></td></tr>
-</table>
-<!--
-<table>
-  <tr><td id="gage" style="background-color:red;width:0%;"></td><td></td></tr>
-</table>
--->
 
 <table>
   <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降にチケットをもらう</td></tr>  
@@ -120,13 +111,13 @@
 
 <table>
   <tr>
-  <td class="td_99_c"><a href="/htm/?p=exchange_point&send=1">ポイントを購入</a></td>
+  <td class="td_99_c"><a href="/htm/exchange_point/?send=1">ポイントを購入</a></td>
   </tr>
 </table>
 
 </div>
 <script>
-var u_id = '<?=$u_id?>';
+var u_id = '<?=@$u_id?>';
 </script>
 <script src="/assets/js/basic.js?ver=30"></script>
 <script src="/assets/js/quest.js?ver=30"></script>

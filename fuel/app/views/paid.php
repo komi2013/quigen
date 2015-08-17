@@ -34,7 +34,7 @@
 <tr><td class="td_49">所持ポイント</td><td class="td_49" id="point"></td></tr>
 </table>
 <table id="cel">
-<tr><td class="td_98_c"><a href="/htm/?p=mypaid">購入したクイズ</a></td></tr>
+<tr><td class="td_98_c"><a href="/htm/mypaid/">購入したクイズ</a></td></tr>
 <?php foreach($pack as $k => $d){ ?>
 <tr>
   <td class="td_99_c">

@@ -22,9 +22,10 @@ class Controller_Myquestionadd extends Controller
     if ( isset($query[0]['open_time']) ) {
       if ( $query[0]['open_time'] > "2100-01-01 00:00:00" ) {
         $open_time = date("Y-m-d H:i:s",strtotime( $query[0]['open_time']."-100 year") );
-      }
-      if ( $query[0]['open_time'] < date("Y-m-d H:i:s") ) {
+      } else if ( $query[0]['open_time'] < date("Y-m-d H:i:s") ) {
         $open_time = date("Y-m-d H:i:s");
+      } else {
+        $open_time = $query[0]['open_time'];
       }
     } else {
       $open_time = date("Y-m-d H:i:s");

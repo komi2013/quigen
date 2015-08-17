@@ -1,5 +1,10 @@
-table schema
-master data?
+crontab -e
+0 7 * * * wget --spider http://juken.quigen.info/admincheck/                                                
+#0 2 * * * wget --spider http://juken.quigen.info/adminsnspost/?tag=中学歴史
+#0 3 * * * wget --spider http://juken.quigen.info/adminsnspost/?tag=センター英語基本
+#0 11 * * * wget --spider http://juken.quigen.info/adminsnspost/?tag=センター英語必須
+#0 19 * * * wget --spider http://juken.quigen.info/adminsnspost/?tag=センター英語重要
+#0 4 * * * echo -n > /stg/generator/fuel/app/classes/monitor/vmstat.log
 
 20150402 fuel/app/config/config.php          add tw access token and secret
 20150406 add mt_sns_post
