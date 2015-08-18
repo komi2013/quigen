@@ -26,6 +26,7 @@ $('#search').click(function(){
     location.href = '/htm/?p=search&tag='+$('#tag_name').val().replace(/#/,'');
   }else{
     location.href = 'http://www.google.com/cse?cx=015373518288618476449%3Akrlgey0pdhk&ie=UTF-8&q='+$('#tag_name').val()+'&sa=Search#gsc.tab=0&gsc.q='+$('#tag_name').val()+'&gsc.page=1';
+//    location.href = 'http://www.google.com/cse?cx=015373518288618476449%3Axapsve96qx0&ie=UTF-8&q='+$('#tag_name').val()+'&sa=Search#gsc.tab=0&gsc.q='+$('#tag_name').val()+'&gsc.page=1';
   }
 });
 
