@@ -32,16 +32,14 @@
     <select class="txt_84" id="tag_name">
       <option value="#中学歴史">#中学歴史</option>
       <option value="#センター日本史">#センター日本史</option>
+      <option value="#センター日本史">#センター世界史</option>
       <option value="#センター生物">#センター生物</option>
       <option value="#センター化学">#センター化学</option>
-      <option value="#センター英語重要">#センター英語重要</option>
       <option value="#センター英語基本">#センター英語基本</option>
-      <option value="#ジャニストあるある">#ジャニストあるある</option>
       <option value="#センター英語必須">#センター英語必須</option>
-      <option value="#女子高あるある" >#女子高あるある</option>
+      <option value="#センター英語重要">#センター英語重要</option>
       <option value="#大学受験英熟語">#大学受験英熟語</option>
-      <option value="#少女漫画">#少女漫画</option>
-      <option value="#kinkan">#kinkan</option>
+      <option value="#休憩">#休憩</option>
     </select>
   </td></tr>
 </table>

@@ -9,7 +9,7 @@ class Controller_Category extends Controller
       $query = DB::query("SELECT txt FROM tag GROUP BY txt")->execute()->as_array();
       $view->arr_tag = $query;
       
-      die($view);    
+      die($view);
     }
     // tag should be filtered by time
     $query = DB::select()->from('tag')
