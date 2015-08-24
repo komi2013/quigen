@@ -6,8 +6,8 @@
 #allow from localhost
 
 #SetEnvIf User-Agent "WOW64" ng_ua
-SetEnvIf User-Agent "www.tkl.iis.u-tokyo.ac.jp" ng_ua
-SetEnvIf User-Agent "360Spider" ng_ua
+#SetEnvIf User-Agent "www.tkl.iis.u-tokyo.ac.jp" ng_ua
+#SetEnvIf User-Agent "360Spider" ng_ua
 
 order allow,deny
 allow from all
