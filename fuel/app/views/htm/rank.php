@@ -32,7 +32,7 @@
     <select class="txt_84" id="tag_name">
       <option value="#中学歴史">#中学歴史</option>
       <option value="#センター日本史">#センター日本史</option>
-      <option value="#センター日本史">#センター世界史</option>
+      <option value="#センター世界史">#センター世界史</option>
       <option value="#センター生物">#センター生物</option>
       <option value="#センター化学">#センター化学</option>
       <option value="#センター英語基本">#センター英語基本</option>

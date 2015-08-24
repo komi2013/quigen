@@ -19,7 +19,7 @@ class Model_Csrf extends \Orm\Model
     if (!Cookie::get('csrf_id'))
     {
       $res[0] = 2;
-      $res[1] = 'csrf id is none';
+      $res[1] = 'cookie csrf_id is none';
       Model_Log::warn('csrf id is none');
       die(json_encode($res));
     }
@@ -32,7 +32,7 @@ class Model_Csrf extends \Orm\Model
     if (!isset($csrf->token))
     {
       $res[0] = 2;
-      $res[1] = 'csrf_id is wrong';
+      $res[1] = 'csrf_id is none';
       Model_Log::warn('csrf_id is wrong');
       die(json_encode($res));
     }

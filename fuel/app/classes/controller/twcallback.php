@@ -60,6 +60,8 @@ class Controller_TwCallback extends Controller
     Cookie::set('answer_by_u', $json_answer_by_u);
     Model_Cookie::set_usr($usr_id);
     Cookie::set('ua_u_id', $usr_id);
+    Cookie::delete('request_token_secret');
+    Cookie::delete('request_token');
     Response::redirect('/myprofile/');
   }
 }

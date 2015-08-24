@@ -67,7 +67,7 @@ class Controller_AdminSitemapQ extends Controller
     }
     
     //センター英語基本,センター英語必須,センター英語重要
-    $arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = 'センター化学') order by id")->execute()->as_array();
+    $arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') order by id")->execute()->as_array();
     //$arr_question = DB::query('SELECT * FROM question ORDER BY ID DESC')->execute()->as_array();
     
     
@@ -121,7 +121,7 @@ class Controller_AdminSitemapQ extends Controller
       //$sitemap->param = 'quiz/?q=';
       $sitemap->arr_data = $arr_question;
 
-      $file = DOCROOT.'sitemap/center_chemi_1.xml';
+      $file = DOCROOT.'sitemap/'.$_GET['file'].'.xml';
       // ファイルをオープンして既存のコンテンツを取得します
       //$current = file_get_contents($file);
       // 新しい人物をファイルに追加します

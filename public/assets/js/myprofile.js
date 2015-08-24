@@ -196,7 +196,7 @@ $('#photo').click(function() {
     alert('はじめにクイズに答えてください');
     return;
   }
-  childWindow = window.open("/htm/?p=photo", "winB");
+  childWindow = window.open("/htm/photo/", "winB");
 });
 function winCloseB(){
   childWindow.close();

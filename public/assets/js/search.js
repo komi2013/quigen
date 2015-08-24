@@ -20,7 +20,7 @@ $('#search').click(function(){
   
   if( $('#tag_name').val().match(/#/) ){
     localStorage.last_tag = $('#tag_name').val();
-    location.href = '/htm/?p=search&tag='+$('#tag_name').val().replace(/#/,'');
+    location.href = '/htm/search/?tag='+$('#tag_name').val().replace(/#/,'');
   }else{
     location.href = 'http://www.google.com/cse?cx=015373518288618476449%3Akrlgey0pdhk&ie=UTF-8&q='+$('#tag_name').val()+'&sa=Search#gsc.tab=0&gsc.q='+$('#tag_name').val()+'&gsc.page=1';
   }

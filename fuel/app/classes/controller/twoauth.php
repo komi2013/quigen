@@ -1,8 +1,8 @@
 <?php
 class Controller_TwOAuth extends Controller
 {
-	public function action_index()
-	{
+  public function action_index()
+  {
     require APPPATH.'vendor/tw/twitteroauth/twitteroauth.php';
     $consumer_key = Config::get('my.tw_key');
     $consumer_secret = Config::get('my.tw_secret');
@@ -12,5 +12,5 @@ class Controller_TwOAuth extends Controller
     Cookie::set('request_token_secret',$tok['oauth_token_secret']);
     $url = $to->getAuthorizeURL($tok['oauth_token']);
     Response::redirect($url);
-	}
+  }
 }
