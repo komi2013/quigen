@@ -13,7 +13,7 @@ WRITE=`tail -n 1 ./monitor_log/vmstat.log | awk '{print $2}'`
 FREEMEM=`tail -n 1 ./monitor_log/vmstat.log | awk '{print $4+$5+$6}'`
 CPU=`tail -n 1 ./monitor_log/vmstat.log | awk '{print $13+$14}'`
 
-echo $HTTPD,$DB,$DISK,$READ,$WRITE,$FREEMEM,$CPU,`date +"%d%k:%M:%S"` >> ./monitor_log/monitor_`date +%Y%m`.csv
+echo $HTTPD,$DB,$DISK,$READ,$WRITE,$FREEMEM,$CPU,`date +"%d %k:%M:%S"` >> ./monitor_log/monitor_`date +%Y%m`.csv
 #sed '/,,,/d' monitor_`date +%Y%m%d`.csv > monitor_`date +%Y%m%d`.csv
 #sed -e "3,5d" vmstat.log
 sleep 240
