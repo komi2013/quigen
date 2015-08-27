@@ -46,18 +46,18 @@
 <tr>
   <?php if($d['img']){ ?>
   <td class="td_15_c<?= ($i==0)? ' attention':'' ?>" >
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>">
+    <a href="/quiz/?q=<?=$d['id']?>">
       <img src="<?=$d['img']?>" alt="quiz" class="icon<?= ($i==0)? ' attention':'' ?>">
     </a>
   </td>
   <td class="td_84_ct<?= ($i==0)? ' attention':'' ?>" >
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>">
+    <a href="/quiz/?q=<?=$d['id']?>">
       <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c<?= ($i==0)? ' attention':'' ?>" id="q_id_<?=$d['id']?>">
     </a>
   </td>
   <?php }else{ ?>
   <td colspan="2" class="td_99_ct<?= ($i==0)? ' attention':'' ?>">
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>">
+    <a href="/quiz/?q=<?=$d['id']?>">
       <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c<?= ($i==0)? ' attention':'' ?>" id="q_id_<?=$d['id']?>">
     </a>
   </td>

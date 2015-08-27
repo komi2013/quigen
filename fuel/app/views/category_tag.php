@@ -11,7 +11,7 @@
     <title><?=$_GET['tag']?></title>
     <meta name="description" content="<?=$meta_description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
-    <link rel="canonical" href="<?='http://'.Config::get("my.domain").'/category/?tag='.urlencode($_GET['tag'])?>" />
+    <link rel="canonical" href="<?='http://'.Config::get("my.domain").'/htm/search/?tag='.urlencode($_GET['tag'])?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
