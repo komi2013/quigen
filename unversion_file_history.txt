@@ -6,6 +6,14 @@ crontab -e
 #0 19 * * * wget --spider http://juken.quigen.info/adminsnspost/?tag=センター英語重要
 #0 4 * * * echo -n > /stg/generator/fuel/app/classes/monitor/vmstat.log
 
+----------robots.txt-------------
+User-agent: *
+Sitemap: http://juken.quigen.info/sitemap/index.xml
+#Disallow: /*show/*
+Disallow: /quiz/?crypt_q*
+#Disallow: /follow*
+#Disallow: /quizjs*
+
 20150402 fuel/app/config/config.php          add tw access token and secret
 20150406 add mt_sns_post
 20150407 change sitemap static_xml
