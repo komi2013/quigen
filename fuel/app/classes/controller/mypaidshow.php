@@ -3,6 +3,7 @@ class Controller_Mypaidshow extends Controller
 {
   public function action_index()
   {
+    header("Content-Type: application/json; charset=utf-8");
     $res[0] = 2;
     $query = DB::select()->from('paid_usr')
       ->where('usr_id','=',Model_Cookie::get_usr())

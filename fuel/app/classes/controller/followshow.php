@@ -3,6 +3,7 @@ class Controller_Followshow extends Controller
 {
   public function action_index()
   {
+    header("Content-Type: application/json; charset=utf-8");
     $res[0] = 2;
     if( !isset($_GET['endTime']) ) die( json_encode($res) );
     $usr_id = Model_Cookie::get_usr();

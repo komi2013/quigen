@@ -3,6 +3,7 @@ class Controller_Tagshow extends Controller
 {
   public function action_index()
   {
+    header("Content-Type: application/json; charset=utf-8");
     $res[0] = 2;
     if( !isset($_GET['q']) ) {
       Model_Log::warn('no q');

@@ -3,6 +3,7 @@ class Controller_Quizjs extends Controller
 {
   public function action_index()
   {
+    header("Content-Type: application/javascript; charset=utf-8");
     if ( isset($_GET['q']) AND is_numeric($_GET['q']) ) {
       $arr_question = DB::select()->from('question')->where('id','=',$_GET['q'])->execute()->as_array();
       if ( isset($arr_question[0]['id']) ) {

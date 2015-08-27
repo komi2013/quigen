@@ -37,7 +37,7 @@
 <?php $i = 0; foreach($arr_tag as $k => $d){ ?>
 <tr>
   <td class="td_99_c" >
-    &nbsp;&nbsp;<a href="/category/?tag=<?=urlencode($d['txt'])?>">
+    &nbsp;&nbsp;<a href="/htm/search/?tag=<?=urlencode($d['txt'])?>">
       <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c">
     </a>
   </td>

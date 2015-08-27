@@ -141,9 +141,7 @@
 </tr>
 </table>
 
-<table>
-<tr><td class="td_99">引用元:<?=$reference?></td></tr>
-</table>
+<div style="width:320px;word-wrap:break-word;">引用元:<?=$reference?></div>
 
 </div>
 <script>

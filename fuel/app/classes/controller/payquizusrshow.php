@@ -3,7 +3,7 @@ class Controller_Payquizusrshow extends Controller
 {
   public function action_index()
   {
-    
+    header("Content-Type: application/json; charset=utf-8");
     $res[0] = 2;
     if( !isset($_GET['q']) ) die(json_encode($res));
     $pay_q = DB::select()->from('pay_q')

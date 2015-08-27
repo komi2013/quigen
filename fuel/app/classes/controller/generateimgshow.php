@@ -3,6 +3,7 @@ class Controller_Generateimgshow extends Controller
 {
   public function action_index()
   {
+    header("Content-Type: application/json; charset=utf-8");
     Model_Csrf::setcsrf();
     $usr_id = Model_Cookie::get_usr();
     if (!$usr_id)
