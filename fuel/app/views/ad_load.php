@@ -1,4 +1,5 @@
 <?php
+
 $rand = rand(1,10);
 if( Model_Util::is_mobile() == 1){
 
