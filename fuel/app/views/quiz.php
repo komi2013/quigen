@@ -141,7 +141,7 @@
 </tr>
 </table>
 
-<div style="width:320px;word-wrap:break-word;">引用元:<?=$reference?></div>
+<div style="word-wrap:break-word;">引用元:<?=$reference?></div>
 
 </div>
 <script>

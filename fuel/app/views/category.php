@@ -32,18 +32,16 @@
   $side->this_page = 'category';
   echo $side;
 ?>
-<div id="content">
-<table id="cel">
+<div id="content" style="line-height: 30px;">
+
 <?php $i = 0; foreach($arr_tag as $k => $d){ ?>
-<tr>
-  <td class="td_99_c" >
-    &nbsp;&nbsp;<a href="/htm/search/?tag=<?=urlencode($d['txt'])?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c">
-    </a>
-  </td>
-</tr>
+  &nbsp;&nbsp;
+  <a href="/htm/search/?tag=<?=urlencode($d['txt'])?>" rel="nofollow">
+    <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
+  </a>
+  &nbsp;&nbsp;
 <?php ++$i;} ?>
-</table>
+
 <?= View::forge('ad_load') ?>
 </div>
 <script src="/assets/js/check_news.js?ver=31"></script>
