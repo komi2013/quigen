@@ -23,12 +23,19 @@
 body{
   text-align: center;
 }
+#imageLoader{
+  opacity: 0;
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  z-index: 5;
+}
 </style>
 <script>var ua = '<?=Config::get("my.ua")?>';</script>
 <script src="/assets/js/analytics.js"></script>
 
 <table cellspacing="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/rotate.png" alt="rotate" id="rotate" class="icon"></td>
+  <td class="edge"></td>
   <td id="center">写真アップロード</td>
   <td class="edge">
     <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
@@ -36,37 +43,56 @@ body{
   </td>
 </table>
 
-<table id="eto_pet">
-  <tr><td><img src="/assets/img/eto/07_horse.png" alt="horse" class="img_profile"></td><td><img src="/assets/img/eto/08_sheep.png" alt="sheep" class="img_profile"></td></tr>
-  <tr><td><img src="/assets/img/eto/09_monkey.png" alt="monkey" class="img_profile"></td><td><img src="/assets/img/eto/10_hen.png" alt="hen" class="img_profile"></td></tr>
-  <tr><td><img src="/assets/img/eto/11_dog.png" alt="dog" class="img_profile"></td><td><img src="/assets/img/eto/12_pig.png" alt="pig" class="img_profile"></td></tr>
+<table cellspacing="0">
+  <tr>
+  <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
+  <td id="minus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
+  <td style="width:50px;cursor:pointer;">
+    <select name='scale' style="font-size:20px;">
+        <option>1</option>
+        <option>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>40</option>
+    </select>
+  </td>
+  <td id="plus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
+  </tr>
 </table>
 
-<div id="zeni"></div>
+<div id="canvas_div_img" style="text-align:center;">
+<input type="file" id="imageLoader" name="imageLoader">
 <canvas id="mycanvas" height="300" width="300"></canvas>
+</div>
 
 <script>
-
-  var rand1 = Math.floor(Math.random()*255);
-  var rand2 = Math.floor(Math.random()*255);
-  var rand3 = Math.floor(Math.random()*255);
-$('.img_profile').click(function(){
-  var canvas = document.getElementById('mycanvas');
-  var ctx = canvas.getContext('2d');
-  var img = new Image();
-  img.src = $(this).attr('src');
-  $('#eto_pet').css({'display': 'none'});
-  setTimeout(function(){
-    var rand1 = Math.floor(Math.random()*255);
-    var rand2 = Math.floor(Math.random()*255);
-    var rand3 = Math.floor(Math.random()*255);
-  //  ctx.save();
-    ctx.fillStyle = 'rgba('+rand1+','+rand2+','+rand3+',0.4)';
-    ctx.fillRect(0, 0, 300, 300);
-    ctx.drawImage(img, 0, 0);
-  },500);
-
+var resImg = document.getElementById('mycanvas');
+var gesturableImg = new ImgTouchCanvas({
+    canvas: resImg,
+    path: "/assets/img/icon/camera.png"
 });
+
+var imageLoader = document.getElementById('imageLoader');
+    imageLoader.addEventListener('change', handleImage, false);
+var change_pic = 0;
+function handleImage(e){
+    $('#imageLoader').css({
+      'display': 'none'
+    });
+    var reader = new FileReader();
+    reader.onload = function(event){
+      var img = new Image();
+      img.src = event.target.result;
+      var gesturableImg = new ImgTouchCanvas({
+          canvas: document.getElementById('mycanvas')
+          ,path: img.src
+          ,desktop: true
+      });
+      change_pic = 1;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+}
+
 $('#generate').click(function(){
   var mycanvas = document.getElementById('mycanvas');
   var imgdata = mycanvas.toDataURL();
@@ -75,7 +101,25 @@ $('#generate').click(function(){
   localStorage.setItem('img',imgdata);
   window.opener.document.getElementById("photo").src = imgdata;
   window.opener.winCloseB();
-  $('#img_place').empty().append('閉じてください');
+  $('#canvas_div_img').empty().append('閉じてください');
+});
+
+$('#rotate').click(function(){
+  var canvas = document.getElementById('mycanvas');
+  var ctx = canvas.getContext('2d');
+  var image = new Image();
+  image.src = canvas.toDataURL();
+  var rad = Math.atan2(1, 0);
+  ctx.save();
+  var image_width  = 300;
+  var image_height = 300;
+  ctx.translate(150, 150);
+  ctx.rotate(rad);
+  ctx.translate(-150, -150);
+  ctx.drawImage(image,0,0);
+  if(change_pic == 1){
+    gesturableImg.rotate = gesturableImg.rotate + 1;
+  }
 });
 
 </script>
