@@ -1,7 +1,3 @@
-<?php if( isset($_COOKIE['ab_test']) AND $_COOKIE['ab_test'] > 4 ){
-  die( View::forge('htm/quest_b') );
-}
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,10 +34,6 @@
 <div id="content">
 
 <table>
-  <tr><td>クイズに回答するためのチケットを入手するには以下の3つのオプションがあり、1つでもクリアーすればもらいます。</td></tr>  
-</table>
-
-<table>
   <tr>
     <td class="td_68"><a id="pre_quiz" href="/top/">クイズに戻る</a></td>
     <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
@@ -50,7 +42,7 @@
 </table>
     
 <table>
-  <tr><td class="td_99 quest_do" id="light_1">○クエストを実行</td></tr>
+  <tr><td class="td_99 quest_do" id="light_1">○下記のページに訪問すればクイズに回答するためのチケットを入手できます。</td></tr>
 </table>
 
 <table>
@@ -67,7 +59,7 @@
 </table>
 
 <table>
-  <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降にチケットをもらう</td></tr>  
+  <tr><td class="td_99 quest_do" id="light_2">○もしくは下記の時間以降にチケットをもらう</td></tr>  
 </table>
 
 <table>
@@ -83,7 +75,7 @@
 
 <table>
   <tr>
-    <td class="td_84 quest_do" id="light_3">○ポイントでチケットをGET</td>
+    <td class="td_84 quest_do" id="light_3">○もしくはポイントでチケットをGET</td>
     <td class="td_15 quest_do">
       <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
       <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
