@@ -12,10 +12,10 @@
     <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/pack/?p='.$_GET['p']?>" />
     <meta property="og:description" content="このクイズを答えたい場合、まずはポイントを購入してもらいそのポイントでクイズを購入してください" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=31"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=31" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=31" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=31" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=32"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=32" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=32" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=32" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -90,10 +90,10 @@
 </table>
 </form>
 </div>
-<script src="/assets/js/basic.js?ver=31"></script>
-<script src="/assets/js/check_news.js?ver=31"></script>
+<script src="/assets/js/basic.js?ver=32"></script>
+<script src="/assets/js/check_news.js?ver=32"></script>
 <script src='https://www.paypalobjects.com/js/external/dg.js'></script>
-<script src="/assets/js/request_point.js?ver=31"></script>
+<script src="/assets/js/request_point.js?ver=32"></script>
 </body>
 </html>
 

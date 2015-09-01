@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=31"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=31" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=31" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=31" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=32"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=32" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=32" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=32" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -29,8 +29,8 @@
 
 <h1>Not Found</h1>
 </div>
-<script src="/assets/js/check_news.js?ver=31"></script>
-<script src="/assets/js/basic.js?ver=31"></script>
+<script src="/assets/js/check_news.js?ver=32"></script>
+<script src="/assets/js/basic.js?ver=32"></script>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':404');
 </script>
