@@ -42,7 +42,7 @@
 </table>
     
 <table>
-  <tr><td class="td_99 quest_do" id="light_1">○下記のページに訪問すればクイズに回答するためのチケットを入手できます。</td></tr>
+  <tr><td class="td_99 quest_do" id="light_1">○下記のページにいけばまたクイズに回答できます。</td></tr>
 </table>
 
 <table>

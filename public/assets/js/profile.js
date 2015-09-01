@@ -12,6 +12,9 @@ $('#right').click(function(){
     alert('はじめにクイズに答えてください');
     return;
   }
+  if($('#following1').css('display') == 'inline'){
+    return;
+  }
   var second_2 = Math.round(new Date().getTime() /1000);
   if(second_2 - second_1 < 2){
     alert('wait 2 seconds');

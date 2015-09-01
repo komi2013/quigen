@@ -20,7 +20,7 @@ class Model_Csrf extends \Orm\Model
     {
       $res[0] = 2;
       $res[1] = 'cookie csrf_id is none';
-      Model_Log::warn('csrf id is none');
+      Model_Log::warn('cookie csrf_id is none');
       die(json_encode($res));
     }
     
@@ -33,14 +33,14 @@ class Model_Csrf extends \Orm\Model
     {
       $res[0] = 2;
       $res[1] = 'csrf_id is none';
-      Model_Log::warn('csrf_id is wrong');
+      Model_Log::warn('csrf_id '.Cookie::get('csrf_id').' csrf_token '.$_POST['csrf'].' is none');
       die(json_encode($res));
     }
     if ($csrf->token != $_POST['csrf'])
     {
       $res[0] = 2;
       $res[1] = 'csrf token is wrong';
-      Model_Log::warn('csrf token is wrong');
+      Model_Log::warn('csrf_id '.Cookie::get('csrf_id').' csrf_token '.$_POST['csrf'].' is wrong');
       die(json_encode($res));
     }
     //within 120 minutes, you must post Cookie::get('csrf_id') is already sanitized by upper ORM
