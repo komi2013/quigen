@@ -16,7 +16,7 @@ class Controller_Followingconfirm extends Controller
       ->execute()->as_array();
     
     if ($query[0]['status'] == 2) {
-      $res[0] = 1;
+      $res[1] = 'already status 2';
       Model_Log::warn('already status 2');
       die( json_encode($res) );
     }
