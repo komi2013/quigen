@@ -53,7 +53,8 @@ function follow_confirm(sender){
           console.log(news[i].search(sender));
           console.log('end');
           if(news[i].search(/follow_confirm/) > -1 && news[i].search(sender) > -1){
-            news[i] = news[i].replace("star_0","star_1").replace("sccess_0","sccess");
+            news[i] = news[i].replace("star_0","star_1");
+            news[i] = news[i].replace("sccess_0","sccess");
             console.log(news[i]);
           }
         }
