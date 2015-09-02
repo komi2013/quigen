@@ -3,10 +3,12 @@ class Controller_Forumlist extends Controller
 {
   public function action_index()
   {
+    Model_Csrf::setcsrf();
     $view = View::forge('forum_list');
     $res = DB::query("select count(*) from forum where open_time < '2115-01-01'")
       ->execute()->as_array();
     $this->cnt = ceil($res[0]['count']/20);
+    $this->usr_id = Model_Cookie::get_usr();
     if (isset($_GET['page']))
     {
       $page = $_GET['page'];
@@ -22,6 +24,7 @@ class Controller_Forumlist extends Controller
           ->limit(20)->offset($offset)
           ->execute()->as_array();
         $view->forum = $forum;
+        $view->u_id = $usr_id;
         die($view);
       }
       else
@@ -45,7 +48,7 @@ class Controller_Forumlist extends Controller
       ->execute()->as_array();
     $view->forum = $forum;
     $view->page = $this->cnt+1;
-    $view->top = true;
+    $view->u_id = $this->usr_id;
     die($view);
   }
 }

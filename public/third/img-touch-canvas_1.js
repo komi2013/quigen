@@ -106,7 +106,7 @@
             var newWidth = currentWidth + deltaWidth;
             var newHeight = currentHeight + deltaHeight;
             
-            //if( newWidth < this.canvas.clientWidth ) return;
+            if( newWidth < this.canvas.clientWidth && newHeight < this.canvas.clientHeight) return;
             if( newPosX > 0 ) { newPosX = 0; }
             if( newPosX + newWidth < this.canvas.clientWidth ) { newPosX = this.canvas.clientWidth - newWidth;}
             
@@ -139,16 +139,18 @@
                 this.position.x += deltaX;
                 this.position.y += deltaY;
               }
-              if( this.position.x > 0 ) {
+              if ( currentWidth < this.canvas.clientWidth ) {
                 this.position.x = 0;
-              }
-              else if( this.position.x + currentWidth < this.canvas.clientWidth ) {
+              } else if( this.position.x > 0 ) {
+                this.position.x = 0;
+              } else if( this.position.x + currentWidth < this.canvas.clientWidth ) {
                 this.position.x = this.canvas.clientWidth - currentWidth;
               }
-              if( this.position.y > 0 ) {
+              if ( currentHeight < this.canvas.clientHeight ) {
                 this.position.y = 0;
-              }
-              else if( this.position.y + currentHeight < this.canvas.clientHeight ) {
+              } else if( this.position.y > 0 ) {
+                this.position.y = 0;
+              }else if( this.position.y + currentHeight < this.canvas.clientHeight ) {
                 this.position.y = this.canvas.clientHeight - currentHeight;
               }
             }

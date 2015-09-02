@@ -29,6 +29,7 @@ $('#generate').click(function(){
     ,txt : $('#txt').val()
     ,img : imgdata
     ,myphoto : myphoto
+    ,f_id : getVal.f
   };
   $.ajax({type:'POST',dataType:'json',url:'/forumadd/',data:param})
   .always(function(res){
@@ -137,5 +138,6 @@ $('.nice').click(function(){
     localStorage.nice = JSON.stringify(arr_nice);
   }
 });
+
 
 ga('send', 'pageview');

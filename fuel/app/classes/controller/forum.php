@@ -7,49 +7,30 @@ class Controller_Forum extends Controller
       $arr = DB::select()->from('forum')
               ->where('id','=',$_GET['f'])
               ->or_where('parent_id','=',$_GET['f'])
-              ->order_by('open_time', 'desc')
+              ->order_by('open_time', 'asc')
               ->execute()->as_array();
-      if ( isset($arr[0]['id']) ) {
-        $forum_id =  $arr[0]['id'];
-        $f_txt = $arr[0]['txt'];
-        $f_img = $arr[0]['img'];
-        $f_u_id = $arr[0]['usr_id'];
-      } else {
-        $view = View::forge('404');
-        die($view);
-      }
     } else {
       $view = View::forge('404');
       die($view);
     }
+    Model_Csrf::setcsrf();
+    $arr_forum = [];
+    $util = new Model_Util();
+    foreach ($arr as $k => $d) {
+      $arr_forum[$k] = $d;
+      if ($d['u_img']) {
+        $arr_forum[$k]['eto_css'] = '';
+      } else {
+        $util->eto($d['usr_id']);
+        $arr_forum[$k]['u_img'] = $util->eto_img;
+        $arr_forum[$k]['eto_css'] = $util->eto_css;
+      }
+    }
+    //echo '<pre>'; var_dump($arr_forum); echo '</pre>'; die;
     $view = View::forge('forum');
     Model_Csrf::setcsrf();
-    $f_txt = Security::htmlentities($f_txt);
-    $view->img = $f_img;
-    $view->question = $question_id;
-    $view->usr = $f_u_id;
-    $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
-        Config::get('my.domain').
-        '/forum/?f='.
-        $question_id.'%26cpn=share_fb';
-    $view->tw_url = 
-        'https://twitter.com/intent/tweet?url=http://'.
-        Config::get('my.domain').
-        '/forum/?f='.$question_id.'%26cpn=share_tw'.
-        '&text='.
-        $f_txt.','.$description.'+@quigen2015';
-    $view->ln_url = 'line://msg/text/?'.
-        $f_txt.
-        '%0D%0Ahttp://'.
-        Config::get('my.domain').
-        '/forum/?q='.
-        $question_id.'%26cpn=share_ln';
-    $view->clip_url = 'http://'.
-        Config::get('my.domain').
-        '/forum/?q='.
-        $question_id;
-    $view->description = $description;
-    $view->f_txt = $f_txt;
+    //$view->forum = $_GET['f'];
+    $view->forum = $arr_forum;
     $view->u_id = Model_Cookie::get_usr();
     die($view);
   }

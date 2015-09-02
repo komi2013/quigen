@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>クイジェン | FAQ</title>
+    <title>FAQ | クイジェン</title>
     <meta name="description" content="数学や英語などのわからない部分の画像をアップすれば誰かが教えてくれるかも">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( isset($_GET['page']) ){ ?>
@@ -16,6 +16,7 @@
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=32"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=32" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/forum_list.css?ver=32" />
     <link rel="stylesheet" href="/assets/css/pc.css?ver=32" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css?ver=32" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
@@ -26,7 +27,7 @@
 <table id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="font_8 unread">画像掲示板</h1></td>
-  <td class="edge"><img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search"></td>
+  <td class="edge"></td>
 </table>
 <?php
   $side = View::forge('side');
@@ -36,29 +37,38 @@
 
 <div id="content">
 
-<table id="cel">
-<?php $i = 0; $arr_answer = []; foreach($forum as $k => $d){  if($d['id']){ ?>
+<table>
+<?php $arr_forum = []; foreach($forum as $k => $d){ ?>
 <tr>
   <?php if($d['img']){ ?>
-  <td class="td_15_c<?= ($i==0)? ' attention':'' ?>" >
+  <td class="td_15">
     <a href="/forum/?f=<?=$d['id']?>">
-      <img src="<?=$d['img']?>" alt="question" class="icon<?= ($i==0)? ' attention':'' ?>">
+      <img src="<?=$d['img']?>" alt="forum" class="icon">
     </a>
   </td>
-  <td class="td_84_ct<?= ($i==0)? ' attention':'' ?>" >
+  <td style="width:68%;">
     <a href="/forum/?f=<?=$d['id']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c<?= ($i==0)? ' attention':'' ?>" id="q_id_<?=$d['id']?>">
+      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt" id="q_id_<?=$d['id']?>">
     </a>
   </td>
+  <td class="td_15"> <a href="/forum/?f=<?=$d['id']?>"> >></a> </td>
   <?php }else{ ?>
-  <td colspan="2" class="td_99_ct<?= ($i==0)? ' attention':'' ?>">
+  <td colspan="2" style="width:99%;">
     <a href="/forum/?f=<?=$d['id']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c<?= ($i==0)? ' attention':'' ?>" id="q_id_<?=$d['id']?>">
+      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt" id="q_id_<?=$d['id']?>">
     </a>
   </td>
+  <td class="td_15"> <a href="/forum/?f=<?=$d['id']?>"> >></a> </td>
   <?php } ?>
 </tr>
-<?php ++$i; $arr_answer[] = $d['id']; } } ?>
+<tr>
+  <td colspan="3">
+  &nbsp; <img src="/assets/img/icon/thumbup_0.png" alt="like" id="f_img_<?=$d['id']?>" data-forum="<?=$d['id']?>" class="icon nice" style="cursor:pointer;">
+  <span id="nice_<?=$d['id']?>"> <?=$d['nice']?> </span>
+ </td>
+</tr>
+<tr><td colspan="3" style="border-bottom: solid 0.1px #CCCCCC; height: 10px;"></td></tr>
+<?php $arr_forum[] = $d['id']; } ?>
 </table>
 <br>
 <table>
@@ -78,16 +88,25 @@
 </table>
 <?= View::forge('ad_load') ?>
 
+<table>
+  <tr>
+    <td style="width:84%;"></td>
+    <td style="width:15%;">
+      <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
+      <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+    </td>
+  </tr>
+</table>
 <table style="text-align:center;">
-<tr><td><textarea placeholder="Q." maxlength="400" class="txt_long" id="f_txt"></textarea></td></tr>
+<tr><td><textarea placeholder="Q." maxlength="400" class="txt_long" id="txt"></textarea></td></tr>
 </table>
     
-<table cellspacing="0">
+<table>
   <tr>
   <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
-  <td id="minus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
-  <td id="plus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
-  <td style="width:50px;cursor:pointer;">
+  <td id="minus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
+  <td id="plus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
+  <td class="sp_disp_none" style="width:50px;cursor:pointer;">
     <select name='scale' style="font-size:20px;">
         <option>1</option>
         <option>5</option>
@@ -107,7 +126,8 @@
 </div>
 
 <script>
-  var arr_answer = JSON.parse( '<?= json_encode($arr_answer) ?>' );
+  var arr_forum = JSON.parse( '<?= json_encode($arr_forum) ?>' );
+  var u_id = '<?=$u_id?>';
 </script>
 <script src="/assets/js/check_news.js?ver=32"></script>
 <script src="/assets/js/basic.js?ver=32"></script>
