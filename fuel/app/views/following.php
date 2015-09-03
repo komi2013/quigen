@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=32"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=32" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=32" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=32" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=33"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=33" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=33" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=33" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -34,12 +34,12 @@
 <table id="cel"></table>
 </div>
 <script>var sender = '<?=$sender?>';</script>
-<script src="/assets/js/check_news.js?ver=32"></script>
-<script src="/assets/js/basic.js?ver=32"></script>
+<script src="/assets/js/check_news.js?ver=33"></script>
+<script src="/assets/js/basic.js?ver=33"></script>
 <?php if($usr_id == $sender){ ?>
-<script src="/assets/js/following_my.js?ver=32"></script>
+<script src="/assets/js/following_my.js?ver=33"></script>
 <?php }else{ ?>
-<script src="/assets/js/following.js?ver=32"></script>
+<script src="/assets/js/following.js?ver=33"></script>
 <?php } ?>
 </body>
 </html>
