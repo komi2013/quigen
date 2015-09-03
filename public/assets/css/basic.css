@@ -13,6 +13,7 @@ h1 {
 .icon {
   max-height: 48px;
   vertical-align: middle;
+  cursor: pointer;
 }
 .edge {
   width: 25%;

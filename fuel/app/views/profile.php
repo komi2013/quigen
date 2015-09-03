@@ -89,9 +89,9 @@ $clip_url = 'http://'
 <table cellspacing="1" boroder="0">
 <tr>
   <td><a href="/follower/?u=<?=$usr_id?>"><img src="/assets/img/icon/people.png" class="icon"></a></td>
-  <td class="num_txt" id="num_follower"><a href="/follower/?u=<?=$usr_id?>"><?=$follower?></a></td>
+  <td style="width:34%"><a href="/follower/?u=<?=$usr_id?>"><?=$follower?></a></td>
   <td><a href="/following/?u=<?=$usr_id?>"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
-  <td class="num_txt" id="num_follower"><a href="/following/?u=<?=$usr_id?>"><?=$following?></a></td>
+  <td style="width:34%"><a href="/following/?u=<?=$usr_id?>"><?=$following?></a></td>
 </tr>
 </table>
 

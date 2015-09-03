@@ -69,10 +69,10 @@
 
 <table cellspacing="0">
   <tr>
-  <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
-  <td id="minus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
-  <td id="plus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
-  <td style="width:50px;cursor:pointer;">
+  <td id="rotate" style="width:50px;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
+  <td id="minus" style="width:50px;" class="sp_disp_none"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
+  <td id="plus" style="width:50px;" class="sp_disp_none"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
+  <td style="width:50px;" class="sp_disp_none">
     <select name='scale' style="font-size:20px;">
         <option>1</option>
         <option>5</option>
