@@ -2,6 +2,7 @@
 - fuel/app/bootstrap.php
 - public/assets/img/quiz*
 - public/assets/img/profile*
+- public/assets/img/forum*
 - public/sitemap*
 - public/robots.txt
 - public/BingSiteAuth.xml
