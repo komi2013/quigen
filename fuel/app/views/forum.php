@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title></title>
-    <meta name="description" content="クイズ:">
+    <title><?=$title?></title>
+    <meta name="description" content="<?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
-    <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='?>" />
+    <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/forum.css?ver=32" />

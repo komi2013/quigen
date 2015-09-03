@@ -359,6 +359,46 @@ ALTER SEQUENCE followed_news_id_seq OWNED BY followed_news.id;
 
 
 --
+-- Name: forum; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE forum (
+    id integer NOT NULL,
+    parent_id integer DEFAULT 0 NOT NULL,
+    txt text DEFAULT ''::text NOT NULL,
+    usr_id integer DEFAULT 0 NOT NULL,
+    open_time timestamp without time zone DEFAULT now() NOT NULL,
+    u_img text DEFAULT ''::text NOT NULL,
+    img text DEFAULT ''::text NOT NULL,
+    nice integer DEFAULT 0 NOT NULL,
+    update_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public.forum OWNER TO postgres;
+
+--
+-- Name: forum_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE forum_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.forum_id_seq OWNER TO postgres;
+
+--
+-- Name: forum_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE forum_id_seq OWNED BY forum.id;
+
+
+--
 -- Name: lg_pack_tran; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1214,6 +1254,13 @@ ALTER TABLE ONLY followed_news ALTER COLUMN id SET DEFAULT nextval('followed_new
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
+ALTER TABLE ONLY forum ALTER COLUMN id SET DEFAULT nextval('forum_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
 ALTER TABLE ONLY lg_pack_tran ALTER COLUMN id SET DEFAULT nextval('lg_pack_tran_id_seq'::regclass);
 
 
@@ -1429,6 +1476,14 @@ ALTER TABLE ONLY follow
 
 ALTER TABLE ONLY followed_news
     ADD CONSTRAINT followed_news_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forum_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY forum
+    ADD CONSTRAINT forum_pkey PRIMARY KEY (id);
 
 
 --

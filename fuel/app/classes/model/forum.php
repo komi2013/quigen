@@ -22,7 +22,6 @@ class Model_Forum extends \Orm\Model
       'data_type' => 'int',
       'default' => 0,
     ),
-    'update_at',
     'open_time',
     'u_img',
     'img',
@@ -30,6 +29,7 @@ class Model_Forum extends \Orm\Model
       'data_type' => 'int',
       'default' => 0,
     ),
+    'update_at',
   );
   protected static $_table_name = 'forum';
 

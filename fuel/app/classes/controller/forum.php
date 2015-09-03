@@ -15,6 +15,7 @@ class Controller_Forum extends Controller
     }
     Model_Csrf::setcsrf();
     $arr_forum = [];
+    $description = '';
     $util = new Model_Util();
     foreach ($arr as $k => $d) {
       $arr_forum[$k] = $d;
@@ -25,11 +26,17 @@ class Controller_Forum extends Controller
         $arr_forum[$k]['u_img'] = $util->eto_img;
         $arr_forum[$k]['eto_css'] = $util->eto_css;
       }
+      if ($k < 5) {
+        $description .= $d['txt'];  
+      }
     }
+    
     //echo '<pre>'; var_dump($arr_forum); echo '</pre>'; die;
     $view = View::forge('forum');
     Model_Csrf::setcsrf();
-    //$view->forum = $_GET['f'];
+    $view->f_id = $_GET['f'];
+    $view->title = $arr_forum[0]['txt'];
+    $view->description = $description;
     $view->forum = $arr_forum;
     $view->u_id = Model_Cookie::get_usr();
     die($view);

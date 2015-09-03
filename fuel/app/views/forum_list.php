@@ -2,15 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>FAQ | クイジェン</title>
+    <title>FAQ | 数学や英語などのわからない部分の画像をアップすれば誰かが教えてくれるかも</title>
     <meta name="description" content="数学や英語などのわからない部分の画像をアップすれば誰かが教えてくれるかも">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
+    <link rel="canonical" href="http://<?=Config::get('my.domain').'/forumlist/'?>" />
 <?php if( isset($_GET['page']) ){ ?>
     <meta name="robots" content="noindex,follow">
-<?php }else{ ?>
-    <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />
 <?php } ?>
-    <link rel="alternate" hreflang="ja" href="http://<?=Config::get("my.domain")?>/" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
