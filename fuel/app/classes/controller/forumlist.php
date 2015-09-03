@@ -5,7 +5,7 @@ class Controller_Forumlist extends Controller
   {
     Model_Csrf::setcsrf();
     $view = View::forge('forum_list');
-    $res = DB::query("select count(*) from forum where open_time < '2115-01-01'")
+    $res = DB::query("select count(*) from forum where open_time < '".date('Y-m-d H:i:s')."'" )
       ->execute()->as_array();
     $this->cnt = ceil($res[0]['count']/20);
     $this->usr_id = Model_Cookie::get_usr();
@@ -24,7 +24,7 @@ class Controller_Forumlist extends Controller
           ->limit(20)->offset($offset)
           ->execute()->as_array();
         $view->forum = $forum;
-        $view->u_id = $usr_id;
+        $view->u_id = $this->usr_id;
         die($view);
       }
       else
@@ -47,6 +47,7 @@ class Controller_Forumlist extends Controller
       ->limit(20)
       ->execute()->as_array();
     $view->forum = $forum;
+    $view->top = true;
     $view->page = $this->cnt+1;
     $view->u_id = $this->usr_id;
     die($view);

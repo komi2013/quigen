@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>FAQ | 数学や英語などのわからない部分の画像をアップすれば誰かが教えてくれるかも</title>
-    <meta name="description" content="数学や英語などのわからない部分の画像をアップすれば誰かが教えてくれるかも">
+    <title>FAQ | 数学や英語などのわからない部分の画像をアップすれば教えてくれるかも</title>
+    <meta name="description" content="わからない所が教科書や問題集にあった場合その画像をアップすれば他に見ている誰かが教えてくれるかも、簡単に画像を投稿できるんでためしにアップしてみては？">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
+<?php if( isset($top) ){  ?>    
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/forumlist/'?>" />
+<?php } ?>
 <?php if( isset($_GET['page']) ){ ?>
     <meta name="robots" content="noindex,follow">
 <?php } ?>
@@ -29,7 +31,7 @@
 </table>
 <?php
   $side = View::forge('side');
-  $side->this_page = 'top';
+  $side->this_page = 'forumlist';
   echo $side;
 ?>
 
