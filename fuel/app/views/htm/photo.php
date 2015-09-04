@@ -45,9 +45,9 @@ body{
 
 <table cellspacing="0">
   <tr>
-  <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
-  <td id="minus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
-  <td style="width:50px;cursor:pointer;">
+  <td id="rotate" style="width:50px;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
+  <td id="minus" class="sp_disp_none" style="width:50px;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
+  <td class="sp_disp_none" style="width:50px;">
     <select name='scale' style="font-size:20px;">
         <option>1</option>
         <option>5</option>
@@ -56,7 +56,7 @@ body{
         <option>40</option>
     </select>
   </td>
-  <td id="plus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
+  <td id="plus" class="sp_disp_none" style="width:50px;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
   </tr>
 </table>
 

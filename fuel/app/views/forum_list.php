@@ -78,7 +78,9 @@
     <a href="/forumlist/?page=<?=$page+1?>"> << </a>
     <?php }?>
   </td>
+  <?php if( isset($top) AND $page > 2) {?>
   <td class="td_33">||</td>
+  <?php } ?>
   <td class="td_33">
     <?php if($page > 2){ ?>
     <a href="/forumlist/?page=<?=$page-1?>"> >> </a>
@@ -86,7 +88,6 @@
   </td>
   </tr>
 </table>
-<?= View::forge('ad_load') ?>
 
 <table>
   <tr>
@@ -122,6 +123,8 @@
 <input type="file" id="imageLoader" name="imageLoader">
 <canvas id="mycanvas" height="300" width="300"></canvas>
 </div>
+
+<?= View::forge('ad_load') ?>
 
 </div>
 
