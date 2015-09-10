@@ -67,7 +67,7 @@ class Controller_AdminSitemapQ extends Controller
     }
     
     //センター英語基本,センター英語必須,センター英語重要
-    $arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') order by id")->execute()->as_array();
+    $arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') AND open_time < '2114-01-01' order by id")->execute()->as_array();
     //$arr_question = DB::query('SELECT * FROM question ORDER BY ID DESC')->execute()->as_array();
     
     

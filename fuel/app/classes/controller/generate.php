@@ -15,14 +15,14 @@ class Controller_Generate extends Controller
     if ( isset($query[0]['open_time']) ) {
       $available = new DateTime($query[0]['open_time']);
       $now_limit = new DateTime("now");
-      $now_limit->add( new DateInterval('P14D') );
+      $now_limit->add( new DateInterval('P30D') );
       
       if ( $query[0]['open_time'] > "2100-01-01 00:00:00" ) {
         $available->sub( new DateInterval('P100Y') );
       }
       
       if ($now_limit < $available) {
-        $available->sub( new DateInterval('P14D') );
+        $available->sub( new DateInterval('P30D') );
         $view = View::forge('generate_limited');
         $view->available = $available->format('Y-m-d H:i:s');
         

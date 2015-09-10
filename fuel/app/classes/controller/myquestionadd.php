@@ -13,7 +13,7 @@ class Controller_Myquestionadd extends Controller
     }
     
     $now_limit = new DateTime("now");
-    $now_limit->add(new DateInterval('P14D'));
+    $now_limit->add(new DateInterval('P30D'));
     
     $query = DB::select()->from('question')
       ->where('usr_id','=',$usr_id)
