@@ -9,10 +9,9 @@ crontab -e
 ----------robots.txt-------------
 User-agent: *
 Sitemap: http://juken.quigen.info/sitemap/index.xml
-#Disallow: /*show/*
 Disallow: /quiz/?crypt_q*
-#Disallow: /follow*
-#Disallow: /quizjs*
+Disallow: /follow*
+Disallow: /htm/ad/*
 
 20150402 fuel/app/config/config.php          add tw access token and secret
 20150406 add mt_sns_post

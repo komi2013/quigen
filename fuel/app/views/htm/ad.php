@@ -1,4 +1,3 @@
-<?php header("HTTP/1.0 404 Not Found"); ?>
 <style> * {  margin: 0 auto; padding: 0;} </style>
 <?php switch ($_GET['af']) { ?>
 <?php case 'imobile_sp': ?>
