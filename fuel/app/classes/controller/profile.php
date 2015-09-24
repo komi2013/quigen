@@ -3,10 +3,8 @@ class Controller_Profile extends Controller
 {
   public function action_index()
   {
-    if ( !isset($_GET['u']) OR !is_numeric($_GET['u']) )
-    {
+    if ( !isset($_GET['u']) OR !is_numeric($_GET['u']) ) {
       $view = View::forge('404');
-      
       die($view);
     }
     Model_Csrf::setcsrf();
@@ -44,7 +42,7 @@ class Controller_Profile extends Controller
           $introduce .= ' '.Security::htmlentities($d);
         }
       }
-      $view->introduce = $introduce;
+      $introduce = $introduce;
     }
 
     $res = DB::query("select count(*) from question where usr_id = ".$_GET['u'])->execute()->as_array();
@@ -62,6 +60,9 @@ class Controller_Profile extends Controller
     }
     $view->status = $status;
     $view->follower = $cnt_follower;
+    $res = DB::query("select count(*) from answer_key_u where usr_id = ".$_GET['u']." AND create_at > '".date('Y-m-d H:i:s',strtotime('-1 week'))."'" )->execute()->as_array();
+    $answer_cnt_1week = $res[0]['count'];
+    $view->introduce = '1週間で'.$answer_cnt_1week.'件答えました '.$introduce;
     $res = DB::query("select count(*) from follow where sender = ".$_GET['u']." AND status = 2")->execute()->as_array();
     $view->following = $res[0]['count'];
     $view->u_id = $usr_id;
@@ -80,7 +81,7 @@ class Controller_Profile extends Controller
         order by cnt desc
       ")->execute()->as_array();
       $view->rank = $res;
-    } 
+    }
     die($view);
   }
 }
