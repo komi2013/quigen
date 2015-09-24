@@ -24,10 +24,14 @@ $ln_url = 'line://msg/text/?'.$description.'%0D%0Ahttp://'
 $clip_url = 'http://'
   .Config::get('my.domain')
   .'/profile/?u='.$_GET['u'];
-
-$answer_cnt_1week = '1週間で'
+if ($answer_cnt_1week > 0) {
+  $answer_cnt_1week = '1週間で'
   .$answer_cnt_1week
-  .'件回答しました。';
+  .'件回答しました。';  
+} else {
+  $answer_cnt_1week = '';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
