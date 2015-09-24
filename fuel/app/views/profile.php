@@ -25,13 +25,16 @@ $clip_url = 'http://'
   .Config::get('my.domain')
   .'/profile/?u='.$_GET['u'];
 
+$answer_cnt_1week = '1週間で'
+  .$answer_cnt_1week
+  .'件回答しました。';
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title><?=$usr_name?></title>
-    <meta name="description" content="<?=strip_tags($introduce) ?: '自己紹介、'?><?=$description?>、 フォロワー数：<?=$follower?>、 フォローしているユーザー数：<?=$following?>">
+    <meta name="description" content="<?=$answer_cnt_1week?> <?=strip_tags($introduce) ?: '自己紹介、'?><?=$description?>、 フォロワー数：<?=$follower?>、 フォローしているユーザー数：<?=$following?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -67,7 +70,7 @@ $clip_url = 'http://'
   　<td id="photo_res"><img src="<?=$usr_img?>" class="icon" id="photo" <?=$css?> ></td>
   　<td id="name"><h1><?=$usr_name?></h1></td>
   </tr>
-  <tr><td colspan="2" id="introduce"><?=$introduce ?: '自己紹介文'?></td></tr>
+  <tr><td colspan="2" id="introduce"><?=$answer_cnt_1week?> <?=$introduce ?: '自己紹介文'?></td></tr>
 </table>
 
 <?php if( !isset($_GET['list']) ){ ?>

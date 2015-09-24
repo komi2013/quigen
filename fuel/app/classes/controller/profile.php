@@ -42,7 +42,7 @@ class Controller_Profile extends Controller
           $introduce .= ' '.Security::htmlentities($d);
         }
       }
-      $introduce = $introduce;
+      $view->introduce = $introduce;
     }
 
     $res = DB::query("select count(*) from question where usr_id = ".$_GET['u'])->execute()->as_array();
@@ -61,8 +61,7 @@ class Controller_Profile extends Controller
     $view->status = $status;
     $view->follower = $cnt_follower;
     $res = DB::query("select count(*) from answer_key_u where usr_id = ".$_GET['u']." AND create_at > '".date('Y-m-d H:i:s',strtotime('-1 week'))."'" )->execute()->as_array();
-    $answer_cnt_1week = $res[0]['count'];
-    $view->introduce = '1週間で'.$answer_cnt_1week.'件答えました '.$introduce;
+    $view->answer_cnt_1week = $res[0]['count'];
     $res = DB::query("select count(*) from follow where sender = ".$_GET['u']." AND status = 2")->execute()->as_array();
     $view->following = $res[0]['count'];
     $view->u_id = $usr_id;
