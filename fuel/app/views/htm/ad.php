@@ -55,5 +55,29 @@
   </script>
 <?php break; ?>
 
+<?php case 'adsense_sp': ?>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 320バナー -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:100px"
+     data-ad-client="ca-pub-1763935619573577"
+     data-ad-slot="6972864444"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<?php break; ?>
+
+<?php case 'adsense_pc': ?>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 320バナー -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:100px"
+     data-ad-client="ca-pub-1763935619573577"
+     data-ad-slot="6972864444"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<?php break; ?>
+
 <?php }?>
 
