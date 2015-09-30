@@ -71,7 +71,6 @@
   <tr>
   <td id="rotate" style="width:50px;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
   <td id="minus" class="sp_disp_none" style="width:50px;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
-  <td id="plus" class="sp_disp_none" style="width:50px;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
   <td class="sp_disp_none" style="width:50px;">
     <select name='scale' style="font-size:20px;">
         <option>1</option>
@@ -81,19 +80,13 @@
         <option>40</option>
     </select>
   </td>
+  <td id="plus" class="sp_disp_none" style="width:50px;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
   </tr>
 </table>
 
 <div id="canvas_div_img" style="text-align:center;">
 <input type="file" id="imageLoader" name="imageLoader">
 <canvas id="mycanvas" height="300" width="300"></canvas>
-</div>
-
-<div id="canvas_div_url" style="display:none;">
-<table><tr>
-  <td class="td_84_c"><input type="text" placeholder="http://***/**.png" id="imageUrl" class="img_url_h"></td><td class="td_15_c"><input type="button" value="OK" id="ok_url" class="img_url_h"></td>  
-</tr></table>
-<canvas id="url_canvas" height="300" width="300"></canvas>
 </div>
 
 <?= View::forge('ad_load') ?>

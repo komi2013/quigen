@@ -12,6 +12,13 @@ class Controller_QuizEditUpd extends Controller
         $auth = true;
       }
     }
+    $query = DB::select()->from('question')
+      ->where('id','=',$_POST['q_id'])
+      ->execute()->as_array();
+    
+    if ($query[0]['usr_id'] == $usr_id) {
+      $auth = true;
+    }
     if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.242.146.131')
     {
       $view = View::forge('404');

@@ -30,9 +30,7 @@
   echo $side;
 ?>
 <div id="content">
-<div id="div_photo">
-<img src="<?=$img?>" alt="quiz photo" id="photo">
-</div>
+
 <table style="text-align:center;">
 <tr><td><textarea maxlength="200" class="txt_long" id="q_txt"><?=$q_txt?></textarea></td></tr>
 </table>
@@ -55,14 +53,13 @@
 </div>    
 
 <table>
-  <tr><td class="td_99"><input type="text" value="<?=$reference?>" maxlength="200" class="txt_99" id="reference"></td></tr>
+  <tr><td class="td_99"><input type="text" value="<?=$reference?>" placeholder="画像の参照" maxlength="200" class="txt_99" id="reference"></td></tr>
 </table>
 
-<table cellspacing="0">
+<table>
   <tr>
   <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
   <td id="minus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
-  <td id="plus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
   <td style="width:50px;cursor:pointer;">
     <select name='scale' style="font-size:20px;">
         <option>1</option>
@@ -72,6 +69,7 @@
         <option>40</option>
     </select>
   </td>
+  <td id="plus" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
   </tr>
 </table>
 
@@ -80,19 +78,14 @@
 <canvas id="mycanvas" height="300" width="300"></canvas>
 </div>
 
-<div id="canvas_div_url" style="display:none;">
-<table><tr>
-  <td class="td_84_c"><input type="text" placeholder="http://***/**.png" id="imageUrl" class="img_url_h"></td><td class="td_15_c"><input type="button" value="OK" id="ok_url" class="img_url_h"></td>  
-</tr></table>
-<canvas id="url_canvas" height="300" width="300"></canvas>
-</div>
-
 <?= View::forge('ad_load') ?>
+
 </div>
 <script>
 var u_id = '<?=$u_id?>';
 var q_id = '<?=$question?>';
 var open_time = '<?=$open_time?>';
+var already_img = '<?=$img ?: '/assets/img/icon/camera.png' ?>';
 </script>
 <script src="/assets/js/check_news.js?ver=33"></script>
 <script src="/assets/js/basic.js?ver=33"></script>
