@@ -57,11 +57,11 @@
 
 <?php case 'adsense_sp': ?>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 320バナー -->
+<!-- 320*50のバナー -->
 <ins class="adsbygoogle"
-     style="display:inline-block;width:320px;height:100px"
+     style="display:inline-block;width:320px;height:50px"
      data-ad-client="ca-pub-1763935619573577"
-     data-ad-slot="6972864444"></ins>
+     data-ad-slot="5966804842"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
@@ -69,11 +69,11 @@
 
 <?php case 'adsense_pc': ?>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 320バナー -->
+<!-- 320*50のバナー -->
 <ins class="adsbygoogle"
-     style="display:inline-block;width:320px;height:100px"
+     style="display:inline-block;width:320px;height:50px"
      data-ad-client="ca-pub-1763935619573577"
-     data-ad-slot="6972864444"></ins>
+     data-ad-slot="5966804842"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
