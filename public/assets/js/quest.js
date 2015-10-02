@@ -6,7 +6,7 @@ var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 if(localStorage.ticket){
   var ticket = JSON.parse(localStorage.ticket);  
 }else{
-  var ticket = [2,1,hour_stamp,2];
+  var ticket = [5,1,hour_stamp,5];
 }
 var recover = Math.floor( (hour_stamp - ticket[2]) / ticket[1] );
 var formatDate = function (date, format) {
@@ -165,7 +165,7 @@ $('#generate').click(function(){
       if(localStorage.ticket){
         var ticket = JSON.parse(localStorage.ticket);  
       }else{
-        var ticket = [2,1,hour_stamp,2];
+        var ticket = [5,1,hour_stamp,5];
       }
       ticket[0] = ticket[0] + buy_ticket;
       localStorage.ticket = JSON.stringify(ticket);
@@ -178,35 +178,4 @@ $('#generate').click(function(){
   });
 });
 
-/*
- * for SEO pages
- * 
- *
- * 
- * initial チケット2/2
- * 他のクイズを確認
- * マイアンサー(復習)を確認
- * マイプロファイルを確認
- * 
- * after 1st quest チケット4/4, show some page
- * プロファイル確認
- * ランク確認
- * タグ検索
- * ルール確認
- * 動画確認
- * 使い方確認
- * 
- * after 2nd quest ticket 8/8, show below page
- * クイズシェア
- * コメント入力
- * クイズ作成
- * 単語クイズ作成
- * 登録
- * 
- * after 3rd quesst ticket 20/20, show below page
- * no quest 
- * 有料クイズ　作成
- * 有料クイズ　支払い
- * 
-*/
 ga('send', 'pageview');

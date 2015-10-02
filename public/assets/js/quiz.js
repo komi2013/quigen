@@ -97,7 +97,7 @@ if(localStorage.ticket){
     $('#ticket').empty().append(ticket[0]);
   }
 }else{
-  var ticket = [2,1,hour_stamp,2];
+  var ticket = [5,1,hour_stamp,5];
   localStorage.ticket = JSON.stringify(ticket);
 }
 ga('set', 'dimension7',q_id);
@@ -239,7 +239,6 @@ function answer_1(this_seq){
   }
   amt_answer++;  
   after_post(correct_answer);
-  comment_show();
 }
 function after_post(correct_answer){
   $('#num_ratio').empty().append(Math.round(amt_co/amt_answer * 100)+' %');
@@ -260,7 +259,6 @@ function after_post(correct_answer){
   localStorage.session_answer = localStorage.session_answer*1 + 1;
   ga('set', 'dimension1',localStorage.session_answer);  
   ga('send','event','answer',correct_answer,usr,u_answer);
-  answerStep(answer_by_u);
   var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60); 
   var notify = JSON.parse(localStorage.notify);
   notify[1] = hour_stamp+1;
@@ -268,6 +266,13 @@ function after_post(correct_answer){
   ticket[0]--;
   ticket[2] = hour_stamp;
   localStorage.ticket = JSON.stringify(ticket);
+  setTimeout(function(){
+    if(next_q){
+      location.href = '/quiz/?q='+next_q;  
+    }else{
+      location.href = '/';
+    }
+  },1000);
 }
 $('#sns td a').click(function(){
   if(localStorage.quest){
@@ -294,58 +299,6 @@ function highlighting(highlight,sc_height,drawer_open){
     }).fadeIn(1000);
     ++limit;
   }
-}
-function answerStep(answer_by_u){
-  setTimeout(function(){
-    var highlight  = '';
-    var sc_height = 0;
-    var drawer_open = true;
-    switch (answer_by_u[1]) {
-      case 1:
-        highlight = '#tag';
-        sc_height = document.body.scrollHeight;
-        drawer_open = false;
-        highlighting(highlight,sc_height,drawer_open);
-        highlight = '#prev';
-        highlighting(highlight,sc_height,drawer_open);
-        highlight = '#next';
-        highlighting(highlight,sc_height,drawer_open);
-      break;
-      case 2:
-        highlight = '#page_top';
-        highlighting(highlight,sc_height,drawer_open);
-      break;
-//       case 3:
-//         highlight = '#page_myanswer';
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-//       case 4:
-//         highlight = '#right';
-//         drawer_open = false;
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-//       case 5:
-//         highlight = '#page_generate';
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-//       case 6:
-//         highlight = '#page_gene4word';
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-//       case 7:
-//         highlight = '#page_myprofile';
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-//       case 8:
-//         highlight = '#page_rank';
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-//       case 9:
-//         highlight = '#page_category';
-//         highlighting(highlight,sc_height,drawer_open);
-//       break;
-    }
-  }, 3000);
 }
 
 //.begin. add in/correct usr
@@ -411,6 +364,7 @@ function answer_by_q_show(){
     }
   });
 }
+var next_q = 0;
 function tag_show(){
   var param = {
     q : q_id
@@ -424,9 +378,11 @@ function tag_show(){
       }
       if(res[2][0]){
         $('#prev').append('<a href="/quiz/?q='+res[2][0]+'"> << </a>');
+        next_q = res[2][0];
       }
       if(res[2][1]){
         $('#next').append('<a href="/quiz/?q='+res[2][1]+'"> >> </a>');
+        next_q = res[2][1];
       }
     }else{
      //console.log(res);
@@ -434,103 +390,46 @@ function tag_show(){
   });
 }
 
-function comment_show(){
-  var param = {
-    q : q_id
-  };
-  $.get('/commentshow/',param,function(){},"json")
-  .always(function(res){
-//     res[1] = id, txt, img
-    if(res[0]==1){
-      addCelComment(res[1]);
-    }else if(res[0]==2){
-      comment();
-    }else{
-      alert('connection error');
-      //console.log(res);
-    }
-  });
-}
-
-function addCelComment(resData){
-  var cellTxt = '';
-  var celImg = '';
-  var eto_css = '';
-  for (var celNum=0;celNum<resData.length;celNum++){
-    cellId = resData[celNum][0];
-    cellTxt = resData[celNum][1];
-    if(resData[celNum][2]){
-      celImg = resData[celNum][2];
-    }else{
-      var eto = get_eto(resData[celNum][0]);
-      celImg = eto[2];
-      eto_css = eto[3];
-    }
-    var append = 
-    '<tr><td class="td_15_c">'+
-    '<a href="/profile/?u='+cellId+'" >'+
-    '<img src="'+celImg+'" alt="follower photo" class="icon" '+eto_css+'></a>'+
-    '</td><td class="td_84_ct">'+cellTxt+'</td></tr>';
-    $('#comment').append(append);
+$('#comment_add').click(function(){
+  var validate = 1;
+  if($('#comment_data').val()==''){
+    $('#comment_data').css({'border-color':'red'});
+    validate=2;
   }
-  comment();
-}
-function comment(){
-  var append = '<tr><td><input type="text" placeholder="コメント" class="txt_84" id="comment_data"></td><td>'+
-    '<img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">'+
-    '<img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">'+
-    '</td></tr>';
-  $('#comment_in').append(append);
-  $('#comment_add').click(function(){
-    var validate = 1;
-    if($('#comment_data').val()==''){
-      $('#comment_data').css({'border-color':'red'});
-      validate=2;
-    }
-    if(validate==2){
-      return false;
-    }
-    if(localStorage.quest){
-      var quest = JSON.parse(localStorage.quest);
-      quest[6] = 1;
-      localStorage.quest = JSON.stringify(quest);
-    }
-    $('#comment_add').css({'display': 'none'});
-    $('#success').css({'display':''});
-    var param = {
-      csrf : $.cookie('csrf')
-      ,txt : $('#comment_data').val()
-      ,q : q_id
-    };
-    $.post('/commentadd/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        location.href = '';
-      }else{
-        alert('connection error');
-      }
-    });
-    ga('set','dimension14','comment');  
-    ga('send','event','comment',usr,$('#comment_data').val(),1);  
+  if(validate==2){
     return false;
-  });
-}
-
-function commentAdd(){
+  }
+  if(localStorage.quest){
+    var quest = JSON.parse(localStorage.quest);
+    quest[6] = 1;
+    localStorage.quest = JSON.stringify(quest);
+  }
+  $('#comment_add').css({'display': 'none'});
+  $('#success').css({'display':''});
+  if(localStorage.myphoto){
+    var myphoto = localStorage.myphoto;
+  }else{
+    var myphoto = '';
+  }
   var param = {
-    q : q_id
+    csrf : $.cookie('csrf')
+    ,txt : $('#comment_data').val()
+    ,q : q_id
+    ,u_img : myphoto
   };
-  $.get('/commentshow/',param,function(){},"json")
+  $.post('/commentadd/',param,function(){},"json")
   .always(function(res){
-//     res[1] = id, txt, img
     if(res[0]==1){
-      addCelComment(res[1]);
+      location.href = '';
     }else{
       alert('connection error');
-      console.log(res);
     }
-  });  
-}
+  });
+  ga('set','dimension14','comment');  
+  ga('send','event','comment',usr,$('#comment_data').val(),1);  
+  return false;
+});
+
 $('#report').click(function(){
   if(!u_id){
     alert('はじめにクイズに答えてください');

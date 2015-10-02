@@ -24,6 +24,7 @@ class Controller_CommentAdd extends Controller
       } else {
         $comment = new Model_Comment();
         $comment->txt = $_POST['txt'];
+        $comment->u_img = $_POST['u_img'];
         $comment->usr_id = $usr_id;
         $comment->question_id = $_POST['q'];
         $comment->create_at = date("Y-m-d H:i:s");

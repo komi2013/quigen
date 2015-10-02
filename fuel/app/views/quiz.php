@@ -121,6 +121,25 @@
 </table>
 
 <table>
+<?php foreach ($arr_comment as $d) { ?>
+<tr>
+  <td><?=$d['txt']?></td>
+  <td><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></td>
+</tr>
+<?php } ?>
+<tr>
+  <td><input type="text" placeholder="コメント" class="txt_84" id="comment_data"></td>
+  <td>
+    <img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+  </td>
+</tr>
+</table>
+
+<div style="word-wrap:break-word;">引用元:<?=$reference?></div>
+
+
+<table>
 <tr>
 <td style="width:98%;text-align:right;">
   <a href="#" id="report">
@@ -129,6 +148,8 @@
 </td>
 </tr>
 </table>
+
+
 <table style="display: none;">
 <tr><td colspan="2" class="td_98">このクイズを購入</td></tr>
 <tr>
@@ -140,8 +161,6 @@
 </td>
 </tr>
 </table>
-
-<div style="word-wrap:break-word;">引用元:<?=$reference?></div>
 
 </div>
 <script>

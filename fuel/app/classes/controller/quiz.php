@@ -54,6 +54,29 @@ class Controller_Quiz extends Controller
       Str::truncate($random_choice[2], 20).', '.
       Str::truncate($random_choice[3], 20).', ';
     $q_txt = Security::htmlentities($q_txt);
+    
+    $query = DB::select()->from('comment')
+      ->where('question_id','=',$_GET['q'])
+      ->order_by('create_at', 'asc')      
+      ->execute()->as_array();
+    $arr_comment = [];
+    if ( isset($query[0]['id']) ) {
+      $arr_u_id = [];
+      $util = new Model_Util();
+      foreach ($query as $k => $d) {
+        $arr_u_id[] = $d['usr_id'];
+        $arr_comment[$k]['usr_id'] = $d['usr_id'];
+        $arr_comment[$k]['txt'] = Security::htmlentities($d['txt']);
+        if ($d['u_img']) {
+          $arr_comment[$k]['u_img'] = $d['u_img'];
+          $arr_comment[$k]['eto_css'] = '';
+        } else {
+          $util->eto($d['usr_id']);
+          $arr_comment[$k]['u_img'] = $util->eto_img;
+          $arr_comment[$k]['eto_css'] = $util->eto_css;
+        }
+      }
+    }
     $view->img = $q_img;
     shuffle($random_choice);
     $view->arr_choice = $random_choice;
@@ -82,6 +105,7 @@ class Controller_Quiz extends Controller
         $question_id;
     $view->description = $description;
     $view->q_txt = $q_txt;
+    $view->arr_comment = $arr_comment;
     $json_arr_q_data = json_encode(array($question_id,$q_txt,$q_img,$q_u_id));
     $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
     $view->q_data = $q_data;

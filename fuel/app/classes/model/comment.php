@@ -18,6 +18,11 @@ class Model_Comment extends \Orm\Model
       'validation' => array('required', 'min_length' => array(1), 'max_length' => array(500)),
       'default' => '',
     ),
+    'u_img' => array(
+      'data_type' => 'varchar',
+      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(500)),
+      'default' => '',
+    ),
     'question_id' => array(
       'data_type' => 'int',
       'default' => 0,
