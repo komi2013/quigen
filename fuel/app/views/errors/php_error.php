@@ -6,12 +6,12 @@
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=33" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=33" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=33" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=34" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=34" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=34" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=33"></script>
+    <script src="/assets/js/analytics.js?ver=34"></script>
   </head>
 <body>
 <table cellspacing="0" boroder="0" id="header">
@@ -32,4 +32,4 @@
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':php_error');
 </script>
-<script src="/assets/js/basic.js?ver=33"></script>
+<script src="/assets/js/basic.js?ver=34"></script>

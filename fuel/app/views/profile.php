@@ -43,13 +43,13 @@ if ($answer_cnt_1week > 0) {
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/profile.css?ver=33" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/profile.css?ver=34" />
     <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=33"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=33" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=33" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=33" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=34"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=34" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=34" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=34" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -148,9 +148,9 @@ var u_id = '<?=$u_id?>';
 var status = '<?=$status?>';
 var list = '<?=isset($_GET['list']) ? 'quiz' : 'answer'; ?>';
 </script>
-<script src="/assets/js/basic.js?ver=33"></script>
-<script src="/assets/js/check_news.js?ver=33"></script>
-<script src="/assets/js/profile.js?ver=33"></script>
+<script src="/assets/js/basic.js?ver=34"></script>
+<script src="/assets/js/check_news.js?ver=34"></script>
+<script src="/assets/js/profile.js?ver=34"></script>
 </body>
 </html>
 
