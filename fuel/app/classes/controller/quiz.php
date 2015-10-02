@@ -56,7 +56,7 @@ class Controller_Quiz extends Controller
     $q_txt = Security::htmlentities($q_txt);
     
     $query = DB::select()->from('comment')
-      ->where('question_id','=',$_GET['q'])
+      ->where('question_id','=',$question_id)
       ->order_by('create_at', 'asc')      
       ->execute()->as_array();
     $arr_comment = [];
