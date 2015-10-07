@@ -15,11 +15,17 @@ class Controller_Report extends Controller
     
     try
     {
-      $contact = new Model_Contact();
-      $contact->txt = $_POST['q_id'].' was reported';
-      $contact->usr_id = $usr_id;
-      $contact->create_at = date('Y-m-d H:i:s');
-      $contact->save();
+      $open_time = date("Y-m-d H:i:s",strtotime("+100 year"));
+      $forum = new Model_Forum();
+      $forum->parent_id = 0;
+      $forum->txt = $_POST['q_id'].' was reported';
+      $forum->img = '';
+      $forum->usr_id = $usr_id;
+      $forum->update_at = date("Y-m-d H:i:s");
+      $forum->open_time = $open_time;
+      $forum->u_img = '';
+      $forum->nice = 0;
+      $forum->save();
     }
     catch (Orm\ValidationFailed $e)
     {

@@ -65,27 +65,6 @@ class Controller_Admin extends Controller
       }
     }
     
-    if ( isset($_GET['cont']) ) {
-      $res = DB::query("select count(*) from contact")->execute()->as_array();
-      $cnt = ceil(($res[0]['count'])/100);
-      if (isset($_GET['page']))
-      {
-        $page = $_GET['page'];
-      }
-      else
-      {
-        $page = $cnt;
-      }
-      $view->page = $page;
-      $offset = ($cnt - $page)*100;
-      if ($page > 0 && $offset > -1)
-      {
-        $view->comment = DB::select()->from('contact')
-          ->order_by('id', 'desc')->limit(100)->offset($offset)
-          ->execute()->as_array();
-      }
-    }
-    
     if ( isset($_GET['com']) ) {
       $res = DB::query("select count(*) from comment")->execute()->as_array();
       $cnt = ceil(($res[0]['count'])/100);

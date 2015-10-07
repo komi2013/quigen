@@ -46,14 +46,6 @@ class Controller_Admindelete extends Controller
     {
       $post_usr = array(0);
     }
-    if (isset($_POST['arr_contact']))
-    {
-      $post_contact = $_POST['arr_contact'];
-    }
-    else
-    {
-      $post_contact = array(0);
-    }
     try
     {
       DB::delete('question')->where('id','in',$post_quiz)->execute();
@@ -62,7 +54,6 @@ class Controller_Admindelete extends Controller
       DB::delete('correct')->where('question_id','in',$post_quiz)->execute();
       DB::delete('incorrect')->where('question_id','in',$post_quiz)->execute();
       DB::delete('usr')->where('id','in',$post_usr)->execute();
-      DB::delete('contact')->where('id','in',$post_contact)->execute();
     }
     catch (Orm\ValidationFailed $e)
     {

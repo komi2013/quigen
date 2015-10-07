@@ -49,10 +49,10 @@ class Controller_Quiz extends Controller
     $view = View::forge('quiz');
     Model_Csrf::setcsrf();
     $description = 
-      Str::truncate($random_choice[0], 20).', '.
-      Str::truncate($random_choice[1], 20).', '.
-      Str::truncate($random_choice[2], 20).', '.
-      Str::truncate($random_choice[3], 20).', ';
+      '①'.Str::truncate($random_choice[0], 20)
+      .'②'.Str::truncate($random_choice[1], 20)
+      .'③'.Str::truncate($random_choice[2], 20)
+      .'④'.Str::truncate($random_choice[3], 20);
     $q_txt = Security::htmlentities($q_txt);
     
     $query = DB::select()->from('comment')

@@ -80,18 +80,6 @@
 <?php }} ?>
 </table>
 
-<table cellspacing="1" boroder="0">
-<?php if( isset($comment) ){ foreach($comment as $k => $d){ ?>
-<tr>
-  <td class="question"><?=Security::htmlentities($d['txt'])?></td>
-  <td class="checkbox">
-    <input type="checkbox" name="contact_id" value="<?=$d['id']?>">
-  </td>
-</tr>
-<?php }} ?>
-</table>
-
-
 <br>
 <table>
   <td class="td_33_c"><a href="/top/?page=<?=$page+1?>" style="text-decoration:none;"> << </a></td>
@@ -101,8 +89,7 @@
 
 <a href="/admin/?q=1">question</a>&nbsp;
 <a href="/admin/?u=1">usr</a>&nbsp;
-<a href="/admin/?cont=1">contact</a>&nbsp;
-<a href="/admin/?com=1">comment</a>&nbsp;
+<a href="/admin/?com=1">usr</a>&nbsp;
 
 </div>
 <script src="/assets/js/check_news.js?ver=34"></script>

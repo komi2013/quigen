@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title><?=$q_txt?></title>
-    <meta name="description" content="クイズ:<?=$q_txt?>選択:<?=$description?>">
+    <meta name="description" content="<?=$q_txt?> <?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/quiz/?q='.$question?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
