@@ -3,6 +3,11 @@ class Controller_Htm extends Controller
 {
   public function action_index()
   {
+    $expires = 3600 * 24;
+    header('Last-Modified: Fri Jan 01 2010 00:00:00 GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
+    header('Cache-Control: private, max-age=' . $expires);
+    header('Pragma: ');
     Model_Csrf::setcsrf();
     if ( !isset($_GET['p']) ) {
       Model_Log::warn('no p');
@@ -18,6 +23,11 @@ class Controller_Htm extends Controller
   }
   public function action_all()
   {
+    $expires = 3600 * 24;
+    header('Last-Modified: Fri Jan 01 2010 00:00:00 GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
+    header('Cache-Control: private, max-age=' . $expires);
+    header('Pragma: ');
     Model_Csrf::setcsrf();
     $slash = explode( '/', $_SERVER['REQUEST_URI'] );
     if ( !isset($slash[2]) ) {

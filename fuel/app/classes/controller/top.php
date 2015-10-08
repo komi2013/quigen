@@ -3,6 +3,11 @@ class Controller_Top extends Controller
 {
   public function action_index()
   {
+    $expires = 3600 * 24;
+    header('Last-Modified: Fri Jan 01 2010 00:00:00 GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
+    header('Cache-Control: private, max-age=' . $expires);
+    header('Pragma: ');
     $view = View::forge('top');
     $res = DB::query("select count(*) from question where open_time < '2115-01-01'")
       ->execute()->as_array();
