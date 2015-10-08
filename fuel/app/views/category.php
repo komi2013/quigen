@@ -1,9 +1,3 @@
-<?php
-  $meta_description = 'カテゴリ一覧';
-  foreach($arr_tag as $k => $d){
-    $meta_description .= ','.Security::htmlentities($d['txt']);
-  }
-?>
 <!DOCTYPE html>
 <html>
   <head>

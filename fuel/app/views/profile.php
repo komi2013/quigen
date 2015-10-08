@@ -1,38 +1,3 @@
-<?php
-$i = 0;
-$description = '';
-if( isset($rank) ){
-  foreach($rank as $k => $d){
-    if($i < 5){
-      $description .= $d['tag'];
-      $description .= ','.$d['cnt'].'正解';
-      $description .= ','.$d['rank'].'位';
-      ++$i; 
-    }
-  }
-}
-$fb_url = 'http://www.facebook.com/sharer.php?u=http://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$_GET['u'].'%26cpn=share_fb';
-$tw_url = 'https://twitter.com/intent/tweet?url=http://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$_GET['u'].'%26cpn=share_tw'
-  .'&text='.$description.'+@quigen2015';
-$ln_url = 'line://msg/text/?'.$description.'%0D%0Ahttp://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$_GET['u'].'%26cpn=share_ln';
-$clip_url = 'http://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$_GET['u'];
-if ($answer_cnt_1week > 0) {
-  $answer_cnt_1week = '1週間で'
-  .$answer_cnt_1week
-  .'件回答しました。';  
-} else {
-  $answer_cnt_1week = '';
-}
-
-?>
 <!DOCTYPE html>
 <html>
   <head>

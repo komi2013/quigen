@@ -8,7 +8,11 @@ class Controller_Category extends Controller
       $view = View::forge('category');
       $query = DB::query("SELECT txt FROM tag GROUP BY txt")->execute()->as_array();
       $view->arr_tag = $query;
-      
+      $meta_description = 'カテゴリ一覧';
+      foreach($query as $k => $d){
+        $meta_description .= ','.Security::htmlentities($d['txt']);
+      }
+      $view->meta_description = $meta_description;
       die($view);
     }
     // tag should be filtered by time
@@ -38,7 +42,12 @@ class Controller_Category extends Controller
     }
     $view = View::forge('category_tag');
     $view->question = $arr_qu;
-    
+
+    $meta_description = $_GET['tag'].'一覧';
+    foreach($arr_qu as $k => $d){
+      $meta_description .= ','.Str::truncate(Security::htmlentities($d['txt']), 30);
+    }
+    $view->meta_description = $meta_description;
     die($view);    
   }
 }

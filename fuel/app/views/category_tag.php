@@ -1,9 +1,3 @@
-<?php
-  $meta_description = $_GET['tag'].'一覧';
-  foreach($question as $k => $d){
-    $meta_description .= ','.Str::truncate(Security::htmlentities($d['txt']), 30);
-  }
-?>
 <!DOCTYPE html>
 <html>
   <head>

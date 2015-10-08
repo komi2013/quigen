@@ -1,31 +1,3 @@
-<?php
-$i = 0;
-$description = '';
-if( isset($rank) ){
-  foreach($rank as $k => $d){
-    if($i < 5){
-      $description .= $d['tag'];
-      $description .= ','.$d['cnt'].'正解';
-      $description .= ','.$d['rank'].'位';
-      ++$i; 
-    }
-  }
-}
-$fb_url = 'http://www.facebook.com/sharer.php?u=http://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$usr_id.'%26cpn=share_fb';
-$tw_url = 'https://twitter.com/intent/tweet?url=http://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$usr_id.'%26cpn=share_tw'
-  .'&text='.$description.'+@quigen2015';
-$ln_url = 'line://msg/text/?'.$description.'%0D%0Ahttp://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$usr_id.'%26cpn=share_ln';
-$clip_url = 'http://'
-  .Config::get('my.domain')
-  .'/profile/?u='.$usr_id;
-
-?>
 <!DOCTYPE html>
 <html>
   <head>
