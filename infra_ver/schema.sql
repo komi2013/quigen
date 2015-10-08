@@ -189,7 +189,8 @@ CREATE TABLE comment (
     txt text DEFAULT ''::text NOT NULL,
     usr_id integer DEFAULT 0 NOT NULL,
     question_id integer DEFAULT 0 NOT NULL,
-    create_at timestamp without time zone DEFAULT now() NOT NULL
+    create_at timestamp without time zone DEFAULT now() NOT NULL,
+    u_img text DEFAULT ''::text NOT NULL
 );
 
 
@@ -215,34 +216,6 @@ ALTER TABLE public.comment_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE comment_id_seq OWNED BY comment.id;
 
-
---
--- Name: contact_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE contact_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.contact_id_seq OWNER TO postgres;
-
---
--- Name: contact; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE contact (
-    id integer DEFAULT nextval('contact_id_seq'::regclass) NOT NULL,
-    txt text DEFAULT ''::text NOT NULL,
-    usr_id integer DEFAULT 0 NOT NULL,
-    create_at timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
-ALTER TABLE public.contact OWNER TO postgres;
 
 --
 -- Name: csrf; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1444,14 +1417,6 @@ ALTER TABLE ONLY choice
 
 ALTER TABLE ONLY comment
     ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
-
-
---
--- Name: contact_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY contact
-    ADD CONSTRAINT contact_pkey PRIMARY KEY (id);
 
 
 --
