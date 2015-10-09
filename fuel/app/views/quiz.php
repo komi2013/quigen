@@ -42,7 +42,7 @@
 <div id="big_result">
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
-<table cellspacing="1" boroder="0">
+<table>
   <tr><td class="choice" id="choice_0"><?=$arr_choice[0]?></td></tr>
   <tr><td class="choice" id="choice_1"><?=$arr_choice[1]?></td></tr>
   <tr><td class="choice" id="choice_2"><?=$arr_choice[2]?></td></tr>

@@ -6,7 +6,7 @@ var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 if(localStorage.ticket){
   var ticket = JSON.parse(localStorage.ticket);  
 }else{
-  var ticket = [5,1,hour_stamp,5];
+  var ticket = [10,1,hour_stamp,10];
 }
 var recover = Math.floor( (hour_stamp - ticket[2]) / ticket[1] );
 var formatDate = function (date, format) {

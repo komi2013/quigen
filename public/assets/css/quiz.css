@@ -2,6 +2,8 @@
   background-color: #F5F5F5;
   width: 99%;
   cursor: pointer;
+  padding: 10px;
+  height:30px;
 }
 #photo{
   max-height: 300px;

@@ -97,7 +97,7 @@ if(localStorage.ticket){
     $('#ticket').empty().append(ticket[0]);
   }
 }else{
-  var ticket = [5,1,hour_stamp,5];
+  var ticket = [10,1,hour_stamp,10];
   localStorage.ticket = JSON.stringify(ticket);
 }
 ga('set', 'dimension7',q_id);
