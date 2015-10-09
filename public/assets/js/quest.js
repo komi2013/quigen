@@ -124,8 +124,8 @@ if(ticket[0] < ticket[3]){
 }
 if(ticket[0] > 0){
   $('#ticket').css({ 'color': 'green' });
-  
   $('#ticket').empty().append(ticket[0]);
+  $('#light_2').empty().append('○下記の時間以降にチケットをもらえます');
   localStorage.ticket = JSON.stringify(ticket);
 }
 
