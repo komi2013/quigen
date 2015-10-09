@@ -18,10 +18,10 @@ if ( isset($_GET['tag']) ) {
     <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/htm/search/?tag='.urlencode($tag)?>" />
     <meta property="og:description" content="<?=$tag?>のクイズ一覧です。他のタグでも検索できます。" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=35"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=35" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=35" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=35" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=36"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=36" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=36" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=36" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -48,8 +48,8 @@ if ( isset($_GET['tag']) ) {
 <table id="cel"></table>
 </div>
 <script> var tag = '<?=$tag?>'; </script>
-<script src="/assets/js/basic.js?ver=35"></script>
-<script src="/assets/js/check_news.js?ver=35"></script>
-<script src="/assets/js/search.js?ver=35"></script>
+<script src="/assets/js/basic.js?ver=36"></script>
+<script src="/assets/js/check_news.js?ver=36"></script>
+<script src="/assets/js/search.js?ver=36"></script>
 </body>
 </html>

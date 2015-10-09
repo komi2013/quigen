@@ -8,13 +8,13 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/profile.css?ver=35" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/profile.css?ver=36" />
     <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=35"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=35" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=35" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=35" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=36"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=36" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=36" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=36" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -113,9 +113,9 @@ var u_id = '<?=$u_id?>';
 var status = '<?=$status?>';
 var list = '<?=isset($_GET['list']) ? 'quiz' : 'answer'; ?>';
 </script>
-<script src="/assets/js/basic.js?ver=35"></script>
-<script src="/assets/js/check_news.js?ver=35"></script>
-<script src="/assets/js/profile.js?ver=35"></script>
+<script src="/assets/js/basic.js?ver=36"></script>
+<script src="/assets/js/check_news.js?ver=36"></script>
+<script src="/assets/js/profile.js?ver=36"></script>
 </body>
 </html>
 

@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=35"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=35" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=35" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=35" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=36"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=36" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=36" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=36" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -38,10 +38,10 @@
 </body>
 </html>
 <script> var receiver = '<?=$receiver?>'; </script>
-<script src="/assets/js/check_news.js?ver=35"></script>
-<script src="/assets/js/basic.js?ver=35"></script>
+<script src="/assets/js/check_news.js?ver=36"></script>
+<script src="/assets/js/basic.js?ver=36"></script>
 <?php if($usr_id == $receiver){ ?>
-<script src="/assets/js/follower_my.js?ver=35"></script>
+<script src="/assets/js/follower_my.js?ver=36"></script>
 <?php }else{ ?>
-<script src="/assets/js/follower.js?ver=35"></script>
+<script src="/assets/js/follower.js?ver=36"></script>
 <?php } ?>
