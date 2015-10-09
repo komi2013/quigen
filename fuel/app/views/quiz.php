@@ -8,13 +8,13 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/quiz/?q='.$question?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css?ver=34" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css?ver=35" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=34"></script>
+    <script src="/assets/js/analytics.js?ver=35"></script>
     <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=34" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=34" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=34" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=35" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=35" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=35" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -172,9 +172,9 @@ var usr = '<?=$usr?>';
 var q_data = '<?=$q_data?>';
 var u_id = '<?=$u_id?>';
 </script>
-<script src="/assets/js/basic.js?ver=34"></script>
-<script src="/assets/js/check_news.js?ver=34"></script>
-<script src="/assets/js/quiz.js?ver=34"></script>
+<script src="/assets/js/basic.js?ver=35"></script>
+<script src="/assets/js/check_news.js?ver=35"></script>
+<script src="/assets/js/quiz.js?ver=35"></script>
 </body>
 </html>
 
