@@ -39,7 +39,7 @@
   　<td id="photo_res"><img src="<?=$usr_img?>" class="icon" id="photo" <?=$css?> ></td>
   　<td id="name"><h1><?=$usr_name?></h1></td>
   </tr>
-  <tr><td colspan="2" id="introduce"><?=$answer_cnt_1week?> <?=$introduce ?: '自己紹介文'?></td></tr>
+  <tr><td colspan="2" id="introduce"><?=$introduce?></td></tr>
 </table>
 
 <?php if( !isset($_GET['list']) ){ ?>

@@ -4,7 +4,7 @@ class Controller_Answer extends Controller
   public function action_index()
   {
     $res[0] = 2;
-    Model_Csrf::check();
+    //Model_Csrf::check();
     if (!isset($_POST['question']) OR !is_numeric($_POST['question']))
     {
       Model_Log::warn('no question');
@@ -94,7 +94,7 @@ class Controller_Answer extends Controller
       Model_Log::warn('orm err');
       die(json_encode($res));
     }
-    Model_Csrf::setcsrf();
+    //Model_Csrf::setcsrf();
     $res[0] = 1;
 //     $res[1] = $question_id;
 //     $res[1] = $e->getMessage();
