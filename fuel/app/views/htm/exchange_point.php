@@ -90,7 +90,7 @@
   <tr><td id="txt"><input type="email" placeholder="email" value="" id="email"></td></tr>
 </table>
 <?php } ?>
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 </div>
 <script>
   var u_id = '<?=$u_id?>';

@@ -79,10 +79,14 @@
 </tr>
 </table>
 
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 
 <table id="cel"></table>
 </div>
+
+<?= View::forge('htm/ad_load_right') ?>
+<?= View::forge('htm/ad_load_bottom') ?>
+
 <script src="/assets/js/check_news.js?ver=36"></script>
 <script src="/assets/js/basic.js?ver=36"></script>
 <script src="/assets/js/myanswer.js?ver=36"></script>

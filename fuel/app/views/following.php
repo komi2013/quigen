@@ -30,7 +30,7 @@
   echo $side;
 ?>
 <div id="content">
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 <table id="cel"></table>
 </div>
 <script>var sender = '<?=$sender?>';</script>

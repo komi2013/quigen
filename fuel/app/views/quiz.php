@@ -95,8 +95,6 @@
   <tr> <td class="td_33" id="prev"></td> <td class="td_33">||</td> <td class="td_33" id="next"></td> </tr>
 </table>
 
-<?= View::forge('ad_load') ?>
-
 <table cellspacing="1" boroder="0" id="sns">
 <tr>
 <td style="width:70px;">
@@ -163,8 +161,11 @@
 </td>
 </tr>
 </table>
-
+<?= View::forge('htm/ad_load') ?>
 </div>
+<?= View::forge('htm/ad_load_right') ?>
+<?= View::forge('htm/ad_load_bottom') ?>
+
 <script>
 var correct = '<?=$correct?>';
 var q_id = '<?=$question?>';

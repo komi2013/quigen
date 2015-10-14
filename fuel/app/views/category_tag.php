@@ -53,7 +53,7 @@
 <?php ++$i;} ?>
 </table>
 
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 </div>
 
 <script src="/assets/js/check_news.js?ver=36"></script>

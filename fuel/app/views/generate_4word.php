@@ -47,7 +47,7 @@
 <input type="text" placeholder="中学歴史" maxlength="12" class="tag_in" id="tag_1">
 <input type="text" placeholder="中学歴史" maxlength="12" class="tag_in" id="tag_2">
 </div>
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 </div>
 <script>
   var u_id = '<?=$u_id?>';

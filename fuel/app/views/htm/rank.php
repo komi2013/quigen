@@ -44,8 +44,11 @@
   </td></tr>
 </table>
 <table id="cel"></table>
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 </div>
+<?= View::forge('htm/ad_load_right') ?>
+<?= View::forge('htm/ad_load_bottom') ?>
+
 <script src="/assets/js/basic.js?ver=36"></script>
 <script src="/assets/js/check_news.js?ver=36"></script>
 <script src="/assets/js/rank.js?ver=36"></script>

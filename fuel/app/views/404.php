@@ -28,7 +28,12 @@
 <div id="content">
 
 <h1>Not Found</h1>
+<?= View::forge('htm/ad_load') ?>
 </div>
+
+<?= View::forge('htm/ad_load_right') ?>
+<?= View::forge('htm/ad_load_bottom') ?>
+
 <script src="/assets/js/check_news.js?ver=36"></script>
 <script src="/assets/js/basic.js?ver=36"></script>
 <script>

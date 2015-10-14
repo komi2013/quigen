@@ -78,7 +78,7 @@
 </div>
 <?php }?>
 
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 </div>
 <script>
 var pack_id = '<?=$_GET["p"]?>';

@@ -34,9 +34,11 @@
 <textarea placeholder="連絡内容" maxlength="140" id="contact" class="txt_long"></textarea>
 </td></tr></table>
    
-<?= View::forge('ad_load') ?>
+<?= View::forge('htm/ad_load') ?>
 
 </div>
+<?= View::forge('htm/ad_load_right') ?>
+<?= View::forge('htm/ad_load_bottom') ?>
 <script>
   var u_id = '<?=$u_id?>';
 </script>
