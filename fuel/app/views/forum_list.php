@@ -128,7 +128,6 @@
 </div>
 
 <?= View::forge('htm/ad_load_right') ?>
-<?= View::forge('htm/ad_load_bottom') ?>
 
 <script>
   var arr_forum = JSON.parse( '<?= json_encode($arr_forum) ?>' );

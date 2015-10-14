@@ -1,6 +1,7 @@
 <style>
 #ad_frame_right {
-  left: 720px;
+  left: 730px;
+  top: 70px;
   position: absolute;
 }
 </style>

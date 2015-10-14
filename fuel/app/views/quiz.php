@@ -164,7 +164,7 @@
 <?= View::forge('htm/ad_load') ?>
 </div>
 <?= View::forge('htm/ad_load_right') ?>
-<?= View::forge('htm/ad_load_bottom') ?>
+
 
 <script>
 var correct = '<?=$correct?>';

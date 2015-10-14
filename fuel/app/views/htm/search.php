@@ -48,7 +48,6 @@ if ( isset($_GET['tag']) ) {
 <table id="cel"></table>
 </div>
 <?= View::forge('htm/ad_load_right') ?>
-<?= View::forge('htm/ad_load_bottom') ?>
 
 <script> var tag = '<?=$tag?>'; </script>
 <script src="/assets/js/basic.js?ver=36"></script>

@@ -84,7 +84,7 @@
 <?= View::forge('htm/ad_load') ?>
 </div>
 <?= View::forge('htm/ad_load_right') ?>
-<?= View::forge('htm/ad_load_bottom') ?>
+
 <script>
   var arr_answer = JSON.parse( '<?= json_encode($arr_answer) ?>' );
 </script>

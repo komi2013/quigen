@@ -38,7 +38,7 @@
 
 </div>
 <?= View::forge('htm/ad_load_right') ?>
-<?= View::forge('htm/ad_load_bottom') ?>
+
 <script>
   var u_id = '<?=$u_id?>';
 </script>
