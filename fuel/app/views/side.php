@@ -13,5 +13,5 @@
   <tr><td id="page_quest"      class="<?= $this_page == 'quest'     ? 'this_page' : '' ?>" >             <a href="/htm/quest/"   rel="nofollow">&nbsp;&nbsp;&nbsp;クエスト</a></td></tr>
   <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                 >&nbsp;&nbsp;&nbsp;FAQ掲示板</a></td></tr>
   <tr><td                      class="<?= $this_page == 'rule'      ? 'this_page' : '' ?>" >             <a href="/htm/rule/"                  >&nbsp;&nbsp;&nbsp;使い方と規約</a></td></tr>
-  <tr><td>&nbsp;&nbsp;<?= View::forge('htm/ad_load_menu') ?></td></tr>
+  <tr><td><?= View::forge('htm/ad_load_menu') ?></td></tr>
 </table>
