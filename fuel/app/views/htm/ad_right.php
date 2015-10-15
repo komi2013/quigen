@@ -1,4 +1,5 @@
 <style> * {  margin: 0 auto; padding: 0;} </style>
+<?php if( !isset($_GET['af']) ) { die(View::forge('404')); } ?>
 <?php switch ($_GET['af']) { ?>
 <?php case 'adsense_pc_right': ?>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

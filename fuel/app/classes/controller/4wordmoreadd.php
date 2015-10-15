@@ -17,12 +17,56 @@ class Controller_4wordmoreadd extends Controller
     {
       die(json_encode($res));
     }
+  if (isset($_GET['wh'])) {
+    $arr = DB::select()->from('wh_4choice')
+             ->execute()->as_array();
+    $wh_time = 1438387200;
+    foreach ($arr as $d) {
+          $wh_time += 600;
+          $question = new Model_Question();
+          $question_id = $question->get_new_id();
+          $question->id = $question_id;
+          $question->txt = $d['Q'];
+          $question->usr_id = 33;
+          $question->create_at = date("Y-m-d H:i:s");
+          $question->open_time = date("Y-m-d H:i:s", $wh_time);
+          $question->save();
+          $choice = new Model_Choice();
+          $choice->choice_0 = $d['A1'];
+          $choice->choice_1 = $d['A2'];
+          $choice->choice_2 = $d['A3'];
+          $choice->choice_3 = $d['A4'];
+          $choice->question_id = $question_id;
+          $choice->save();
 
-    $arr_post[] = preg_replace('/\W+/u', '_', 'センター英語重要');
-    $arr_post[] = preg_replace('/\W+/u', '_', '');
-    $arr_post[] = preg_replace('/\W+/u', '_', '');
-    
-    $arr_word = DB::select()->from('word')
+          $answer_by_q = new Model_AnswerByQ();
+          $answer_by_q->correct = 0;
+          $answer_by_q->question_id = $question_id;
+          $answer_by_q->amount = 0;
+          $answer_by_q->create_at = date("Y-m-d H:i:s");
+          $answer_by_q->update_at = date("Y-m-d H:i:s");
+          $answer_by_q->save();
+          
+          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'センター世界史')")->execute()->as_array();
+      
+    }
+    $res[0] = 1;
+    die(json_encode($res));
+  }
+
+  if (isset($_GET['seq'])) {
+    $arr = DB::query("SELECT * FROM question WHERE id IN ( SELECT question_id FROM tag WHERE txt = 'センター世界史' ) ")->execute();
+    $wh_time = 1438387200;
+    foreach ($arr as $d) {
+      $wh_time += 60;
+      DB::query("update question set open_time = '".date("Y-m-d H:i:s", $wh_time)."' where id = ".$d['id'])->execute();
+      
+    }
+    $res[0] = 1;
+    die(json_encode($res));
+  }  
+
+  $arr_word = DB::select()->from('word')
     ->execute()->as_array();
     //->order_by('quiz', 'asc')->limit(12)
 

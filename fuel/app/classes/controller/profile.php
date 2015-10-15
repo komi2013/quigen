@@ -24,7 +24,7 @@ class Controller_Profile extends Controller
     $view->usr_img  = $util->eto_img;
     $view->css  = $util->eto_css;
     $view->introduce = '';
-    
+    $introduce = '';
     if ( isset($usr->id) )
     {
       $view->usr_name = Security::htmlentities($usr->name);
@@ -34,7 +34,7 @@ class Controller_Profile extends Controller
       $param = preg_replace('/　/', ' ', $usr->introduce);
       $param = preg_replace('/\s+/', ' ', $param);
       $arr_keyword = explode(' ', $param);
-      $introduce = '';
+      
       foreach ($arr_keyword as $d) {
         if( preg_match('/^(http|https):\/\/([A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?/i', $d) ) {
           $introduce .= ' '.Html::anchor($d, $d);

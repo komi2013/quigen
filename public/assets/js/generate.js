@@ -63,7 +63,7 @@ $('#generate').click(function(){
   .always(function(res){
     if(res[0]==1){
       if(localStorage.genestep){
-        localStorage.genestep = localStorage.genestep + 1;
+        localStorage.genestep = localStorage.genestep*1 + 1;
         location.href = '/quiz/?crypt_q='+res[1];
       }else{
         localStorage.genestep = 1;
