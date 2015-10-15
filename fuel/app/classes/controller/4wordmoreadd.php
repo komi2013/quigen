@@ -20,9 +20,9 @@ class Controller_4wordmoreadd extends Controller
   if (isset($_GET['wh'])) {
     $arr = DB::select()->from('wh_4choice')
              ->execute()->as_array();
-    $wh_time = 1438387200;
+    $wh_time = 1444906641;
     foreach ($arr as $d) {
-          $wh_time += 600;
+          $wh_time += 60;
           $question = new Model_Question();
           $question_id = $question->get_new_id();
           $question->id = $question_id;
@@ -47,7 +47,7 @@ class Controller_4wordmoreadd extends Controller
           $answer_by_q->update_at = date("Y-m-d H:i:s");
           $answer_by_q->save();
           
-          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'センター世界史')")->execute();
+          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'センター日本史')")->execute();
       
     }
     $res[0] = 1;
@@ -72,18 +72,18 @@ class Controller_4wordmoreadd extends Controller
 
     $ii = 1;
     //$arr_word_4 = array();
-    $wh_time = 1438387210;
+    $wh_time = 1438387230;
     
     foreach ($arr_word as $d) {
       //year,comment
-      $arr_word_q[] = $d['year'].'年、'.$d['comment'];
-      $arr_word_a[] = $d['name'];
+      $arr_word_q[] = $d['item'].'に該当する年代は？';
+      $arr_word_a[] = $d['year'];
 
       if ( ($ii % 4) == 0 ) {
         $i = 0;
-        
+
         while ($i < 4) {
-          $wh_time += 600;
+          $wh_time += 300;
           $question = new Model_Question();
           $question_id = $question->get_new_id();
           $question->id = $question_id;
@@ -98,9 +98,9 @@ class Controller_4wordmoreadd extends Controller
           $arr_incorrect = array_merge($arr_a); 
           $choice = new Model_Choice();
           $choice->choice_0 = $arr_word_a[$i];
-          $choice->choice_1 = $arr_incorrect[0];
-          $choice->choice_2 = $arr_incorrect[1];
-          $choice->choice_3 = $arr_incorrect[2];
+          $choice->choice_1 = $arr_incorrect[0] + 4;
+          $choice->choice_2 = $arr_incorrect[1] -5;
+          $choice->choice_3 = $arr_incorrect[2] +6;
           $choice->question_id = $question_id;
           $choice->save();
 
