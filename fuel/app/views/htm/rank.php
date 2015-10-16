@@ -35,9 +35,9 @@
       <option value="#センター世界史">#センター世界史</option>
       <option value="#センター生物">#センター生物</option>
       <option value="#センター化学">#センター化学</option>
-      <option value="#センター英語基本">#センター英語基本</option>
-      <option value="#センター英語必須">#センター英語必須</option>
-      <option value="#センター英語重要">#センター英語重要</option>
+      <option value="#センター英語初級">#センター英語初級</option>
+      <option value="#センター英語中級">#センター英語中級</option>
+      <option value="#センター英語上級">#センター英語上級</option>
       <option value="#大学受験英熟語">#大学受験英熟語</option>
       <option value="#休憩">#休憩</option>
     </select>

@@ -72,18 +72,18 @@ class Controller_4wordmoreadd extends Controller
 
     $ii = 1;
     //$arr_word_4 = array();
-    $wh_time = 1438387230;
+    $wh_time = 1444921200;
     
     foreach ($arr_word as $d) {
       //year,comment
-      $arr_word_q[] = $d['item'].'に該当する年代は？';
+      $arr_word_q[] = $d['item'].'、に該当する年代は？';
       $arr_word_a[] = $d['year'];
 
       if ( ($ii % 4) == 0 ) {
         $i = 0;
 
         while ($i < 4) {
-          $wh_time += 300;
+          $wh_time += 60;
           $question = new Model_Question();
           $question_id = $question->get_new_id();
           $question->id = $question_id;
@@ -113,7 +113,7 @@ class Controller_4wordmoreadd extends Controller
           $answer_by_q->save();
 
           $i++;
-          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'センター世界史')")->execute();
+          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'センター日本史')")->execute();
         }
         $arr_word_q = [];
         $arr_word_a = [];
