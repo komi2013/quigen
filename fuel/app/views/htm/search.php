@@ -18,10 +18,10 @@ if ( isset($_GET['tag']) ) {
     <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/htm/search/?tag='.urlencode($tag)?>" />
     <meta property="og:description" content="<?=$tag?>のクイズ一覧です。他のタグでも検索できます。" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=37"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=37" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=37" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=37" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=38"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=38" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=38" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=38" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -50,8 +50,8 @@ if ( isset($_GET['tag']) ) {
 <?= View::forge('htm/ad_load_right') ?>
 
 <script> var tag = '<?=$tag?>'; </script>
-<script src="/assets/js/basic.js?ver=37"></script>
-<script src="/assets/js/check_news.js?ver=37"></script>
-<script src="/assets/js/search.js?ver=37"></script>
+<script src="/assets/js/basic.js?ver=38"></script>
+<script src="/assets/js/check_news.js?ver=38"></script>
+<script src="/assets/js/search.js?ver=38"></script>
 </body>
 </html>
