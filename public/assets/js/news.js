@@ -1,7 +1,7 @@
 if(localStorage.news){
   var news = JSON.parse(localStorage.news);
   for(var i=0;i<news.length;i++){
-    var append = '<tr><td class="td_99_ct">'+news[i]+'</td></tr>';
+    var append = '<tr><td class="td_99_t">'+news[i]+'</td></tr>';
     $('#cel').append(append);
   }
   if(news.length > 19){ //limit is 20
