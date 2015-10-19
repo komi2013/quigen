@@ -1,9 +1,10 @@
 <style>
-#ad_frame_right {
+/*#ad_frame_right {
   left: 730px;
   top: 70px;
   position: absolute;
 }
+*/
 </style>
 <?php
 $rand = rand(1,10);

@@ -8,18 +8,16 @@ function addCel(resData){
     var cellQdata = resData[celNum][3];
     if(resData[celNum][2]){ // img is not empty
       var append = 
-      '<tr><td class="td_15_c">'+
+      '<tr><td class="td_15_t">'+
       '<a href="/quiz/?crypt_q='+cellQdata+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
-      '</td><td class="td_84_ct">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
+      '</td><td class="td_84_t">'+
+      '<a href="/quiz/?crypt_q='+cellQdata+'">'+cellTxt+'</a>'+
       '</td></tr>';
     }else{
       var append = 
-      '<tr><td colspan="2" class="td_99_ct">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
+      '<tr><td colspan="2" class="td_99_tt">'+
+      '<a href="/quiz/?crypt_q='+cellQdata+'">'+cellTxt+'</a>'+
       '</td></tr>';
     }
     $('#cel').append(append);

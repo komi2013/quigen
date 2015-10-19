@@ -71,25 +71,25 @@ function addCelAnswer(resData){
     }else{
       var result = '<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="icon result">';
     }
-    if(resData[celNum][2]){
+    if(resData[celNum][3]){
       var append = 
-      '<tr><td class="td_15_c">'+
+      '<tr><td colspan="15" class="td_15_t">'+
       '<a href="/quiz/?q='+cellId+'">'+
-      '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
-      '</td><td class="td_68_ct">'+
-      '<a href="/quiz/?q='+cellId+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
-      '</td><td class="td_15_c">'+result+
-      '</td></tr>';
+      '<img src="'+resData[celNum][3]+'" alt="quiz" class="icon"></a>'+
+      '</td><td colspan="85" class="td_84_t">'+
+      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt)+
+      '</a>'+
+      '</td>'+
+      '</tr>';
     }else{
       var append = 
-      '<tr><td colspan="2" class="td_84_ct">'+
-      '<a href="/quiz/?q='+cellId+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
-      '</td><td class="td_15_c">'+result+
-      '</td></tr>';
+      '<tr><td colspan="100" class="td_84_t">'+
+      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt)+
+      '</a>'+
+      '</td>'+
+      '</tr>';
     }
-    $('#cel').append(append);
+    $('#cel').append(append);    
     ++celNum;
     if(!resData[celNum]){
       return;
@@ -99,23 +99,23 @@ function addCelAnswer(resData){
 
 function addCel(resData){
   while(celNum < addLimit){
+    var cellId = resData[celNum][0];
     var cellTxt = resData[celNum][1];
-    var cellQdata = resData[celNum][3];
-    if(resData[celNum][2]){ // img is not empty
+    if(resData[celNum][2]){
       var append = 
-      '<tr><td class="td_15_c">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
+      '<tr><td colspan="15" class="td_15_t">'+
+      '<a href="/quiz/?crypt_q='+resData[celNum][2]+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
-      '</td><td class="td_84_ct">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
-      '</td></tr>';
+      '</td><td colspan="85" class="td_84_t">'+
+      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '</a></td>'+
+      '</tr>';
     }else{
       var append = 
-      '<tr><td colspan="2" class="td_99_ct">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
-      '</td></tr>';
+      '<tr><td colspan="100" class="td_99_t">'+
+      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '</a></td>'+
+      '</tr>';
     }
     $('#cel').append(append);
     ++celNum;

@@ -24,48 +24,6 @@ class Controller_AdminSitemapQ extends Controller
       die($view);
     }
     
-    
-    if ( isset($_GET['curation']) ) {
-      require APPPATH.'vendor/simple_html_dom.php';
-      $html = @file_get_html( 'http://novita-study.com/1109/' );
-      //$ret = $html->find('table'); 9, 11
-      $txt = '';
-      foreach ( $html->find( 'table td' ) as $d) {
-        if( preg_match('/input/', $d) ){
-          $arr_answer = explode('"', $d);
-          //var_dump($arr_answer);
-          $txt .= $arr_answer[5].'<br>';
-        }else{
-          $txt .= $d;
-        }
-        
-      }
-      $html->clear();
-      echo '<pre>';
-      var_dump($txt);
-      echo '</pre>';
-      
-      
-//      $html = file_get_html( 'http://nihonsimondai.web.fc2.com/sengoseiji.html' );
-////      $ret = $html->find( 'p' );
-//      $txt = '';
-//      foreach ( $html->find( 'p' ) as $d) {
-//        $txt .= $d;
-//      }
-//      $html->clear();
-//      //preg_replace($arr_txt, $html, $view);
-//      
-//      $txt = strip_tags($txt, '<span>');
-//      //str_replace($txt, $html, $view)
-//      $txt = str_replace('<span onmouseover="this.innerText=', '', $txt);
-//      $txt = str_replace(';">答え</span>', '', $txt);
-//      echo '<pre>';
-//      var_dump($txt);
-//      echo '</pre>';
-      
-      die('curated');
-    }
-    
     //センター英語基本,センター英語必須,センター英語重要
     $arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') AND create_at > '2015-10-14 00:00:01' order by open_time desc")->execute()->as_array();
     //$arr_question = DB::query('SELECT * FROM question ORDER BY ID DESC')->execute()->as_array();

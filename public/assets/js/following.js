@@ -14,12 +14,11 @@ function addCel(resData){
       celImg = '/assets/img/icon/guest.png';
     }
     var append = 
-    '<tr><td class="td_15_c">'+
+    '<tr><td class="td_15_t">'+
     '<a href="/profile/?u='+cellId+'">'+
     '<img src="'+celImg+'" alt="folloing photo" class="icon"></a>'+
-    '</td><td class="td_84_ct">'+
-    '<a href="/profile/?u='+cellId+'">'+
-    '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
+    '</td><td class="td_84_t">'+
+    '<a href="/profile/?u='+cellId+'">'+cellTxt+'</a>'+
     '</td></tr>';
     $('#cel').append(append);
     ++celNum;
@@ -50,9 +49,9 @@ var dataLimit = 80;
 $(function(){
   getData(1);
   var detect = 300;
-	$(window).scroll(function(){
-		var scrTop = $(document).scrollTop();
-		if(scrTop > detect){
+  $(window).scroll(function(){
+    var scrTop = $(document).scrollTop();
+    if(scrTop > detect){
       detect = detect + 300;
       addLimit = addLimit + 20;
       if(addLimit > dataLimit){
@@ -63,6 +62,6 @@ $(function(){
         addCel(resData);
       }
     }
-	});
+  });
 });
 ga('send', 'pageview');

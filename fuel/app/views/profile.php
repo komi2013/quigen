@@ -34,12 +34,12 @@
   echo $side;
 ?>
 <div id="content">
-<table style="border-collapse: collapse;">
+<table>
   <tr>
   　<td id="photo_res"><img src="<?=$usr_img?>" class="icon" id="photo" <?=$css?> ></td>
   　<td id="name"><h1><?=$usr_name?></h1></td>
   </tr>
-  <tr><td colspan="2" id="introduce"><?=$introduce?></td></tr>
+  <tr><td colspan="2" id="introduce" class="txt_long"><?=$introduce?></td></tr>
 </table>
 
 <?php if( !isset($_GET['list']) ){ ?>

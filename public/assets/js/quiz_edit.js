@@ -72,7 +72,7 @@ $('#generate').click(function(){
   $.ajax({type:'POST',dataType:'json',url:'/quizeditupd/',data:param})
   .always(function(res){
     if(res[0]==1){
-      //location.href = '/quiz/?crypt_q='+res[1];
+      location.href = '/quiz/?q='+q_id;
     }else{
       $('#success').css({'display': 'none'});
       $('#generate').css({'display': ''});  

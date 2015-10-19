@@ -34,7 +34,7 @@ class Controller_Top extends Controller
           $arr_qu[$d['id']]['q_data'] = $q_data;
         }
         $view->question = $arr_qu;
-        
+        $view->popular = false;
         die($view);
       }
       else
@@ -50,7 +50,7 @@ class Controller_Top extends Controller
   public function popular_quiz()
   {
     $view = View::forge('top');
-    $query = DB::query("SELECT question_id FROM answer_by_q WHERE update_at < NOW() ORDER BY".
+    $query = DB::query("SELECT question_id, amount FROM answer_by_q WHERE update_at < NOW() ORDER BY".
             "(30 - EXTRACT( DAY FROM(NOW() - update_at) )) * amount DESC
             LIMIT 20 ")->execute()->as_array();
     $arr_qu_id = array();
@@ -61,7 +61,7 @@ class Controller_Top extends Controller
       $arr_qu[$d['question_id']]['id'] = $d['question_id'];
       $arr_qu[$d['question_id']]['img'] = '';
       $arr_qu[$d['question_id']]['txt'] = 'not exist';
-      $arr_qu[$d['question_id']]['q_data'] = '';
+      $arr_qu[$d['question_id']]['a_amount'] = $d['amount'];;
     }
     $question = DB::select()->from('question')
         ->where('id','in',$arr_qu_id)
@@ -71,10 +71,7 @@ class Controller_Top extends Controller
     {
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
-      $arr_qu[$d['id']]['txt'] = $d['txt'];
-      $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
-      $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-      $arr_qu[$d['id']]['q_data'] = $q_data;
+      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 200);
     }
     $view->question = $arr_qu;
     $view->page = $this->cnt+1;

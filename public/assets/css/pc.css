@@ -4,28 +4,42 @@
 }
 body {
   font-size: 15pt;
-  margin: 10px;
+  margin: auto;
+  width: 960px;
 }
 table {
-  width: 400px;
+  width: 100%;
   border-collapse: collapse;
 }
 div {
-  width: 400px;
+  --width: 400px;
 }
 #content{
-  margin-left: 310px;
+  margin-left: 10px;
+  float: left;
+  width: 480px;
 }
 #menu{
   display: none;
 }
 #header {
-  width: 710px;
+  width: 790px;
+  height: 50px;
 }
 #drawer {
-  position : absolute;
-  left : 10px;
-  top : 61px;
+  --position : absolute;
+  --left : 10px;
+  margin-top : -1px;
   width : 300px;   
   background-color: white;
+  float: left;
+}
+
+#ad_frame_right {
+  margin-left: 10px;
+/*
+  left: 730px;
+  top: 70px;
+  position: absolute;
+*/
 }

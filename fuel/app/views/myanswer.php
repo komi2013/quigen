@@ -19,9 +19,7 @@
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="font_8 unread">マイアンサー</h1></td>
-  <td class="edge">
-    <img src="/assets/img/icon/cross_big.png" alt="delete" class="icon" id="delete" style="display:none;">
-  </td>
+  <td class="edge"></td>
 </table>
 <?php
   $side = View::forge('side');

@@ -16,7 +16,7 @@
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=36"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=36" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/forum_list.css?ver=36" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/generate.css?ver=36" />
     <link rel="stylesheet" href="/assets/css/pc.css?ver=36" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css?ver=36" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
@@ -41,33 +41,32 @@
 <?php $arr_forum = []; foreach($forum as $k => $d){ ?>
 <tr>
   <?php if($d['img']){ ?>
-  <td class="td_15">
+  <td colspan="15" class="td_15">
     <a href="/forum/?f=<?=$d['id']?>">
       <img src="<?=$d['img']?>" alt="forum" class="icon">
     </a>
   </td>
-  <td style="width:68%;">
-    <a href="/forum/?f=<?=$d['id']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt" id="q_id_<?=$d['id']?>">
+  <td colspan="85" class="td_84">
+    <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
+      <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
     </a>
   </td>
-  <td class="td_15"> <a href="/forum/?f=<?=$d['id']?>"> >></a> </td>
+
   <?php }else{ ?>
-  <td colspan="2" style="width:99%;">
-    <a href="/forum/?f=<?=$d['id']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt" id="q_id_<?=$d['id']?>">
+  <td colspan="100" class="td_99">
+    <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
+      <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
     </a>
   </td>
-  <td class="td_15"> <a href="/forum/?f=<?=$d['id']?>"> >></a> </td>
   <?php } ?>
 </tr>
 <tr>
-  <td colspan="3">
-  &nbsp; <img src="/assets/img/icon/thumbup_0.png" alt="like" id="f_img_<?=$d['id']?>" data-forum="<?=$d['id']?>" class="icon nice" style="cursor:pointer;">
+  <td colspan="33" class="td_33_t"></td>
+  <td colspan="67" class="td_33_t">
+  <img src="/assets/img/icon/thumbup_0.png" alt="like" id="f_img_<?=$d['id']?>" data-forum="<?=$d['id']?>" class="icon nice" style="cursor:pointer;">
   <span id="nice_<?=$d['id']?>"> <?=$d['nice']?> </span>
  </td>
 </tr>
-<tr><td colspan="3" style="border-bottom: solid 0.1px #CCCCCC; height: 10px;"></td></tr>
 <?php $arr_forum[] = $d['id']; } ?>
 </table>
 <br>

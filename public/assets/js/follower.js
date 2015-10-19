@@ -3,23 +3,21 @@ var addLimit = 20;
 var celNum = 0;
 var resData = [];
 function addCel(resData){
-  var cellTxt = '';
+  var cellId = 0;
   var celImg = '';
   while(celNum < addLimit){
     cellId = resData[celNum][0];
-    cellTxt = resData[celNum][1];
     if(resData[celNum][2]){
       celImg = resData[celNum][2];
     }else{
       celImg = '/assets/img/icon/guest.png';
     }
     var append = 
-    '<tr><td class="td_15_c">'+
+    '<tr><td class="td_15_t">'+
     '<a href="/profile/?u='+cellId+'" >'+
     '<img src="'+celImg+'" alt="follower photo" class="icon"></a>'+
-    '</td><td class="td_84_ct">'+
-    '<a href="/profile/?u='+cellId+'" >'+
-    '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
+    '</td><td class="td_84_t">'+
+    '<a href="/profile/?u='+cellId+'" >'+'</a>'+
     '</td></tr>';
     $('#cel').append(append);
     ++celNum;

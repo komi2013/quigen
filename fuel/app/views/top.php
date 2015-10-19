@@ -5,10 +5,10 @@
     <title>クイジェン | 大学受験の生物、日本史、世界史、英語の問題集</title>
     <meta name="description" content="ログインなしで4択クイズに答えれます。クイズの内容はセンター試験の内容もあります。ランクも表示されます。自分でもプライベートクイズを作成できます。復習機能で単語も覚えやすいです。">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
-<?php if( isset($_GET['page']) ){ ?>
-    <meta name="robots" content="noindex,follow">
-<?php }else{ ?>
+<?php if( $popular ){ ?>
     <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />
+<?php }else{ ?>
+    <meta name="robots" content="noindex,follow">
 <?php } ?>
     <link rel="alternate" hreflang="ja" href="http://<?=Config::get("my.domain")?>/" />
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -42,34 +42,34 @@
 </table>
 
 <table id="cel">
-<?php $i = 0; $arr_answer = []; foreach($question as $k => $d){  if($d['q_data']){ ?>
+<?php $i = 0; $arr_answer = []; foreach($question as $k => $d){ ?>
 <tr>
   <?php if($d['img']){ ?>
-  <td class="td_15_c<?= ($i==0)? ' attention':'' ?>" >
-    <a href="/quiz/?q=<?=$d['id']?>">
-      <img src="<?=$d['img']?>" alt="quiz" class="icon<?= ($i==0)? ' attention':'' ?>">
-    </a>
+  <td colspan="15" class="td_15<?=!$popular ? '_t' : '' ?>">
+    <a href="/quiz/?q=<?=$d['id']?>"> <img src="<?=$d['img']?>" alt="quiz" class="icon"> </a>
   </td>
-  <td class="td_84_ct<?= ($i==0)? ' attention':'' ?>" >
-    <a href="/quiz/?q=<?=$d['id']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c<?= ($i==0)? ' attention':'' ?>" id="q_id_<?=$d['id']?>">
-    </a>
+  <td colspan="85" class="td_84<?=!$popular ? '_t' : '' ?>">
+    <a href="/quiz/?q=<?=$d['id']?>" id="q_id_<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php }else{ ?>
-  <td colspan="2" class="td_99_ct<?= ($i==0)? ' attention':'' ?>">
-    <a href="/quiz/?q=<?=$d['id']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c<?= ($i==0)? ' attention':'' ?>" id="q_id_<?=$d['id']?>">
-    </a>
+  <td colspan="100" class="td_99<?=!$popular ? '_t' : '' ?>">
+    <a href="/quiz/?q=<?=$d['id']?>" id="q_id_<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php } ?>
 </tr>
-<?php ++$i; $arr_answer[] = $d['id']; }} ?>
+<?php if( $popular ){ ?>
+<tr>
+  <td colspan="33" class="td_33_t"></td><td colspan="33" class="td_33_t"></td>
+  <td colspan="34" class="td_33_t"><img src="/assets/img/icon/answer.png" alt="answer user" class="icon">&nbsp;<?=$d['a_amount']?></td>  
+</tr>
+<?php } ?>
+<?php ++$i; $arr_answer[] = $d['id']; } ?>
 </table>
 <br>
 <table>
   <tr>
   <td class="td_33">
-    <?php if(!isset($popular)){ ?>
+    <?php if(!$popular){ ?>
     <a href="/top/?page=<?=$page+1?>"> << </a>
     <?php }?>
   </td>

@@ -271,13 +271,10 @@ function checkClick(){
   }
 }
 
-$('#delete').click(function(){
+function delQuiz(cellId){
   r = confirm('削除します');
   if(r){
-    var quiz_id=[];
-    $('[name="quiz_id"]:checked').each(function(){
-      quiz_id.push($(this).val());
-    });
+    var quiz_id=[cellId];
     var param = {
       csrf : $.cookie('csrf')
       ,quiz_id : quiz_id
@@ -289,7 +286,7 @@ $('#delete').click(function(){
       }
     });  
   }
-});
+}
 
 $('#del_cookie').click(function(){
   r = confirm('ログアウト・削除します');
@@ -315,23 +312,25 @@ function addCel(resData){
     var cellTxt = resData[celNum][1];
     if(resData[celNum][2]){
       var append = 
-      '<tr><td class="td_15_c">'+
+      '<tr><td colspan="15" class="td_15">'+
       '<a href="/quiz/?crypt_q='+resData[celNum][2]+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
-      '</td><td class="td_68_c">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
-      '</td><td class="td_15_c" onClick="checkClick()">'+
-      '<input type="checkbox" name="quiz_id" class="icon" value="'+cellId+'">'+
-      '</td></tr>';
+      '</td><td colspan="85" class="td_84">'+
+      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '</a></td>'+
+      '</tr><tr>'+
+      '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
+      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delQuiz('+cellId+')"></td>'+
+      '</tr>';
     }else{
       var append = 
-      '<tr><td colspan="2" class="td_84_ct">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
-      '</td><td class="td_15_c" onClick="checkClick()">'+
-      '<input type="checkbox" name="quiz_id" class="icon" value="'+cellId+'">'+
-      '</td></tr>';
+      '<tr><td colspan="100" class="td_99">'+
+      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '</a></td>'+
+      '</tr><tr>'+
+      '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
+      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delQuiz('+cellId+')"></td>'+
+      '</tr>';
     }
     $('#cel').append(append);
     ++celNum;
@@ -378,21 +377,5 @@ $(function(){
     }
   });
 });
-//if(localStorage.quest){
-//  var quest = JSON.parse(localStorage.quest);
-//  quest[3][1] = '<img src="/assets/img/icon/circle_big.png" class="icon">';
-//  localStorage.quest = JSON.stringify(quest);
-//}else{
-//  var quest = [];
-//  quest[0][0] = 'クイズに答える';
-//  quest[0][1] = '<img src="/assets/img/icon/circle_big.png" class="icon">';
-//  quest[1][0] = '<a href="/top/">他のクイズを確認</a>';
-//  quest[1][1] = '<img src="/assets/img/icon/success_0.png" class="icon">';
-//  quest[2][0] = '<a href="/myanswer/">マイアンサー(復習)を確認</a>';
-//  quest[2][1] = '<img src="/assets/img/icon/success_0.png" class="icon">';
-//  quest[3][0] = '<a href="myprofile">マイプロファイルを確認</a>';
-//  quest[3][1] = '<img src="/assets/img/icon/circle_big.png" class="icon">';
-//  localStorage.quest = JSON.stringify(quest);
-//}
 
 ga('send', 'pageview');

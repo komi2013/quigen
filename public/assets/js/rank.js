@@ -45,14 +45,13 @@ var resData = [];
 function addCel(resData){
   while(celNum < addLimit){
     var append = 
-    '<tr><td class="td_15_c">'+
+    '<tr><td class="td_15_t">'+
     '<a href="/profile/?u='+resData[celNum][0]+'">'+
     '<img src="'+resData[celNum][2]+'" alt="usr" class="icon" '+resData[celNum][4]+'></a>'+
-    '</td><td class="td_50_c">'+
-    '<a href="/profile/?u='+resData[celNum][0]+'">'+
-    '<input type="text" value="'+resData[celNum][1]+'" readonly class="input_txt_c"></a>'+
-    '</td><td class="td_15_c">'+resData[celNum][3]+
-    '</td><td class="td_15_c">'+'<img src="/assets/img/icon/circle_big.png" alt="correct" class="icon">'+
+    '</td><td class="td_50_t">'+
+    '<a href="/profile/?u='+resData[celNum][0]+'">'+resData[celNum][1]+'</a>'+
+    '</td><td class="td_15_t">'+resData[celNum][3]+
+    '</td><td class="td_15_t">'+'<img src="/assets/img/icon/circle_big.png" alt="correct" class="icon">'+
     '</td></tr>';
 
     $('#cel').append(append);

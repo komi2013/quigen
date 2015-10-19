@@ -82,13 +82,12 @@ function addCel(resData){
       statusImg = '<img src="/assets/img/icon/hourglass.png" alt="pending request" class="icon status">';
     }
     var append = 
-      '<tr><td class="td_15_c">'
+      '<tr><td class="td_15_t">'
       +'<a href="/profile/?u='+cellId+'" >'
       +'<img src="'+celImg+'" alt="follower photo" class="icon"></a>'
-      +'</td><td class="td_68_ct">'
-      +'<a href="/profile/?u='+cellId+'" >'
-      +'<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'
-      +'</td><td class="td_15_c" onClick="checkClick('+resData[celNum][3]+','+cellId+')" id="u_'+cellId+'">'+statusImg
+      +'</td><td class="td_68_t">'
+      +'<a href="/profile/?u='+cellId+'" >'+cellTxt+'</a>'
+      +'</td><td class="td_15_t" onClick="checkClick('+resData[celNum][3]+','+cellId+')" id="u_'+cellId+'">'+statusImg
       +'<input type="checkbox" name="u_id" class="icon chkbox" value="'+cellId+'" style="display:none;">'
       +'</td></tr>'
     ;

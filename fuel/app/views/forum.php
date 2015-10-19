@@ -8,7 +8,7 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/forum.css?ver=36" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/generate.css?ver=36" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=36"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />

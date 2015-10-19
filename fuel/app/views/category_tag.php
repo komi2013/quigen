@@ -32,21 +32,17 @@
 <?php $i = 0; foreach($question as $k => $d){ ?>
 <tr>
   <?php if($d['img']){ ?>
-  <td class="td_15_c" >
+  <td class="td_15_t" >
     <a href="/quiz/?crypt_q=<?=$d['q_data']?>">
       <img src="<?=$d['img']?>" alt="quiz" class="icon">
     </a>
   </td>
-  <td class="td_84_ct">
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c">
-    </a>
+  <td class="td_84_t">
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=Str::truncate(Security::htmlentities($d['txt']), 30)?> </a>
   </td>
   <?php }else{ ?>
-  <td colspan="2" class="td_99_c" >
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>">
-      <input type="text" value="<?=Str::truncate(Security::htmlentities($d['txt']), 30)?>" readonly class="input_txt_c">
-    </a>
+  <td colspan="2" class="td_99_t" >
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=Str::truncate(Security::htmlentities($d['txt']), 30)?> </a>
   </td>
   <?php } ?>
 </tr>

@@ -1,5 +1,5 @@
 table td {
-  height: 50px;
+  height: 30px;
   border-width: 1px 0px;
   border-color: white;
   border-style: solid;
@@ -27,6 +27,7 @@ h1 {
 }
 #drawer td {
   background-color: #EEEEEE;
+  height: 50px;
 }
 #drawer td.this_page {
   background-color: #FCFCFC;
@@ -38,24 +39,29 @@ h1 {
 .td_15{
   width: 15%;
   text-align:center;
+  padding: 10px 0px 0px 5px;
 }
-.td_15_c{
-  background-color: #F5F5F5;
+.td_15_t{
   width: 15%;
   text-align:center;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 10px 0px 10px 5px;
 }
 .td_33{
   width: 33%;
   text-align:center;
+  padding-top: 10px;
 }
-.td_33_c{
-  background-color: #F5F5F5;
+.td_33_t{
   width: 33%;
   text-align:center;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 0px 0px 20px 0px;
 }
 .td_34{
   width: 34%;
   text-align:center;
+  padding: 10px;
 }
 .td_42{
   width: 42%;
@@ -65,61 +71,76 @@ h1 {
   background-color: #F5F5F5;
   width: 49%;
   text-align:center;
+  padding: 10px;
 }
+.td_49_t{
+  width: 49%;
+  text-align:center;
+  padding: 0px 10px 20px 10px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
 .td_50_c{
   background-color: #F5F5F5;
   width: 50%;
   text-align:center;
+  padding: 10px;
 }
+.td_50_t{
+  width: 50%;
+  text-align:center;
+  padding: 0px 10px 20px 10px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
 .td_68_c{
   background-color: #F5F5F5;
   width: 68%;
   text-align:center;
+  padding: 10px;
 }
-.td_68_ct{
-  background-color: #F5F5F5;
+.td_68{
   width: 68%;
+  padding: 10px;
+}
+.td_68_t{
+  width: 68%;
+  padding: 10px;
+  border-bottom: 1px solid #F5F5F5;
 }
 .td_84{
   width: 84%;
+  padding: 10px 10px 0px 10px;
 }
-.td_84_ct{
-  background-color: #F5F5F5;
+.td_84_t{
   width: 84%;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 20px 10px 20px 10px;
+}
+.td_99{
+  width: 99%;
+  padding: 10px 10px 0px 10px;
+}
+.td_99_t{
+  width: 99%;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 20px 10px 20px 10px;
+}
+.td_99_box{
+  width: 99%;
+  padding: 5px 10px 20px 10px;
+  border-bottom: 1px solid #F5F5F5;
 }
 .td_99_c{
   background-color: #F5F5F5;
   width: 99%;
   text-align: center;
+  padding: 10px;
 }
 .td_99_ct{
   background-color: #F5F5F5;
   width: 99%;
-}
-.input_txt{
-  font-size: 15px;
-  height: 48px;
-  width: 90%;
-  border: none;
-  cursor: pointer;
-}
-.input_txt_c{
-  background-color: #F5F5F5;
-  font-size: 15px;
-  height: 48px;
-  width: 90%;
-  border: none;
-  cursor: pointer;
-}
-.input_txt_read{
-  background-color: #F5F5F5;
-  font-size: 15px;
-  height: 48px;
-  width: 90%;
-  border: none;
-  cursor: pointer;
-  color: purple;
-}      
+} 
 .txt_49{
   font-size: 15px;
   height: 48px;
@@ -139,5 +160,7 @@ h1 {
   height: 90px;
   width: 90%;
   font-size: 15pt;
+  word-break : break-all;
+  padding: 20px 10px 20px 10px;
 }
 

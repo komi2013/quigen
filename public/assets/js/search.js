@@ -38,28 +38,26 @@ var celNum = 0;
 var resData = [];
 function addCel(resData){
   while(celNum < addLimit){
-    var read = 'input_txt_c';
+    var read = '';
     for (var i = 0, len = answer.length; i < len; i++) {
       if(answer[i][0] == resData[celNum][0]){
-        read = 'input_txt_read';
+        read = 'style="color:#990099;"';
       }
     }
     var cellTxt = resData[celNum][1];
     var cellQdata = resData[celNum][3];
     if(resData[celNum][2]){ // img is not empty
       var append = 
-      '<tr><td class="td_15_c">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
+      '<tr><td class="td_15_t">'+
+      '<a href="/quiz/?crypt_q='+cellQdata+'" '+read+'>'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
-      '</td><td class="td_84_ct">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="'+read+'"></a>'+
+      '</td><td class="td_84_t">'+
+      '<a href="/quiz/?crypt_q='+cellQdata+'" '+read+'>'+cellTxt+'</a>'+
       '</td></tr>';
     }else{
       var append = 
-      '<tr><td colspan="2" class="td_99_ct">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
-      '<input type="text" value="'+cellTxt+'" readonly class="'+read+'"></a>'+
+      '<tr><td colspan="2" class="td_99_t">'+
+      '<a href="/quiz/?crypt_q='+cellQdata+'" '+read+'>'+cellTxt+'</a>'+
       '</td></tr>';
     }
     $('#cel').append(append);

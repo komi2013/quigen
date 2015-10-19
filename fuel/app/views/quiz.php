@@ -37,7 +37,7 @@
 </div>
 <?php } ?>
 <table><tr>
-  <td id="question"><?=$q_txt?></td>
+  <td id="question" class="td_99_t"><?=$q_txt?></td>
 </tr></table>
 <div id="big_result">
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
@@ -86,15 +86,15 @@
 </table>
 <table id="comment"></table>
 <table id="comment_in"></table>
-
+<br>
 <table cellspacing="0" cellspacing="1" boroder="0">
   <tr><td id="tag"></td></tr>
 </table>
-
+<br>
 <table>
   <tr> <td class="td_33" id="prev"></td> <td class="td_33">||</td> <td class="td_33" id="next"></td> </tr>
 </table>
-
+<br>
 <table cellspacing="1" boroder="0" id="sns">
 <tr>
 <td style="width:70px;">
@@ -119,7 +119,7 @@
 </td>
 </tr>
 </table>
-
+<br>
 <table>
 <?php foreach ($arr_comment as $d) { ?>
 <tr>
