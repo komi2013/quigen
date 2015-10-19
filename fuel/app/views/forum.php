@@ -8,17 +8,17 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/generate.css?ver=36" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/generate.css?ver=37" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=36"></script>
+    <script src="/assets/js/analytics.js?ver=37"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=36" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=36" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=36" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=37" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=37" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=37" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<script src="/third/img-touch-canvas_1.js?ver=36"></script>    
+<script src="/third/img-touch-canvas_1.js?ver=37"></script>    
     
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
@@ -89,9 +89,9 @@
   var arr_forum = JSON.parse( '<?= json_encode($arr_forum) ?>' );
   var u_id = '<?=$u_id?>';
 </script>
-<script src="/assets/js/basic.js?ver=36"></script>
-<script src="/assets/js/check_news.js?ver=36"></script>
-<script src="/assets/js/forum.js?ver=36"></script>
+<script src="/assets/js/basic.js?ver=37"></script>
+<script src="/assets/js/check_news.js?ver=37"></script>
+<script src="/assets/js/forum.js?ver=37"></script>
 </body>
 </html>
 
