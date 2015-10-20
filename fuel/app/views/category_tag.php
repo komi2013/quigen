@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><?=$_GET['tag']?></title>
+    <title><?=$title?></title>
     <meta name="description" content="<?=$meta_description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <link rel="canonical" href="<?='http://'.Config::get("my.domain").'/htm/search/?tag='.urlencode($_GET['tag'])?>" />
@@ -27,7 +27,9 @@
   echo $side;
 ?>
 <div id="content">
-
+<?php if($seo){ ?>
+<div class="txt_long"><?=$meta_description?></div>
+<?php } ?>
 <table id="cel">
 <?php $i = 0; foreach($question as $k => $d){ ?>
 <tr>

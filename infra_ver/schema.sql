@@ -525,6 +525,19 @@ ALTER SEQUENCE mt_public_news_id_seq OWNED BY mt_public_news.id;
 
 
 --
+-- Name: mt_seo_tag; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mt_seo_tag (
+    tag text NOT NULL,
+    titile text NOT NULL,
+    description text NOT NULL
+);
+
+
+ALTER TABLE public.mt_seo_tag OWNER TO postgres;
+
+--
 -- Name: mt_sns_post; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1156,6 +1169,38 @@ ALTER SEQUENCE usr_id_seq OWNED BY usr.id;
 
 
 --
+-- Name: wh_4choice; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE wh_4choice (
+    _id text,
+    genre text,
+    "Q" text,
+    "A1" text,
+    "A2" text,
+    "A3" text,
+    "A4" text
+);
+
+
+ALTER TABLE public.wh_4choice OWNER TO postgres;
+
+--
+-- Name: wh_treaty; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE wh_treaty (
+    _id text,
+    genre text,
+    era text,
+    year text,
+    item text
+);
+
+
+ALTER TABLE public.wh_treaty OWNER TO postgres;
+
+--
 -- Name: word; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1481,6 +1526,14 @@ ALTER TABLE ONLY mt_block_hijack
 
 ALTER TABLE ONLY mt_public_news
     ADD CONSTRAINT mt_public_news_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mt_seo_tag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY mt_seo_tag
+    ADD CONSTRAINT mt_seo_tag_pkey PRIMARY KEY (tag);
 
 
 --

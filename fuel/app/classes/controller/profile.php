@@ -28,7 +28,7 @@ class Controller_Profile extends Controller
     if ( isset($usr->id) )
     {
       $view->usr_name = Security::htmlentities($usr->name);
-      $view->usr_img = Security::htmlentities($usr->img);
+      $view->usr_img = $usr->img ? Security::htmlentities($usr->img) : $util->eto_img;
       $view->css = '';
       
       $param = preg_replace('/　/', ' ', $usr->introduce);

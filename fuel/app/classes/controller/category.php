@@ -28,7 +28,7 @@ class Controller_Category extends Controller
       ->where('id','in',$arr_qu_id)
       ->and_where('open_time','<',date("Y-m-d H:i:s",strtotime("+100 year")))
       ->order_by('id','asc')
-      ->limit(20)
+      ->limit(100)
       ->execute();
     $arr_qu = [];
     foreach ($query as $k => $d)
@@ -40,6 +40,7 @@ class Controller_Category extends Controller
       $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
       $arr_qu[$d['id']]['q_data'] = $q_data;
     }
+    
     $view = View::forge('category_tag');
     $view->question = $arr_qu;
 
@@ -47,7 +48,21 @@ class Controller_Category extends Controller
     foreach($arr_qu as $k => $d){
       $meta_description .= ','.Str::truncate(Security::htmlentities($d['txt']), 30);
     }
+    $query = DB::select()->from('mt_seo_tag')
+      ->where('tag','=',$_GET['tag'])
+      ->execute()->as_array();
+    $title = $_GET['tag'];
+    $seo = false;
+    $meta_robots = '<meta name="robots" content="noindex,follow">';
+    foreach ($query as $d) {
+      $title = $d['title'];
+      $meta_description = $d['description'];
+      $meta_robots = '<meta name="robots" content="index,follow">';
+      $seo = true;
+    }
+    $view->title = $title;
     $view->meta_description = $meta_description;
+    $view->seo = $seo;
     die($view);    
   }
 }
