@@ -7,16 +7,16 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/paidquiz/?q='.$question?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/paid_quiz.css?ver=38" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/paid_quiz.css?ver=39" />
     <meta property="og:title" content="<?=$q_txt?>" />
     <meta property="og:url" content="http://<?=Config::get('my.domain').'/paidquiz/?q='.$question?>" />
     <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <meta property="og:description" content="<?=$description?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=38"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=38" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=38" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=38" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=39"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=39" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=39" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=39" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -90,8 +90,8 @@
   var usr = '<?=$usr?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/basic.js?ver=38"></script>
-<script src="/assets/js/check_news.js?ver=38"></script>
-<script src="/assets/js/paid_quiz.js?ver=38"></script>
+<script src="/assets/js/basic.js?ver=39"></script>
+<script src="/assets/js/check_news.js?ver=39"></script>
+<script src="/assets/js/paid_quiz.js?ver=39"></script>
 </body>
 </html>
