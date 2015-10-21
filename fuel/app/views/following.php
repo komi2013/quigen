@@ -33,7 +33,11 @@
 <?= View::forge('htm/ad_load') ?>
 <table id="cel"></table>
 </div>
-<script>var sender = '<?=$sender?>';</script>
+
+<script>
+  var sender = '<?=$sender?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
+</script>
 <script src="/assets/js/check_news.js?ver=38"></script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <?php if($usr_id == $sender){ ?>

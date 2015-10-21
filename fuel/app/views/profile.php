@@ -108,10 +108,11 @@
 <table id="cel"></table>
 </div>
 <script>
-var receiver = '<?=$usr_id?>'; 
-var u_id = '<?=$u_id?>';
-var status = '<?=$status?>';
-var list = '<?=isset($_GET['list']) ? 'quiz' : 'answer'; ?>';
+  var receiver = '<?=$usr_id?>'; 
+  var u_id = '<?=$u_id?>';
+  var status = '<?=$status?>';
+  var list = '<?=isset($_GET['list']) ? 'quiz' : 'answer'; ?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <script src="/assets/js/check_news.js?ver=38"></script>

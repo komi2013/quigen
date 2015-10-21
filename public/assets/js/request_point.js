@@ -18,7 +18,7 @@ $('#buy_point').click(function(){
   r = confirm('このクイズを購入します');
   if(r){
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,pack_id : $('#buy_point').data('pack')
     };
     $.post('/packbuy/',param,function(){},"json")

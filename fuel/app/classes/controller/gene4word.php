@@ -3,7 +3,6 @@ class Controller_Gene4word extends Controller
 {
   public function action_index()
   {
-    Model_Csrf::setcsrf();
     $usr_id = Model_Cookie::get_usr();
     $query = DB::select()->from('question')
       ->where('usr_id','=',$usr_id)

@@ -7,7 +7,6 @@ class Controller_Followingadd extends Controller
     $usr_id = Model_Cookie::get_usr();
     if (!$usr_id)
     {
-      //at first, you must answer
       $res[1] = 'you must answer first';
       die(json_encode($res));
     }
@@ -42,7 +41,6 @@ class Controller_Followingadd extends Controller
       die(json_encode($res));
     }
     $res[0] = 1;
-    Model_Csrf::setcsrf();
     die(json_encode($res));
   }
 }

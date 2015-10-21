@@ -42,7 +42,7 @@ function generate(){
   $('#generate').css({'display': 'none'});
   $('#success').css({'display':''});
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,pack_id : pack_id
     ,pack_txt : pack_txt
     ,q_txt : $('#q_txt').val()
@@ -53,7 +53,7 @@ function generate(){
     ,img : imgdata
     ,q_amt : q_amt
   };
-  $.ajax({type:'POST',dataType:'json',url:'/paidquizadd/',data:param})
+  $.post('/paidquizadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
       location.reload(true);
@@ -123,7 +123,7 @@ $('#delete').click(function(){
       quiz_id.push($(this).val());
     });
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,pack_id : pack_id
     };
     $.post('/myquizdelete/',param,function(res){

@@ -17,17 +17,15 @@ function accept(quiz_buy_id){
   r = confirm('売却しますか？');
   if(r){
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,quiz_buy_id : quiz_buy_id
     };
     $.post('/quizbuyaccept/',param,function(){},"json")
     .always(function(res){
-//     res[1] = id, txt, img
       if(res[0]==1){
-        //addCelComment(res[1]);
+        csrf = res[1];
       }else{
         alert('connection error');
-        //console.log(res);
       }
     });
   }
@@ -38,7 +36,7 @@ function follow_confirm(sender){
   r = confirm('フォロー承認');
   if(r){
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,sender : sender
       ,receiver_img : localStorage.myphoto
     };
@@ -47,18 +45,19 @@ function follow_confirm(sender){
       if(res[0]==1){
         var news = JSON.parse(localStorage.news);
         for(var i=0;i<news.length;i++){
-          console.log('begin');
-          console.log(news[i]);
-          console.log(news[i].search(/follow_confirm/));
-          console.log(news[i].search(sender));
-          console.log('end');
+//          console.log('begin');
+//          console.log(news[i]);
+//          console.log(news[i].search(/follow_confirm/));
+//          console.log(news[i].search(sender));
+//          console.log('end');
           if(news[i].search(/follow_confirm/) > -1 && news[i].search(sender) > -1){
             news[i] = news[i].replace("star_0","star_1");
             news[i] = news[i].replace("sccess_0","sccess");
-            console.log(news[i]);
+//            console.log(news[i]);
           }
         }
         localStorage.news = JSON.stringify(news);
+        csrf = res[1];
       }else{
         alert('connection error');
       }

@@ -82,10 +82,11 @@
 
 </div>
 <script>
-var u_id = '<?=$u_id?>';
-var q_id = '<?=$question?>';
-var open_time = '<?=$open_time?>';
-var already_img = '<?=$img ?: '/assets/img/icon/camera.png' ?>';
+  var u_id = '<?=$u_id?>';
+  var q_id = '<?=$question?>';
+  var open_time = '<?=$open_time?>';
+  var already_img = '<?=$img ?: '/assets/img/icon/camera.png' ?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/check_news.js?ver=38"></script>
 <script src="/assets/js/basic.js?ver=38"></script>

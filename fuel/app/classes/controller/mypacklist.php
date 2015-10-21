@@ -11,8 +11,6 @@ class Controller_MypackLIst extends Controller
         ->execute()->as_array();
       $view->follower = $res[0]['count'];
     }
-    Model_Csrf::setcsrf();
-    
     $view->u_id = $usr_id;
     die($view);
   }

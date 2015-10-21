@@ -30,7 +30,7 @@ function answer_1(this_seq){
     arr_choice[i] = $('#choice_'+i).html();
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,answer : $(this_seq).html()
     ,question : q_id
     ,q_txt : $('#question').html()
@@ -47,6 +47,7 @@ function answer_1(this_seq){
         amt_co++;
         $('#big_correct').css({'display': ''});
         addCel(resCo,'co');
+        csrf = res[1];
       }else{
         var correct_answer = 0; 
         resInco.unshift([0,myname,myphoto]);
@@ -219,7 +220,7 @@ function comment(){
     $('#generate').css({'display': 'none'});
     $('#success').css({'display':''});
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,txt : $('#comment_data').val()
       ,q : q_id
       ,pay : 1

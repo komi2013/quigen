@@ -35,9 +35,11 @@
 <?= View::forge('htm/ad_load') ?>
 <table id="cel"></table>
 </div>
-</body>
-</html>
-<script> var receiver = '<?=$receiver?>'; </script>
+
+<script>
+  var receiver = '<?=$receiver?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
+</script>
 <script src="/assets/js/check_news.js?ver=38"></script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <?php if($usr_id == $receiver){ ?>
@@ -45,3 +47,6 @@
 <?php }else{ ?>
 <script src="/assets/js/follower.js?ver=38"></script>
 <?php } ?>
+
+</body>
+</html>

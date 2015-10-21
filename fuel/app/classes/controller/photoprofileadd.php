@@ -23,7 +23,6 @@ class Controller_Photoprofileadd extends Controller
     imagepng($image ,$img_path);
     $res[0] = 1;
     $res[1] = $web_path;
-    Model_Csrf::setcsrf();
     die(json_encode($res));
   }
 }

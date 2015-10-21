@@ -16,54 +16,36 @@ class Model_Csrf extends \Orm\Model
 
   public static function check() 
   {
-    if (!Cookie::get('csrf_id'))
+    $res[0] = 2;
+    if ( !isset($_POST['csrf']) )
     {
-      $res[0] = 2;
-      $res[1] = 'cookie csrf_id is none';
-      Model_Log::warn('cookie csrf_id is none');
+      $res[1] = 'post csrf is none';
+      Model_Log::warn('post csrf is none');
       die(json_encode($res));
     }
     
-    $csrf = Model_Csrf::find('first', array(
-      'where' => array(
-        array('id', Cookie::get('csrf_id')),
-      ),
-    ));
-    if (!isset($csrf->token))
-    {
-      $res[0] = 2;
-      $res[1] = 'csrf_id is none';
-      Model_Log::warn('csrf_id '.Cookie::get('csrf_id').' csrf_token '.$_POST['csrf'].' is none');
+    $token = Crypt::decode($_POST['csrf'],Config::get('crypt_key.q_data'));
+    $token = json_decode($token);
+    $usr_id = Model_Cookie::get_usr();
+    if ($usr_id != $token[0]) {
+      $res[1] = 'usr_id is wrong';
+      Model_Log::warn('usr_id is wrong');
       die(json_encode($res));
     }
-    if ($csrf->token != $_POST['csrf'])
-    {
-      $res[0] = 2;
-      $res[1] = 'csrf token is wrong';
-      Model_Log::warn('csrf_id '.Cookie::get('csrf_id').' csrf_token '.$_POST['csrf'].' is wrong');
+    $yesterday_now = date('m-d',  strtotime('-1day'));
+    if ($yesterday_now > $token[1]) {
+      $res[1] = 'time is wrong';
+      Model_Log::warn('time is wrong');
       die(json_encode($res));
     }
-    //within 120 minutes, you must post Cookie::get('csrf_id') is already sanitized by upper ORM
-    DB::query("delete from csrf where id = ".Cookie::get('csrf_id').
-      " OR create_at < "."'".date('Y-m-d H:i:s', time()-(60*120) )."'")->execute();
-    $csrf_token = Str::random('alnum', 16);
-    Cookie::set('csrf',$csrf_token);
-
   }
-  public static function setcsrf() 
+  public static function setcsrf()
   {
-    if (Cookie::get('csrf_id')){
-      DB::delete('csrf')->where('id', Cookie::get('csrf_id'))->execute();
-    }
-    $csrf_token = Str::random('alnum', 16);
-    Cookie::set('csrf',$csrf_token);
-    $csrf = new Model_Csrf();
-    $csrf_id = $csrf->get_new_id();
-    $csrf->id = $csrf_id;
-    $csrf->token = $csrf_token;
-    $csrf->create_at = date('Y-m-d H:i:s');
-    $csrf->save();
-    Cookie::set('csrf_id',$csrf_id);
+    $csrf_token = [Model_Cookie::get_usr(),date('m-d')];
+    $csrf_token = json_encode($csrf_token);
+    $csrf_token = Crypt::encode($csrf_token,Config::get('crypt_key.q_data'));
+    Cookie::set('csrf',$csrf_token,null,null,null,false,true);
+    return $csrf_token;
   }
 
 }

@@ -46,7 +46,7 @@ $('#generate').click(function(){
     var myphoto = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,q_txt : $('#q_txt').val()
     ,choice_0 : $('#choice_0').val()
     ,choice_1 : $('#choice_1').val()
@@ -59,7 +59,7 @@ $('#generate').click(function(){
     ,myphoto : myphoto
     ,reference : $('#reference').val()
   };
-  $.ajax({type:'POST',dataType:'json',url:'/myquestionadd/',data:param})
+  $.post('/myquestionadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
       if(localStorage.genestep){

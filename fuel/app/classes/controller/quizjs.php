@@ -32,7 +32,6 @@ class Controller_Quizjs extends Controller
       Security::htmlentities($arr_choice_1[0]['choice_3'])
     );
     $view = View::forge('quiz_js');
-    Model_Csrf::setcsrf();
     $description = 
       Str::truncate($random_choice[0], 20).', '.
       Str::truncate($random_choice[1], 20).', '.

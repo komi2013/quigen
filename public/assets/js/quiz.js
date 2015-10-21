@@ -206,7 +206,7 @@ function answer_1(this_seq){
     var myname = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,correct : correct_answer
     ,question : q_id
     ,q_txt : $('#question').html()
@@ -412,7 +412,7 @@ $('#comment_add').click(function(){
     var myphoto = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,txt : $('#comment_data').val()
     ,q : q_id
     ,u_img : myphoto
@@ -438,12 +438,13 @@ $('#report').click(function(){
   r = confirm('報告します');
   if(r){
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,q_id : q_id
     };
     $.post('/report/',param,function(){},"json")
     .always(function(res){
       if(res[0]==1){
+        csrf = res[1];
       }else{
         alert('connection error');
       }
@@ -462,7 +463,7 @@ $('#0pt').click(function(){
   if(r){
     var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,q_id: q_id
       ,q_txt : $('#question').html()
       ,q_img : q_img
@@ -472,6 +473,7 @@ $('#0pt').click(function(){
     $.post('/quizbuy/',param,function(){},"json")
     .always(function(res){
       if(res[0]==1){
+        csrf = res[1];
       }else{
         alert('connection error');
       }
@@ -495,7 +497,7 @@ $('#20pt').click(function(){
   if(r){
     var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,q_id: q_id
       ,q_txt : $('#question').html()
       ,q_img : q_img
@@ -505,6 +507,7 @@ $('#20pt').click(function(){
     $.post('/quizbuy/',param,function(){},"json")
     .always(function(res){
       if(res[0]==1){
+        csrf = res[1];
       }else{
         alert('connection error');
       }

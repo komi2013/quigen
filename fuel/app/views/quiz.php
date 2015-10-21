@@ -167,11 +167,12 @@
 
 
 <script>
-var correct = '<?=$correct?>';
-var q_id = '<?=$question?>';
-var usr = '<?=$usr?>';
-var q_data = '<?=$q_data?>';
-var u_id = '<?=$u_id?>';
+  var correct = '<?=$correct?>';
+  var q_id = '<?=$question?>';
+  var usr = '<?=$usr?>';
+  var q_data = '<?=$q_data?>';
+  var u_id = '<?=$u_id?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <script src="/assets/js/check_news.js?ver=38"></script>

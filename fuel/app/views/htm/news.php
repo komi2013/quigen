@@ -34,8 +34,9 @@
 <div><a href="http://quizgenerator-help.hatenadiary.jp/entry/2015/07/09/192249">1問20円でクイズの作成にご協力ください</a></div>
 </div>
 <?= View::forge('htm/ad_load_right') ?>
-
-
+<script>
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
+</script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <script src="/assets/js/news.js?ver=38"></script>
 </body>

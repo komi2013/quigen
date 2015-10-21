@@ -3,7 +3,6 @@ class Controller_Mypack extends Controller
 {
   public function action_index()
   {
-    Model_Csrf::setcsrf();
     $u_id = Model_Cookie::get_usr();
     if (!$u_id)
     {

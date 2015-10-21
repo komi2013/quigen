@@ -27,8 +27,6 @@ class Controller_Paidquiz extends Controller
         die($view);
       }
     }
-    Model_Csrf::setcsrf();
-
     $pay_choice = DB::select()->from('pay_choice')
       ->where('question_id','=',$question_id)
       ->execute()->as_array();

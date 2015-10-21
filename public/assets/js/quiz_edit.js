@@ -54,7 +54,7 @@ $('#generate').click(function(){
     var myphoto = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,q_txt : $('#q_txt').val()
     ,choice_0 : $('#choice_0').val()
     ,choice_1 : $('#choice_1').val()
@@ -69,7 +69,7 @@ $('#generate').click(function(){
     ,q_id : q_id
     ,open_time : open_time
   };
-  $.ajax({type:'POST',dataType:'json',url:'/quizeditupd/',data:param})
+  $.post('/quizeditupd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
       location.href = '/quiz/?q='+q_id;

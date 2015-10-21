@@ -23,7 +23,6 @@ class Controller_Followingdel extends Controller
       die(json_encode($res));
     }
     $res[0] = 1;
-    Model_Csrf::setcsrf();
     die(json_encode($res));
   }
 }

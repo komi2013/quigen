@@ -8,7 +8,6 @@ class Controller_Htm extends Controller
     header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
     header('Cache-Control: private, max-age=' . $expires);
     header('Pragma: ');
-    Model_Csrf::setcsrf();
     if ( !isset($_GET['p']) ) {
       Model_Log::warn('no p');
       die( View::forge('404') );
@@ -28,7 +27,6 @@ class Controller_Htm extends Controller
     header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
     header('Cache-Control: private, max-age=' . $expires);
     header('Pragma: ');
-    Model_Csrf::setcsrf();
     $slash = explode( '/', $_SERVER['REQUEST_URI'] );
     if ( !isset($slash[2]) ) {
       Model_Log::warn('no slash');

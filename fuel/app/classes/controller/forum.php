@@ -13,7 +13,6 @@ class Controller_Forum extends Controller
       $view = View::forge('404');
       die($view);
     }
-    Model_Csrf::setcsrf();
     $arr_forum = [];
     $description = '';
     $util = new Model_Util();
@@ -30,10 +29,7 @@ class Controller_Forum extends Controller
         $description .= $d['txt'];  
       }
     }
-    
-    //echo '<pre>'; var_dump($arr_forum); echo '</pre>'; die;
     $view = View::forge('forum');
-    Model_Csrf::setcsrf();
     $view->f_id = $_GET['f'];
     $view->title = $arr_forum[0]['txt'];
     $view->description = $description;

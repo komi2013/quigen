@@ -92,6 +92,9 @@
 <a href="/admin/?com=1">usr</a>&nbsp;
 
 </div>
+<script>
+var csrf = '<?=Model_Csrf::setcsrf()?>';
+</script>
 <script src="/assets/js/check_news.js?ver=38"></script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <script src="/assets/js/admin.js?ver=38"></script>

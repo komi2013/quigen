@@ -3,7 +3,6 @@ class Controller_Forumlist extends Controller
 {
   public function action_index()
   {
-    Model_Csrf::setcsrf();
     $view = View::forge('forum_list');
     $res = DB::query("select count(*) from forum where open_time < '".date('Y-m-d H:i:s')."'" )
       ->execute()->as_array();

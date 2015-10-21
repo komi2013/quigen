@@ -60,7 +60,7 @@ $('#generate').click(function(){
     var myphoto = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,arr_q : arr_q
     ,arr_a : arr_a
     ,tag_0 : $('#tag_0').val()

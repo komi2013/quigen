@@ -18,8 +18,6 @@ class Controller_Admin extends Controller
       
       die($view);
     }
-    
-    Model_Csrf::setcsrf();
     $view = View::forge('admin');
     
     $view->page = 0;

@@ -36,13 +36,14 @@ $('#right').click(function(){
     var myphoto = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,receiver : receiver
     ,myphoto : myphoto
   };
   $.post(url_1,param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
+      csrf = res[1];
     }else{
       if(status < 1){
         $('#following1').css({'display': 'none'});

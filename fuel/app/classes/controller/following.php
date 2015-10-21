@@ -5,10 +5,8 @@ class Controller_Following extends Controller
   {
     if( !isset($_GET['u']) OR !is_numeric($_GET['u']) ) {
       $view = View::forge('404');
-      
       die($view);
     }
-    Model_Csrf::setcsrf();
     $usr = Model_Usr::find('first', array(
       'where' => array(
         array('id', '=',$_GET['u']),

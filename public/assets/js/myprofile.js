@@ -170,7 +170,7 @@ $('.auth').click(function(){
     (localStorage.answer_by_u)? answer_by_u = localStorage.answer_by_u : answer_by_u = [];
     (localStorage.answer)? answer = localStorage.answer : answer = [];
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,myphoto : myphoto
       ,myname : myname
       ,answer_by_u : answer_by_u
@@ -201,15 +201,14 @@ $('#photo').click(function() {
 function winCloseB(){
   childWindow.close();
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,img : localStorage.getItem('img')
   };
-  $.ajax({type:'POST',dataType:'json',url:'/photoprofileadd/',data:param})
+  $.post('/photoprofileadd/',param,function(){},"json")
   .always(function(data){
     if(data[0] == 1){
       localStorage.myphoto = data[1];
     }else{
-      console.log(data);
       alert('connection error');
     }
   });
@@ -237,7 +236,7 @@ $('#generate').click(function(){
     $('#generate').css({'display': 'none'});  
     $('#success').css({'display': ''});
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,myname : $('#myname').val()
       ,introduce:  $('#introduce').val()
       ,myphoto : localStorage.myphoto
@@ -276,7 +275,7 @@ function delQuiz(cellId){
   if(r){
     var quiz_id=[cellId];
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,quiz_id : quiz_id
     };
     $.post('/myquizdelete/',param,function(){},"json")
@@ -292,7 +291,7 @@ $('#del_cookie').click(function(){
   r = confirm('ログアウト・削除します');
   if(r){
     localStorage.clear();
-    $.post('/myprofiledel/',{csrf:$.cookie('csrf')},function(){},"json")
+    $.post('/myprofiledel/',{csrf:csrf},function(){},"json")
     .always(function(res){
       if(res[0]==1){
         location.href='';

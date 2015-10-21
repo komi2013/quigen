@@ -81,10 +81,11 @@
 <?= View::forge('htm/ad_load') ?>
 </div>
 <script>
-var pack_id = '<?=$_GET["p"]?>';
-var pack_txt = '<?=$pack_txt?>';
-var q_amt = '<?=$q_amt?>';
-var u_id = '<?=$u_id?>';
+  var pack_id = '<?=$_GET["p"]?>';
+  var pack_txt = '<?=$pack_txt?>';
+  var q_amt = '<?=$q_amt?>';
+  var u_id = '<?=$u_id?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/check_news.js?ver=38"></script>
 <script src="/assets/js/basic.js?ver=38"></script>

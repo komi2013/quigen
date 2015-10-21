@@ -38,12 +38,15 @@ $('#generate').click(function(){
   $('#generate').css({'display': 'none'});
   $('#success').css({'display': ''});  
   var param = {
-    csrf : $.cookie('csrf')
-    ,contact : unit+',,'+$('#email').val()+',,'+$('#bank_info').val()
+    csrf : csrf
+    ,txt : unit+' '+$('#email').val()+' '+$('#bank_info').val()
+    ,img : 'no'
+    ,myphoto : 'no'
   };
-  $.post('/contactadd/',param,function(){},"json")
+  $.post('/forumadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
+      csrf = res[1];
     }else{
       $('#success').css({'display': 'none'});  
       $('#generate').css({'display': ''});
@@ -72,13 +75,16 @@ $('#generate_send').click(function(){
   $('#generate_send').css({'display': 'none'});
   $('#success').css({'display': ''});  
   var param = {
-    csrf : $.cookie('csrf')
-    ,contact : $('input[name=buy_point]:checked').val()+'pt, bank name:'+$('#sender').val()
+    csrf : csrf
+    ,txt : $('input[name=buy_point]:checked').val()+'pt, bank name:'+$('#sender').val()
+    ,img : 'no'
+    ,myphoto : 'no'
   };
-  $.post('/contactadd/',param,function(){},"json")
+  $.post('/forumadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
       $('#after_post').empty().append('ありがとうございます。3日以内に<a href="/htm/?p=news">お知らせを送ります。</a>');
+      csrf = res[1];
     }else{
       $('#success').css({'display': 'none'});  
       $('#generate').css({'display': ''});

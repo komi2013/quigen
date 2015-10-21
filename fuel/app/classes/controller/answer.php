@@ -94,10 +94,7 @@ class Controller_Answer extends Controller
       Model_Log::warn('orm err');
       die(json_encode($res));
     }
-    //Model_Csrf::setcsrf();
     $res[0] = 1;
-//     $res[1] = $question_id;
-//     $res[1] = $e->getMessage();
     die(json_encode($res));
   }
 }

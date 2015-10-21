@@ -20,7 +20,7 @@ $('#delete').click(function(){
       arr_u.push($(this).val());
     });
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,arr_u : arr_u
       ,who : 'follower'
       ,do : 'delete'
@@ -44,7 +44,7 @@ $('#confirm').click(function(){
       arr_u.push($(this).val());
     });
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,arr_u : arr_u
       ,who : 'follower'
       ,do : 'confirm'

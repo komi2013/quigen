@@ -116,7 +116,8 @@
 <?= View::forge('htm/ad_load_right') ?>
 
 <script>
-var u_id = '<?=@$u_id?>';
+  var u_id = '<?=@$u_id?>';
+  var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/basic.js?ver=38"></script>
 <script src="/assets/js/quest.js?ver=38"></script>

@@ -7,7 +7,6 @@ class Controller_Profile extends Controller
       $view = View::forge('404');
       die($view);
     }
-    Model_Csrf::setcsrf();
     $usr_id = Model_Cookie::get_usr();
     $view = View::forge('profile');
     

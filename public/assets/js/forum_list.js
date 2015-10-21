@@ -25,12 +25,12 @@ $('#generate').click(function(){
     var myphoto = '';
   }
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,txt : $('#txt').val()
     ,img : imgdata
     ,myphoto : myphoto
   };
-  $.ajax({type:'POST',dataType:'json',url:'/forumadd/',data:param})
+  $.post('/forumadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
       location.href = '/forum/?f='+res[1];
@@ -123,12 +123,13 @@ $('.nice').click(function(){
     $('#f_img_'+$(this).data('forum')).attr({'src': '/assets/img/icon/thumbup_1.png'});
     $(this).attr({'src': '/assets/img/icon/thumbup_1.png'});  
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,f_id : $(this).data('forum')
     };
     $.post('/niceadd/',param,function(){},"json")
     .always(function(res){
       if(res[0]==1){
+        csrf = res[1];
       }else if(res[0]==2){
         alert('connection error');
       }

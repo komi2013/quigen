@@ -8,7 +8,6 @@ class Controller_Follower extends Controller
       
       die($view);
     }
-    Model_Csrf::setcsrf();
     $usr = Model_Usr::find('first', array(
       'where' => array(
         array('id', '=',$_GET['u']),

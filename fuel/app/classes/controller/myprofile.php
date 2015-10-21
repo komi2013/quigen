@@ -3,7 +3,6 @@ class Controller_Myprofile extends Controller
 {
   public function action_index()
   {
-    Model_Csrf::setcsrf();
     $view = View::forge('myprofile');
     $view->follower = 0;
     $usr_id = Model_Cookie::get_usr();

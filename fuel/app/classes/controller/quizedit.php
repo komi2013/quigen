@@ -33,7 +33,6 @@ class Controller_QuizEdit extends Controller
       Security::htmlentities($arr_choice_1[0]['choice_3'])
     );
     $view = View::forge('quiz_edit');
-    Model_Csrf::setcsrf();
     $q_txt = Security::htmlentities($q_txt);
     $view->img = $q_img;
     $view->arr_choice = $random_choice;

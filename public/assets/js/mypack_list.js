@@ -25,7 +25,7 @@ $('#generate').click(function(){
   $('#generate').css({'display': 'none'});  
   $('#success').css({'display': ''});
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,pack_txt : $('#pack_txt').val()
   };
   $.post('/packadd/',param,function(){}, "json")
@@ -59,12 +59,13 @@ $('#delete').click(function(){
     $('#delete').css({'display': 'none'});
     $('#deleted').css({'display': ''});  
     var param = {
-      csrf : $.cookie('csrf')
+      csrf : csrf
       ,pack_id : $('[name="pack_id"]:checked').val()
     };
     $.post('/packdel/',param,function(){},"json")
     .always(function(res){
       if(res[0]==1){
+        csrf = res[1];
       }else{
         $('#deleted').css({'display': 'none'});
         $('#delete').css({'display': ''});  
@@ -132,13 +133,14 @@ function getData(first){
         $('#generate').css({'display': 'none'});
         $('#success').css({'display': ''});
         var param = {
-          csrf : $.cookie('csrf')
+          csrf : csrf
           ,pack_id : $('[name="pack_id"]:checked').val()
           ,txt : $('.input_txt_0').val()
         };
         $.post('/packupd/',param,function(){}, "json")
         .always(function(res){
           if(res[0]==1){
+            csrf = res[1];
           }else{
             $('#success').css({'display': 'none'});
             $('#generate').css({'display': ''});  

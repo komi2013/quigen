@@ -12,7 +12,7 @@ $('#delete').click(function() {
     arr_contact.push($(this).val());
   });
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,arr_quiz : arr_quiz
     ,arr_usr : arr_usr
     ,arr_contact : arr_contact
@@ -21,6 +21,7 @@ $('#delete').click(function() {
     if(res[0]==1){
       $('#delete').css({'display': 'none'});  
       $('#success').css({'display': ''});
+      csrf = res[1];
     }else{
      console.log(res);
      alert('connection error');

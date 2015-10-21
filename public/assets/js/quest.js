@@ -149,7 +149,7 @@ $('#generate').click(function(){
   $('#generate').css({'display': 'none'});
   $('#success').css({'display': ''});
   var param = {
-    csrf : $.cookie('csrf')
+    csrf : csrf
     ,pay  : $('input[name=pay_point]:checked').val()
     ,type : 'from_quest'
   };
@@ -169,7 +169,7 @@ $('#generate').click(function(){
       }
       ticket[0] = ticket[0] + buy_ticket;
       localStorage.ticket = JSON.stringify(ticket);
-      //location.href = '';
+      location.href = '';
     }else{
       $('#success').css({'display': 'none'});  
       $('#generate').css({'display': ''});
