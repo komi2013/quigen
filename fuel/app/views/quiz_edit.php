@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/assets/css/generate.css?ver=39" />
 <script src="/third/img-touch-canvas_1.js?ver=39"></script>
 <table id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>

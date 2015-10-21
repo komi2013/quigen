@@ -7,6 +7,10 @@
   <tr><td                      class="<?= $this_page == 'follow'    ? 'this_page' : '' ?> disp_quest" >  <a href="/htm/follow/" rel="nofollow" >&nbsp;&nbsp;&nbsp;フォロー</a></td></tr>
   <tr><td id="page_news"       class="<?= $this_page == 'news'      ? 'this_page' : '' ?>" >             <a href="/htm/news/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;お知らせ</a></td></tr>
   <tr><td id="page_rank"       class="<?= $this_page == 'rank'      ? 'this_page' : '' ?> disp_quest" >  <a href="/htm/rank/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;ランク</a></td></tr>
+<?php /*
+  <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
+  <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>
+*/ ?>
   <tr><td id="page_category"   class="<?= $this_page == 'category'  ? 'this_page' : '' ?>" >             <a href="/category/"                    >&nbsp;&nbsp;&nbsp;カテゴリ</a></td></tr>
   <tr><td id="page_quest"      class="<?= $this_page == 'quest'     ? 'this_page' : '' ?>" >             <a href="/htm/quest/"   rel="nofollow">&nbsp;&nbsp;&nbsp;クエスト</a></td></tr>
   <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                 >&nbsp;&nbsp;&nbsp;FAQ掲示板</a></td></tr>

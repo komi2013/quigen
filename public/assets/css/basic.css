@@ -163,4 +163,15 @@ h1 {
   word-break : break-all;
   padding: 20px 10px 20px 10px;
 }
-
+/* /html/news/ */
+.edge_click{
+  border:solid 1px rgba(0,0,255,0.2);
+}
+/* /html/news/ */
+#imageLoader{
+  opacity: 0;
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  z-index: 5;
+}

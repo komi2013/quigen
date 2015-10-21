@@ -16,7 +16,6 @@
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=39"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=39" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/generate.css?ver=39" />
     <link rel="stylesheet" href="/assets/css/pc.css?ver=39" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css?ver=39" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >

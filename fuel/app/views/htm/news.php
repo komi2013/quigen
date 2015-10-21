@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/assets/css/news.css?ver=39" />
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="font_8 unread">お知らせ</h1></td>
