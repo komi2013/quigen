@@ -1,9 +1,10 @@
+<?php Config::load('domain', true);?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><?=Config::get("my.top_title")?></title>
-    <meta name="description" content="<?=Config::get("my.top_description")?>">
+    <title><?=Config::get('domain.top_title')?></title>
+    <meta name="description" content="<?=Config::get('domain.top_description')?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( $popular ){ ?>
     <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />
