@@ -573,22 +573,6 @@ ALTER SEQUENCE mt_sns_post_id_seq OWNED BY mt_sns_post.id;
 
 
 --
--- Name: mydata; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE mydata (
-    usr_id integer DEFAULT 0 NOT NULL,
-    myphoto text DEFAULT ''::text NOT NULL,
-    myname text DEFAULT ''::text NOT NULL,
-    answer_by_u text DEFAULT ''::text NOT NULL,
-    answer text DEFAULT ''::text NOT NULL,
-    update_at timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
-ALTER TABLE public.mydata OWNER TO postgres;
-
---
 -- Name: pack; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1542,14 +1526,6 @@ ALTER TABLE ONLY mt_seo_tag
 
 ALTER TABLE ONLY mt_sns_post
     ADD CONSTRAINT mt_sns_post_pkey PRIMARY KEY (id);
-
-
---
--- Name: mydata_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY mydata
-    ADD CONSTRAINT mydata_pkey PRIMARY KEY (usr_id);
 
 
 --

@@ -169,24 +169,9 @@ $('.auth').click(function(){
     (localStorage.myname)? myname = localStorage.myname : myname = '';
     (localStorage.answer_by_u)? answer_by_u = localStorage.answer_by_u : answer_by_u = [];
     (localStorage.answer)? answer = localStorage.answer : answer = [];
-    var param = {
-      csrf : csrf
-      ,myphoto : myphoto
-      ,myname : myname
-      ,answer_by_u : answer_by_u
-      ,answer : answer
-    };
-    var this_url = $(this).data('url');
-    $.post('/mydataedit/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        location.href = this_url;
-      }else if(res[0]==2){
-        alert('connection error');
-      }
-    });
     ga('set', 'dimension10',$(this).attr('alt'));
     ga('send','event','auth',$(this).attr('alt'),localStorage.ua_u_id,1);
+    location.href = $(this).data('url');
   }
 });
 
