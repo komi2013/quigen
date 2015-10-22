@@ -55,11 +55,11 @@
   <tr><td class="td_99_c">オプション</td></tr>  
 </table>
 <table>
-  <tr><td class="tag">#<input type="text" placeholder="中学歴史" maxlength="12" class="txt_84" id="tag_0"></td></tr>
+  <tr><td class="tag">#<input type="text" placeholder="タグを追加.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
 <div style="display:none;">
-<input type="text" placeholder="中学歴史" maxlength="12" class="tag_in" id="tag_1">
-<input type="text" placeholder="中学歴史" maxlength="12" class="tag_in" id="tag_2">
+<input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_1">
+<input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_2">
 </div>    
 
 <table>

@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>クイジェン | 大学受験の生物、日本史、世界史、英語の問題集</title>
-    <meta name="description" content="ログインなしで4択クイズに答えれます。クイズの内容はセンター試験の内容もあります。ランクも表示されます。自分でもプライベートクイズを作成できます。復習機能で単語も覚えやすいです。">
+    <title><?=Config::get("my.top_title")?></title>
+    <meta name="description" content="<?=Config::get("my.top_description")?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( $popular ){ ?>
     <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />

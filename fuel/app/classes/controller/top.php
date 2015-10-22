@@ -53,8 +53,8 @@ class Controller_Top extends Controller
     $query = DB::query("SELECT question_id, amount FROM answer_by_q WHERE update_at < NOW() ORDER BY".
             "(30 - EXTRACT( DAY FROM(NOW() - update_at) )) * amount DESC
             LIMIT 20 ")->execute()->as_array();
-    $arr_qu_id = array();
-    $arr_qu = array();
+    $arr_qu_id = [];
+    $arr_qu = [];
     foreach ($query as $d)
     {
       $arr_qu_id[] = $d['question_id'];

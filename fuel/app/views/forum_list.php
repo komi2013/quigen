@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>FAQ | 数学や英語などのわからない部分の画像をアップすれば教えてくれるかも</title>
-    <meta name="description" content="わからない所が教科書や問題集にあった場合その画像をアップすれば他に見ている誰かが教えてくれるかも、簡単に画像を投稿できるんでためしにアップしてみては？">
+    <title><?=Config::get("my.forum_list_title")?></title>
+    <meta name="description" content="<?=Config::get("my.forum_list_description")?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( isset($top) ){  ?>    
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/forumlist/'?>" />

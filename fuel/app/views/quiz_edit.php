@@ -47,8 +47,8 @@
   <tr><td class="tag">#<input type="text" value="" maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
 <div style="display:none;">
-<input type="text" placeholder="中学歴史" maxlength="12" class="tag_in" id="tag_1">
-<input type="text" placeholder="中学歴史" maxlength="12" class="tag_in" id="tag_2">
+<input type="text" placeholder="" maxlength="12" class="tag_in" id="tag_1">
+<input type="text" placeholder="" maxlength="12" class="tag_in" id="tag_2">
 </div>    
 
 <table>

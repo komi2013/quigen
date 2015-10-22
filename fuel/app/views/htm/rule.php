@@ -5,7 +5,7 @@
     <title>使い方とルール</title>
     <meta name="description" content="使い方。規約：第1条(本規約の適用)、第2条(本サービスの内容)、第3条(個人情報の利用目的)、第4条(利用者の責任および注意義務について)、第5条(知的財産権等)、第6条(禁止行為)、第7条(免責事項)、第8条(準拠法・裁判管轄)">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
-    <link rel="canonical" href="<?='http://'.Config::get("my.domain").'/htm/rule/'?>" />
+    <link rel="canonical" href="http://juken.quigen.info/htm/rule/" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
