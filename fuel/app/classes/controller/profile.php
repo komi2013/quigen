@@ -100,6 +100,7 @@ class Controller_Profile extends Controller
       $view->rank = $res;
     }
     $view->description = $description;
+    $view->meta_description = strip_tags($introduce).$description;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'
       .Config::get('my.domain')
       .'/profile/?u='.$_GET['u'].'%26cpn=share_fb';
