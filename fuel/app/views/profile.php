@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title><?=$usr_name?></title>
-    <meta name="description" content="<?=meta_description?>、 フォロワー数：<?=$follower?>、 フォローしているユーザー数：<?=$following?>">
+    <meta name="description" content="<?=$meta_description?>、 フォロワー数：<?=$follower?>、 フォローしているユーザー数：<?=$following?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
