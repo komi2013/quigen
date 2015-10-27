@@ -218,40 +218,6 @@ ALTER SEQUENCE comment_id_seq OWNED BY comment.id;
 
 
 --
--- Name: csrf; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE csrf (
-    id integer NOT NULL,
-    token text DEFAULT ''::text NOT NULL,
-    create_at timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
-ALTER TABLE public.csrf OWNER TO postgres;
-
---
--- Name: csrf_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE csrf_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.csrf_id_seq OWNER TO postgres;
-
---
--- Name: csrf_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE csrf_id_seq OWNED BY csrf.id;
-
-
---
 -- Name: follow; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1235,13 +1201,6 @@ ALTER TABLE ONLY comment ALTER COLUMN id SET DEFAULT nextval('comment_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY csrf ALTER COLUMN id SET DEFAULT nextval('csrf_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
 ALTER TABLE ONLY follow ALTER COLUMN id SET DEFAULT nextval('follow_id_seq'::regclass);
 
 
@@ -1446,14 +1405,6 @@ ALTER TABLE ONLY choice
 
 ALTER TABLE ONLY comment
     ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
-
-
---
--- Name: csrf_pkey1; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY csrf
-    ADD CONSTRAINT csrf_pkey1 PRIMARY KEY (id);
 
 
 --

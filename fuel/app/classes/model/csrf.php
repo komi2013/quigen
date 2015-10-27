@@ -1,19 +1,6 @@
 <?php
-class Model_Csrf extends \Orm\Model
+class Model_Csrf extends \Model
 {
-  protected static $_properties = array(
-    'id',
-    'token',
-    'create_at',
-  );
-  protected static $_table_name = 'csrf';
-
-  public function get_new_id() 
-  {
-    $res = DB::query("select nextval('csrf_id_seq')")->execute();
-    return $res[0]['nextval'];
-  }
-
   public static function check() 
   {
     $res[0] = 2;
