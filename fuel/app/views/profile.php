@@ -8,7 +8,6 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/profile.css?ver=40" />
     <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=40"></script>

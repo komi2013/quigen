@@ -31,6 +31,7 @@ class Model_Util extends \Model
     
     if ( !isset($_SERVER['HTTP_USER_AGENT']) ) {
       Model_Log::warn('no HTTP_USER_AGENT');
+      return 1;
     }
     return preg_match( $pattern, $_SERVER['HTTP_USER_AGENT'] );
   }

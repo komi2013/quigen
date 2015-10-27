@@ -66,9 +66,9 @@ class Controller_Profile extends Controller
       $answer_cnt_1week = '';
     }
     if (!$introduce AND !$answer_cnt_1week) {
-      $view->introduce = '自己紹介：';
+      $introduce = '自己紹介：';
     } else {
-      $view->introduce =   $answer_cnt_1week.$introduce;
+      $introduce =   $answer_cnt_1week.$introduce;
     }
     $view->answer_cnt_1week = $answer_cnt_1week;
     $res = DB::query("select count(*) from follow where sender = ".$_GET['u']." AND status = 2")->execute()->as_array();
@@ -92,7 +92,7 @@ class Controller_Profile extends Controller
       foreach($res as $k => $d){
         if($i < 5){
           $description .= $d['tag'];
-          $description .= ' 正解数'.$d['cnt'].'で';
+          $description .= ' 正解数 '.$d['cnt'].' で';
           $description .= $d['rank'].'位';
           ++$i; 
         }
@@ -100,6 +100,7 @@ class Controller_Profile extends Controller
       $view->rank = $res;
     }
     $view->description = $description;
+    $view->introduce = $introduce;
     $view->meta_description = strip_tags($introduce).$description;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'
       .Config::get('my.domain')

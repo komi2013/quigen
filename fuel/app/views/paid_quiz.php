@@ -7,7 +7,6 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/paidquiz/?q='.$question?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/paid_quiz.css?ver=40" />
     <meta property="og:title" content="<?=$q_txt?>" />
     <meta property="og:url" content="http://<?=Config::get('my.domain').'/paidquiz/?q='.$question?>" />
     <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />

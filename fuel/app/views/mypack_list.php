@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/assets/css/mypack_list.css?ver=40" />
+
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="font_8 unread">マイパックリスト</h1></td>
