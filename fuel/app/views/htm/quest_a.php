@@ -1,3 +1,7 @@
+<?php if( isset($_COOKIE['ab_test']) AND $_COOKIE['ab_test'] > 4 ){
+  die( View::forge('htm/quest_b') );
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,30 +38,19 @@
 <div id="content">
 
 <table>
+  <tr><td>クイズに回答するためのチケットを入手するには以下の3つのオプションがあり、1つでもクリアーすればもらいます。</td></tr>  
+</table>
+
+<table>
   <tr>
     <td class="td_68"><a id="pre_quiz" href="/top/">クイズに戻る</a></td>
     <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
     <td class="td_15" id="ticket" style="color:red;">0</td>
   </tr>
 </table>
-
+    
 <table>
-  <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降に回答できます</td></tr>  
-</table>
-
-<table>
-  <tr><td class="td_99" id="open_time" style="text-align:center;"></td></tr>
-</table>
-
-<table>
-  <tr>
-    <td class="td_15"><img src="/assets/img/icon/hourglass.png" alt="wait"></td>
-    <td class="td_84" id="left_time">0</td>
-  </tr>
-</table>
-<br>
-<table>
-  <tr><td class="td_99 quest_do" id="light_1">○もしくは下記のページにいけばまたクイズに回答できます</td></tr>
+  <tr><td class="td_99 quest_do" id="light_1">○クエストを実行</td></tr>
 </table>
 
 <table>
@@ -72,10 +65,25 @@
   <tr><td class="quest_2 td_99_c">クイズにコメント</td>                                 <td class="quest_2 td_15_c" id="img_quest_6"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c">クイズを作成</td>                                     <td class="quest_2 td_15_c" id="img_quest_7"><img src="/assets/img/icon/star_0.png"></td></tr>
 </table>
-<br>
+
+<table>
+  <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降にチケットをもらう</td></tr>  
+</table>
+
+<table>
+  <tr><td class="td_99" id="open_time" style="text-align:center;"></td></tr>
+</table>
+
 <table>
   <tr>
-    <td class="td_84 quest_do" id="light_3">○もしくはポイントでチケットをGET</td>
+    <td class="td_15"><img src="/assets/img/icon/hourglass.png" alt="wait"></td>
+    <td class="td_84" id="left_time">0</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td class="td_84 quest_do" id="light_3">○ポイントでチケットをGET</td>
     <td class="td_15 quest_do">
       <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
       <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
@@ -113,6 +121,7 @@
 
 <?= View::forge('htm/ad_load') ?>
 </div>
+
 <?= View::forge('htm/ad_load_right') ?>
 
 <script>

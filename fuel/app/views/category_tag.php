@@ -56,6 +56,6 @@
 
 <script src="/assets/js/check_news.js?ver=39"></script>
 <script src="/assets/js/basic.js?ver=39"></script>
-
+<script>ga('send', 'pageview');</script>
 </body>
 </html>
