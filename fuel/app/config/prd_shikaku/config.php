@@ -83,13 +83,14 @@ return array(
 		// 'language'  => array(),
   ),
   'crypt_key' => array(
-    'cookie' => 'Qdjsme@ffY',
-    'correct' => 'Pdslkmkkll',
-    'q_data' => 'dkoDoQpZeflIq',
+    'cookie' => 'Ydjome@feF',
+    'correct' => 'PdslkmkklD',
+    'q_data' => 'IkoDoQpZeflIW',
   ),
 
   'my' => array(
     'domain' => 'shikaku.quigen.info',
+    'sitemap' => 's3V-64fqf7q7n0h1RNvJARHEBvbrIocNaH7tos3JzWU',
 
     'fb_id' => '1688503281371952',
     'fb_secret' => 'ce5a324b3e6d38c9e21ffb2c545d2058',
@@ -121,7 +122,7 @@ return array(
     'PAYPAL_URL' => 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=',
     'PAYPAL_DG_URL' => 'https://www.sandbox.paypal.com/incontext?token=',
       
-    'dir' => '/stg/juken/',
+    'dir' => '/prd/shikaku/',
       
     'top_title' => 'クイジェン | 資格の問題集、中国語検定、TOEICなど',
     'top_description' => 'ログインなしで4択クイズに答えれます。クイズの内容はセンター試験の内容もあります。ランクも表示されます。自分でもプライベートクイズを作成できます。復習機能で単語も覚えやすいです。',

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title><?=Config::get('my.top_title')?></title>
     <meta name="description" content="<?=Config::get('my.top_description')?>">
+    <meta name="google-site-verification" content="<?=Config::get('my.sitemap')?>" />
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( $popular ){ ?>
     <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />
