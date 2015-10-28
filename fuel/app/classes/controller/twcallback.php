@@ -25,7 +25,7 @@ class Controller_TwCallback extends Controller
       $myphoto = $arr_pv_usr[0]['img'];
     } else {
       $usr = new Model_Usr();
-      $usr_id = $usr_id ?: $usr->get_new_id();
+      $usr_id = isset($usr_id) ? $usr_id : $usr->get_new_id();
       $usr->id = $usr_id;
       $usr->pv_u_id = $id;
       $usr->provider = 2;
