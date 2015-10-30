@@ -112,7 +112,7 @@ return array(
         ,33  // google plus seijirok@gmail.com
       ),
 
-    'ua' => 'UA-57298122-2',
+    'ua' => 'UA-57298122-1',
 
     'Paypal_SandboxFlag' => true,
     'Paypal_API_UserName' => 'komatsuka-facilitator_api1.yahoo.com',
