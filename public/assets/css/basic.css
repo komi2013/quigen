@@ -120,6 +120,7 @@ h1 {
 .td_99{
   width: 99%;
   padding: 10px 10px 0px 10px;
+  word-break: break-word;
 }
 .td_99_t{
   width: 99%;

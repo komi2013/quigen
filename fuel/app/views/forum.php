@@ -59,7 +59,7 @@
   </tr>
 </table>
 <div style="text-align:center;">
-<textarea placeholder="Q." maxlength="400" class="txt_long" id="txt"></textarea>
+<textarea placeholder="A." maxlength="400" class="txt_long" id="txt"></textarea>
 </div>
 <table>
   <tr>
