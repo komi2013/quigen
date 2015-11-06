@@ -66,18 +66,18 @@ class Controller_4wordmoreadd extends Controller
     die(json_encode($res));
   }  
 
-  $arr_word = DB::select()->from('wh_treaty')
+  $arr_word = DB::select()->from('word')
     ->execute()->as_array();
     //->order_by('quiz', 'asc')->limit(12)
 
     $ii = 1;
     //$arr_word_4 = array();
-    $wh_time = 1444921200;
+    $wh_time = 1446303600;
     
     foreach ($arr_word as $d) {
       //year,comment
-      $arr_word_q[] = $d['item'].'、に該当する年代は？';
-      $arr_word_a[] = $d['year'];
+      $arr_word_q[] = $d['answer'].'　(発音は'.$d['quiz'].')　の意味は？';
+      $arr_word_a[] = $d['three'];
 
       if ( ($ii % 4) == 0 ) {
         $i = 0;
@@ -98,9 +98,9 @@ class Controller_4wordmoreadd extends Controller
           $arr_incorrect = array_merge($arr_a); 
           $choice = new Model_Choice();
           $choice->choice_0 = $arr_word_a[$i];
-          $choice->choice_1 = $arr_incorrect[0] + 4;
-          $choice->choice_2 = $arr_incorrect[1] -5;
-          $choice->choice_3 = $arr_incorrect[2] +6;
+          $choice->choice_1 = $arr_incorrect[0];
+          $choice->choice_2 = $arr_incorrect[1];
+          $choice->choice_3 = $arr_incorrect[2];
           $choice->question_id = $question_id;
           $choice->save();
 
@@ -113,7 +113,7 @@ class Controller_4wordmoreadd extends Controller
           $answer_by_q->save();
 
           $i++;
-          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'センター日本史')")->execute();
+          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'ドイツ語')")->execute();
         }
         $arr_word_q = [];
         $arr_word_a = [];

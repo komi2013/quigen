@@ -112,14 +112,14 @@ class Controller_Myquestionadd extends Controller
       $answer_by_q->update_at = $open_time;
       $answer_by_q->save();
 
-      $a_news_time = new Model_ANewsTime();
-      $a_news_time->following_u_id = $usr_id;
-      $a_news_time->question_id = $question_id;
-      $a_news_time->q_img = $web_path;
-      $a_news_time->u_img = $_POST['myphoto'];
-      $a_news_time->create_at = date( "Y-m-d H:i:s" );
-      $a_news_time->generator = $usr_id;
-      $a_news_time->save();
+//      $a_news_time = new Model_ANewsTime();
+//      $a_news_time->following_u_id = $usr_id;
+//      $a_news_time->question_id = $question_id;
+//      $a_news_time->q_img = $web_path;
+//      $a_news_time->u_img = $_POST['myphoto'];
+//      $a_news_time->create_at = date( "Y-m-d H:i:s" );
+//      $a_news_time->generator = $usr_id;
+//      $a_news_time->save();
     }
     catch (Orm\ValidationFailed $e)
     {
