@@ -94,6 +94,9 @@ if(recover > 0 || quested == 1){
     ticket[0] = 0;
   }
   ticket[0] = ticket[0] + recover;
+  if(getVal.q){
+    location.href = '/quiz/?q='+getVal.q;
+  }
 }
 if(ticket[0] < ticket[3]){
   var now = new Date();
