@@ -3,7 +3,7 @@ class Model_Log extends \Model
 {
   public static function warn($warn) 
   {
-    $warn = $_SERVER['REQUEST_METHOD'].' '.$_SERVER['REQUEST_URI'].' '.$warn;
+    $warn = @$_SERVER['REMOTE_ADDR'].' '.$_SERVER['REQUEST_METHOD'].' '.$_SERVER['REQUEST_URI'].' '.$warn;
     foreach ($_POST as $d) {
       if ( is_array($d) ) {
         foreach ($d as $dd) {

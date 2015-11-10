@@ -5,18 +5,6 @@ class Model_Util extends \Model
   public $eto_txt;
   public $eto_css;
   
-  public static function warn($warn) 
-  {
-    $warn = @$_SERVER['SERVER_ADDR'].' '.$_SERVER['REQUEST_URI'].' '.$warn;
-    $i = 0;
-    foreach ($_POST as $k => $d) {
-      $warn = ($i == 0) ? $warn.' POST ' : $warn.' '; 
-      $warn .= ' '.$k.'='.$d;
-      ++$i;
-    }
-    
-    Log::warning($warn);
-  }
   public static function is_mobile() 
   {
     $useragents = array(
