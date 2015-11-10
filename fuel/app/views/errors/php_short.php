@@ -27,9 +27,10 @@
 <div id="content">
   <h1>php short</h1>
 </div>
-</body>
-</html>
+<?php Model_Log::warn('php short');?>
+<script src="/assets/js/basic.js?ver=42"></script>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':php_short');
 </script>
-<script src="/assets/js/basic.js?ver=42"></script>
+</body>
+</html>

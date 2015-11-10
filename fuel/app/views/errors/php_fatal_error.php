@@ -38,9 +38,10 @@
 <?php endif; ?>
 
 </div>
-</body>
-</html>
+<?php Model_Log::warn('fatal error');?>
+<script src="/assets/js/basic.js?ver=42"></script>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':fatal_error');
 </script>
-<script src="/assets/js/basic.js?ver=42"></script>
+</body>
+</html>

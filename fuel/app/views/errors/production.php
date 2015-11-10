@@ -28,9 +28,10 @@
   <h1>production unexpected error</h1>
   <?= isset($contents) ? $contents : 'no contents'; ?>
 </div>
-</body>
-</html>
+<?php Model_Log::warn('production unexpected error');?>
+<script src="/assets/js/basic.js?ver=42"></script>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':production');
 </script>
-<script src="/assets/js/basic.js?ver=42"></script>
+</body>
+</html>

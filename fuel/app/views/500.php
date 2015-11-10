@@ -30,7 +30,7 @@
 </div>
 <script src="/assets/js/check_news.js?ver=42"></script>
 <script src="/assets/js/basic.js?ver=42"></script>
-
+<?php Model_Log::warn('500 error');?>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':500');
 </script>

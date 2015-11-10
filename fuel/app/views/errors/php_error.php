@@ -27,9 +27,10 @@
 <div id="content">
   <h1>php error</h1>
 </div>
-</body>
-</html>
+<?php Model_Log::warn('php error');?>    
+<script src="/assets/js/basic.js?ver=42"></script>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':php_error');
 </script>
-<script src="/assets/js/basic.js?ver=42"></script>
+</body>
+</html>
