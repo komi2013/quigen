@@ -9,11 +9,9 @@ class Controller_Htm extends Controller
     header('Cache-Control: private, max-age=' . $expires);
     header('Pragma: ');
     if ( !isset($_GET['p']) ) {
-      Model_Log::warn('no p');
       die( View::forge('404') );
     }
     if ( !file_exists(APPPATH.'views/htm_'.$_GET['p'].'.php') ) {
-      Model_Log::warn('no php file');
       die( View::forge('404') );
     }
     $view = View::forge('htm_'.$_GET['p']);
@@ -29,11 +27,9 @@ class Controller_Htm extends Controller
     header('Pragma: ');
     $slash = explode( '/', $_SERVER['REQUEST_URI'] );
     if ( !isset($slash[2]) ) {
-      Model_Log::warn('no slash');
       die( View::forge('404') );
     }
     if ( !file_exists(APPPATH.'views/htm/'.$slash[2].'.php') ) {
-      Model_Log::warn('no php file');
       die( View::forge('404') );
     }
     $view = View::forge('htm/'.$slash[2]);

@@ -35,6 +35,7 @@
 
 <script src="/assets/js/check_news.js?ver=42"></script>
 <script src="/assets/js/basic.js?ver=42"></script>
+<?php Model_Log::warn('Not Found');?>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':404');
 </script>
