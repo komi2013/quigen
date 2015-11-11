@@ -30,9 +30,7 @@
 
 <?php $i = 0; foreach($arr_tag as $k => $d){ ?>
   &nbsp;&nbsp;
-  <a href="/htm/search/?tag=<?=urlencode($d['txt'])?>" rel="nofollow">
-    <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
-  </a>
+  <a href="/htm/search/?tag=<?=$d['url_txt']?>" rel="nofollow"> <?=$d['txt']?> </a>
   &nbsp;&nbsp;
 <?php ++$i;} ?>
 

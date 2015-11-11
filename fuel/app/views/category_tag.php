@@ -40,11 +40,11 @@
     </a>
   </td>
   <td class="td_84_t">
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=Str::truncate(Security::htmlentities($d['txt']), 30)?> </a>
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=$d['txt']?> </a>
   </td>
   <?php }else{ ?>
   <td colspan="2" class="td_99_t" >
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=Str::truncate(Security::htmlentities($d['txt']), 30)?> </a>
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=$d['txt']?> </a>
   </td>
   <?php } ?>
 </tr>
