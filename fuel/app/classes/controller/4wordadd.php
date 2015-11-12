@@ -78,14 +78,6 @@ class Controller_4wordadd extends Controller
         $answer_by_q->update_at = $open_time;
         $answer_by_q->save();
 
-        $a_news_time = new Model_ANewsTime();
-        $a_news_time->following_u_id = $usr_id;
-        $a_news_time->question_id = $question_id;
-        $a_news_time->q_img = '';
-        $a_news_time->u_img = $_POST['myphoto'];
-        $a_news_time->create_at = date( "Y-m-d H:i:s");
-        $a_news_time->save();
-
         $post_open_time->add( new DateInterval('PT1H'));
         $open_time = $post_open_time->format('Y-m-d H:i:s');
         $open_time = date("Y-m-d H:i:s",strtotime($open_time."+100 year"));
