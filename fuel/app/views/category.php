@@ -26,7 +26,7 @@
   $side->this_page = 'category';
   echo $side;
 ?>
-<div id="content" style="line-height: 30px;">
+<div id="content" style="line-height: 50px;">
 
 <?php $i = 0; foreach($arr_tag as $k => $d){ ?>
   &nbsp;&nbsp;
