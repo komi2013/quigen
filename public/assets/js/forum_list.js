@@ -139,4 +139,3 @@ $('.nice').click(function(){
   }
 });
 
-ga('send', 'pageview');

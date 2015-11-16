@@ -29,17 +29,6 @@ $('#delete').click(function() {
   }, "json");    
 });
 
-//var getVal = getUrlVars();
-//
-//if(getVal.page_type){
-//  if((getVal.page_type).indexOf('/') < 0){
-//    console.log('campaign');
-//  //ga('set', 'dimension5', getVal.page_type);
-//  }else{
-//    console.log('not campaign');
-//  }
-//}
-
 var getUrlVal = getUrlVars();
 if(getUrlVal.page_type && getUrlVal.page_type.indexOf('/') < 0){
   console.log('set page_type');
@@ -47,6 +36,3 @@ if(getUrlVal.page_type && getUrlVal.page_type.indexOf('/') < 0){
   //ga('set', 'dimension9', getUrlVal.page_type);
   //$.cookie('u_last_page_type',getUrlVal.page_type,option);
 }
-
-
-ga('send', 'pageview');

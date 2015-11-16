@@ -137,6 +137,4 @@ $('#rotate').click(function(){
 localStorage.scale = 10;
 $('[name=scale]').change(function(){
   localStorage.scale = $('[name=scale] option:selected').text();
-});  
-
-ga('send', 'pageview');
+});

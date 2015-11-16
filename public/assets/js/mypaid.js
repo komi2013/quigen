@@ -75,4 +75,3 @@ $(function(){
     }
   });
 });
-ga('send', 'pageview');

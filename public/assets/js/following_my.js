@@ -104,4 +104,3 @@ $(function(){
     }
   });
 });
-ga('send', 'pageview');

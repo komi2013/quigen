@@ -255,4 +255,3 @@ function commentAdd(){
     }
   });  
 }
-ga('send', 'pageview');

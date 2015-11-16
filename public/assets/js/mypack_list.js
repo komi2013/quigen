@@ -171,5 +171,3 @@ $(function(){
     }
   });
 });
-
-ga('send', 'pageview');

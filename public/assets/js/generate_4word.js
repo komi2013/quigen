@@ -90,6 +90,13 @@ $('#generate').click(function(){
   ga('send','event','generate','4word',localStorage.ua_u_id,localStorage.genestep);
 });
 
+$('input').keypress(function (e) {
+  var key = e.which;
+  if(key == 13) {
+    $('#generate').click();
+    return false;
+  }
+});
 
 // .begin. make notify arr
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60); 
@@ -102,4 +109,4 @@ if(localStorage.notify){
 }
 localStorage.notify = JSON.stringify(notify);
 // .end. make notify arr
-ga('send', 'pageview');
+

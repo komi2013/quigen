@@ -65,5 +65,3 @@ function follow_confirm(sender){
     //location.href = "";
   }
 }
-
-ga('send', 'pageview');

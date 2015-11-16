@@ -14,5 +14,5 @@ if($.cookie('add_point')){
   $.cookie('add_point','',{expires:-1,path:'/'});
 }
 $('#point').empty().append(point+' pt');
-ga('send', 'pageview');
+
              

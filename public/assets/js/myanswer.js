@@ -101,5 +101,3 @@ function delAnswer(cellId) {
     location.href = '';
   }  
 }
-
-ga('send', 'pageview');

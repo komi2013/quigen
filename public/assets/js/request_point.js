@@ -47,6 +47,5 @@ var dg = new PAYPAL.apps.DGFlow(
   expType: 'instant'
    //PayPal will decide the experience type for the buyer based on his/her 'Remember me on your computer' option.
 });
-ga('send','pageview','/request_point/');
 
              

@@ -134,5 +134,4 @@ $('#delete').click(function(){
   }
 });
 
-ga('send', 'pageview');
              

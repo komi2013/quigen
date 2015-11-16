@@ -30,6 +30,14 @@ $('#search').click(function(){
   }
 });
 
+$('input').keypress(function (e) {
+  var key = e.which;
+  if(key == 13) {
+    $('#search').click();
+    return false;  
+  }
+});
+
 if(localStorage.answer){
   var answer = JSON.parse(localStorage.answer);
 }else{
@@ -42,6 +50,4 @@ for (var i = 0, len = arr_answer.length; i < len; i++) {
     }
   }
 }
-
 localStorage.removeItem('amt_top');
-ga('send', 'pageview');

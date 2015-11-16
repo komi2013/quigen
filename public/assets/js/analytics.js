@@ -40,8 +40,6 @@ var getVal = getUrlVars();
 if(getVal.cpn){
   ga('set', 'dimension5', getVal.cpn);  
 }
-// ga('send', 'pageview');
-
 /*
 1 = u_answer_amt 1,2,3...10,20,30
 2 = ua_u_id  99,101 

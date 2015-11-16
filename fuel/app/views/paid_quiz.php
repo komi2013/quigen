@@ -12,10 +12,10 @@
     <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <meta property="og:description" content="<?=$description?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=42"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=42" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=42" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=42" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=43"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=43" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=43" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=43" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -89,8 +89,11 @@
   var usr = '<?=$usr?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/basic.js?ver=42"></script>
-<script src="/assets/js/check_news.js?ver=42"></script>
-<script src="/assets/js/paid_quiz.js?ver=42"></script>
+<script src="/assets/js/basic.js?ver=43"></script>
+<script src="/assets/js/check_news.js?ver=43"></script>
+<script src="/assets/js/paid_quiz.js?ver=43"></script>
+<script>
+  ga('send', 'pageview');
+</script>
 </body>
 </html>

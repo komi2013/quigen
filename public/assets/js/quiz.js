@@ -517,11 +517,7 @@ $('#20pt').click(function(){
   ga('send','event','buy_on_quiz',20,usr,1);  
   return false;
 });
-setTimeout(function(){
-  if(typeof ga == "function"){
-    ga('send', 'pageview');
-  }
-},1000);
+
 
 
 

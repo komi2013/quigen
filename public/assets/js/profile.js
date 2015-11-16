@@ -174,4 +174,3 @@ $(function(){
     }
   });
 });
-ga('send', 'pageview');

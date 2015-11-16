@@ -105,6 +105,3 @@ $('#unit').change(function(){
   $('#money').empty().append(money);
 }).change();
 
-
-
-ga('send', 'pageview');

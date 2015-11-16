@@ -181,4 +181,3 @@ $('#generate').click(function(){
   });
 });
 
-ga('send', 'pageview');

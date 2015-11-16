@@ -83,6 +83,14 @@ $('#generate').click(function(){
   ga('send','event','generate','upload',localStorage.ua_u_id,localStorage.genestep*1);
 });
 
+$('input').keypress(function (e) {
+  var key = e.which;
+  if(key == 13) {
+    $('#generate').click();
+    return false;  
+  }
+});
+
 //.begin. canvas edit
 
 function handleImage(e){
@@ -136,4 +144,3 @@ $('[name=scale]').change(function(){
   localStorage.scale = $('[name=scale] option:selected').text();
 });
 
-ga('send', 'pageview');

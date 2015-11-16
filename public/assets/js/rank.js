@@ -86,21 +86,4 @@ if(last_tag){
 var dataLimit = 80;
 $(function(){
   getData(1);
-//  var detect = 300;
-//  $(window).scroll(function(){
-//    var scrTop = $(document).scrollTop();
-//    if(scrTop > detect){
-//      detect = detect + 300;
-//      addLimit = addLimit + 20;
-//      if(addLimit > dataLimit){
-//        dataLimit = dataLimit + 80;
-//        getData();
-//      }
-//      if(resData[celNum]){
-//        addCel(resData);  
-//      }
-//    }
-//  });
 });
-
-ga('send', 'pageview');

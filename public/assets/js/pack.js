@@ -81,4 +81,3 @@ $(function(){
     }
   });
 });
-ga('send', 'pageview');

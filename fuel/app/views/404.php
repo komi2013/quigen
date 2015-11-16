@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=42"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=42" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=42" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=42" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=43"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=43" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=43" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=43" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -33,8 +33,8 @@
 
 <?= View::forge('htm/ad_load_right') ?>
 
-<script src="/assets/js/check_news.js?ver=42"></script>
-<script src="/assets/js/basic.js?ver=42"></script>
+<script src="/assets/js/check_news.js?ver=43"></script>
+<script src="/assets/js/basic.js?ver=43"></script>
 <?php Model_Log::warn('Not Found');?>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':404');

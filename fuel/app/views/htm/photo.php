@@ -8,9 +8,11 @@
     <script src="/third/jquery.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
     <script src="/third/img-touch-canvas_1.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=42" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=42" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=42" media="only screen and (max-width : 710px)">
+    <script>var ua = '<?=Config::get("my.ua")?>';</script>
+    <script src="/assets/js/analytics.js?ver=43"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=43" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=43" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=43" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
     <meta name="viewport" content="width=device-width, user-scalable=no" >
     </head>
@@ -122,6 +124,9 @@ $('#rotate').click(function(){
   }
 });
 
+</script>
+<script>
+  ga('send', 'pageview');
 </script>
 </body>
 </html>

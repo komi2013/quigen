@@ -71,4 +71,3 @@ $(function(){
     }
   });
 });
-ga('send', 'pageview');

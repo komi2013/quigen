@@ -139,6 +139,3 @@ $('.nice').click(function(){
     localStorage.nice = JSON.stringify(arr_nice);
   }
 });
-
-
-ga('send', 'pageview');

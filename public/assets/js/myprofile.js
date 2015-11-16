@@ -242,6 +242,14 @@ $('#generate').click(function(){
   }
 });
 
+$('input').keypress(function (e) {
+  var key = e.which;
+  if(key == 13) {
+    $('#generate').click();
+    return false;  
+  }
+});
+
 function checkClick(){
   $('#generate').css({'display': 'none'});  
   $('#delete').css({'display': ''});
@@ -361,5 +369,3 @@ $(function(){
     }
   });
 });
-
-ga('send', 'pageview');

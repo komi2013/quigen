@@ -63,4 +63,3 @@ $(function(){
     }
   });
 });
-ga('send', 'pageview');
