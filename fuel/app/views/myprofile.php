@@ -49,10 +49,10 @@
 
 <table>
 <tr>
-  <td><a href="/follower/?u=<?=Model_Cookie::get_usr()?>"><img src="/assets/img/icon/people.png" class="icon"></a></td>
-  <td class="num_txt" id="num_follower"><a href="/follower/?u=<?=Model_Cookie::get_usr()?>"><?=$follower?></a></td>
-  <td><a href="/following/?u=<?=Model_Cookie::get_usr()?>"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
-  <td class="num_txt" id="num_following"><a href="/following/?u=<?=Model_Cookie::get_usr()?>">0</a></td>
+  <td><a href="/follower/?u=<?=$u_id?>"><img src="/assets/img/icon/people.png" class="icon"></a></td>
+  <td class="num_txt" id="num_follower"><a href="/follower/?u=<?=$u_id?>"><?=$follower?></a></td>
+  <td><a href="/following/?u=<?=$u_id?>"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
+  <td class="num_txt" id="num_following"><a href="/following/?u=<?=$u_id?>">0</a></td>
 </tr>
 </table>
 <table cellspacing="1" boroder="0" id="sns">

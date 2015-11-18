@@ -54,7 +54,8 @@ if ( isset($_GET['tag']) ) {
 <script src="/assets/js/check_news.js?ver=43"></script>
 <script src="/assets/js/search.js?ver=43"></script>
 <script>
-  ga('send', 'pageview', location.pathname + location.search + location.hash);
+  ga('set', 'dimension7', '<?=$tag?>');
+  ga('send', 'pageview');
 </script>
 </body>
 </html>

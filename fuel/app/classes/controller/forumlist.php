@@ -45,7 +45,12 @@ class Controller_Forumlist extends Controller
       ->order_by('open_time', 'desc')
       ->limit(20)
       ->execute()->as_array();
-    $view->forum = $forum;
+    $arr = [];
+    foreach ($forum as $k => $d) {
+      $arr[$k] = $d;
+      $arr[$k]['txt'] = $d['txt'];
+    }
+    $view->forum = $arr;
     $view->top = true;
     $view->page = $this->cnt+1;
     $view->u_id = $this->usr_id;

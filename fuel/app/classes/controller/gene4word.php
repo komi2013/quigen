@@ -7,7 +7,6 @@ class Controller_Gene4word extends Controller
     $query = DB::select()->from('question')
       ->where('usr_id','=',$usr_id)
       ->order_by('open_time', 'desc')
-      //->limit(20)
       ->execute()->as_array();
     $now = new DateTime("now");
     if ( isset($query[0]['open_time']) ) {
@@ -26,21 +25,8 @@ class Controller_Gene4word extends Controller
         
         die($view);
       }
-//      $last_open_time = new DateTime($query[0]['open_time']);
-//      $last_open_time->add( new DateInterval('PT3H'));
-//
-//      if ($now < $last_open_time) {
-//        
-//        $open_time = $last_open_time->format('Y-m-d H:i:s');
-//      } else {
-//        $open_time = $now->format('Y-m-d H:i:s');
-//      }
-//    } else {
-//      $open_time = $now->format('Y-m-d H:i:s');
     }
-//    Model_Cookie::set('open_time', $open_time);
     $view = View::forge('generate_4word');
-    
     $view->u_id = $usr_id;
     die($view);
   }

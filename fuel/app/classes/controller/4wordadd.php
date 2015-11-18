@@ -6,12 +6,10 @@ class Controller_4wordadd extends Controller
     $res[0] = 2;
     Model_Csrf::check();
     $usr_id = Model_Cookie::get_usr();
-    if (!$usr_id)
-    {
+    if (!$usr_id) {
       Model_Log::warn('wrong usr');
       die(json_encode($res));
     }
-    
     $now_limit = new DateTime("now");
     $now_limit->add(new DateInterval('P14D'));
     $query = DB::select()->from('question')
@@ -27,7 +25,6 @@ class Controller_4wordadd extends Controller
     } else {
       $open_time = date("Y-m-d H:i:s");
     } 
-//    $open_time = Model_Cookie::get('open_time');
     $post_open_time = new DateTime($open_time);
     if ($now_limit < $post_open_time) {
       Model_Log::warn('limited');
@@ -95,7 +92,6 @@ class Controller_4wordadd extends Controller
           DB::query($sql)->execute();
         }
       }
-      //DB::query("DELETE FROM tag WHERE txt = ''")->execute();
     }
     catch (Orm\ValidationFailed $e)
     {
