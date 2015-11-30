@@ -7,10 +7,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=43"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=43" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=43" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=43" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=44"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=44" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=44" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=44" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -95,9 +95,9 @@
 <script>
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/check_news.js?ver=43"></script>
-<script src="/assets/js/basic.js?ver=43"></script>
-<script src="/assets/js/admin.js?ver=43"></script>
+<script src="/assets/js/check_news.js?ver=44"></script>
+<script src="/assets/js/basic.js?ver=44"></script>
+<script src="/assets/js/admin.js?ver=44"></script>
 <script>
   ga('send', 'pageview');
 </script>
