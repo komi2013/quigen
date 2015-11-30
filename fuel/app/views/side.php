@@ -11,7 +11,7 @@
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>
 */ ?>
-  <tr><td id="page_category"   class="<?= $this_page == 'category'  ? 'this_page' : '' ?>" >             <a href="/category/"                    >&nbsp;&nbsp;&nbsp;カテゴリ</a></td></tr>
+  <tr><td id="page_category"   class="<?= $this_page == 'category'  ? 'this_page' : '' ?>" >             <a href="/category/"                    >&nbsp;&nbsp;&nbsp;カテゴリ一覧</a></td></tr>
   <tr><td id="page_quest"      class="<?= $this_page == 'quest'     ? 'this_page' : '' ?>" >             <a href="/htm/quest/"   rel="nofollow">&nbsp;&nbsp;&nbsp;クエスト</a></td></tr>
   <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                 >&nbsp;&nbsp;&nbsp;FAQ掲示板</a></td></tr>
   <tr><td                      class="<?= $this_page == 'rule'      ? 'this_page' : '' ?>" >             <a href="/htm/rule/"                  >&nbsp;&nbsp;&nbsp;使い方と規約</a></td></tr>

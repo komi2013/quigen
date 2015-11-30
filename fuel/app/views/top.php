@@ -46,14 +46,14 @@
 <?php $i = 0; $arr_answer = []; foreach($question as $k => $d){ ?>
 <tr>
   <?php if($d['img']){ ?>
-  <td colspan="15" class="td_15<?=!$popular ? '_t' : '' ?>">
+  <td colspan="15" class="td_15<?=!$popular ? '_t' : '_upper' ?>">
     <a href="/quiz/?q=<?=$d['id']?>"> <img src="<?=$d['img']?>" alt="quiz" class="icon"> </a>
   </td>
-  <td colspan="85" class="td_84<?=!$popular ? '_t' : '' ?>">
+  <td colspan="85" class="td_84<?=!$popular ? '_t' : '_upper' ?>">
     <a href="/quiz/?q=<?=$d['id']?>" id="q_id_<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php }else{ ?>
-  <td colspan="100" class="td_99<?=!$popular ? '_t' : '' ?>">
+  <td colspan="100" class="td_99<?=!$popular ? '_t' : '_upper' ?>">
     <a href="/quiz/?q=<?=$d['id']?>" id="q_id_<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php } ?>

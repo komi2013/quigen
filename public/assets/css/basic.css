@@ -39,13 +39,18 @@ h1 {
 .td_15{
   width: 15%;
   text-align:center;
-  padding: 10px 0px 0px 5px;
+  padding: 10px 0px 10px 5px;
 }
 .td_15_t{
   width: 15%;
   text-align:center;
   border-bottom: 1px solid #F5F5F5;
   padding: 10px 0px 10px 5px;
+}
+.td_15_upper{
+  width: 15%;
+  text-align:center;
+  padding: 10px 0px 0px 5px;
 }
 .td_33{
   width: 33%;
@@ -110,16 +115,20 @@ h1 {
 }
 .td_84{
   width: 84%;
-  padding: 10px 10px 0px 10px;
+  padding: 10px;
 }
 .td_84_t{
   width: 84%;
   border-bottom: 1px solid #F5F5F5;
   padding: 20px 10px 20px 10px;
 }
+.td_84_upper{
+  width: 84%;
+  padding: 10px 10px 0px 10px;
+}
 .td_99{
   width: 99%;
-  padding: 10px 10px 0px 10px;
+  padding: 10px;
   word-break: break-word;
 }
 .td_99_t{
@@ -138,9 +147,10 @@ h1 {
   text-align: center;
   padding: 10px;
 }
-.td_99_ct{
-  background-color: #F5F5F5;
+.td_99_upper{
   width: 99%;
+  padding: 10px 10px 0px 10px;
+  word-break: break-word;
 } 
 .txt_49{
   font-size: 15px;
