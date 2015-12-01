@@ -19,7 +19,7 @@ $('#search').click(function(){
   }
   if( $('#tag_name').val().match(/#/) ){
     localStorage.last_tag = $('#tag_name').val();
-    location.href = '/htm/search/?tag='+$('#tag_name').val().replace(/#/,'');
+    location.href = '/search/?tag='+$('#tag_name').val().replace(/#/,'');
   }else{
     location.href = 'http://www.google.com/cse?cx=015373518288618476449%3Akrlgey0pdhk&ie=UTF-8&q='+$('#tag_name').val()+'&sa=Search#gsc.tab=0&gsc.q='+$('#tag_name').val()+'&gsc.page=1';
   }
@@ -38,10 +38,11 @@ if(localStorage.answer){
 }else{
   var answer = [];
 }
-
-var endTime = Math.round( new Date().getTime() / 1000 );
-endTime = endTime + 86400 * 20;
-var addLimit = 20;
+if(!endTime){
+  var endTime = Math.round( new Date().getTime() / 1000 );
+  endTime = endTime + 86400 * 20;  
+}
+var addLimit = 100;
 var celNum = 0;
 var resData = [];
 function addCel(resData){
@@ -76,7 +77,7 @@ function addCel(resData){
   }
 }
 
-function getData(first){
+function getData(){
   if(localStorage.answer){
     var answer = JSON.parse(localStorage.answer);
   }else{
@@ -95,9 +96,6 @@ function getData(first){
 //     resData = id, txt, img
     if(res[0]==1){
       resData = $.merge($.merge([], resData), res[1]);
-      if(first == 1){
-        addCel(resData);
-      }
       endTime = res[1].pop()[4];
       $('#center').empty().append('タグ検索('+res[2]+')');
     }else{
@@ -105,22 +103,16 @@ function getData(first){
   });
 }
 
-var dataLimit = 80;
-$(function(){
-  getData(1);
-  var detect = 300;
-  $(window).scroll(function(){
-    var scrTop = $(document).scrollTop();
-    if(scrTop > detect){
-      detect = detect + 300;
-      addLimit = addLimit + 20;
-      if(addLimit > dataLimit){
-        dataLimit = dataLimit + 80;
-        getData();
-      }
-      if(resData[celNum]){
-        addCel(resData);
-      }
+var detect = 9600; //px
+$(window).scroll(function(){
+  var scrTop = $(document).scrollTop(); // px
+  if(scrTop > detect){
+    detect = detect + 4800;
+    addLimit = addLimit + 100;
+    getData();
+    if(resData[celNum]){
+      addCel(resData);
     }
-  });
+  }
 });
+

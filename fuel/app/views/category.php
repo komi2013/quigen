@@ -30,7 +30,7 @@
 
 <?php $i = 0; foreach($arr_tag as $k => $d){ ?>
   &nbsp;&nbsp;
-  <a href="/htm/search/?tag=<?=$d['url_txt']?>" rel="nofollow"> <?=$d['txt']?> </a>
+  <a href="/search/?tag=<?=$d['url_txt']?>" rel="nofollow"> <?=$d['txt']?> </a>
   &nbsp;&nbsp;
 <?php ++$i;} ?>
 

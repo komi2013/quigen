@@ -373,7 +373,7 @@ function tag_show(){
   .always(function(res){
     if(res[0]==1){
       for(i = 0; i < res[1].length; i++){
-        $('#tag').append('&nbsp;<a href="/htm/search/?tag='+res[1][i]+'">#'+res[1][i]+'</a>&nbsp;');
+        $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]+'">#'+res[1][i]+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
       if(res[2][0]){

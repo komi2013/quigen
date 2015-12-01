@@ -1,22 +1,18 @@
-<?php
-if ( isset($_GET['tag']) ) {
-  $tag = $_GET['tag'];
-}else{
-  $tag = '';
-}
-?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><?=$tag?></title>
-    <meta name="robots" content="noindex">
-    <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
+    <title><?=$title?></title>
+    <?php if($noindex){?>
+      <meta name="robots" content="noindex">
+    <?php } ?>
+    <meta name="description" content="<?=$description?>" >
+    <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" >
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <meta property="og:title" content="<?=$tag?>" />
     <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/search/?tag='.urlencode($tag)?>" />
-    <meta property="og:description" content="<?=$tag?>のクイズ一覧です。他のタグでも検索できます。" />
+
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js?ver=44"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=44" />
@@ -45,11 +41,33 @@ if ( isset($_GET['tag']) ) {
   </td></tr>
 </table>
 <?= View::forge('htm/ad_load') ?>
-<table id="cel"></table>
+
+<table id="cel">
+<?php foreach($question as $k => $d){ ?>
+<tr>
+  <?php if($d['img']){ ?>
+  <td colspan="15" class="td_15_t">
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <img src="<?=$d['img']?>" alt="quiz" class="icon"> </a>
+  </td>
+  <td colspan="85" class="td_84_t">
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=$d['txt']?> </a>
+  </td>
+  <?php }else{ ?>
+  <td colspan="100" class="td_99_t">
+    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=$d['txt']?> </a>
+  </td>
+  <?php } ?>
+</tr>
+<?php } ?>
+</table>   
+
 </div>
 <?= View::forge('htm/ad_load_right') ?>
 
-<script> var tag = '<?=$tag?>'; </script>
+<script>
+  var tag = '<?=$tag?>'; 
+  var endTime = '<?=$end_time?>';
+</script>
 <script src="/assets/js/basic.js?ver=44"></script>
 <script src="/assets/js/check_news.js?ver=44"></script>
 <script src="/assets/js/search.js?ver=44"></script>
