@@ -11,8 +11,14 @@ class Controller_Sitemap extends Controller
       echo 'http://'.Config::get("my.domain").'/quiz/?q='.$d['id'];
       echo "\r\n";
     }
-    
-  
-  } 
+  }
+  public function action_search()
+  {
+    $arr = DB::query("SELECT * FROM mt_seo_tag")->execute()->as_array();
+    foreach ($arr as $k => $d) {
+      echo 'http://'.Config::get("my.domain").'/search/?tag='.$d['tag'];
+      echo "\r\n";
+    }
+  }
 
 }
