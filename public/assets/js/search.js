@@ -97,7 +97,7 @@ function getData(){
     if(res[0]==1){
       resData = $.merge($.merge([], resData), res[1]);
       endTime = res[1].pop()[4];
-      $('#center').empty().append('タグ検索('+res[2]+')');
+      //$('#center').empty().append('タグ検索('+res[2]+')');
     }else{
     }
   });

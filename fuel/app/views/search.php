@@ -24,7 +24,7 @@
 
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread"><?=$tag?></h1></td>
+  <td id="center"><h1 class="font_8 unread"><?=$tag?>(<?=$cnt?>)</h1></td>
   <td class="edge"><img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search"></td>
 </table>
 <?php

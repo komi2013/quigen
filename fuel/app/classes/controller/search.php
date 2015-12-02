@@ -3,8 +3,7 @@ class Controller_Search extends Controller
 {
   public function action_index()
   {
-    if (!isset($_GET['tag']))
-    {
+    if ( !isset($_GET['tag']) ) {
       Model_Log::warn('no tag');
       die( View::forge('404') );
     }
@@ -13,10 +12,13 @@ class Controller_Search extends Controller
       ->execute()->as_array();
     $arr_qu_id = [0];
     $cnt = 0;
-    foreach ($query as $d)
-    {
+    foreach ($query as $d) {
       $arr_qu_id[] = $d['question_id'];
       ++$cnt;
+    }
+    if ( $cnt < 1 ) {
+      Model_Log::warn('no record');
+      die( View::forge('404') );
     }
     $query = DB::select()->from('question')
       ->where('id','in',$arr_qu_id)
@@ -47,7 +49,8 @@ class Controller_Search extends Controller
       $view->description = $d['description'];
       $view->noindex = false;
     }
-    $view->tag = isset($_GET['tag'])? $_GET['tag'] : '';
+    $view->cnt = $cnt; 
+    $view->tag = isset($_GET['tag']) ? $_GET['tag'] : '';
     $view->question = $arr_qu;
     $view->end_time = $end_time;
     return $view;
