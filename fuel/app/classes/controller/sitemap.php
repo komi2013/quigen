@@ -6,7 +6,9 @@ class Controller_Sitemap extends Controller
     if ( !$this->param('tag') ) {
       die( View::forge('404') );
     }
-    $arr = DB::query("SELECT * FROM question WHERE id IN ( SELECT question_id FROM tag WHERE txt = '".$this->param('tag')."') ")->execute()->as_array();
+    $arr = DB::query("SELECT * FROM question WHERE id IN ( "
+            ." SELECT question_id FROM tag WHERE txt = '".$this->param('tag')."') "
+            ." AND open_time < '2110-01-01 00:00:01'")->execute()->as_array();
     foreach ($arr as $k => $d) {
       echo 'http://'.Config::get("my.domain").'/quiz/?q='.$d['id'];
       echo "\r\n";
