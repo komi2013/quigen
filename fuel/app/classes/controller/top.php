@@ -11,18 +11,18 @@ class Controller_Top extends Controller
     $view = View::forge('top');
     $res = DB::query("select count(*) from question where open_time < '2115-01-01'")
       ->execute()->as_array();
-    $this->cnt = ceil($res[0]['count']/20);
+    $this->cnt = ceil($res[0]['count']/200);
     if (isset($_GET['page']))
     {
       $page = $_GET['page'];
       $view->page = $page;
-      $offset = ($this->cnt - $page)*20;
+      $offset = ($this->cnt - $page)*200;
       if ($page > 1 && $offset > -1)
       {
         $question = DB::select()->from('question')
           ->where('open_time','<',date('Y-m-d H:i:s'))
           ->order_by('open_time', 'desc')
-          ->limit(20)->offset($offset)
+          ->limit(200)->offset($offset)
           ->execute()->as_array();
         foreach ($question as $d)
         {
@@ -32,19 +32,20 @@ class Controller_Top extends Controller
           $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
           $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
           $arr_qu[$d['id']]['q_data'] = $q_data;
+          $arr_qu[$d['id']]['tag'] = '';
         }
         $view->question = $arr_qu;
-        $view->popular = false;
+        $view->exactly_top = false;
         die($view);
       }
       else
       {
-        $this->popular_quiz();
+        $this->tag_quiz();
       }
     }
     else
     {
-      $this->popular_quiz();
+      $this->tag_quiz();
     }
   }
   public function popular_quiz()
@@ -79,4 +80,21 @@ class Controller_Top extends Controller
     
     die($view);    
   }
+  public function tag_quiz()
+  {
+    $view = View::forge('top');
+    $arr = DB::query("SELECT * FROM mt_tag_top ORDER BY seq")->execute()->as_array();
+    $arr_qu = [];
+    foreach ($arr as $k => $d) {
+      $arr_qu[$d['question_id']]['id'] = $d['question_id'];
+      $arr_qu[$d['question_id']]['img'] = $d['img'];
+      $arr_qu[$d['question_id']]['txt'] = $d['txt'];
+      $arr_qu[$d['question_id']]['tag'] = $d['tag'];
+    }
+    $view->question = $arr_qu;
+    $view->page = $this->cnt+1;
+    $view->exactly_top = true;
+    die($view);
+  }
+
 }

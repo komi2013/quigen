@@ -45,7 +45,7 @@ h1 {
   width: 15%;
   text-align:center;
   border-bottom: 1px solid #F5F5F5;
-  padding: 10px 0px 10px 5px;
+  padding: 10px 0px 9px 5px;
 }
 .td_15_upper{
   width: 15%;
@@ -61,7 +61,7 @@ h1 {
   width: 33%;
   text-align:center;
   border-bottom: 1px solid #F5F5F5;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 19px 0px;
 }
 .td_34{
   width: 34%;
@@ -81,7 +81,7 @@ h1 {
 .td_49_t{
   width: 49%;
   text-align:center;
-  padding: 0px 10px 20px 10px;
+  padding: 0px 10px 19px 10px;
   border-bottom: 1px solid #F5F5F5;
 }
 
@@ -94,7 +94,7 @@ h1 {
 .td_50_t{
   width: 50%;
   text-align:center;
-  padding: 0px 10px 20px 10px;
+  padding: 0px 10px 19px 10px;
   border-bottom: 1px solid #F5F5F5;
 }
 
@@ -110,7 +110,7 @@ h1 {
 }
 .td_68_t{
   width: 68%;
-  padding: 10px;
+  padding: 10px 10px 9px 10px;
   border-bottom: 1px solid #F5F5F5;
 }
 .td_84{
@@ -120,7 +120,7 @@ h1 {
 .td_84_t{
   width: 84%;
   border-bottom: 1px solid #F5F5F5;
-  padding: 20px 10px 20px 10px;
+  padding: 20px 10px 19px 10px;
 }
 .td_84_upper{
   width: 84%;

@@ -6,7 +6,7 @@
     <meta name="description" content="<?=Config::get('my.top_description')?>">
     <meta name="google-site-verification" content="<?=Config::get('my.sitemap')?>" />
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
-<?php if( $popular ){ ?>
+<?php if( $exactly_top ){ ?>
     <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />
 <?php }else{ ?>
     <meta name="robots" content="noindex,follow">
@@ -42,35 +42,42 @@
   </td></tr>
 </table>
 
-<table id="cel">
-<?php $i = 0; $arr_answer = []; foreach($question as $k => $d){ ?>
+<table>
+<?php
+  $i = 0;
+  $arr_answer = [];
+  $prev_tag = '';
+?>
+<?php foreach($question as $k => $d){ ?>
+<?php if( $exactly_top AND $prev_tag != $d['tag']){ ?>
+    <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$d['tag']?>"><?=$d['tag']?></a></td></tr>
+<?php } ?>    
 <tr>
   <?php if($d['img']){ ?>
-  <td colspan="15" class="td_15<?=!$popular ? '_t' : '_upper' ?>">
+  <td colspan="15" class="td_15_t">
     <a href="/quiz/?q=<?=$d['id']?>"> <img src="<?=$d['img']?>" alt="quiz" class="icon"> </a>
   </td>
-  <td colspan="85" class="td_84<?=!$popular ? '_t' : '_upper' ?>">
+  <td colspan="85" class="td_84_t">
     <a href="/quiz/?q=<?=$d['id']?>" id="q_id_<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php }else{ ?>
-  <td colspan="100" class="td_99<?=!$popular ? '_t' : '_upper' ?>">
+  <td colspan="100" class="td_99_t">
     <a href="/quiz/?q=<?=$d['id']?>" id="q_id_<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php } ?>
 </tr>
-<?php if( $popular ){ ?>
-<tr>
-  <td colspan="33" class="td_33_t"></td><td colspan="33" class="td_33_t"></td>
-  <td colspan="34" class="td_33_t"><img src="/assets/img/icon/answer.png" alt="answer user" class="icon">&nbsp;<?=$d['a_amount']?></td>  
-</tr>
+<?php
+  ++$i;
+  $arr_answer[] = $d['id'];
+  $prev_tag = $d['tag'];
+?>
 <?php } ?>
-<?php ++$i; $arr_answer[] = $d['id']; } ?>
 </table>
 <br>
 <table>
   <tr>
   <td class="td_33">
-    <?php if(!$popular){ ?>
+    <?php if(!$exactly_top){ ?>
     <a href="/top/?page=<?=$page+1?>"> << </a>
     <?php }?>
   </td>
