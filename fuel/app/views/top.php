@@ -41,7 +41,13 @@
     <datalist id="tag_list"></datalist>
   </td></tr>
 </table>
-
+<div style="line-height: 50px;">
+<?php foreach($arr_tag as $k => $d){ ?>
+  &nbsp;&nbsp;
+  <a href="/search/?tag=<?=$d['url_txt']?>" rel="nofollow"> <?=$d['txt']?> </a>
+  &nbsp;&nbsp;
+<?php } ?>
+</div>
 <table>
 <?php
   $i = 0;
@@ -89,6 +95,7 @@
   </td>
   </tr>
 </table>
+<br>
 <?= View::forge('htm/ad_load') ?>
 </div>
 <?= View::forge('htm/ad_load_right') ?>

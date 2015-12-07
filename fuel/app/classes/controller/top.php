@@ -12,8 +12,14 @@ class Controller_Top extends Controller
     $res = DB::query("select count(*) from question where open_time < '2115-01-01'")
       ->execute()->as_array();
     $this->cnt = ceil($res[0]['count']/200);
-    if (isset($_GET['page']))
-    {
+    $query = DB::query("SELECT txt FROM tag GROUP BY txt")->execute()->as_array();
+    $arr_tag = [];
+    foreach($query as $k => $d){
+      $arr_tag[$k]['url_txt'] = urlencode($d['txt']);
+      $arr_tag[$k]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
+    }
+    $this->arr_tag = $arr_tag;
+    if ( isset($_GET['page']) ) {
       $page = $_GET['page'];
       $view->page = $page;
       $offset = ($this->cnt - $page)*200;
@@ -28,14 +34,12 @@ class Controller_Top extends Controller
         {
           $arr_qu[$d['id']]['id'] = $d['id'];
           $arr_qu[$d['id']]['img'] = $d['img'];
-          $arr_qu[$d['id']]['txt'] = $d['txt'];
-          $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
-          $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-          $arr_qu[$d['id']]['q_data'] = $q_data;
+          $arr_qu[$d['id']]['txt'] = Security::htmlentities($d['txt']);
           $arr_qu[$d['id']]['tag'] = '';
         }
         $view->question = $arr_qu;
         $view->exactly_top = false;
+        $view->arr_tag = $this->arr_tag;
         die($view);
       }
       else
@@ -88,12 +92,14 @@ class Controller_Top extends Controller
     foreach ($arr as $k => $d) {
       $arr_qu[$d['question_id']]['id'] = $d['question_id'];
       $arr_qu[$d['question_id']]['img'] = $d['img'];
+      //$txt = Security::htmlentities($d['txt']);
       $arr_qu[$d['question_id']]['txt'] = $d['txt'];
       $arr_qu[$d['question_id']]['tag'] = $d['tag'];
     }
     $view->question = $arr_qu;
     $view->page = $this->cnt+1;
     $view->exactly_top = true;
+    $view->arr_tag = $this->arr_tag;
     die($view);
   }
 
