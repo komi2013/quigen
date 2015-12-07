@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=45"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=45" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=45" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=45" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=46"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=46" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=46" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=46" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -119,8 +119,8 @@
   var u_id = '<?=@$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/basic.js?ver=45"></script>
-<script src="/assets/js/quest.js?ver=45"></script>
+<script src="/assets/js/basic.js?ver=46"></script>
+<script src="/assets/js/quest.js?ver=46"></script>
 <script>
   ga('send', 'pageview');
 </script>
