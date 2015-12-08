@@ -6,7 +6,6 @@
 - public/sitemap/*
 - public/robots.txt
 - public/BingSiteAuth.xml
-- public/.htaccess
 - .git*
 - public/data/*
 - db_data/*

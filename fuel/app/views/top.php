@@ -41,6 +41,7 @@
     <datalist id="tag_list"></datalist>
   </td></tr>
 </table>
+<?php if($exactly_top){ ?>
 <div style="line-height: 50px;">
 <?php foreach($arr_tag as $k => $d){ ?>
   &nbsp;&nbsp;
@@ -48,6 +49,8 @@
   &nbsp;&nbsp;
 <?php } ?>
 </div>
+<div style="width:100%;border-bottom: 1px solid #F5F5F5;"></div>
+<?php } ?>
 <table>
 <?php
   $i = 0;
