@@ -66,18 +66,15 @@ class Controller_4wordmoreadd extends Controller
     die(json_encode($res));
   }  
 
-  $arr_word = DB::select()->from('word')
-    ->execute()->as_array();
-    //->order_by('quiz', 'asc')->limit(12)
-
+    $arr_word = DB::query("SELECT * FROM w_col_02 ORDER BY id ")->execute()->as_array();
     $ii = 1;
     //$arr_word_4 = array();
-    $wh_time = 1446303600;
+    $wh_time = 1446313600;
     
     foreach ($arr_word as $d) {
       //year,comment
-      $arr_word_q[] = $d['answer'].'　(発音は'.$d['quiz'].')　の意味は？';
-      $arr_word_a[] = $d['three'];
+      $arr_word_q[] = $d['quiz'].'　(発音は'.$d['three'].')　の意味は？';
+      $arr_word_a[] = $d['answer'];
 
       if ( ($ii % 4) == 0 ) {
         $i = 0;
@@ -88,7 +85,7 @@ class Controller_4wordmoreadd extends Controller
           $question_id = $question->get_new_id();
           $question->id = $question_id;
           $question->txt = $arr_word_q[$i];
-          $question->usr_id = 33;
+          $question->usr_id = 22;
           $question->img = '';
           $question->create_at = date("Y-m-d H:i:s");
           $question->open_time = date("Y-m-d H:i:s", $wh_time);
@@ -113,7 +110,7 @@ class Controller_4wordmoreadd extends Controller
           $answer_by_q->save();
 
           $i++;
-          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'ドイツ語')")->execute();
+          DB::query("INSERT INTO tag (question_id,txt) VALUES (".$question_id.",'ロシア語')")->execute();
         }
         $arr_word_q = [];
         $arr_word_a = [];
