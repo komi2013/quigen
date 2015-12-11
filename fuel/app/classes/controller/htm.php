@@ -25,14 +25,11 @@ class Controller_Htm extends Controller
     header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
     header('Cache-Control: private, max-age=' . $expires);
     header('Pragma: ');
-    $slash = explode( '/', $_SERVER['REQUEST_URI'] );
-    if ( !isset($slash[2]) ) {
+    $file = $this->param('one');
+    if ( !file_exists(APPPATH.'views/htm/'.$file.'.php') ) {
       die( View::forge('404') );
     }
-    if ( !file_exists(APPPATH.'views/htm/'.$slash[2].'.php') ) {
-      die( View::forge('404') );
-    }
-    $view = View::forge('htm/'.$slash[2]);
+    $view = View::forge('htm/'.$file);
     $view->u_id = Model_Cookie::get_usr();
     die($view);
   }
