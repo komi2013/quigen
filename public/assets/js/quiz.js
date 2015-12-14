@@ -268,7 +268,11 @@ function after_post(correct_answer){
   localStorage.ticket = JSON.stringify(ticket);
   setTimeout(function(){
     if(next_q){
-      location.href = '/quiz/?q='+next_q;  
+      if(iframe){
+        top.window.location.href = 'http://'+domain+'/quiz/?q='+next_q;        
+      }else{
+        location.href = '/quiz/?q='+next_q;
+      }
     }else{
       location.href = '/';
     }

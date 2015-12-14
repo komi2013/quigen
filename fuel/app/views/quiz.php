@@ -13,13 +13,18 @@
     <script src="/assets/js/analytics.js?ver=46"></script>
     <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=46" />
+<?php if( isset($_GET['iframe']) ){?>
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=46">
+<?php }else{ ?>
     <link rel="stylesheet" href="/assets/css/pc.css?ver=46" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css?ver=46" media="only screen and (max-width : 710px)">
+<?php } ?>    
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
     
-    
+
+
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="unread font_8">クイジェン</h1></td>
@@ -30,7 +35,9 @@
   $side->this_page = '';
   echo $side;
 ?>
+
 <div id="content">
+
 <?php if($img){?>
 <div id="div_photo">
 <img src="<?=$img?>" alt="quiz photo" id="photo">
@@ -84,6 +91,7 @@
 <?php ++$i;} ?>
 </tr>
 </table>
+
 <table id="comment"></table>
 <table id="comment_in"></table>
 <br>
@@ -117,6 +125,11 @@
   <img src="/assets/img/icon/clip.png" alt="line" class="icon">
   </a>
 </td>
+</tr>
+<tr>
+  <td colspan="4">
+<textarea style="width:100%;"><iframe style="width: 100%;" src="http://<?=Config::get('my.domain')?>/quiz/?q=<?=$question?>&iframe=true" height="500" frameborder="0" scrolling="no"></iframe></textarea>
+  </td>
 </tr>
 </table>
 <br>
@@ -161,10 +174,12 @@
 </td>
 </tr>
 </table>
+
 <?= View::forge('htm/ad_load') ?>
 </div>
+<?php if( !isset($_GET['iframe']) ){?>
 <?= View::forge('htm/ad_load_right') ?>
-
+<?php } ?>
 
 <script>
   var correct = '<?=$correct?>';
@@ -173,12 +188,15 @@
   var q_data = '<?=$q_data?>';
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var iframe = '<?=isset($_GET['iframe'])?>';
+  var domain = '<?=Config::get('my.domain')?>';
 </script>
 <script src="/assets/js/basic.js?ver=46"></script>
 <script src="/assets/js/check_news.js?ver=46"></script>
 <script src="/assets/js/quiz.js?ver=46"></script>
 <script>
 setTimeout(function(){
+  ga('set', 'dimension7', iframe);
   ga('send', 'pageview');
 },1000);
 </script>
