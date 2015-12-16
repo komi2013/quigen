@@ -5,6 +5,7 @@
 - public/assets/img/forum/*
 - public/robots.txt
 - public/BingSiteAuth.xml
+- public/phpPgAdmin_q/
 - .git*
 - public/data/*
 - db_data/*
