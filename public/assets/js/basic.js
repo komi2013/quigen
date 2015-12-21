@@ -35,17 +35,16 @@ if(localStorage.last_visit){
   localStorage.session_answer = 0;
   ga('set', 'dimension18', localStorage.session);
 }
-
-$(window).load(function(){
-  $(".ad_frame").contents().bind("click",function(){
-    var ua_u_id = 1;
-    if(localStorage.ua_u_id){
-      ua_u_id = localStorage.ua_u_id;
+if (window.matchMedia('(min-width: 711px)').matches) {
+  $(window).scroll(function(){
+    var scrTop = $(document).scrollTop(); // px
+    if(scrTop > 1000){
+      $('#drawer').css({'position':'fixed','margin-top':'-50px'});
+    }else{
+      $('#drawer').css({'position':'absolute','margin-top':'-1px'});
     }
-    ga('send','event','ad',ua_u_id,$(this)[0].URL.split('af=')[1],1);
   });
-});
-
+}
 if(localStorage.quest_level > 2){
   $('.disp_quest').css({ 'display': ''});
 }else{

@@ -11,13 +11,10 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-div {
-  --width: 400px;
-}
 #content{
-  margin-left: 10px;
-  float: left;
+  margin: 0px 0px 0px 310px;
   width: 480px;
+  float:left;
 }
 #menu{
   display: none;
@@ -27,19 +24,14 @@ div {
   height: 50px;
 }
 #drawer {
-  --position : absolute;
-  --left : 10px;
+  position : absolute;
+  float : left;
   margin-top : -1px;
   width : 300px;   
   background-color: white;
-  float: left;
 }
 
-#ad_frame_right {
-  margin-left: 10px;
-/*
-  left: 730px;
-  top: 70px;
-  position: absolute;
-*/
+.ad_frame_right {
+  position : fixed;
+  margin: 0px 0px 0px 10px; 
 }

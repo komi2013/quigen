@@ -47,26 +47,31 @@
 <tr>
   <?php if($d['img']){ ?>
   <td colspan="15" class="td_15_t">
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <img src="<?=$d['img']?>" alt="quiz" class="icon"> </a>
+    <a href="/quiz/?q=<?=$d['id']?>"> <img src="<?=$d['img']?>" alt="quiz" class="icon"> </a>
   </td>
   <td colspan="85" class="td_84_t">
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=$d['txt']?> </a>
+    <a href="/quiz/?q=<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php }else{ ?>
   <td colspan="100" class="td_99_t">
-    <a href="/quiz/?crypt_q=<?=$d['q_data']?>"> <?=$d['txt']?> </a>
+    <a href="/quiz/?q=<?=$d['id']?>"> <?=$d['txt']?> </a>
   </td>
   <?php } ?>
 </tr>
 <?php } ?>
-</table>   
-
+<?php if($left_cnt == $limit){ ?>
+<tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$tag?>&page=<?=$next_page?>" target=”_blank”>・・・別ページで開く・・・</a></td></tr>
+<?php } ?>
+</table>
+<span id="nextPage" style="display:none;"><?=$next_page?></span>
 </div>
 <?= View::forge('htm/ad_load_right') ?>
 
 <script>
   var tag = '<?=$tag?>'; 
-  var endTime = '<?=$end_time?>';
+  var nextPage = '<?=$next_page?>';
+  var leftCnt = '<?=$left_cnt?>';
+  var limit = '<?=$limit?>';
 </script>
 <script src="/assets/js/basic.js?ver=46"></script>
 <script src="/assets/js/check_news.js?ver=46"></script>

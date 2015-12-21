@@ -20,13 +20,42 @@ class Controller_Search extends Controller
       Model_Log::warn('no record');
       die( View::forge('404') );
     }
-    $query = DB::select()->from('question')
-      ->where('id','in',$arr_qu_id)
-      ->order_by('open_time','desc')
-      ->limit(200)
-      ->execute()->as_array();
+    $no_param = true;
+    $limit = 200;
+    $pager_cnt = ceil($cnt/$limit);
+    if ( isset($_GET['page']) ) {
+      $page = $_GET['page'];
+      $offset = ($pager_cnt - $page)*$limit;
+      if ($page > 0 && $offset > -1)
+      {
+        $no_param = false;
+      }
+    }
+      
+//    if ( isset($_GET['endTime']) AND is_integer($_GET['endTime']) ) {
+//      $end_time = date('Y-m-d H:i:s',$_GET['endTime']);
+//    } else {
+//      $end_time = date('Y-m-d H:i:s');
+//    }
+//    var_dump($offset);
+    if ($no_param) {
+      $query = DB::select()->from('question')
+        ->where('id','in',$arr_qu_id)
+        ->order_by('open_time','desc')
+        ->limit($limit)
+        ->execute()->as_array();
+      $next_page = $pager_cnt-1;
+    } else {
+      $query = DB::select()->from('question')
+        ->where('id','in',$arr_qu_id)
+        ->order_by('open_time','desc')
+        ->limit($limit)->offset($offset)
+        ->execute()->as_array();
+      $next_page = $page-1;
+    }
 
     $arr_qu = [];
+    $left_cnt = 0;
     foreach ($query as $k => $d) {
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
@@ -36,6 +65,7 @@ class Controller_Search extends Controller
       $arr_qu[$d['id']]['q_data'] = $q_data;
       $open_time = new DateTime($d['open_time']);
       $end_time = $open_time->getTimestamp();
+      ++$left_cnt;
     }
     $query = DB::select()->from('mt_seo_tag')
       ->where('tag','=',$_GET['tag'])
@@ -52,7 +82,9 @@ class Controller_Search extends Controller
     $view->cnt = $cnt; 
     $view->tag = isset($_GET['tag']) ? $_GET['tag'] : '';
     $view->question = $arr_qu;
-    $view->end_time = $end_time;
+    $view->next_page = $next_page;
+    $view->left_cnt = $left_cnt;
+    $view->limit = $limit;
     return $view;
   }
 }
