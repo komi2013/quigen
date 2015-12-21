@@ -127,8 +127,8 @@
 </td>
 </tr>
 <tr>
-  <td colspan="4">
-<textarea style="width:100%;"><iframe style="width: 100%;" src="http://<?=Config::get('my.domain')?>/quiz/?q=<?=$question?>&iframe=true" height="500" frameborder="0" scrolling="no"></iframe></textarea>
+  <td colspan="4" style="text-align:center;">
+<textarea style="width:90%;"><iframe style="width: 100%;" src="http://<?=Config::get('my.domain')?>/quiz/?q=<?=$question?>&iframe=true" height="500" frameborder="0" scrolling="no"></iframe></textarea>
   </td>
 </tr>
 </table>
