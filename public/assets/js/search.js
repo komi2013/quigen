@@ -6,12 +6,12 @@ $.get('/tagshow/',param,function(){},"json")
   if(res[0]==1){
     for(var i=0, len=res[1].length; i<len; i++) {
       $('#tag_list').append('<option>#'+res[1][i]+'</option>');
-    }  
+    }
   }
 });
 
 if(localStorage.last_tag){
-  $('#tag_name').val(localStorage.last_tag);  
+  $('#tag_name').val(localStorage.last_tag); 
 }
 $('#search').click(function(){
   if( !$('#tag_name').val() ){
