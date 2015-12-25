@@ -25,54 +25,33 @@ class Controller_AdminSitemapQ extends Controller
     }
     
     //センター英語基本,センター英語必須,センター英語重要
-    $arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') AND create_at > '2015-10-14 00:00:01' order by open_time desc")->execute()->as_array();
+    //$arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') AND create_at > '2015-10-14 00:00:01' order by open_time desc")->execute()->as_array();
     //$arr_question = DB::query('SELECT * FROM question ORDER BY ID DESC')->execute()->as_array();
     
     
-    if ( isset($_GET['hatena']) ) {
-      $sitemap = View::forge('sitemap');
-      
-      $arr_q_id = array();
-      $asc_q = array();
-      foreach ($arr_question as $d) {
-        $arr_q_id[] = $d['id'];
-        $asc_q[$d['id']]['id'] = $d['id']; 
-        $asc_q[$d['id']]['img'] = $d['img']; 
-        $asc_q[$d['id']]['txt'] = $d['txt']; 
+    if ( isset($_GET['url']) ) {
+      require_once(APPPATH.'vendor/simple_html_dom.php');
+      $html = file_get_html($_GET['url']);
+      //echo '<pre>';
+      $arr_q = [];
+      $arr_a = [];
+            
+      foreach($html->find('table td') as $k => $d) {
+        if ($k % 2 == 1) {
+          echo ','.$d->plaintext;
+          echo '<br>------------------------<br><br><br><br>';
+          $arr_q[] = $d->plaintext;
+        } else {
+          echo $d->plaintext;
+          $arr_a[] = $d->plaintext;
+        }
       }
-      $arr_choice = DB::select()->from('choice')
-        ->where('question_id','in',$arr_q_id)
-        ->execute()->as_array();
-
-      foreach ($arr_choice as $d) {
-        $shuffle_choice = array();
-        $shuffle_choice[] = $d['choice_0'];
-        $shuffle_choice[] = $d['choice_1'];
-        $shuffle_choice[] = $d['choice_2'];
-        $shuffle_choice[] = $d['choice_3'];
-        
-        shuffle($shuffle_choice);
-        
-        $asc_q[$d['question_id']]['choice_0'] = $shuffle_choice[0];
-        $asc_q[$d['question_id']]['choice_1'] = $shuffle_choice[1];
-        $asc_q[$d['question_id']]['choice_2'] = $shuffle_choice[2];
-        $asc_q[$d['question_id']]['choice_3'] = $shuffle_choice[3];
+      $arr = [];
+      foreach ($arr_a as $k => $d) {
+        //DB::query("INSERT INTO word (quiz,answer) VALUES ('".$arr_q[$k]."','".$arr_a[$k]."')")->execute();
       }
-      krsort($asc_q);
-      //$arr_choice = DB::query('SELECT * FROM choice WHERE question_id in ('..')')->execute()->as_array();
-
-      $sitemap->asc_q = $asc_q;
-
-      $file = DOCROOT.'sitemap/hatena.html';
-      // ファイルをオープンして既存のコンテンツを取得します
-      //$current = file_get_contents($file);
-      // 新しい人物をファイルに追加します
-      //$current = "John Smith\n";
-      // 結果をファイルに書き出します
-      file_put_contents($file, $sitemap);
-
+      //echo '</pre>';
       die();
-      
     } else {
     
       $sitemap = View::forge('sitemap');
