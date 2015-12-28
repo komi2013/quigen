@@ -5,10 +5,8 @@ class Controller_QuizEditUpd extends Controller
   {
     $usr_id = Model_Cookie::get_usr();
     $auth = false;
-    foreach (Config::get('my.adm') as $d)
-    {
-      if ($d == $usr_id)
-      {
+    foreach (Config::get('my.adm') as $d) {
+      if ($d == $usr_id) {
         $auth = true;
       }
     }
@@ -19,20 +17,12 @@ class Controller_QuizEditUpd extends Controller
     if ($query[0]['usr_id'] == $usr_id) {
       $auth = true;
     }
-    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.242.146.131')
-    {
+    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.242.146.131') {
       $view = View::forge('404');
-      
       die($view);
     }
     $res[0] = 2;
     Model_Csrf::check();
-    $usr_id = Model_Cookie::get_usr();
-    if (!$usr_id)
-    {
-      Model_Log::warn('no usr');
-      die(json_encode($res));
-    }
 
     $query = DB::select()->from('mt_block_generate')
       ->where('usr_id','=',$usr_id)
@@ -46,12 +36,9 @@ class Controller_QuizEditUpd extends Controller
       ->where('id','=',$question_id)
       ->execute()->as_array();
 
-    if ($_POST["img"] == 'no')
-    {
+    if ($_POST["img"] == 'no') {
       $web_path = '';
-    }
-    else
-    {
+    } else {
       @mkdir(DOCROOT.'assets/img/quiz/'.date('Ymd',strtotime($arr_question[0]['create_at'])), 0777);
       @chmod(DOCROOT.'assets/img/quiz/'.date('Ymd',strtotime($arr_question[0]['create_at'])), 0777);
       $img_path = DOCROOT.'assets/img/quiz/'.date('Ymd',strtotime($arr_question[0]['create_at'])).'/'.$question_id.'.png';
@@ -63,11 +50,9 @@ class Controller_QuizEditUpd extends Controller
       imagesavealpha($image, TRUE);
       imagepng($image ,$img_path);
     }
-    try
-    {
+    try {
       DB::update('question')
         ->value("txt",$_POST['q_txt'])
-        ->value("usr_id",$usr_id)
         ->value("create_at",date("Y-m-d H:i:s"))
         ->value("img",$web_path)
         ->value("open_time",$arr_question[0]['open_time'])
@@ -94,9 +79,7 @@ class Controller_QuizEditUpd extends Controller
           DB::query($sql)->execute();
         }
       }
-    }
-    catch (Orm\ValidationFailed $e)
-    {
+    } catch (Orm\ValidationFailed $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn('orm err');
       die(json_encode($res));
