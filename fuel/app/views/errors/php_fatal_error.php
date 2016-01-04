@@ -6,12 +6,12 @@
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=49" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=49" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=49" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=50" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=50" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=50" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=49"></script>
+    <script src="/assets/js/analytics.js?ver=50"></script>
   </head>
 <body>
 <table cellspacing="0" boroder="0" id="header">
@@ -39,7 +39,7 @@
 
 </div>
 <?php Model_Log::warn('fatal error');?>
-<script src="/assets/js/basic.js?ver=49"></script>
+<script src="/assets/js/basic.js?ver=50"></script>
 <script>
   ga('send', 'pageview', location.pathname + location.search + location.hash +':fatal_error');
 </script>
