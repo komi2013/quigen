@@ -34,6 +34,9 @@ if(localStorage.quest){
     setTimeout(function(){
       highlighting('#page_quest',200,true);
     },3000);
+    var ticket = JSON.parse(localStorage.ticket);
+    ticket[0] = ticket[0] + 12;
+    localStorage.ticket = JSON.stringify(ticket);
   }
 }
 

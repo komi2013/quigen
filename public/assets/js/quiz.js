@@ -283,6 +283,9 @@ $('#sns td a').click(function(){
     var quest = JSON.parse(localStorage.quest);
     quest[5] = 1;
     localStorage.quest = JSON.stringify(quest);
+    var ticket = JSON.parse(localStorage.ticket);
+    ticket[0] = ticket[0] + 12;
+    localStorage.ticket = JSON.stringify(ticket);
   }
   ga('set','dimension9','share_'+$(this).children('img').attr('alt'));  
   ga('send','event','share',$(this).children('img').attr('alt'),q_id,1);  

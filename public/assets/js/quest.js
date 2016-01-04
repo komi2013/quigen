@@ -6,7 +6,7 @@ var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 if(localStorage.ticket){
   var ticket = JSON.parse(localStorage.ticket);  
 }else{
-  var ticket = [10,1,hour_stamp,10];
+  var ticket = [10,1,hour_stamp,50]; //ticket,span,time,capacity
 }
 var recover = Math.floor( (hour_stamp - ticket[2]) / ticket[1] );
 var formatDate = function (date, format) {
@@ -76,7 +76,7 @@ if(localStorage.quest_level){
     localStorage.quest_level = 2;
     ticket[1] = 1;
     ticket[0] = 10;
-    ticket[3] = 10;
+    ticket[3] = 50;
     quested = 1;
     setInterval('highlighting("#light_1")',2200);
     $('#light_1').append('<img src="/assets/img/icon/star_1.png">');

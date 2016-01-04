@@ -105,6 +105,9 @@ if(localStorage.quest){
   if(quest[4] != 1){
     quest[4] = 1;
     localStorage.quest = JSON.stringify(quest);
+    var ticket = JSON.parse(localStorage.ticket);
+    ticket[0] = ticket[0] + 12;
+    localStorage.ticket = JSON.stringify(ticket);
   }
 }
 ga('send', 'pageview');
