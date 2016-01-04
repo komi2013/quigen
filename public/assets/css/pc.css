@@ -3,13 +3,7 @@
   padding: 0; 
 }
 body {
-  font-size: 15pt;
-  margin: auto;
   width: 960px;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
 }
 #content{
   margin: 0px 0px 0px 310px;
