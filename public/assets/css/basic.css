@@ -3,6 +3,8 @@ table td {
   border-width: 1px 0px;
   border-color: white;
   border-style: solid;
+  table-layout: fixed;
+  word-break: break-word;
 }
 a {
   text-decoration: none;

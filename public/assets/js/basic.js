@@ -46,10 +46,10 @@ $(window).scroll(function(){
     if(diffPosition > 0){
       $('#drawer').css({'top':$(window).scrollTop()+51+'px'});
     }
-    if(diffPosition < 0 || nowPosition < 480){ //down scroll
+    if(diffPosition < 0 || nowPosition < 1000){ //down scroll
       $('#header').css({'position':'static'});
     }else{ //up scroll
-      $('#header').css({'position':'fixed'});
+      $('#header').css({'position':'fixed','z-index':'10'});
     }
   }
 });
