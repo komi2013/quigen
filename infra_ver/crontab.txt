@@ -1,6 +1,6 @@
 0 7 * * * wget --spider http://juken.quigen.info/admincheck/
-0 2 * * * wget --spider http://shikaku.quigen.info/admintopcreate/
-0 3 * * * wget --spider http://juken.quigen.info/admintopcreate/
+0 2 10 * * wget --spider http://shikaku.quigen.info/admintopcreate/
+0 2 11 * * wget --spider http://juken.quigen.info/admintopcreate/
 #0 2 * * * wget --spider http://generator.komahana.info/adminsnspost/?tag=中学歴史
 #0 3 * * * wget --spider http://generator.komahana.info/adminsnspost/?tag=センター英語基本
 #0 11 * * * wget --spider http://generator.komahana.info/adminsnspost/?tag=センター英語必須

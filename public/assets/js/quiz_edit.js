@@ -29,13 +29,6 @@ $('#generate').click(function(){
       validate=2;
     }
   }
-  for(i = 0; i < 3; i++){
-    if($('#tag_'+i).val().match(/\W/g) && 
-      !$('#tag_'+i).val().match(/^[ぁ-んァ-ン一-龥]/)){
-      $('#tag_'+i).css({'border-color':'red'});
-      validate=2;
-    }
-  }
   if(validate==2){
     return;
   }

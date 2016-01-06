@@ -16,11 +16,12 @@ class Controller_Admintopcreate extends Controller
     }
     $top_qu = [];
     $i = 0;
-    foreach (Config::get('my.tag') as $d) {
-      $arr = DB::query( "SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$d."' ) ORDER BY random() LIMIT ".Config::get('my.top_limit') )->execute()->as_array();
+    $query = DB::query( "SELECT * FROM mt_seo_tag" )->execute()->as_array();
+    foreach ($query as $d) {
+      $arr = DB::query( "SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$d['tag']."' ) ORDER BY random() LIMIT ".Config::get('my.top_limit') )->execute()->as_array();
       $seq = rand(0, 1000);
       foreach ($arr as $kk => $dd) {
-        $top_qu[$i]['tag'] = $d;
+        $top_qu[$i]['tag'] = $d['tag'];
         $top_qu[$i]['question_id'] = $dd['id'];
         $top_qu[$i]['img'] = $dd['img'];
         $txt = Security::htmlentities($dd['txt']);
