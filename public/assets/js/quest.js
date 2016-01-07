@@ -4,7 +4,10 @@ if(getVal.q){
 
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 if(localStorage.ticket){
-  var ticket = JSON.parse(localStorage.ticket);  
+  var ticket = JSON.parse(localStorage.ticket);
+  if(ticket[3] == 10){ //only temporary for immigration time
+    ticket[3] == 50
+  }
 }else{
   var ticket = [10,1,hour_stamp,50]; //ticket,span,time,capacity
 }
