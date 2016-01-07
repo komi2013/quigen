@@ -14,10 +14,10 @@
     <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/search/?tag='.urlencode($tag)?>" />
 
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=50"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=50" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=50" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=50" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=51"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=51" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=51" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=51" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -73,9 +73,9 @@
   var leftCnt = '<?=$left_cnt?>';
   var limit = '<?=$limit?>';
 </script>
-<script src="/assets/js/basic.js?ver=50"></script>
-<script src="/assets/js/check_news.js?ver=50"></script>
-<script src="/assets/js/search.js?ver=50"></script>
+<script src="/assets/js/basic.js?ver=51"></script>
+<script src="/assets/js/check_news.js?ver=51"></script>
+<script src="/assets/js/search.js?ver=51"></script>
 <script>
   ga('set', 'dimension7', '<?=$tag?>');
   ga('send', 'pageview');
