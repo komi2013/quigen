@@ -78,7 +78,7 @@ if(localStorage.quest_level){
     $('.quest_2').css({ 'display': ''});
     localStorage.quest_level = 2;
     ticket[1] = 1;
-    ticket[0] = 10;
+    ticket[0] = 50;
     ticket[3] = 50;
     quested = 1;
     setInterval('highlighting("#light_1")',2200);
