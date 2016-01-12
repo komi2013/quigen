@@ -9,10 +9,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=53"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=53" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=53" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=53" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=54"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=54" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=54" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=54" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -39,8 +39,8 @@
 
 <?= View::forge('htm/ad_load_right') ?>
 
-<script src="/assets/js/check_news.js?ver=53"></script>
-<script src="/assets/js/basic.js?ver=53"></script>
+<script src="/assets/js/check_news.js?ver=54"></script>
+<script src="/assets/js/basic.js?ver=54"></script>
 <script>ga('send', 'pageview');</script>
 </body>
 </html>
