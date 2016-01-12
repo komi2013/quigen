@@ -32,7 +32,7 @@
 ?>
 
 <div id="content">
-
+<br> <?= View::forge('htm/ad_load') ?>
 <table>
   <tr>
     <td class="td_68"><a id="pre_quiz" href="/top/">クイズに戻る</a></td>

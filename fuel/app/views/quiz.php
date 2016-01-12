@@ -37,14 +37,14 @@
 ?>
 
 <div id="content">
-
+<br> <?= View::forge('htm/ad_load') ?>
 <?php if($img){?>
 <div id="div_photo">
 <img src="<?=$img?>" alt="quiz photo" id="photo">
 </div>
 <?php } ?>
 <table><tr>
-  <td id="question" class="td_99_t"><?=$q_txt?></td>
+  <td id="question" class="td_99_box"><?=$q_txt?></td>
 </tr></table>
 <div id="big_result">
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
@@ -174,8 +174,6 @@
 </td>
 </tr>
 </table>
-
-<?= View::forge('htm/ad_load') ?>
 </div>
 <?php if( !isset($_GET['iframe']) ){?>
 <?= View::forge('htm/ad_load_right') ?>

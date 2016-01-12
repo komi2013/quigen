@@ -143,12 +143,14 @@ h1 {
 }
 .td_99_t{
   width: 99%;
-  border-bottom: 1px solid #F5F5F5;
   padding: 20px 10px 19px 10px;
+  word-break: break-word;
+  border-bottom: 1px solid #F5F5F5;
 }
 .td_99_box{
   width: 99%;
   padding: 5px 10px 20px 10px;
+  word-break: break-word;
   border-bottom: 1px solid #F5F5F5;
 }
 .td_99_c{
