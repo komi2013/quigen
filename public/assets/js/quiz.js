@@ -264,7 +264,6 @@ function after_post(correct_answer){
   notify[1] = hour_stamp+1;
   localStorage.notify = JSON.stringify(notify);
   ticket[0]--;
-  ticket[2] = hour_stamp;
   localStorage.ticket = JSON.stringify(ticket);
   setTimeout(function(){
     if(next_q){
@@ -284,7 +283,7 @@ $('#sns td a').click(function(){
     quest[5] = 1;
     localStorage.quest = JSON.stringify(quest);
     var ticket = JSON.parse(localStorage.ticket);
-    ticket[0] = ticket[0] + 12;
+    ticket[0] = ticket[0] + 3;
     localStorage.ticket = JSON.stringify(ticket);
   }
   ga('set','dimension9','share_'+$(this).children('img').attr('alt'));  
