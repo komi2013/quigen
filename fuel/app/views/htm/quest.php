@@ -35,7 +35,7 @@
 <br> <?= View::forge('htm/ad_load') ?>
 <table>
   <tr>
-    <td class="td_68"><a id="pre_quiz" href="/top/">クイズに戻る</a></td>
+    <td class="td_68"><a id="pre_quiz" href="/">クイズに戻る</a></td>
     <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
     <td class="td_15" id="ticket" style="color:red;">0</td>
   </tr>
@@ -62,7 +62,7 @@
 
 <table>
   <tr><td class="quest_1 td_99_c">クイズに答える</td>                                   <td class="td_15_c"><img src="/assets/img/icon/star_1.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/top/">他のクイズを確認</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/">他のクイズを確認</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/myanswer/">マイアンサー(復習)を確認</a></td><td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/myprofile/">マイプロファイルを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 

@@ -62,13 +62,13 @@ class Controller_Search extends Controller
     foreach ($query as $k => $d) {
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
-      $arr_qu[$d['id']]['txt'] = $d['txt'];
+      $arr_qu[$d['id']]['txt'] = Security::htmlentities($d['txt']);
       $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
       $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
       $arr_qu[$d['id']]['q_data'] = $q_data;
       $open_time = new DateTime($d['open_time']);
       $end_time = $open_time->getTimestamp();
-      $description .= $d['txt'].'..';
+      $description .= Security::htmlentities($d['txt']).'..';
       ++$left_cnt;
     }
     $query = DB::select()->from('mt_seo_tag')
