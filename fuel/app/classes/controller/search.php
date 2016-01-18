@@ -22,9 +22,11 @@ class Controller_Search extends Controller
     }
     $no_param = true;
     $limit = 200;
+    $amt_page = '';
     $pager_cnt = ceil($cnt/$limit);
     if ( isset($_GET['page']) ) {
       $page = $_GET['page'];
+      $amt_page = '｜ページ'.$_GET['page'];
       $offset = ($pager_cnt - $page)*$limit;
       if ($page > 0 && $offset > -1)
       {
@@ -56,6 +58,7 @@ class Controller_Search extends Controller
 
     $arr_qu = [];
     $left_cnt = 0;
+    $description = '';
     foreach ($query as $k => $d) {
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
@@ -65,18 +68,21 @@ class Controller_Search extends Controller
       $arr_qu[$d['id']]['q_data'] = $q_data;
       $open_time = new DateTime($d['open_time']);
       $end_time = $open_time->getTimestamp();
+      $description .= $d['txt'].'..';
       ++$left_cnt;
     }
     $query = DB::select()->from('mt_seo_tag')
       ->where('tag','=',$_GET['tag'])
       ->execute()->as_array();
     $view = View::forge('search');
-    $view->title = $_GET['tag'];
-    $view->description = $_GET['tag'].'の一覧';
+    $view->title = $_GET['tag'].$amt_page;
+    $view->description = Str::truncate($description, 200);
     $view->noindex = true;
     foreach ($query as $k => $d) {
-      $view->title = $d['title'];
-      $view->description = $d['description'];
+      if ($no_param) {
+        $view->title = $d['title'];
+        $view->description = $d['description'];
+      }
       $view->noindex = false;
     }
     $view->cnt = $cnt; 
