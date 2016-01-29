@@ -33,13 +33,13 @@
   echo $side;
 ?>
 <div id="content">
-
 <table>
   <tr><td style="text-align: center;">
     <input type="text" list="tag_list" value="<?=$tag?>" maxlength="50" id="tag_name" class="txt_84">
     <datalist id="tag_list"></datalist>
   </td></tr>
 </table>
+<div class="tag_desc"><?=$description?></div>
 <?= View::forge('htm/ad_load') ?>
 <table id="cel">
 <?php foreach($question as $k => $d){ ?>

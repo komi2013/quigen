@@ -20,6 +20,6 @@ allow from all
 deny from 14.9.241.0
 deny from 221.93.18.7
 deny from 128.90.91.74
-
+deny from 104.194.26.204
 
 deny from env=ng_ua

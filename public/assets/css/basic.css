@@ -198,3 +198,8 @@ h1 {
   width: 300px;
   z-index: 5;
 }
+.tag_desc{
+  font-size: 12px;
+  word-wrap: break-word;
+  margin: 5px;
+}
