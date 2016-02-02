@@ -1,3 +1,41 @@
+var next_q = 0;
+var q_id = getVal.q;
+if(localStorage.offline_q){
+  var offline_q = JSON.parse(localStorage.offline_q);
+  var prev = 0;
+  for(var i = 0; i < offline_q.length; i++){
+    if(offline_q[i][7] == q_id){
+      var q_txt = offline_q[i][0];
+      var ch_0 = offline_q[i][1];
+      var ch_1 = offline_q[i][2];
+      var ch_2 = offline_q[i][3];
+      var ch_3 = offline_q[i][4];
+      var correct = offline_q[i][5];
+      var q_img = offline_q[i][6];
+      if(i > 0){
+        next_q = offline_q[i-1][7];
+      }
+    }
+  }
+  $('#question').empty().append(q_txt);
+  $('#choice_0').empty().append(ch_0);
+  $('#choice_1').empty().append(ch_1);
+  $('#choice_2').empty().append(ch_2);
+  $('#choice_3').empty().append(ch_3);
+  document.title = q_txt.slice(0,30);
+  if(q_img){
+    $('#photo').attr({'src':q_img});
+  }else{
+    $('#div_photo').empty();
+  }
+}
+var usr = '';
+var q_data = '';
+var u_id = '';
+var csrf = '';
+var iframe = '';
+var domain = '';
+
 quizUsrShow();
 answer_by_q_show();
 tag_show();
@@ -90,16 +128,16 @@ function decimal_hexadecimal(res)
   return res;
 }
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
-if(localStorage.ticket){
-  var ticket = JSON.parse(localStorage.ticket);
-  if(ticket[0] > 0){
-    $('#ticket').css({ 'color': 'green' });
-    $('#ticket').empty().append(ticket[0]);
-  }
-}else{
-  var ticket = [10,1,hour_stamp,10];
-  localStorage.ticket = JSON.stringify(ticket);
-}
+//if(localStorage.ticket){
+//  var ticket = JSON.parse(localStorage.ticket);
+//  if(ticket[0] > 0){
+//    $('#ticket').css({ 'color': 'green' });
+//    $('#ticket').empty().append(ticket[0]);
+//  }
+//}else{
+//  var ticket = [10,1,hour_stamp,10];
+//  localStorage.ticket = JSON.stringify(ticket);
+//}
 ga('set', 'dimension7',q_id);
 if(localStorage.ua_u_id && localStorage.ua_u_id == usr){
   ga('set','dimension12','owner');
@@ -131,20 +169,23 @@ $('.choice').click(function(){
     'border-style': 'solid'
   });
   var this_seq = $(this);
-  if(ticket[0] < 1){
-    $('#ticket').css({ 'color': 'red' });
-  }
-  $('#ticket').empty().append(ticket[0] -1);
-  if(ticket[0] < 1){
-    setTimeout(function(){
-      location.href = '/htm/quest/?q='+q_id;
-      return;
-    },1000);
-  }else{
-    setTimeout(function(){
-      answer_1(this_seq);
-    },1000);    
-  }
+//  if(ticket[0] < 1){
+//    $('#ticket').css({ 'color': 'red' });
+//  }
+//  $('#ticket').empty().append(ticket[0] -1);
+  setTimeout(function(){
+    answer_1(this_seq);
+  },1000);
+//  if(ticket[0] < 1){
+//    setTimeout(function(){
+//      location.href = '/htm/quest/?q='+q_id;
+//      return;
+//    },1000);
+//  }else{
+//    setTimeout(function(){
+//      answer_1(this_seq);
+//    },1000);    
+//  }
 });
 
 function answer_1(this_seq){
@@ -217,40 +258,20 @@ function answer_1(this_seq){
     ,u_name : myname
   };
   if(already < 1){
-    $.post('/answer/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-      }else{
-      }
-    });
+//    $.post('/answer/',param,function(){},"json")
+//    .always(function(res){
+//      if(res[0]==1){
+//      }else{
+//      }
+//    });
     answer.unshift([q_id,$(this_seq).html(),$('#question').html(),q_img,correct]);
     if(answer.length > 99){
       var diff = answer.length - 100;
       answer.splice(-diff, diff);
     }
     localStorage.answer = JSON.stringify(answer);
-    if(localStorage.offline_q){
-      var offline_q = JSON.parse(localStorage.offline_q);
-    }else{
-      var offline_q = [];
-    }
-    offline_q.unshift([
-      $('#question').html()
-      ,$('#choice_0').html()
-      ,$('#choice_1').html()
-      ,$('#choice_2').html()
-      ,$('#choice_3').html()
-      ,correct
-      ,$('#photo').attr('src')
-      ,q_id
-    ]);
-    if(offline_q.length > 99){
-      var diff = offline_q.length - 100;
-      offline_q.splice(-diff, diff);
-    }
-    localStorage.offline_q = JSON.stringify(offline_q);
   }else{
-    for(var i = 0; i < answer.length; i++){
+    for(var i = 0; i < answer.length; i++){  
       if(answer[i][0] == q_id){
         answer[i] = [q_id,$(this_seq).html(),$('#question').html(),q_img,correct];
       }
@@ -283,15 +304,11 @@ function after_post(correct_answer){
   var notify = JSON.parse(localStorage.notify);
   notify[1] = hour_stamp+1;
   localStorage.notify = JSON.stringify(notify);
-  ticket[0]--;
-  localStorage.ticket = JSON.stringify(ticket);
+  //ticket[0]--;
+  //localStorage.ticket = JSON.stringify(ticket);
   setTimeout(function(){
     if(next_q){
-      if(iframe){
-        top.window.location.href = 'http://'+domain+'/quiz/?q='+next_q;        
-      }else{
-        location.href = '/quiz/?q='+next_q;
-      }
+      location.href = '/htm/offline_quiz/?q='+next_q;
     }else{
       location.href = '/';
     }
@@ -302,9 +319,9 @@ $('#sns td a').click(function(){
     var quest = JSON.parse(localStorage.quest);
     quest[5] = 1;
     localStorage.quest = JSON.stringify(quest);
-    var ticket = JSON.parse(localStorage.ticket);
-    ticket[0] = ticket[0] + 3;
-    localStorage.ticket = JSON.stringify(ticket);
+//    var ticket = JSON.parse(localStorage.ticket);
+//    ticket[0] = ticket[0] + 3;
+//    localStorage.ticket = JSON.stringify(ticket);
   }
   ga('set','dimension9','share_'+$(this).children('img').attr('alt'));  
   ga('send','event','share',$(this).children('img').attr('alt'),q_id,1);  
@@ -390,7 +407,7 @@ function answer_by_q_show(){
     }
   });
 }
-var next_q = 0;
+
 function tag_show(){
   var param = {
     q : q_id
@@ -404,11 +421,11 @@ function tag_show(){
       }
       if(res[2][0]){
         $('#prev').append('<a href="/quiz/?q='+res[2][0]+'"> << </a>');
-        next_q = res[2][0];
+        //next_q = res[2][0];
       }
       if(res[2][1]){
         $('#next').append('<a href="/quiz/?q='+res[2][1]+'"> >> </a>');
-        next_q = res[2][1];
+        //next_q = res[2][1];
       }
     }else{
      //console.log(res);
