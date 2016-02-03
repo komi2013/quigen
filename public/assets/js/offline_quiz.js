@@ -2,7 +2,6 @@ var next_q = 0;
 var q_id = getVal.q;
 if(localStorage.offline_q){
   var offline_q = JSON.parse(localStorage.offline_q);
-  var prev = 0;
   for(var i = 0; i < offline_q.length; i++){
     if(offline_q[i][7] == q_id){
       var q_txt = offline_q[i][0];
@@ -29,16 +28,29 @@ if(localStorage.offline_q){
     $('#div_photo').empty();
   }
 }
+
 var usr = '';
 var q_data = '';
-var u_id = '';
+var u_id = localStorage.ua_u_id;
 var csrf = '';
 var iframe = '';
-var domain = '';
 
-quizUsrShow();
-answer_by_q_show();
-tag_show();
+var fb_url   = 'http://www.facebook.com/sharer.php?u=http://'+domain+'/quiz/?q='+q_id+'%26cpn=share_fb';
+var tw_url   = 'https://twitter.com/intent/tweet?url=http://'+domain+'/quiz/?q='+q_id+'%26cpn=share_tw&text='+q_txt+'+@quigen2015';
+var ln_url   = 'line://msg/text/?'+q_txt+'%0D%0Ahttp://'+domain+'/quiz/?q='+q_id+'%26cpn=share_ln';
+var clip_url = 'http://'+domain+'/quiz/?q='+q_id;
+var whole_url = '<iframe style="width: 100%;" src="http://'+domain+'/quiz/?q='+q_id+'&iframe=true" height="500" frameborder="0" scrolling="no"></iframe>';
+
+$('#href_fb').attr({'href':fb_url});
+$('#href_tw').attr({'href':tw_url});
+$('#href_ln').attr({'href':ln_url});
+$('#href_clip').attr({'href':clip_url});
+$('#whole_url').attr({'href':whole_url});
+
+// cz manifest cache is not possible to use wildcard I tried to put NETWORK though
+//quizUsrShow();
+//answer_by_q_show();
+//tag_show();
 
 function get_eto(u_id){
   left   = Math.floor( u_id / 100).toString().substr(-1);

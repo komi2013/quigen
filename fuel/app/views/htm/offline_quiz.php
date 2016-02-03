@@ -7,13 +7,13 @@
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css?ver=57" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=57"></script>
+    <script src="/assets/js/analytics.js"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=57" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=57" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=57" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
+    <link rel="stylesheet" href="/assets/css/pc.css" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -99,29 +99,29 @@
 <table cellspacing="1" boroder="0" id="sns">
 <tr>
 <td style="width:70px;">
-  <a href="" target="_blank">
+  <a href="" target="_blank" id="href_fb">
     <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon">
   </a>
 </td>
 <td style="width:70px;">
-  <a href="" target="_blank">
+  <a href="" target="_blank" id="href_tw">
   <img src="/assets/img/icon/tw.jpg" alt="twitter" class="icon">
   </a>
 </td>
 <td style="width:70px;">
-  <a href="" target="_blank">
+  <a href="" target="_blank" id="href_ln">
   <img src="/assets/img/icon/ln.jpg" alt="line" class="icon">
   </a>
 </td>
 <td style="width:70px;">
-  <a href="" target="_blank">
+  <a href="" target="_blank" id="href_clip">
   <img src="/assets/img/icon/clip.png" alt="line" class="icon">
   </a>
 </td>
 </tr>
 <tr>
   <td colspan="4" style="text-align:center;">
-<textarea style="width:90%;"></textarea>
+<textarea style="width:90%;" id="whole_url"></textarea>
   </td>
 </tr>
 </table>
@@ -130,9 +130,7 @@
 <table>
 <tr>
 <td style="width:98%;text-align:right;">
-  <a href="#" id="report">
-    <img src="/assets/img/icon/exclamation.png" alt="report" class="icon">
-  </a>
+  <img src="/assets/img/icon/exclamation.png" alt="report" id="report" class="icon">
 </td>
 </tr>
 </table>
@@ -151,15 +149,14 @@
 </div>
 
 <?= View::forge('htm/ad_load_right') ?>
-
-<script src="/assets/js/basic.js?ver=57"></script>
-<script src="/assets/js/check_news.js?ver=57"></script>
-<script src="/assets/js/offline_quiz.js?ver=57"></script>
 <script>
-setTimeout(function(){
-
+var domain = '<?=Config::get('my.domain')?>';
+</script>
+<script src="/assets/js/basic.js"></script>
+<script src="/assets/js/check_news.js"></script>
+<script src="/assets/js/offline_quiz.js"></script>
+<script>
   ga('send', 'pageview');
-},1000);
 </script>
 
 </body>

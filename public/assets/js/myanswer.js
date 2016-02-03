@@ -66,7 +66,9 @@ function addCel(resData){
       '</a>'+
       '</td>'+
       '</tr><tr>'+
-      '<td colspan="50" class="td_49_t"></td>'+
+      '<td colspan="50" class="td_49_t">'+
+      '<a href="/htm/offline_quiz/?q='+cellId+'"><img src="/assets/img/icon/no_internet.png" alt="offline" class="icon"></a>'+
+      '</td>'+
       '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delAnswer('+cellId+')"></td>'
       '</tr>';
     }else{
@@ -76,7 +78,9 @@ function addCel(resData){
       '</a>'+
       '</td>'+
       '</tr><tr>'+
-      '<td colspan="50" class="td_49_t"></td>'+
+      '<td colspan="50" class="td_49_t">'+
+      '<a href="/htm/offline_quiz/?q='+cellId+'"><img src="/assets/img/icon/no_internet.png" alt="offline" class="icon"></a>'+
+      '</td>'+
       '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delAnswer('+cellId+')"></td>'
       '</tr>';
     }

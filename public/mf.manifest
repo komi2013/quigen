@@ -1,12 +1,14 @@
 CACHE MANIFEST
+#ver 0.4
+CACHE:
 /htm/offline_quiz/
 /third/jquery-2.1.1.min.js
 /third/jquery.cookie.js
-/assets/css/quiz.css?ver=56
-/assets/js/analytics.js?ver=56
-/assets/css/basic.css?ver=56
-/assets/css/pc.css?ver=56
-/assets/css/sp.css?ver=56
+/assets/css/quiz.css
+/assets/js/analytics.js
+/assets/css/basic.css
+/assets/css/pc.css
+/assets/css/sp.css
 /assets/img/icon/menu.png
 /assets/img/icon/no_img.png
 /assets/img/icon/circle_big.png
@@ -18,6 +20,8 @@ CACHE MANIFEST
 /assets/img/icon/ln.jpg
 /assets/img/icon/clip.png
 /assets/img/icon/exclamation.png
-/assets/js/basic.js?ver=56
-/assets/js/check_news.js?ver=56
-/assets/js/offline_quiz.js?ver=56
+/assets/js/basic.js
+/assets/js/check_news.js
+/assets/js/offline_quiz.js
+
+
