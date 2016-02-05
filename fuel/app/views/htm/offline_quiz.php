@@ -59,43 +59,7 @@
   <td class="td_15" id="ticket" style="color:red;">0</td>
 </tr>
 </table>
-<table cellspacing="0" boroder="0">
-<tr>
 
-<?php $i=0; while($i<16){ ?>
-  <?php if($i == 8){ ?>
-    </tr><tr>
-  <?php } ?>
-  <td id="co_<?=$i?>" class="ans_u_correct"></td>
-
-<?php ++$i;} ?>
-</tr>
-
-</table>
-
-<table cellspacing="0" boroder="0">
-<tr>
-<?php $i=0; while($i<16){ ?>
-  <?php if($i == 8){ ?>
-    </tr><tr>
-  <?php } ?>
-  <td id="inco_<?=$i?>" class="ans_u_incorrect"></td>
-
-<?php ++$i;} ?>
-</tr>
-</table>
-
-<table id="comment"></table>
-<table id="comment_in"></table>
-<br>
-<table cellspacing="0" cellspacing="1" boroder="0">
-  <tr><td id="tag"></td></tr>
-</table>
-<br>
-<table>
-  <tr> <td class="td_33" id="prev"></td> <td class="td_33">||</td> <td class="td_33" id="next"></td> </tr>
-</table>
-<br>
 <table cellspacing="1" boroder="0" id="sns">
 <tr>
 <td style="width:70px;">

@@ -15,6 +15,18 @@ function highlighting(highlight,sc_height,drawer_open){
   }
 }
 
+var u_id = localStorage.ua_u_id;
+var q_txt = '';
+var fb_url   = 'http://www.facebook.com/sharer.php?u=http://'+domain+'/profile/?u='+u_id+'%26cpn=share_fb';
+var tw_url   = 'https://twitter.com/intent/tweet?url=http://'+domain+'/profile/?u='+u_id+'%26cpn=share_tw&text='+q_txt+'+@quigen2015';
+var ln_url   = 'line://msg/text/?'+q_txt+'%0D%0Ahttp://'+domain+'/profile/?u='+u_id+'%26cpn=share_ln';
+var clip_url = 'http://'+domain+'/profile/?u='+u_id;
+
+$('#href_fb').attr({'href':fb_url});
+$('#href_tw').attr({'href':tw_url});
+$('#href_ln').attr({'href':ln_url});
+$('#href_clip').attr({'href':clip_url});
+
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
   if(quest[1] != 1){
@@ -56,34 +68,17 @@ function addCel(resData){
     }else{
       var result = '<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="icon result" id="img_'+cellId+'">';
     }
-    if(resData[celNum][3]){
-      var append = 
-      '<tr><td class="td_15" colspan="15">'+
-      '<a href="/quiz/?q='+cellId+'">'+
-      '<img src="'+resData[celNum][3]+'" alt="quiz" class="icon"></a>'+
-      '</td><td colspan="85" class="td_84">'+
-      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt)+
-      '</a>'+
-      '</td>'+
-      '</tr><tr>'+
-      '<td colspan="50" class="td_49_t">'+
-      '<a href="/htm/offline_quiz/?q='+cellId+'"><img src="/assets/img/icon/no_internet.png" alt="offline" class="icon"></a>'+
-      '</td>'+
-      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delAnswer('+cellId+')"></td>'
-      '</tr>';
-    }else{
-      var append = 
-      '<tr><td colspan="100" class="td_84">'+
-      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt)+
-      '</a>'+
-      '</td>'+
-      '</tr><tr>'+
-      '<td colspan="50" class="td_49_t">'+
-      '<a href="/htm/offline_quiz/?q='+cellId+'"><img src="/assets/img/icon/no_internet.png" alt="offline" class="icon"></a>'+
-      '</td>'+
-      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delAnswer('+cellId+')"></td>'
-      '</tr>';
-    }
+    var append = 
+    '<tr><td colspan="100" class="td_84">'+
+    '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20')).substring(0,30)+
+    '...</a>'+
+    '</td>'+
+    '</tr><tr>'+
+    '<td colspan="50" class="td_49_t">'+
+    '<img src="/assets/img/icon/no_internet.png" alt="offline" class="icon" onClick="goOffline('+cellId+')">'+
+    '</td>'+
+    '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delAnswer('+cellId+')"></td>'
+    '</tr>';
     $('#cel').append(append);    
     ++celNum;
     if(!resData[celNum]){
@@ -108,3 +103,43 @@ function delAnswer(cellId) {
     location.href = '';
   }  
 }
+
+function goOffline(cellId) {
+  localStorage.current_q = cellId;
+  location.href = '/htm/offline_quiz/ ';
+}
+
+var rank = ''
+  +'<tr>'
+    +'<td class="td_68_c"><a href="/category/">タグカテゴリ</a></td>'
+    +'<td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>'
+    +'<td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>'
+  +'</tr>';
+
+$.get('/myanswershow/',{},function(){},"json")
+.always(function(res){
+  if(res[0]==1){
+    for (var i=0; i<res[1].length; i++){
+      rank = rank+''
+        +'<tr>'
+          +'<td class="td_68_c"><a href="/search/?tag='+decodeURIComponent(res[1][i][0])+'">'+decodeURIComponent(res[1][i][0])+'</a></td>'
+          +'<td class="td_15">'+res[1][i][1]+'</td>'
+          +'<td class="td_15">'+res[1][i][2]+'</td>'
+        +'</tr>';
+    }
+    $('#rank').append(rank);
+  }else if(res[0]==2){
+  }
+});
+
+/*
+
+<?php if (isset($rank) ){ $i = 0; foreach($rank as $k => $d){  if($i < 5){ ?>
+<tr>
+  <td class="td_68_c"><a href="/search/?tag=<?=$d['tag']?>"><?=$d['tag']?></a></td>
+  <td class="td_15"><?=$d['cnt']?></td>
+  <td class="td_15"><?=$d['rank']?></td>
+</tr>
+<?php ++$i; } } } ?>
+
+*/

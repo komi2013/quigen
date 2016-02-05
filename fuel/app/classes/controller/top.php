@@ -23,27 +23,23 @@ class Controller_Top extends Controller
       $page = $_GET['page'];
       $view->page = $page;
       $offset = ($this->cnt - $page)*200;
-      if ($page > 1 && $offset > -1)
-      {
+      if ($page > 1 && $offset > -1) {
         $question = DB::select()->from('question')
           ->where('open_time','<',date('Y-m-d H:i:s'))
           ->order_by('open_time', 'desc')
           ->limit(200)->offset($offset)
           ->execute()->as_array();
-        foreach ($question as $d)
-        {
+        foreach ($question as $d) {
           $arr_qu[$d['id']]['id'] = $d['id'];
           $arr_qu[$d['id']]['img'] = $d['img'];
-          $arr_qu[$d['id']]['txt'] = Security::htmlentities($d['txt']);
+          $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
           $arr_qu[$d['id']]['tag'] = '';
         }
         $view->question = $arr_qu;
         $view->exactly_top = false;
         $view->arr_tag = $this->arr_tag;
         die($view);
-      }
-      else
-      {
+      } else {
         $this->tag_quiz();
       }
     }
@@ -76,7 +72,7 @@ class Controller_Top extends Controller
     {
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
-      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 200);
+      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
     }
     $view->question = $arr_qu;
     $view->page = $this->cnt+1;

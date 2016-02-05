@@ -1,5 +1,6 @@
 var next_q = 0;
-var q_id = getVal.q;
+var q_id = localStorage.current_q;
+
 if(localStorage.offline_q){
   var offline_q = JSON.parse(localStorage.offline_q);
   for(var i = 0; i < offline_q.length; i++){
@@ -16,6 +17,7 @@ if(localStorage.offline_q){
       }
     }
   }
+  console.log(q_txt);
   $('#question').empty().append(q_txt);
   $('#choice_0').empty().append(ch_0);
   $('#choice_1').empty().append(ch_1);
@@ -140,16 +142,6 @@ function decimal_hexadecimal(res)
   return res;
 }
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
-//if(localStorage.ticket){
-//  var ticket = JSON.parse(localStorage.ticket);
-//  if(ticket[0] > 0){
-//    $('#ticket').css({ 'color': 'green' });
-//    $('#ticket').empty().append(ticket[0]);
-//  }
-//}else{
-//  var ticket = [10,1,hour_stamp,10];
-//  localStorage.ticket = JSON.stringify(ticket);
-//}
 ga('set', 'dimension7',q_id);
 if(localStorage.ua_u_id && localStorage.ua_u_id == usr){
   ga('set','dimension12','owner');
@@ -181,23 +173,9 @@ $('.choice').click(function(){
     'border-style': 'solid'
   });
   var this_seq = $(this);
-//  if(ticket[0] < 1){
-//    $('#ticket').css({ 'color': 'red' });
-//  }
-//  $('#ticket').empty().append(ticket[0] -1);
   setTimeout(function(){
     answer_1(this_seq);
   },1000);
-//  if(ticket[0] < 1){
-//    setTimeout(function(){
-//      location.href = '/htm/quest/?q='+q_id;
-//      return;
-//    },1000);
-//  }else{
-//    setTimeout(function(){
-//      answer_1(this_seq);
-//    },1000);    
-//  }
 });
 
 function answer_1(this_seq){
@@ -237,11 +215,6 @@ function answer_1(this_seq){
     }
   });
 
-  if(correct_answer == 1){
-    addCel(resCo,'co');
-  }else{
-    addCel(resInco,'inco');
-  }
   var tag = [];
   $('#tag a').each(function(i){
     tag[i] = $(this).html();
@@ -270,12 +243,6 @@ function answer_1(this_seq){
     ,u_name : myname
   };
   if(already < 1){
-//    $.post('/answer/',param,function(){},"json")
-//    .always(function(res){
-//      if(res[0]==1){
-//      }else{
-//      }
-//    });
     answer.unshift([q_id,$(this_seq).html(),$('#question').html(),q_img,correct]);
     if(answer.length > 99){
       var diff = answer.length - 100;
@@ -316,14 +283,9 @@ function after_post(correct_answer){
   var notify = JSON.parse(localStorage.notify);
   notify[1] = hour_stamp+1;
   localStorage.notify = JSON.stringify(notify);
-  //ticket[0]--;
-  //localStorage.ticket = JSON.stringify(ticket);
+  localStorage.current_q = next_q;
   setTimeout(function(){
-    if(next_q){
-      location.href = '/htm/offline_quiz/?q='+next_q;
-    }else{
-      location.href = '/';
-    }
+    location.href = '';
   },1000);
 }
 $('#sns td a').click(function(){
@@ -331,247 +293,18 @@ $('#sns td a').click(function(){
     var quest = JSON.parse(localStorage.quest);
     quest[5] = 1;
     localStorage.quest = JSON.stringify(quest);
-//    var ticket = JSON.parse(localStorage.ticket);
-//    ticket[0] = ticket[0] + 3;
-//    localStorage.ticket = JSON.stringify(ticket);
   }
   ga('set','dimension9','share_'+$(this).children('img').attr('alt'));  
   ga('send','event','share',$(this).children('img').attr('alt'),q_id,1);  
 });
 
-function highlighting(highlight,sc_height,drawer_open){
-  scrollTo(0,sc_height);
-  if (matchMedia('only screen and (max-width : 710px)').matches && drawer_open) {
-    $('#drawer').css({
-      'left': -1
-    });
-  }
-  drawerIsOpen = drawer_open;
-  var limit = 0;
-  while(limit < 3){
-    $(highlight).fadeOut(1000,function(){
-      $(this).css("background-color","yellow");
-    }).fadeIn(1000);
-    ++limit;
-  }
-}
 
-//.begin. add in/correct usr
 var resCo = [];
 var resInco = [];
-function addCel(resData,coinco){
-  var append = '';
-  for (var celNum=0;celNum<resData.length;celNum++){
-    append = '<a href="/profile/?u='+resData[celNum][0]+'">'+
-    '<img src="'+resData[celNum][2]+'" alt="answered usr" class="ans_icon" '+resData[celNum][4]+' ></a>'+
-    '</td>';
-    $('#'+coinco+'_'+celNum).empty().append(append);
-    if(celNum > 16){
-      return;
-    }
-  }
-}
-//.end. add in/correct usr
-
-function quizUsrShow(){
-  var param = {
-    q : q_id
-  };
-  var append = '';
-  $.get('/quizusrshow/',param,function(){},"json")
-  .always(function(res){
-//     res[1] = id, txt, img
-    if(res[0]==1){
-      append = 
-      '<a href="/profile/?u='+res[1][0]+'">'+
-      '<img src="'+res[1][2]+'" alt="generator" class="icon" '+res[1][3]+'></a>';
-      $('#right').append(append);
-      addCel(res[2],'co');
-      addCel(res[3],'inco');
-      resCo = res[2];
-      resInco = res[3];
-    }else{
-      console.log(res);
-    }
-  });
-}
-
 var amt_co = 0;
 var amt_answer = 0;
-function answer_by_q_show(){
-  var param = {
-    q : q_id
-  };
-  $.get('/answerbyqshow/',param,function(){},"json")
-  .always(function(res){
-    if(res[0]==1){
-      amt_co = res[1][0];
-      amt_answer = res[1][1];
-      if(amt_co == 0){
-        $('#num_ratio').empty().append(0+' %');
-      }else{
-        $('#num_ratio').empty().append(Math.round(amt_co/amt_answer * 100)+' %');
-      }
-      $('#num_answer').empty().append(amt_answer);
-      
-    }else{
-     console.log(res);
-    }
-  });
-}
 
-function tag_show(){
-  var param = {
-    q : q_id
-  };
-  $.get('/tagshow/',param,function(){},"json")
-  .always(function(res){
-    if(res[0]==1){
-      for(i = 0; i < res[1].length; i++){
-        $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]+'">#'+res[1][i]+'</a>&nbsp;');
-        ga('set','dimension13',res[1][i]);
-      }
-      if(res[2][0]){
-        $('#prev').append('<a href="/quiz/?q='+res[2][0]+'"> << </a>');
-        //next_q = res[2][0];
-      }
-      if(res[2][1]){
-        $('#next').append('<a href="/quiz/?q='+res[2][1]+'"> >> </a>');
-        //next_q = res[2][1];
-      }
-    }else{
-     //console.log(res);
-    }
-  });
-}
 
-$('#comment_add').click(function(){
-  var validate = 1;
-  if($('#comment_data').val()==''){
-    $('#comment_data').css({'border-color':'red'});
-    validate=2;
-  }
-  if(validate==2){
-    return false;
-  }
-  if(localStorage.quest){
-    var quest = JSON.parse(localStorage.quest);
-    quest[6] = 1;
-    localStorage.quest = JSON.stringify(quest);
-  }
-  $('#comment_add').css({'display': 'none'});
-  $('#success').css({'display':''});
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '';
-  }
-  var param = {
-    csrf : csrf
-    ,txt : $('#comment_data').val()
-    ,q : q_id
-    ,u_img : myphoto
-  };
-  $.post('/commentadd/',param,function(){},"json")
-  .always(function(res){
-    if(res[0]==1){
-      location.href = '';
-    }else{
-      alert('connection error');
-    }
-  });
-  ga('set','dimension14','comment');  
-  ga('send','event','comment',usr,$('#comment_data').val(),1);  
-  return false;
-});
-
-$('#report').click(function(){
-  if(!u_id){
-    alert('はじめにクイズに答えてください');
-    return;
-  }
-  r = confirm('報告します');
-  if(r){
-    var param = {
-      csrf : csrf
-      ,q_id : q_id
-    };
-    $.post('/report/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else{
-        alert('connection error');
-      }
-    });  
-  }
-  ga('set','dimension15','report');  
-  ga('send','event','report',usr,'none','2');
-  return false;
-});
-$('#0pt').click(function(){
-  if(!u_id){
-    alert('はじめにクイズに答えてください');
-    return;
-  }
-  r = confirm('0ポイントで買取要求します');
-  if(r){
-    var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
-    var param = {
-      csrf : csrf
-      ,q_id: q_id
-      ,q_txt : $('#question').html()
-      ,q_img : q_img
-      ,point: 0
-      ,usr: usr
-    };
-    $.post('/quizbuy/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else{
-        alert('connection error');
-      }
-    });
-    
-  }
-  ga('set','dimension16','buy_0');  
-  ga('send','event','buy_on_quiz',0,usr,1);  
-  return false;
-});
-$('#20pt').click(function(){
-  if(!localStorage.point || localStorage.point < 20){
-    alert('ポイントが足りません');
-    return;
-  }
-  if(!u_id){
-    alert('はじめにクイズに答えてください');
-    return;
-  }
-  r = confirm('20ポイントで買取要求します');
-  if(r){
-    var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
-    var param = {
-      csrf : csrf
-      ,q_id: q_id
-      ,q_txt : $('#question').html()
-      ,q_img : q_img
-      ,point: 20
-      ,usr: usr
-    };
-    $.post('/quizbuy/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else{
-        alert('connection error');
-      }
-    });
-  }
-  ga('set','dimension16','buy_20');  
-  ga('send','event','buy_on_quiz',20,usr,1);  
-  return false;
-});
 
 
 

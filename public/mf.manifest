@@ -1,7 +1,8 @@
 CACHE MANIFEST
-#ver 0.4
+#ver 1.4
 CACHE:
 /htm/offline_quiz/
+/htm/myanswer/
 /third/jquery-2.1.1.min.js
 /third/jquery.cookie.js
 /assets/css/quiz.css
@@ -19,9 +20,17 @@ CACHE:
 /assets/img/icon/tw.jpg
 /assets/img/icon/ln.jpg
 /assets/img/icon/clip.png
+/assets/img/icon/no_internet.png
+/assets/img/icon/trash.png
 /assets/img/icon/exclamation.png
+/assets/img/icon/ranking.png
 /assets/js/basic.js
 /assets/js/check_news.js
 /assets/js/offline_quiz.js
+/assets/js/myanswer.js
+
+NETWORK:
+/myanswershow/
+
 
 
