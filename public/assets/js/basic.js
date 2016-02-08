@@ -33,8 +33,8 @@ if(localStorage.last_visit){
 }
 var nowPosition = 0;
 $(window).scroll(function(){
+  var scrTop = $(document).scrollTop(); // px
   if (window.matchMedia('(min-width: 711px)').matches) {
-    var scrTop = $(document).scrollTop(); // px
     if(scrTop > 1000){
       $('#drawer').css({'position':'fixed','margin-top':'-49px'});
     }else{
@@ -43,7 +43,9 @@ $(window).scroll(function(){
   }else{
     diffPosition = nowPosition - $(window).scrollTop();
     nowPosition = $(window).scrollTop();
-    if(diffPosition > 0){
+    if(scrTop < 4000){
+      $('#drawer').css({'position':'absolute','top':'51px'});
+    }else if(diffPosition > 0){
       $('#drawer').css({'top':$(window).scrollTop()+51+'px'});
     }
     if(diffPosition < 0 || nowPosition < 1000){ //down scroll

@@ -49,16 +49,6 @@
   <tr><td class="choice" id="choice_3"></td></tr>
 </table>
 </div>
-<table cellspacing="1" boroder="0">
-<tr>
-  <td class="td_15"><img src="/assets/img/icon/circle_big.png" alt="correct ratio" class="icon"></td>
-  <td class="td_15" id="num_ratio">0 % </td>
-  <td class="td_15"><img src="/assets/img/icon/answer.png" alt="amount of answer" class="icon"></td>
-  <td class="td_15" id="num_answer">0</td>
-  <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
-  <td class="td_15" id="ticket" style="color:red;">0</td>
-</tr>
-</table>
 
 <table cellspacing="1" boroder="0" id="sns">
 <tr>
@@ -89,27 +79,7 @@
   </td>
 </tr>
 </table>
-<br>
 
-<table>
-<tr>
-<td style="width:98%;text-align:right;">
-  <img src="/assets/img/icon/exclamation.png" alt="report" id="report" class="icon">
-</td>
-</tr>
-</table>
-
-<table style="display: none;">
-<tr><td colspan="2" class="td_98">このクイズを購入</td></tr>
-<tr>
-<td class="td_32">
-  <a href="#" id="20pt">20 pt</a>
-</td>
-<td class="td_32">
-  <a href="#" id="0pt">0 pt</a>
-</td>
-</tr>
-</table>
 </div>
 
 <?= View::forge('htm/ad_load_right') ?>

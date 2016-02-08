@@ -102,7 +102,7 @@ return array(
     'tw_access_secret' => 'MRVVF8HMh7zRlgWJZRYHloDQU9DnZvClTGferZVBT0xSx',
 
     'gp_id' => '527982563510-2i8h8q76jkupd8nrvf5evkv244o2kqe6.apps.googleusercontent.com',
-    'gp_secret' => 'xM76uzRTXEMcgAcRCaCe4rH_',
+    'gp_secret' => 'cie4WYM-K5Ab4TNFw3ZNnN3c',
     'gp_callback' => 'http://shikaku.quigen.info/gpcallback/',
     'gp_login' => 'http://shikaku.quigen.info/gplogin/',
 
