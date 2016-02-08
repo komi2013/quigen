@@ -25,4 +25,7 @@ deny from 223.132.113.25
 deny from 74.91.23.26
 deny from 195.154.183.187
 deny from 5.153.238.103
+deny from 81.7.166.250
+deny from 46.119.118.213
+deny from 185.93.187.49
 deny from env=ng_ua
