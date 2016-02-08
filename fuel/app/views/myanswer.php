@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=59"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=59" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=59" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=59" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=60"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=60" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=60" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=60" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -86,9 +86,9 @@
 <script>
 var domain = '<?=Config::get('my.domain')?>';
 </script>
-<script src="/assets/js/check_news.js?ver=59"></script>
-<script src="/assets/js/basic.js?ver=59"></script>
-<script src="/assets/js/myanswer.js?ver=59"></script>
+<script src="/assets/js/check_news.js?ver=60"></script>
+<script src="/assets/js/basic.js?ver=60"></script>
+<script src="/assets/js/myanswer.js?ver=60"></script>
 <script>
   ga('send', 'pageview');
 </script>
