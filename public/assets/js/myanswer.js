@@ -131,15 +131,3 @@ $.get('/myanswershow/',{},function(){},"json")
   }else if(res[0]==2){
   }
 });
-
-/*
-
-<?php if (isset($rank) ){ $i = 0; foreach($rank as $k => $d){  if($i < 5){ ?>
-<tr>
-  <td class="td_68_c"><a href="/search/?tag=<?=$d['tag']?>"><?=$d['tag']?></a></td>
-  <td class="td_15"><?=$d['cnt']?></td>
-  <td class="td_15"><?=$d['rank']?></td>
-</tr>
-<?php ++$i; } } } ?>
-
-*/

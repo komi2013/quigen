@@ -48,7 +48,7 @@ $(window).scroll(function(){
     }else if(diffPosition > 0){
       $('#drawer').css({'top':$(window).scrollTop()+51+'px'});
     }
-    if(diffPosition < 0 || nowPosition < 1000){ //down scroll
+    if(diffPosition < 0 || nowPosition < 4000){ //down scroll
       $('#header').css({'position':'static'});
     }else{ //up scroll
       $('#header').css({'position':'fixed','z-index':'10'});
