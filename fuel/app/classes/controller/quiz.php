@@ -103,7 +103,7 @@ class Controller_Quiz extends Controller
         '/quiz/?q='.
         $question_id;
     $view->description = $description;
-    $view->q_txt = $q_txt;
+    $view->q_txt = nl2br($q_txt);
     $view->title = Str::truncate($q_txt, 32);
     $view->arr_comment = $arr_comment;
     $json_arr_q_data = json_encode(array($question_id,$q_txt,$q_img,$q_u_id));
