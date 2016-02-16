@@ -47,7 +47,7 @@ $('#href_fb').attr({'href':fb_url});
 $('#href_tw').attr({'href':tw_url});
 $('#href_ln').attr({'href':ln_url});
 $('#href_clip').attr({'href':clip_url});
-$('#whole_url').attr({'href':whole_url});
+$('#whole_url').val(whole_url);
 
 // cz manifest cache is not possible to use wildcard I tried to put NETWORK though
 //quizUsrShow();
