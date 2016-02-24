@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow">
+  </head>
+<body>
 <style> * {  margin: 0 auto; padding: 0;} </style>
 <?php if( !isset($_GET['af']) ) { die(View::forge('404')); } ?>
 <?php switch ($_GET['af']) { ?>
@@ -31,3 +38,6 @@
 <?php break; ?>
 
 <?php }?>
+
+</body>
+</html>

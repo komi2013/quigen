@@ -38,4 +38,12 @@ deny from 68.233.233.130
 deny from 199.7.108.48
 deny from 219.94.162.100
 deny from 191.252.44.242
+#20160222
+deny from 64.71.32.30
+deny from 91.189.41.165
+deny from 184.168.200.137
+deny from 184.168.152.75
+deny from 197.221.10.35
+deny from 62.210.162.209
+
 deny from env=ng_ua

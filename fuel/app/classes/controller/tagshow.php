@@ -52,15 +52,31 @@ class Controller_Tagshow extends Controller
     $res[1] = $arr_tag;
     
     if ( isset($arr_prev[0]['question_id']) ) {
-      $res[2][0] = $arr_prev[0]['question_id'];
+      $prev = $arr_prev[0]['question_id'];
     } else {
-      $res[2][0] = '';
+      $prev = 0;
     }
     if ( isset($arr_next[0]['question_id']) ) {
-      $res[2][1] = $arr_next[0]['question_id'];
+      $next = $arr_next[0]['question_id'];
     } else {
-      $res[2][1] = '';
+      $next = 0;
     }
+    $arr = DB::query(
+      "SELECT * FROM question WHERE id IN (".$prev.",".$next.") ORDER BY id ASC "
+      )->execute()->as_array();
+    
+    foreach ($arr as $k => $d) {
+      if ($k < 1) {
+        $res[2][0] = $d['id'];
+        $res[2][1] = $d['txt'];
+        $res[2][2] = $d['img'];
+      } else {
+        $res[3][0] = $d['id'];
+        $res[3][1] = $d['txt'];
+        $res[3][2] = $d['img'];
+      }
+    }
+    
     die(json_encode($res));    
   }
 }

@@ -99,10 +99,6 @@
   <tr><td id="tag"></td></tr>
 </table>
 <br>
-<table>
-  <tr> <td class="td_33" id="prev"></td> <td class="td_33">||</td> <td class="td_33" id="next"></td> </tr>
-</table>
-<br>
 <table cellspacing="1" boroder="0" id="sns">
 <tr>
 <td style="width:70px;">
@@ -161,6 +157,8 @@
 </td>
 </tr>
 </table>
+
+<table id="next_prev"></table>
 
 
 <table style="display: none;">

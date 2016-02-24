@@ -402,20 +402,38 @@ function tag_show(){
         $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]+'">#'+res[1][i]+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
-      if(res[2][0]){
-        $('#prev').append('<a href="/quiz/?q='+res[2][0]+'"> << </a>');
-        next_q = res[2][0];
+      if(res[3][0]){
+        next_q = res[3][0];
       }
-      if(res[2][1]){
-        $('#next').append('<a href="/quiz/?q='+res[2][1]+'"> >> </a>');
-        next_q = res[2][1];
-      }
+      addNavi(res,3);
+      addNavi(res,2);
     }else{
      //console.log(res);
     }
   });
 }
-
+function addNavi(res,nextPrev) {
+  var append = '';
+  if(res[nextPrev][2]){
+    append = 
+    '<tr><td colspan="15" class="td_15_t">'+
+    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
+    '<img src="'+res[nextPrev][2]+'" alt="quiz" class="icon"></a>'+
+    '</td><td colspan="85" class="td_84_t">'+
+    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+decodeURIComponent(res[nextPrev][1])+
+    '</a>'+
+    '</td>'+
+    '</tr>';
+  }else{
+    append = 
+    '<tr><td colspan="100" class="td_84_t">'+
+    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+decodeURIComponent(res[nextPrev][1])+
+    '</a>'+
+    '</td>'+
+    '</tr>';
+  }
+  $('#next_prev').append(append);
+}
 $('#comment_add').click(function(){
   var validate = 1;
   if($('#comment_data').val()==''){
