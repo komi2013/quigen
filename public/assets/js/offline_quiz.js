@@ -1,15 +1,29 @@
 var next_q = 0;
 var q_id = localStorage.current_q;
 
+function shuffle(array) {
+  var m = array.length, t, i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+  return array;
+}
+
+var rand_ch = [1,2,3,4];
+rand_ch = shuffle(rand_ch);
+
 if(localStorage.offline_q){
   var offline_q = JSON.parse(localStorage.offline_q);
   for(var i = 0; i < offline_q.length; i++){
     if(offline_q[i][7] == q_id){
       var q_txt = offline_q[i][0];
-      var ch_0 = offline_q[i][1];
-      var ch_1 = offline_q[i][2];
-      var ch_2 = offline_q[i][3];
-      var ch_3 = offline_q[i][4];
+      var ch_0 = offline_q[i][rand_ch[0]];
+      var ch_1 = offline_q[i][rand_ch[1]];
+      var ch_2 = offline_q[i][rand_ch[2]];
+      var ch_3 = offline_q[i][rand_ch[3]];
       var correct = offline_q[i][5];
       var q_img = offline_q[i][6];
       if(i > 0){
@@ -17,7 +31,6 @@ if(localStorage.offline_q){
       }
     }
   }
-  console.log(q_txt);
   $('#question').empty().append(q_txt);
   $('#choice_0').empty().append(ch_0);
   $('#choice_1').empty().append(ch_1);
@@ -142,11 +155,6 @@ function decimal_hexadecimal(res)
   return res;
 }
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
-ga('set', 'dimension7',q_id);
-if(localStorage.ua_u_id && localStorage.ua_u_id == usr){
-  ga('set','dimension12','owner');
-  //ga('set', 'metric1', usr);
-}
 
 if(localStorage.answer){
   var answer = JSON.parse(localStorage.answer);
@@ -277,8 +285,6 @@ function after_post(correct_answer){
     var u_answer = answer_by_u[1];
   }
   localStorage.session_answer = localStorage.session_answer*1 + 1;
-  ga('set', 'dimension1',localStorage.session_answer);  
-  ga('send','event','answer',correct_answer,usr,u_answer);
   var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60); 
   var notify = JSON.parse(localStorage.notify);
   notify[1] = hour_stamp+1;
@@ -294,11 +300,7 @@ $('#sns td a').click(function(){
     quest[5] = 1;
     localStorage.quest = JSON.stringify(quest);
   }
-  ga('set','dimension9','share_'+$(this).children('img').attr('alt'));  
-  ga('send','event','share',$(this).children('img').attr('alt'),q_id,1);  
 });
-
-
 var resCo = [];
 var resInco = [];
 var amt_co = 0;

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver=61
+#ver=66
 CACHE:
 /htm/offline_quiz/
 /htm/myanswer/
@@ -24,6 +24,7 @@ CACHE:
 /assets/img/icon/trash.png
 /assets/img/icon/exclamation.png
 /assets/img/icon/ranking.png
+/assets/img/icon/quiz_generator.png
 /assets/js/basic.js
 /assets/js/check_news.js
 /assets/js/offline_quiz.js
