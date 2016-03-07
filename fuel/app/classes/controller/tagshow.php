@@ -3,7 +3,6 @@ class Controller_Tagshow extends Controller
 {
   public function action_index()
   {
-    header("Content-Type: application/json; charset=utf-8");
     $res[0] = 2;
     if( !isset($_GET['q']) ) {
       Model_Log::warn('no q');
@@ -76,7 +75,13 @@ class Controller_Tagshow extends Controller
         $res[3][2] = $d['img'];
       }
     }
-    
-    die(json_encode($res));    
+    if ( isset($_GET['callback']) ) {
+      header("Content-Type: application/javascript; charset=utf-8");
+      die( 'jsonp('.json_encode($res).')' );
+    } else {
+      header("Content-Type: application/json; charset=utf-8");
+      die( json_encode($res) );
+    }
+       
   }
 }

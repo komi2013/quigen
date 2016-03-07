@@ -82,7 +82,8 @@
 </div>
 <script>
   var pack_id = '<?=$_GET["p"]?>';
-  var pack_txt = '<?=$pack_txt?>';
+  var pack_txt = '<?=  urlencode($pack_txt)?>';
+  pack_txt = decodeURIComponent(pack_txt);
   var q_amt = '<?=$q_amt?>';
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';

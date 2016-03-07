@@ -178,7 +178,8 @@
 <?php } ?>
 
 <script>
-  var correct = '<?=$correct?>';
+  var correct = '<?=urlencode($correct)?>';
+  correct = decodeURIComponent(correct);
   var q_id = '<?=$question?>';
   var usr = '<?=$usr?>';
   var q_data = '<?=$q_data?>';
@@ -186,6 +187,7 @@
   var csrf = '<?=Model_Csrf::setcsrf()?>';
   var iframe = '<?=isset($_GET['iframe'])?>';
   var domain = '<?=Config::get('my.domain')?>';
+  var cho_4 = '<?=json_encode($arr_choice)?>';
 </script>
 <script src="/assets/js/basic.js?ver=62"></script>
 <script src="/assets/js/check_news.js?ver=62"></script>

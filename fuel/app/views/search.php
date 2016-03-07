@@ -68,7 +68,8 @@
 <?= View::forge('htm/ad_load_right') ?>
 
 <script>
-  var tag = '<?=$tag?>'; 
+  var tag = '<?=urlencode($tag)?>';
+  tag = decodeURIComponent(tag);
   var nextPage = '<?=$next_page?>';
   var leftCnt = '<?=$left_cnt?>';
   var limit = '<?=$limit?>';

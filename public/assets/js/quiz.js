@@ -2,6 +2,25 @@ quizUsrShow();
 answer_by_q_show();
 tag_show();
 
+function shuffle(array) {
+  var m = array.length, t, i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+  return array;
+}
+
+var rand_ch = [0,1,2,3];
+rand_ch = shuffle(rand_ch);
+var q = JSON.parse(cho_4);
+$('#choice_0').empty().append(q[rand_ch[0]]);
+$('#choice_1').empty().append(q[rand_ch[1]]);
+$('#choice_2').empty().append(q[rand_ch[2]]);
+$('#choice_3').empty().append(q[rand_ch[3]]);
+
 function get_eto(u_id){
   left   = Math.floor( u_id / 100).toString().substr(-1);
   left   = decimal_hexadecimal(left);
@@ -402,7 +421,7 @@ function tag_show(){
         $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]+'">#'+res[1][i]+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
-      if(res[3][0]){
+      if(res[3] && res[3][0]){
         next_q = res[3][0];
       }
       addNavi(res,3);
@@ -413,6 +432,9 @@ function tag_show(){
   });
 }
 function addNavi(res,nextPrev) {
+  if(!res[nextPrev] || !res[nextPrev][0]){
+    return;
+  }
   var append = '';
   if(res[nextPrev][2]){
     append = 
@@ -561,7 +583,3 @@ $('#20pt').click(function(){
   ga('send','event','buy_on_quiz',20,usr,1);  
   return false;
 });
-
-
-
-
