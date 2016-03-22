@@ -111,6 +111,13 @@ class Controller_Quiz extends Controller
     $view->q_data = $q_data;
     $view->reference = $arr_choice_1[0]['reference'];
     $view->u_id = Model_Cookie::get_usr();
+
+    $expires = 3600 * 24;
+    header('Last-Modified: Fri Jan 01 2010 00:00:00 GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + $expires));
+    header('Cache-Control: private, max-age=' . $expires);
+    header('Pragma: ');
+
     die($view);
   }
 }

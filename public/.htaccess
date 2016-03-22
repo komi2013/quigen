@@ -58,5 +58,23 @@ deny from 195.154.252.118
 deny from 37.203.214.2
 deny from 173.208.136.170
 deny from 195.154.253.137
+#20160314
+deny from 36.250.176.74
+deny from 58.22.70.103
+deny from 161.58.148.113
+deny from 184.172.172.26
+deny from 91.203.111.44
+deny from 66.147.244.242
+deny from 91.208.99.2
+deny from 45.79.78.93
+deny from 210.172.183.63
+deny from 195.3.105.55
+deny from 208.113.197.86
+deny from 162.223.14.234
+#20160322
+deny from 86.58.139.2
+deny from 197.158.78.129
+deny from 173.247.228.10
+deny from 219.164.77.57
 
 deny from env=ng_ua
