@@ -1,13 +1,13 @@
 if(localStorage.last_tag){
   $('#tag_name').val( localStorage.last_tag );
 }
-$('#search').click(function(){
-  if( !$('#tag_name').val() ){
+$('#tag_name').change(function () {
+  if( !$('#tag_name').val() || $('#tag_name').val() == localStorage.last_tag){
     return;
   }
   localStorage.last_tag = $('#tag_name').val();
   location.href = '';    
-});
+}).change();
 
 function highlighting(highlight,sc_height,drawer_open){
   scrollTo(0,sc_height);
