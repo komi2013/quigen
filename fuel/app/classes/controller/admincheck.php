@@ -85,7 +85,7 @@ class Controller_AdminCheck extends Controller
     $mailto = "seijirok@gmail.com";
     $subject = "monitor result ".date('Y-m-d H:i:s');
     $content = $mail;
-    $mailfrom="From:" .mb_encode_mimeheader("クイジェン") .Config::get('my.dir')."<generator@mail.komahana.info>";
+    $mailfrom="From:" .mb_encode_mimeheader("クイジェン") .Config::get('my.dir')."<generator@mail.quigen.info>";
     $res = mb_send_mail($mailto,$subject,$content,$mailfrom);
     var_dump($res);
     $arrtest['ddd'] = 'i';
