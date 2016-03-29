@@ -1,21 +1,5 @@
-#order deny,allow
-#deny from all
-#allow from 122.212.156.194     #gateway.acrodea.co.jp
-#allow from 153.129.161.59     #home
-##allow from .mikeneko.ne.jp   
-#allow from localhost
-
-#SetEnvIf User-Agent "WOW64" ng_ua
-SetEnvIf User-Agent "www.tkl.iis.u-tokyo.ac.jp" ng_ua
-SetEnvIf User-Agent "360Spider" ng_ua
-SetEnvIf User-Agent "MJ12bot" ng_ua
-SetEnvIf User-Agent "AhrefsBot" ng_ua
-SetEnvIf User-Agent "BLEXBot" ng_ua
-SetEnvIf User-Agent "Yandex" ng_ua
-SetEnvIf User-Agent "baiduspider" ng_ua
-SetEnvIf User-Agent "SemrushBot" ng_ua
-
-order allow,deny
-allow from all
-deny from env=ng_ua
-#deny from 58.59.239.46
+User-agent: *
+Sitemap: http://juken.quigen.info/sitemap/index.xml
+Disallow: /quiz/?crypt_q*
+Disallow: /follow*
+Disallow: /htm/ad/*
