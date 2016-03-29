@@ -12,7 +12,7 @@ class Controller_AdminCheck extends Controller
         $auth = true;
       }
     }
-    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.242.146.131')
+    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '153.126.217.154')
     {
       $view = View::forge('404');
       

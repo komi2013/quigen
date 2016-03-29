@@ -22,3 +22,4 @@ Disallow: /htm/ad/*
 20150521 change monitor.sh and vmstat ***date** .log
 20150721 change logformat into csv
 20150721 add p=ad no_log
+20160328 delete http*conf

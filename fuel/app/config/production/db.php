@@ -6,7 +6,7 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'pgsql:host=localhost;dbname=quiz',
+			'dsn'        => 'pgsql:host=localhost;dbname=juken',
 			'username'   => 'postgres',
 			'password'   => '',
 		),
