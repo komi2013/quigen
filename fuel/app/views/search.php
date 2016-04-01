@@ -60,9 +60,9 @@
 <?php } ?>
 <?php if($left_cnt == $limit){ ?>
 <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$tag?>&page=<?=$next_page?>" target=”_blank”>・・・別ページで開く・・・</a></td></tr>
-<tr><td colspan="100"><?= View::forge('htm/ad_load') ?></td></tr>
 <?php } ?>
 </table>
+<?= View::forge('htm/ad_load') ?>
 <span id="nextPage" style="display:none;"><?=$next_page?></span>
 </div>
 <?= View::forge('htm/ad_load_right') ?>
