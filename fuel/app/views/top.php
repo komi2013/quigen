@@ -105,6 +105,7 @@
 
 <script>
   var arr_answer = JSON.parse( '<?= json_encode($arr_answer) ?>' );
+  var mydomain = "<?=Config::get('my.domain')?>";
 </script>
 <script src="/assets/js/check_news.js?ver=64"></script>
 <script src="/assets/js/basic.js?ver=64"></script>

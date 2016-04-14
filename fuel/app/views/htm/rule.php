@@ -111,6 +111,8 @@ if(localStorage.quest){
   }
 }
 ga('send', 'pageview');
+
 </script>
+
 </body>
 </html>
