@@ -70,7 +70,7 @@ function addCel(resData){
     }
     var append = 
     '<tr><td colspan="100" class="td_84">'+
-    '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20')).substring(0,30)+
+    '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
     '...</a>'+
     '</td>'+
     '</tr><tr>'+
