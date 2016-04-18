@@ -179,7 +179,7 @@
 
 <script>
   var correct = '<?=urlencode($correct)?>';
-  correct = decodeURIComponent(correct);
+  correct = decodeURIComponent(correct).replace( /\+/g,' ');
   var q_id = '<?=$question?>';
   var usr = '<?=$usr?>';
   var q_data = '<?=$q_data?>';
