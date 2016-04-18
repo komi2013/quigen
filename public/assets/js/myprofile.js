@@ -2,34 +2,7 @@ if(getVal.warn){
   alert('他のアカウントのログアウト・削除してから、ログイン・同期してください');
   location.href = '/myprofile/';
 }
-if($.cookie('follow')){
-  localStorage.follow = $.cookie('follow');
-  $.cookie('follow','',{expires:-1,path:'/'});
-}
-if($.cookie('myname')){
-  localStorage.myname = $.cookie('myname');
-  $.cookie('myname','',{expires:-1,path:'/'});
-}
-if($.cookie('myphoto')){
-  localStorage.myphoto = $.cookie('myphoto');
-  $.cookie('myphoto','',{expires:-1,path:'/'});
-}
-if($.cookie('point')){
-  localStorage.point = $.cookie('point');
-  $.cookie('point','',{expires:-1,path:'/'});
-}
-if($.cookie('ua_u_id')){
-  localStorage.ua_u_id = $.cookie('ua_u_id');
-  $.cookie('ua_u_id','',{expires:-1,path:'/'});
-}
-if($.cookie('answer_by_u')){
-  localStorage.answer_by_u = $.cookie('answer_by_u');
-  $.cookie('answer_by_u','',{expires:-1,path:'/'});
-}
-if($.cookie('answer')){
-  localStorage.answer = $.cookie('answer');
-  $.cookie('answer','',{expires:-1,path:'/'});
-}
+
 function get_eto(u_id){
   left   = Math.floor( u_id / 100).toString().substr(-1);
   left   = decimal_hexadecimal(left);
