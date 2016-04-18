@@ -41,7 +41,9 @@ class Controller_TwCallback extends Controller
     foreach ($arr_answer as $k => $d) {
       $correct = $correct*1 + $d['result']*1;
       ++$total;
-      $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
+      if ($k < 200) {
+        $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
+      }
     }
     $js_answer_by_u = json_encode([$correct,$total]);
     $js_answer = json_encode($arr_myanswer);
