@@ -45,23 +45,27 @@ class Controller_FbOAuth extends Controller
       ++$total;
       $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
     }
-    $json_answer_by_u = json_encode([$correct,$total]);
-    $json_answer = json_encode($arr_myanswer);
+    $js_answer_by_u = json_encode([$correct,$total]);
+    $js_answer = json_encode($arr_myanswer);
 
     $arr_follow = DB::query("select receiver from follow where sender = ".$usr_id)->execute()->as_array();
     $arr = array();
-    foreach ($arr_follow as $d)
-    {
+    foreach ($arr_follow as $d) {
       $arr[] = $d['receiver'];
     }
-    Cookie::set('follow', json_encode($arr));
-    Cookie::set('myname', Security::htmlentities($myname) );
-    Cookie::set('myphoto', Security::htmlentities($myphoto));
-    Cookie::set('point', $point);
-    Cookie::set('answer', $json_answer);
-    Cookie::set('answer_by_u', $json_answer_by_u);
     Model_Cookie::set_usr($usr_id);
-    Cookie::set('ua_u_id', $usr_id);
-    Response::redirect('/myprofile/');
+    
+    $view = View::forge('oauth');
+
+    $view->follow = json_encode($arr);
+    $view->myname = Security::htmlentities($myname);
+    $view->myphoto = Security::htmlentities($myphoto);
+    $view->point = $point;
+    $view->js_answer = $js_answer;
+    $view->js_answer_by_u = $js_answer_by_u;
+    $view->introduce = urlencode($introduce);
+
+    $view->u_id = $usr_id;
+    die($view);
   }
 }

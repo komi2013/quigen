@@ -6,8 +6,7 @@ class Controller_Myprofile extends Controller
     $view = View::forge('myprofile');
     $view->follower = 0;
     $usr_id = Model_Cookie::get_usr();
-    if ($usr_id)
-    {
+    if ($usr_id) {
       $res = DB::query("select count(*) from follow where receiver = ".$usr_id." AND status = 2")
         ->execute()->as_array();
       $view->follower = $res[0]['count'];

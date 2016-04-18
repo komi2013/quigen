@@ -20,6 +20,7 @@ class Controller_GpCallback extends Controller
     //curl_setopt($curl, CURLOPT_WRITEFUNCTION, 'write_callback') ;
     curl_setopt($curl, CURLOPT_RETURNTRANSFER,1);
     $output = curl_exec($curl);
+    
     if (curl_errno($curl)) {
       die( curl_errno($curl) );
     } else {
@@ -32,6 +33,13 @@ class Controller_GpCallback extends Controller
     $usr_id = Model_Cookie::get_usr('u_id');
 
     $arr_pv_usr = DB::query("SELECT * FROM usr WHERE pv_u_id = '".$id."' AND provider = 3 ")->execute()->as_array();
+    $follow = [];
+    $myname = '';
+    $myphoto = '';
+    $point = '';
+    $js_answer = [];
+    $js_answer_by_u = [];
+    $introduce = '';
     if ( isset($arr_pv_usr[0]['id']) ) {
       if ( isset($usr_id) AND $usr_id != $arr_pv_usr[0]['id']) {
         Response::redirect('/myprofile/?warn=logout');
@@ -39,7 +47,8 @@ class Controller_GpCallback extends Controller
       $usr_id  = $arr_pv_usr[0]['id'];
       $point   = $arr_pv_usr[0]['point'];
       $myname  = $arr_pv_usr[0]['name'];
-      $myphoto = $arr_pv_usr[0]['img'];       
+      $myphoto = $arr_pv_usr[0]['img'];
+      $introduce = $arr_pv_usr[0]['introduce'];
     } else {
       $usr = new Model_Usr();
       $usr_id = $usr_id ?: $usr->get_new_id();
@@ -60,23 +69,27 @@ class Controller_GpCallback extends Controller
       ++$total;
       $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
     }
-    $json_answer_by_u = json_encode([$correct,$total]);
-    $json_answer = json_encode($arr_myanswer);
+    $js_answer_by_u = json_encode([$correct,$total]);
+    $js_answer = json_encode($arr_myanswer);
 
     $arr_follow = DB::query("select receiver from follow where sender = ".$usr_id)->execute()->as_array();
     $arr = array();
-    foreach ($arr_follow as $d)
-    {
+    foreach ($arr_follow as $d) {
       $arr[] = $d['receiver'];
     }
-    Cookie::set('follow', json_encode($arr));
-    Cookie::set('myname', Security::htmlentities($myname));
-    Cookie::set('myphoto', Security::htmlentities($myphoto));
-    Cookie::set('point', $point);
-    Cookie::set('answer', $json_answer);
-    Cookie::set('answer_by_u', $json_answer_by_u);
     Model_Cookie::set_usr($usr_id);
-    Cookie::set('ua_u_id', $usr_id);
-    Response::redirect('/myprofile/');
+    
+    $view = View::forge('oauth');
+
+    $view->follow = json_encode($arr);
+    $view->myname = Security::htmlentities($myname);
+    $view->myphoto = Security::htmlentities($myphoto);
+    $view->point = $point;
+    $view->js_answer = $js_answer;
+    $view->js_answer_by_u = $js_answer_by_u;
+    $view->introduce = urlencode($introduce);
+
+    $view->u_id = $usr_id;
+    die($view);
   }
 }
