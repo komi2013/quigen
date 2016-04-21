@@ -40,7 +40,7 @@
   </td></tr>
 </table>
 <div class="tag_desc"><?=$description?></div>
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <table id="cel">
 <?php foreach($question as $k => $d){ ?>
 <tr>
@@ -62,10 +62,10 @@
 <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$tag?>&page=<?=$next_page?>" target=”_blank”>・・・別ページで開く・・・</a></td></tr>
 <?php } ?>
 </table>
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <span id="nextPage" style="display:none;"><?=$next_page?></span>
 </div>
-<?= View::forge('htm/ad_load_right') ?>
+<div id="ad_right"></div>
 
 <script>
   var tag = '<?=urlencode($tag)?>';

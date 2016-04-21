@@ -32,7 +32,7 @@
   echo $side;
 ?>
 <div id="content">
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <table id="cel"></table>
 </div>
 <script> var pack_id = '<?=$_GET["p"]?>'; </script>

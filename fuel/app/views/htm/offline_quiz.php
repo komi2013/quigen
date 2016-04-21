@@ -28,7 +28,7 @@
 ?>
 
 <div id="content">
-<br> <?= View::forge('htm/ad_load') ?>
+<br> <div id="ad"></div>
 
 <div id="div_photo">
 <img src="/assets/img/icon/no_img.png" alt="quiz photo" id="photo">
@@ -80,7 +80,7 @@
 
 </div>
 
-<?= View::forge('htm/ad_load_right') ?>
+<div id="ad_right"></div>
 <script>
 var domain = '<?=Config::get('my.domain')?>';
 </script>

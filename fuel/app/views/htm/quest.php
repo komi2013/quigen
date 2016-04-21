@@ -32,7 +32,7 @@
 ?>
 
 <div id="content">
-<br> <?= View::forge('htm/ad_load') ?>
+<br> <div id="ad"></div>
 <table>
   <tr>
     <td class="td_68"><a id="pre_quiz" href="/">クイズに戻る</a></td>
@@ -111,9 +111,9 @@
   </tr>
 </table>
 
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 </div>
-<?= View::forge('htm/ad_load_right') ?>
+<div id="ad_right"></div>
 
 <script>
   var u_id = '<?=@$u_id?>';

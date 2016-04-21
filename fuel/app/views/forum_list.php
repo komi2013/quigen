@@ -122,10 +122,10 @@
 <canvas id="mycanvas" height="300" width="300"></canvas>
 </div>
 
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 </div>
 
-<?= View::forge('htm/ad_load_right') ?>
+<div id="ad_right"></div>
 
 <script>
   var arr_forum = JSON.parse( '<?= json_encode($arr_forum) ?>' );

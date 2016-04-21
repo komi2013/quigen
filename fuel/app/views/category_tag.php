@@ -51,7 +51,7 @@
 <?php ++$i;} ?>
 </table>
 
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 </div>
 
 <script src="/assets/js/check_news.js?ver=65"></script>

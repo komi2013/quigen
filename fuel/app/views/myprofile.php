@@ -69,10 +69,10 @@
 </tr>
 </table>
 
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <table id="cel"></table>
 </div>
-<?= View::forge('htm/ad_load_right') ?>
+<div id="ad_right"></div>
 
 <script>
   var u_id = '<?=$u_id?>';

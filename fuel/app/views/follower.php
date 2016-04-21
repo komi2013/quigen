@@ -32,7 +32,7 @@
 ?>
 
 <div id="content">
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <table id="cel"></table>
 </div>
 

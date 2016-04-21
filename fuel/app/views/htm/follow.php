@@ -27,7 +27,7 @@
   echo $side;
 ?>
 <div id="content">
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <table id="cel"></table>
 </div>
 <script src="/assets/js/check_news.js?ver=65"></script>

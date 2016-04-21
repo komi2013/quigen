@@ -77,7 +77,7 @@
 <canvas id="mycanvas" height="300" width="300"></canvas>
 </div>
 
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 
 </div>
 <script>

@@ -37,7 +37,7 @@
 ?>
 
 <div id="content">
-<br> <?= View::forge('htm/ad_load') ?>
+<br> <div id="ad"></div>
 <?php if($img){?>
 <div id="div_photo">
 <img src="<?=$img?>" alt="quiz photo" id="photo">
@@ -174,7 +174,7 @@
 </table>
 </div>
 <?php if( !isset($_GET['iframe']) ){?>
-<?= View::forge('htm/ad_load_right') ?>
+<div id="ad_right"></div>
 <?php } ?>
 
 <script>

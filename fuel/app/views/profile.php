@@ -91,7 +91,7 @@
 </tr>
 </table>
 
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 <?php if( !isset($_GET['list']) ){ ?>
 <table cellspacing="1" boroder="0"><tr>
   <td class="td_49" style="text-align: center;"><img src="/assets/img/icon/answer.png" class="icon"></td>

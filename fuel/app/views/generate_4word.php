@@ -47,8 +47,9 @@
 <input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_1">
 <input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_2">
 </div>
-<?= View::forge('htm/ad_load') ?>
+<div id="ad"></div>
 </div>
+<div id="ad_right"></div>
 <script>
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
