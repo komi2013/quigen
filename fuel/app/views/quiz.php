@@ -195,7 +195,7 @@
 <script>
 setTimeout(function(){
   ga('set', 'dimension7', iframe);
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 },1000);
 </script>
 

@@ -110,13 +110,9 @@
 <script src="/assets/js/check_news.js?ver=65"></script>
 <script src="/assets/js/basic.js?ver=65"></script>
 <script src="/assets/js/top.js?ver=65"></script>
-<script src="/assets/js/ad.js?ver=65"></script>
-<script>
 
-
-</script>
 <script>
-  $(function(){ ga('send', 'pageview'); });
+  $(function(){ $(function(){ ga('send', 'pageview'); }); });
 </script>
 </body>
 </html>

@@ -49,7 +49,7 @@
 <?php } ?>
 
 <script>
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 </script>
 
 </body>

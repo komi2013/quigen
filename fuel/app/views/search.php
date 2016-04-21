@@ -79,7 +79,7 @@
 <script src="/assets/js/search.js?ver=65"></script>
 <script>
   ga('set', 'dimension7', '<?=$tag?>');
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 </script>
 </body>
 </html>

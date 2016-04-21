@@ -93,7 +93,7 @@
 <script src="/assets/js/check_news.js?ver=65"></script>
 <script src="/assets/js/paid_quiz.js?ver=65"></script>
 <script>
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 </script>
 </body>
 </html>

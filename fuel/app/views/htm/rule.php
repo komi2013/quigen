@@ -110,7 +110,7 @@ if(localStorage.quest){
     localStorage.ticket = JSON.stringify(ticket);
   }
 }
-ga('send', 'pageview');
+$(function(){ ga('send', 'pageview'); });
 
 </script>
 

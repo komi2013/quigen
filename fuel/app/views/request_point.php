@@ -98,7 +98,7 @@
 <script src='https://www.paypalobjects.com/js/external/dg.js'></script>
 <script src="/assets/js/request_point.js?ver=65"></script>
 <script>
-  ga('send','pageview','/request_point/');
+  $(function(){ ga('send','pageview','/request_point/'); });
 </script>
 </body>
 </html>

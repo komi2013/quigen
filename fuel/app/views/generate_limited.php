@@ -36,7 +36,7 @@
 <script src="/assets/js/check_news.js?ver=65"></script>
 <script src="/assets/js/basic.js?ver=65"></script>
 <script>
-  ga('send', 'pageview', location.href+'&limited');
+  $(function(){ ga('send', 'pageview', location.href+'&limited'); });
 </script>
 </body>
 </html>

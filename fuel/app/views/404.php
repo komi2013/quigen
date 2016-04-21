@@ -37,7 +37,7 @@
 <script src="/assets/js/basic.js?ver=65"></script>
 <?php Model_Log::warn('Not Found');?>
 <script>
-  ga('send', 'pageview', location.pathname + location.search + location.hash +':404');
+  $(function(){ ga('send', 'pageview', location.pathname + location.search + location.hash +':404'); });
 </script>
 </body>
 </html>

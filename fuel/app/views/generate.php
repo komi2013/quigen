@@ -101,7 +101,7 @@ var csrf = '<?=Model_Csrf::setcsrf()?>';
 <script src="/assets/js/basic.js?ver=65"></script>
 <script src="/assets/js/generate.js?ver=65"></script>
 <script>
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 </script>
 </body>
 </html>

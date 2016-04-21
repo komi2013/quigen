@@ -126,7 +126,7 @@ $('#rotate').click(function(){
 
 </script>
 <script>
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 </script>
 </body>
 </html>

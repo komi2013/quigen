@@ -77,7 +77,7 @@ var domain = '<?=Config::get('my.domain')?>';
 <script src="/assets/js/basic.js"></script>
 <script src="/assets/js/myanswer.js"></script>
 <script>
-  ga('send', 'pageview');
+  $(function(){ ga('send', 'pageview'); });
 </script>
 </body>
 </html>
