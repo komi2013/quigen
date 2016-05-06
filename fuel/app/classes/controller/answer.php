@@ -61,7 +61,8 @@ class Controller_Answer extends Controller
       $answer_key_u->usr_id = $usr_id;
       $answer_key_u->question_id = $question_id;
       $answer_key_u->result = $_POST['correct'];
-      $answer_key_u->q_txt = preg_replace('/\n|\r|\r\n/', '', $_POST['q_txt']);
+      $q_txt = preg_replace('/\n|\r|\r\n/', '', $_POST['q_txt']);
+      $answer_key_u->q_txt = preg_replace('/\t/', '　', $q_txt);
       $answer_key_u->q_img = $_POST['q_img'];
       $answer_key_u->create_at = date( "Y-m-d H:i:s" );
       $answer_key_u->save();
