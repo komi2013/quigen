@@ -14,14 +14,14 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=66"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=66" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=66" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=66" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=67"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=67" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=67" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=67" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<script src="/third/img-touch-canvas_1.js?ver=66"></script>
+<script src="/third/img-touch-canvas_1.js?ver=67"></script>
 
 <table id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
@@ -132,9 +132,9 @@
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/check_news.js?ver=66"></script>
-<script src="/assets/js/basic.js?ver=66"></script>
-<script src="/assets/js/forum_list.js?ver=66"></script>
+<script src="/assets/js/check_news.js?ver=67"></script>
+<script src="/assets/js/basic.js?ver=67"></script>
+<script src="/assets/js/forum_list.js?ver=67"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>

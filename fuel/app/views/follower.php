@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=66"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=66" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=66" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=66" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=67"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=67" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=67" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=67" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -40,12 +40,12 @@
   var receiver = '<?=$receiver?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/check_news.js?ver=66"></script>
-<script src="/assets/js/basic.js?ver=66"></script>
+<script src="/assets/js/check_news.js?ver=67"></script>
+<script src="/assets/js/basic.js?ver=67"></script>
 <?php if($usr_id == $receiver){ ?>
-<script src="/assets/js/follower_my.js?ver=66"></script>
+<script src="/assets/js/follower_my.js?ver=67"></script>
 <?php }else{ ?>
-<script src="/assets/js/follower.js?ver=66"></script>
+<script src="/assets/js/follower.js?ver=67"></script>
 <?php } ?>
 
 <script>
