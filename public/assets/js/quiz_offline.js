@@ -1,4 +1,7 @@
 var next_q = 0;
+var prev_q = 0;
+var arr_next = [];
+var arr_prev =[];
 var q_id = localStorage.current_q;
 
 function shuffle(array) {
@@ -28,6 +31,11 @@ if(localStorage.offline_q){
       var q_img = offline_q[i][6];
       if(i > 0){
         next_q = offline_q[i-1][7];
+        arr_next = offline_q[i-1];
+      }
+      if(offline_q[i+1]){
+        prev_q = offline_q[i+1][7];
+        arr_prev = offline_q[i+1];
       }
     }
   }
@@ -289,11 +297,45 @@ function after_post(correct_answer){
   var notify = JSON.parse(localStorage.notify);
   notify[1] = hour_stamp+1;
   localStorage.notify = JSON.stringify(notify);
-  localStorage.current_q = next_q;
-  setTimeout(function(){
-    location.href = '';
-  },1000);
+  if(next_q > 0){
+    localStorage.current_q = next_q;
+    setTimeout(function(){
+      location.href = '';
+    },1000);
+  }
 }
+
+add_navi(arr_next);
+add_navi(arr_prev);
+
+function add_navi(arr_q) {
+  if(!arr_q[0]){
+    return;
+  }
+  var append = '';
+  if(arr_q[6]){
+    append = 
+    '<tr><td colspan="15" class="td_15_t">'+
+    '<img src="'+arr_q[6]+'" alt="quiz" class="icon" onClick="goOffline('+arr_q[7]+')">'+
+    '</td><td colspan="85" class="td_84_t anchor" onClick="goOffline('+arr_q[7]+')">'
+    +decodeURIComponent(arr_q[0].replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+    '</td>'+
+    '</tr>';
+  }else{
+    append = 
+    '<tr><td colspan="100" class="td_84_t anchor" onClick="goOffline('+arr_q[7]+')">'
+    +decodeURIComponent(arr_q[0].replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+    '</td>'+
+    '</tr>';
+  }
+  $('#next_prev').append(append);
+}
+
+function goOffline(cellId) {
+  localStorage.current_q = cellId;
+  location.href = '/htm/quiz_offline/ ';
+}
+
 $('#sns td a').click(function(){
   if(localStorage.quest){
     var quest = JSON.parse(localStorage.quest);

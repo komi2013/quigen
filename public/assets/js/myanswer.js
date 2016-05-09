@@ -106,7 +106,7 @@ function delAnswer(cellId) {
 
 function goOffline(cellId) {
   localStorage.current_q = cellId;
-  location.href = '/htm/offline_quiz/ ';
+  location.href = '/htm/quiz_offline/ ';
 }
 
 var rank = ''

@@ -203,3 +203,7 @@ h1 {
   word-wrap: break-word;
   margin: 5px;
 }
+.anchor{
+  color: blue;
+  cursor: pointer;
+}

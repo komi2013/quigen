@@ -78,15 +78,17 @@
 </tr>
 </table>
 
+<table id="next_prev"></table>
+
 </div>
 
 <div id="ad_right"></div>
 <script>
 var domain = '<?=Config::get('my.domain')?>';
 </script>
-<script src="/assets/js/basic.js"></script>
+<script src="/assets/js/basic_offline.js"></script>
 <script src="/assets/js/check_news.js"></script>
-<script src="/assets/js/offline_quiz.js"></script>
+<script src="/assets/js/quiz_offline.js"></script>
 
 </body>
 </html>
