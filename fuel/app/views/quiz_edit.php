@@ -31,13 +31,13 @@
 <div id="content">
 
 <table style="text-align:center;">
-<tr><td><textarea maxlength="200" class="txt_long" id="q_txt"><?=$q_txt?></textarea></td></tr>
+<tr><td><textarea maxlength="2000" class="txt_long" id="q_txt"><?=$q_txt?></textarea></td></tr>
 </table>
 <table id="from_text" style="text-align:center;">
-<tr><td><input type="text" value="<?=$arr_choice[0]?>" maxlength="50" class="txt_99" id="choice_0"></td></tr>
-<tr><td><input type="text" value="<?=$arr_choice[1]?>" maxlength="50" class="txt_99" id="choice_1"></td></tr>
-<tr><td><input type="text" value="<?=$arr_choice[2]?>" maxlength="50" class="txt_99" id="choice_2"></td></tr>
-<tr><td><input type="text" value="<?=$arr_choice[3]?>" maxlength="50" class="txt_99" id="choice_3"></td></tr>
+<tr><td><input type="text" value="<?=$arr_choice[0]?>" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
+<tr><td><input type="text" value="<?=$arr_choice[1]?>" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
+<tr><td><input type="text" value="<?=$arr_choice[2]?>" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
+<tr><td><input type="text" value="<?=$arr_choice[3]?>" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
 </table>
 
 <table>
@@ -52,7 +52,7 @@
 </div>    
 
 <table>
-  <tr><td class="td_99"><input type="text" value="<?=$reference?>" placeholder="画像の参照" maxlength="200" class="txt_99" id="reference"></td></tr>
+  <tr><td class="td_99"><input type="text" value="<?=$reference?>" placeholder="画像の参照" maxlength="1000" class="txt_99" id="reference"></td></tr>
 </table>
 
 <table>

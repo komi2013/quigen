@@ -15,7 +15,7 @@ class Model_Comment extends \Orm\Model
     ),
     'txt' => array(
       'data_type' => 'varchar',
-      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(500)),
+      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(2000)),
       'default' => '',
     ),
     'u_img' => array(

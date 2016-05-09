@@ -32,23 +32,23 @@
 ?>
 <div id="content">
 <table style="text-align:center;">
-<tr><td><textarea placeholder="Q." maxlength="400" class="txt_long" id="q_txt"></textarea></td></tr>
+<tr><td><textarea placeholder="Q." maxlength="2000" class="txt_long" id="q_txt"></textarea></td></tr>
 </table>
 <table id="from_text" style="text-align:center;">
-<tr><td><input type="text" placeholder="O　正" maxlength="250" class="txt_99" id="choice_0"></td></tr>
-<tr><td><input type="text" placeholder="X　誤" maxlength="250" class="txt_99" id="choice_1"></td></tr>
-<tr><td><input type="text" placeholder="X　誤" maxlength="250" class="txt_99" id="choice_2"></td></tr>
-<tr><td><input type="text" placeholder="X　誤" maxlength="250" class="txt_99" id="choice_3"></td></tr>
+<tr><td><input type="text" placeholder="O　正" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
+<tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
+<tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
+<tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
 </table>
 <table id="from_device" style="text-align:center;display:none;">
-  <tr><td><input type="text" placeholder="O　正" maxlength="250" class="choice"></td><td></td></tr>
-  <tr><td><input type="text" placeholder="X　誤" maxlength="250" class="choice"></td><td></td></tr>
+  <tr><td><input type="text" placeholder="O　正" maxlength="1000" class="choice"></td><td></td></tr>
+  <tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="choice"></td><td></td></tr>
 </table>
 <table id="from_url" style="text-align:center;display:none;">
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="250" class="choice"></td></tr>
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="250" class="choice"></td></tr>
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="250" class="choice"></td></tr>
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="250" class="choice"></td></tr>
+<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
+<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
+<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
+<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
 </table>
 
 <table>
@@ -63,7 +63,7 @@
 </div>    
 
 <table>
-  <tr><td class="td_99"><input type="text" placeholder="引用元:" maxlength="400" class="txt_99" id="reference"></td></tr>
+  <tr><td class="td_99"><input type="text" placeholder="引用元:" maxlength="1000" class="txt_99" id="reference"></td></tr>
 </table>
 
 <table cellspacing="0">

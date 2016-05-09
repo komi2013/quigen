@@ -31,10 +31,10 @@
 ?>
 <div id="content">
 <table>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_0"></td><td><input type="text" placeholder="答え" maxlength="20" class="txt_99" id="a_0"></td></tr>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_1"></td><td><input type="text" placeholder="答え" maxlength="20" class="txt_99" id="a_1"></td></tr>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_2"></td><td><input type="text" placeholder="答え" maxlength="20" class="txt_99" id="a_2"></td></tr>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_3"></td><td><input type="text" placeholder="答え" maxlength="20" class="txt_99" id="a_3"></td></tr>
+<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_0"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_0"></td></tr>
+<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_1"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_1"></td></tr>
+<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_2"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_2"></td></tr>
+<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_3"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_3"></td></tr>
 </table>
 <table>
   <tr><td class="td_99_c">オプション</td></tr>  
