@@ -59,6 +59,7 @@ class Controller_Quiz extends Controller
       ->order_by('create_at', 'asc')      
       ->execute()->as_array();
     $arr_comment = [];
+    $comment_offline = '';
     if ( isset($query[0]['id']) ) {
       $arr_u_id = [];
       $util = new Model_Util();
@@ -75,7 +76,9 @@ class Controller_Quiz extends Controller
           $arr_comment[$k]['eto_css'] = $util->eto_css;
         }
       }
+      $comment_offline = $query[0]['txt'];
     }
+    $view->comment_offline = $comment_offline;
     $view->img = $q_img;
     shuffle($random_choice);
     $view->arr_choice = $random_choice;

@@ -77,7 +77,7 @@
   </td>
 </tr>
 </table>
-
+<div id="comment" style="word-wrap:break-word;"></div>
 <table id="next_prev"></table>
 
 </div>

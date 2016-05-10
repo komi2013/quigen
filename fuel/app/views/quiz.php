@@ -188,6 +188,8 @@
   var iframe = '<?=isset($_GET['iframe'])?>';
   var domain = '<?=Config::get('my.domain')?>';
   var cho_4 = '<?=json_encode($arr_choice)?>';
+  var comment_offline = '<?=urlencode($comment_offline)?>';
+  comment_offline = decodeURIComponent(comment_offline).replace( /\+/g,' ');
 </script>
 <script src="/assets/js/basic.js?ver=68"></script>
 <script src="/assets/js/check_news.js?ver=68"></script>
