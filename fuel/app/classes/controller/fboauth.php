@@ -49,7 +49,34 @@ class Controller_FbOAuth extends Controller
     }
     $js_answer_by_u = json_encode([$correct,$total]);
     $js_answer = json_encode($arr_myanswer);
-
+    /*
+     * for login, it is necessary to add 2 columns answer_key_u  
+     * after all oauth function need to be changed
+     *      */
+//    offline_q.unshift([
+//   0   $('#question').html()  
+//   1   ,$('#choice_0').html()
+//   2   ,$('#choice_1').html()
+//   3   ,$('#choice_2').html()
+//   4   ,$('#choice_3').html()
+//   5   ,correct
+//   6   ,$('#photo').attr('src')
+//   7   ,q_id
+//   8   ,comment_offline
+//   9   ,$(this_seq).html()  my answer
+//    ]);
+//    $arr_offline_q = [];
+//    foreach ($arr_answer as $k => $d) {
+//     if ($k < 200) {
+//        $arr_offline_q[] = [
+//            $d['q_txt']
+//            ,$d['result']
+//            ,$d['q_txt']
+//            ,$d['q_img']
+//            ,1
+//          ];
+//      }
+//    }
     $arr_follow = DB::query("select receiver from follow where sender = ".$usr_id)->execute()->as_array();
     $arr = array();
     foreach ($arr_follow as $d) {

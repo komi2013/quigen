@@ -58,12 +58,32 @@ if(localStorage.answer){
   var answer = [];
 }
 
-addCel(answer);
-function addCel(resData){
+var offline_q = [];
+if(localStorage.offline_q){
+  offline_q = JSON.parse(localStorage.offline_q);
+}
+
+addCel(offline_q);
+//    offline_q.unshift([
+//   0   $('#question').html()  
+//   1   ,$('#choice_0').html()
+//   2   ,$('#choice_1').html()
+//   3   ,$('#choice_2').html()
+//   4   ,$('#choice_3').html()
+//   5   ,correct
+//   6   ,$('#photo').attr('src')
+//   7   ,q_id
+//   8   ,comment_offline
+//   9   ,$(this_seq).html()  my answer
+//    ]);
+function addCel(res){
+  if(!res[0]){
+    return;
+  }
   while(celNum < addLimit){
-    var cellId = resData[celNum][0];
-    var cellTxt = resData[celNum][2];
-    if(resData[celNum][1] == resData[celNum][4]){
+    var cellId = res[celNum][7];
+    var cellTxt = res[celNum][0];
+    if(res[celNum][5] == res[celNum][9]){
       var result = '<img src="/assets/img/icon/circle_big.png" alt="correct" class="icon result" id="img_'+cellId+'">';
     }else{
       var result = '<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="icon result" id="img_'+cellId+'">';
@@ -81,10 +101,9 @@ function addCel(resData){
     '</tr>';
     $('#cel').append(append);    
     ++celNum;
-    if(!resData[celNum]){
+    if(!res[celNum]){
       return;
     }
-
   }
 }
 
@@ -99,9 +118,20 @@ function delAnswer(cellId) {
         ii++;
       }
     }
-    localStorage.answer = JSON.stringify(new_answer);
-    location.href = '';
-  }  
+    var new_offline_q = [];
+    var i2 = 0;
+    for(var i=0; i<offline_q.length; i++){
+      if(offline_q[i][7] != cellId){
+        new_offline_q[i2] = offline_q[i];
+        i2++;
+      }
+    }
+    setTimeout(function(){
+      localStorage.answer = JSON.stringify(new_answer);
+      localStorage.offline_q = JSON.stringify(new_offline_q);
+      location.href = '';
+    },1000);
+  }
 }
 
 function goOffline(cellId) {

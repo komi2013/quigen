@@ -263,6 +263,7 @@ function answer_1(this_seq){
       ,$('#photo').attr('src')
       ,q_id
       ,comment_offline
+      ,$(this_seq).html()
     ]);
     if(offline_q.length > 99){
       var diff = offline_q.length - 100;
