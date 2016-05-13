@@ -87,8 +87,7 @@ function get_eto(u_id){
   eto[3] = 'style="background-color:#'+left+left+middle+middle+right+right+';opacity:0.7;"';
   return eto;
 }
-function decimal_hexadecimal(res)
-{
+function decimal_hexadecimal(res){
   switch (res) {
     case 1:
       res = 'A';
@@ -234,6 +233,13 @@ function answer_1(this_seq){
     ,arr_tag : tag
     ,u_img : myphoto
     ,u_name : myname
+    ,choice_0 : $('#choice_0').html()
+    ,choice_1 : $('#choice_1').html()
+    ,choice_2 : $('#choice_2').html()
+    ,choice_3 : $('#choice_3').html()
+    ,comment : comment_offline
+    ,myanswer : $(this_seq).html()
+    ,correct_choice : correct
   };
   if(already < 1){
     $.post('/answer/',param,function(){},"json")
@@ -260,7 +266,7 @@ function answer_1(this_seq){
       ,$('#choice_2').html()
       ,$('#choice_3').html()
       ,correct
-      ,$('#photo').attr('src')
+      ,q_img
       ,q_id
       ,comment_offline
       ,$(this_seq).html()

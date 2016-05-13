@@ -15,6 +15,13 @@ class Controller_TwCallback extends Controller
     $profile = $to->get('/users/show.json?screen_name='.$access_token['screen_name'].'&user_id='.$access_token['user_id']);
     $id = $access_token['user_id'];
     $arr_pv_usr = DB::query("SELECT * FROM usr WHERE pv_u_id = '".$id."' AND provider = 2 ")->execute()->as_array();
+    $follow = [];
+    $myname = '';
+    $myphoto = '';
+    $point = '';
+    $js_answer = [];
+    $js_answer_by_u = [];
+    $introduce = '';
     if ( isset($arr_pv_usr[0]['id']) ) {
       if ( isset($usr_id) AND $usr_id != $arr_pv_usr[0]['id']) {
         Response::redirect('/myprofile/?warn=logout');
@@ -23,6 +30,7 @@ class Controller_TwCallback extends Controller
       $point   = $arr_pv_usr[0]['point'];
       $myname  = $arr_pv_usr[0]['name'];
       $myphoto = $arr_pv_usr[0]['img'];
+      $introduce = $arr_pv_usr[0]['introduce'];
     } else {
       $usr = new Model_Usr();
       $usr_id = isset($usr_id) ? $usr_id : $usr->get_new_id();
@@ -47,7 +55,24 @@ class Controller_TwCallback extends Controller
     }
     $js_answer_by_u = json_encode([$correct,$total]);
     $js_answer = json_encode($arr_myanswer);
-
+    $arr_offline_q = [];
+    foreach ($arr_answer as $k => $d) {
+     if ($k < 200) {
+        $arr_offline_q[] = [
+            $d['q_txt']
+            ,$d['choice_0']
+            ,$d['choice_1']
+            ,$d['choice_2']
+            ,$d['choice_3']
+            ,$d['correct_choice']
+            ,$d['q_img']
+            ,(string)$d['question_id']
+            ,$d['comment']
+            ,$d['myanswer']
+          ];
+      }
+    }
+    $js_offline_q = json_encode($arr_offline_q);
     $arr_follow = DB::query("select receiver from follow where sender = ".$usr_id)->execute()->as_array();
     $arr = array();
     foreach ($arr_follow as $d) {
@@ -62,6 +87,7 @@ class Controller_TwCallback extends Controller
     $view->myphoto = Security::htmlentities($myphoto);
     $view->point = $point;
     $view->js_answer = $js_answer;
+    $view->js_offline_q = $js_offline_q;
     $view->js_answer_by_u = $js_answer_by_u;
     $view->introduce = urlencode($introduce);
 

@@ -65,6 +65,13 @@ class Controller_Answer extends Controller
       $answer_key_u->q_txt = preg_replace('/\t/', '　', $q_txt);
       $answer_key_u->q_img = $_POST['q_img'];
       $answer_key_u->create_at = date( "Y-m-d H:i:s" );
+      $answer_key_u->choice_0 = $_POST['choice_0'];
+      $answer_key_u->choice_1 = $_POST['choice_1'];
+      $answer_key_u->choice_2 = $_POST['choice_2'];
+      $answer_key_u->choice_3 = $_POST['choice_3'];
+      $answer_key_u->comment  = $_POST['comment'];
+      $answer_key_u->myanswer = $_POST['myanswer'];
+      $answer_key_u->correct_choice = $_POST['correct_choice'];
       $answer_key_u->save();
       
       $answer_key_q = new Model_AnswerKeyQ();

@@ -73,7 +73,24 @@ class Controller_GpCallback extends Controller
     }
     $js_answer_by_u = json_encode([$correct,$total]);
     $js_answer = json_encode($arr_myanswer);
-
+    $arr_offline_q = [];
+    foreach ($arr_answer as $k => $d) {
+     if ($k < 200) {
+        $arr_offline_q[] = [
+            $d['q_txt']
+            ,$d['choice_0']
+            ,$d['choice_1']
+            ,$d['choice_2']
+            ,$d['choice_3']
+            ,$d['correct_choice']
+            ,$d['q_img']
+            ,(string)$d['question_id']
+            ,$d['comment']
+            ,$d['myanswer']
+          ];
+      }
+    }
+    $js_offline_q = json_encode($arr_offline_q);
     $arr_follow = DB::query("select receiver from follow where sender = ".$usr_id)->execute()->as_array();
     $arr = array();
     foreach ($arr_follow as $d) {
@@ -88,6 +105,7 @@ class Controller_GpCallback extends Controller
     $view->myphoto = Security::htmlentities($myphoto);
     $view->point = $point;
     $view->js_answer = $js_answer;
+    $view->js_offline_q = $js_offline_q;
     $view->js_answer_by_u = $js_answer_by_u;
     $view->introduce = urlencode($introduce);
 

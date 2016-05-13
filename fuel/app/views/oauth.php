@@ -46,6 +46,7 @@ var point = '<?=$point?>';
 var ua_u_id = '<?=$u_id?>';
 var answer_by_u = '<?=$js_answer_by_u?>';
 var answer = '<?=$js_answer?>';
+var offline_q = '<?=$js_offline_q?>';
 var introduce = '<?=$introduce?>';
   
 if(follow){
@@ -68,6 +69,9 @@ if(answer_by_u){
 }
 if(answer){
   localStorage.answer = answer;
+}
+if(offline_q){
+  localStorage.offline_q = offline_q;
 }
 if(introduce){
   localStorage.introduce = introduce;
