@@ -67,11 +67,11 @@ class Controller_Tagshow extends Controller
     foreach ($arr as $k => $d) {
       if ($k < 1) {
         $res[2][0] = $d['id'];
-        $res[2][1] = Str::truncate(Security::htmlentities($d['txt']), 30);
+        $res[2][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
         $res[2][2] = $d['img'];
       } else {
         $res[3][0] = $d['id'];
-        $res[3][1] = Str::truncate(Security::htmlentities($d['txt']), 30);
+        $res[3][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
         $res[3][2] = $d['img'];
       }
     }

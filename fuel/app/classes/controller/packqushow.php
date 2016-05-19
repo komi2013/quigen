@@ -58,7 +58,7 @@ class Controller_Packqushow extends Controller
     foreach ($query as $k => $d)
     {
       $res[1][$i][0] = $d['id'];
-      $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 30);
+      $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
       $res[1][$i][2] = $d['img'];
       $status = 0; //0=not yet,1=correct, 2=incorrect
       if (isset($arr_res[$d['id']]['res'])) {

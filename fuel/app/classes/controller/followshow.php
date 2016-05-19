@@ -31,7 +31,7 @@ class Controller_Followshow extends Controller
     foreach ($query as $k => $d)
     {
       $res[1][$i][0] = $d['id'];
-      $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 30);
+      $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
       $res[1][$i][2] = $d['img'];
       $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
       $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));

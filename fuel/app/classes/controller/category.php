@@ -11,7 +11,7 @@ class Controller_Category extends Controller
       foreach($query as $k => $d){
         $meta_description .= ','.Security::htmlentities($d['txt']);
         $arr_tag[$k]['url_txt'] = urlencode($d['txt']);
-        $arr_tag[$k]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
+        $arr_tag[$k]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 40);
       }
       $view->meta_description = $meta_description;
       $view->arr_tag = $arr_tag;
@@ -33,11 +33,10 @@ class Controller_Category extends Controller
       ->limit(100)
       ->execute()->as_array();
     $arr_qu = [];
-    foreach ($query as $k => $d)
-    {
+    foreach ($query as $k => $d) {
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
-      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
+      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 40);
       $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
       $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
       $arr_qu[$d['id']]['q_data'] = $q_data;
@@ -47,8 +46,8 @@ class Controller_Category extends Controller
     $view->question = $arr_qu;
 
     $meta_description = $_GET['tag'].'一覧';
-    foreach($arr_qu as $k => $d){
-      $meta_description .= ','.Str::truncate(Security::htmlentities($d['txt']), 30);
+    foreach($arr_qu as $k => $d) {
+      $meta_description .= ','.Str::truncate(Security::htmlentities($d['txt']), 40);
     }
     $query = DB::select()->from('mt_seo_tag')
       ->where('tag','=',$_GET['tag'])

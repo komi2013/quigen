@@ -37,7 +37,7 @@ class Controller_Mypackshow extends Controller
     foreach ($query as $k => $d)
     {
       $res[1][$i][0] = $d['id'];
-      $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 30);
+      $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
       $res[1][$i][2] = $d['activate'];
       $res[0] = 1;
       if ($d['activate'] == 0)

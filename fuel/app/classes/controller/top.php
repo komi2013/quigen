@@ -16,7 +16,7 @@ class Controller_Top extends Controller
     $arr_tag = [];
     foreach($query as $k => $d){
       $arr_tag[$k]['url_txt'] = urlencode($d['txt']);
-      $arr_tag[$k]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
+      $arr_tag[$k]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 40);
     }
     $this->arr_tag = $arr_tag;
     if ( isset($_GET['page']) ) {
@@ -32,7 +32,7 @@ class Controller_Top extends Controller
         foreach ($question as $d) {
           $arr_qu[$d['id']]['id'] = $d['id'];
           $arr_qu[$d['id']]['img'] = $d['img'];
-          $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
+          $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 40);
           $arr_qu[$d['id']]['tag'] = '';
         }
         $view->question = $arr_qu;
@@ -48,38 +48,38 @@ class Controller_Top extends Controller
       $this->tag_quiz();
     }
   }
-  public function popular_quiz()
-  {
-    $view = View::forge('top');
-    $query = DB::query("SELECT question_id, amount FROM answer_by_q WHERE update_at < NOW() ORDER BY".
-            "(30 - EXTRACT( DAY FROM(NOW() - update_at) )) * amount DESC
-            LIMIT 20 ")->execute()->as_array();
-    $arr_qu_id = [];
-    $arr_qu = [];
-    foreach ($query as $d)
-    {
-      $arr_qu_id[] = $d['question_id'];
-      $arr_qu[$d['question_id']]['id'] = $d['question_id'];
-      $arr_qu[$d['question_id']]['img'] = '';
-      $arr_qu[$d['question_id']]['txt'] = 'not exist';
-      $arr_qu[$d['question_id']]['a_amount'] = $d['amount'];;
-    }
-    $question = DB::select()->from('question')
-        ->where('id','in',$arr_qu_id)
-        ->and_where('open_time','<',date('Y-m-d H:i:s'))
-        ->execute()->as_array();
-    foreach ($question as $d)
-    {
-      $arr_qu[$d['id']]['id'] = $d['id'];
-      $arr_qu[$d['id']]['img'] = $d['img'];
-      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
-    }
-    $view->question = $arr_qu;
-    $view->page = $this->cnt+1;
-    $view->popular = true;
-    
-    die($view);    
-  }
+//  public function popular_quiz()
+//  {
+//    $view = View::forge('top');
+//    $query = DB::query("SELECT question_id, amount FROM answer_by_q WHERE update_at < NOW() ORDER BY".
+//            "(30 - EXTRACT( DAY FROM(NOW() - update_at) )) * amount DESC
+//            LIMIT 20 ")->execute()->as_array();
+//    $arr_qu_id = [];
+//    $arr_qu = [];
+//    foreach ($query as $d)
+//    {
+//      $arr_qu_id[] = $d['question_id'];
+//      $arr_qu[$d['question_id']]['id'] = $d['question_id'];
+//      $arr_qu[$d['question_id']]['img'] = '';
+//      $arr_qu[$d['question_id']]['txt'] = 'not exist';
+//      $arr_qu[$d['question_id']]['a_amount'] = $d['amount'];;
+//    }
+//    $question = DB::select()->from('question')
+//        ->where('id','in',$arr_qu_id)
+//        ->and_where('open_time','<',date('Y-m-d H:i:s'))
+//        ->execute()->as_array();
+//    foreach ($question as $d)
+//    {
+//      $arr_qu[$d['id']]['id'] = $d['id'];
+//      $arr_qu[$d['id']]['img'] = $d['img'];
+//      $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 30);
+//    }
+//    $view->question = $arr_qu;
+//    $view->page = $this->cnt+1;
+//    $view->popular = true;
+//    
+//    die($view);    
+//  }
   public function tag_quiz()
   {
     $view = View::forge('top');
@@ -89,7 +89,7 @@ class Controller_Top extends Controller
       $arr_qu[$d['question_id']]['id'] = $d['question_id'];
       $arr_qu[$d['question_id']]['img'] = $d['img'];
       //$txt = Security::htmlentities($d['txt']);
-      $arr_qu[$d['question_id']]['txt'] = $d['txt'];
+      $arr_qu[$d['question_id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 40);
       $arr_qu[$d['question_id']]['tag'] = $d['tag'];
     }
     $view->question = $arr_qu;

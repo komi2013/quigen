@@ -22,7 +22,7 @@ class Controller_Uquestionshow extends Controller
       foreach ($arr_answer_key_u as $k => $d) {
         $res[0] = 1;
         $res[1][$i][0] = $d['question_id'];
-        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['q_txt']), 30);
+        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['q_txt']), 40);
         $res[1][$i][2] = strip_tags( preg_replace('/http/', 'url', $d['q_img']) );
         $res[1][$i][3] = 0;
         $create_at = new DateTime($d['create_at']);
@@ -44,7 +44,7 @@ class Controller_Uquestionshow extends Controller
       {
         $res[1][$i][0] = $d['id'];
         $txt = Security::htmlentities($d['txt']);
-        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 30);
+        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
         $res[1][$i][2] = $img = Security::htmlentities($d['img']);
         $json_arr_q_data = json_encode(array($d['id'],$txt,$img,$d['usr_id']));
         $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
