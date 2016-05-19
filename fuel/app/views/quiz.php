@@ -129,21 +129,17 @@
 </tr>
 </table>
 <br>
-<table>
+
 <?php foreach ($arr_comment as $d) { ?>
-<tr>
-  <td><?=$d['txt']?></td>
-  <td><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></td>
-</tr>
+  <div style="word-wrap:break-word;"><?=$d['txt']?></div>
+  <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
 <?php } ?>
-<tr>
-  <td><input type="text" placeholder="コメント" class="txt_84" id="comment_data"></td>
-  <td>
-    <img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</tr>
-</table>
+<textarea placeholder="コメント" class="txt_99" id="comment_data"></textarea>
+<div class="div_right">
+<img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
+<img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+</div>
+
 
 <div style="word-wrap:break-word;">引用元:<?=$reference?></div>
 

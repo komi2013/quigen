@@ -1,6 +1,7 @@
 body {
   margin: 0 auto;
-  font-size: 15pt;
+  font-size: 15px;
+  line-height: 22px;
 }
 table {
   width: 100%;
@@ -45,6 +46,10 @@ h1 {
 }
 #ad_div {
   text-align: center;
+}
+.div_right {
+  width: 99%;
+  text-align: right;
 }
 .td_15{
   width: 15%;
@@ -182,7 +187,7 @@ h1 {
 .txt_long{
   height: 90px;
   width: 90%;
-  font-size: 15pt;
+  font-size: 15px;
   word-break : break-all;
   padding: 20px 10px 20px 10px;
 }
