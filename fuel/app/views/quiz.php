@@ -92,9 +92,6 @@
 </tr>
 </table>
 
-<table id="comment"></table>
-<table id="comment_in"></table>
-<br>
 <table cellspacing="0" cellspacing="1" boroder="0">
   <tr><td id="tag"></td></tr>
 </table>
@@ -134,7 +131,7 @@
   <div style="word-wrap:break-word;"><?=$d['txt']?></div>
   <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
 <?php } ?>
-<textarea placeholder="コメント" class="txt_99" id="comment_data"></textarea>
+<textarea placeholder="コメント" class="comment_input" id="comment_data"></textarea>
 <div class="div_right">
 <img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
 <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">

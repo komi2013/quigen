@@ -212,3 +212,9 @@ h1 {
   color: blue;
   cursor: pointer;
 }
+.comment_input {
+  font-size: 15px;
+  height: 48px;
+  width: 90%;
+  margin: 5px;
+}

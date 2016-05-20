@@ -66,7 +66,7 @@ class Controller_Quiz extends Controller
       foreach ($query as $k => $d) {
         $arr_u_id[] = $d['usr_id'];
         $arr_comment[$k]['usr_id'] = $d['usr_id'];
-        $arr_comment[$k]['txt'] = Security::htmlentities($d['txt']);
+        $arr_comment[$k]['txt'] = nl2br( Security::htmlentities($d['txt']) );
         if ($d['u_img']) {
           $arr_comment[$k]['u_img'] = $d['u_img'];
           $arr_comment[$k]['eto_css'] = '';
@@ -75,8 +75,9 @@ class Controller_Quiz extends Controller
           $arr_comment[$k]['u_img'] = $util->eto_img;
           $arr_comment[$k]['eto_css'] = $util->eto_css;
         }
+        $comment_offline .= nl2br( Security::htmlentities($d['txt']) );
       }
-      $comment_offline = $query[0]['txt'];
+      
     }
     $view->comment_offline = $comment_offline;
     $view->img = $q_img;
