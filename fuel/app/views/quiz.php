@@ -137,22 +137,17 @@
 <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
 </div>
 
-
+<?php if($reference){ ?> 
 <div style="word-wrap:break-word;">引用元:<?=$reference?></div>
-
-
-<table>
-<tr>
-<td style="width:98%;text-align:right;">
-  <a href="#" id="report">
-    <img src="/assets/img/icon/exclamation.png" alt="report" class="icon">
-  </a>
-</td>
-</tr>
-</table>
+<?php } ?>
 
 <table id="next_prev"></table>
 
+<div style="width:98%;text-align:right;">
+  <a href="#" id="report">
+    <img src="/assets/img/icon/exclamation.png" alt="report" class="icon">
+  </a>
+</div>
 
 <table style="display: none;">
 <tr><td colspan="2" class="td_98">このクイズを購入</td></tr>
@@ -165,6 +160,8 @@
 </td>
 </tr>
 </table>
+
+
 </div>
 <?php if( !isset($_GET['iframe']) ){?>
 <div id="ad_right"></div>
