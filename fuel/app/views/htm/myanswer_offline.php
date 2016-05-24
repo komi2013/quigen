@@ -7,12 +7,7 @@
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <script>
-//      if(navigator.onLine){
-//        location.href = '/htm/myanswer/';
-//      }
-      var ua = '<?=Config::get("my.ua")?>';
-    </script>
+    <script> var ua = '<?=Config::get("my.ua")?>'; </script>
     <script src="/assets/js/analytics_offline.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
     <link rel="stylesheet" href="/assets/css/pc.css" media="only screen and (min-width : 711px)">
@@ -81,5 +76,10 @@ var domain = '<?=Config::get('my.domain')?>';
 <script src="/assets/js/check_news.js"></script>
 <script src="/assets/js/basic_offline.js"></script>
 <script src="/assets/js/myanswer.js"></script>
+<script>  
+if(navigator.onLine){
+  $(function(){ ga('send', 'pageview'); });
+}
+</script>
 </body>
 </html>

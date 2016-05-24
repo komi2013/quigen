@@ -91,7 +91,11 @@ var domain = '<?=Config::get('my.domain')?>';
 <script src="/assets/js/basic_offline.js"></script>
 <script src="/assets/js/check_news.js"></script>
 <script src="/assets/js/quiz_offline.js"></script>
-
+<script>  
+if(navigator.onLine){
+  $(function(){ ga('send', 'pageview'); });
+}
+</script>
 </body>
 </html>
 
