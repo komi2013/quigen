@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver=73
+#ver=74
 CACHE:
 /htm/quiz_offline/
 /htm/myanswer/
@@ -34,6 +34,7 @@ CACHE:
 
 NETWORK:
 /myanswershow/
+*
 
 
 

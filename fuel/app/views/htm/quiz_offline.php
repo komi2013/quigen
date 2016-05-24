@@ -8,6 +8,8 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
+    <script>var ua = '<?=Config::get("my.ua")?>';</script>
+    <script src="/assets/js/analytics_offline.js"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
     <link rel="stylesheet" href="/assets/css/pc.css" media="only screen and (min-width : 711px)">
@@ -48,7 +50,7 @@
 </table>
 </div>
 
-<table cellspacing="1" boroder="0" id="sns">
+<table id="sns">
 <tr>
 <td style="width:70px;">
   <a href="" target="_blank" id="href_fb">

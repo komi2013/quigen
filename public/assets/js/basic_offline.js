@@ -21,7 +21,7 @@ if(localStorage.last_visit){
     }else{
       var session_amt = localStorage.session;
     }
-    if(is_online){
+    if(navigator.onLine){
       ga('set', 'dimension18', session_amt);
     }
     localStorage.last_visit = hour_stamp;
@@ -31,7 +31,7 @@ if(localStorage.last_visit){
   localStorage.last_visit = hour_stamp;
   localStorage.session = 1;
   localStorage.session_answer = 0;
-  if(is_online){
+  if(navigator.onLine){
     ga('set', 'dimension18', localStorage.session);
   }
 }
@@ -64,4 +64,68 @@ if(localStorage.quest_level > 2){
   $('.disp_quest').css({ 'display': ''});
 }else{
   $('.disp_quest').css({ 'display': 'none'});
+}
+
+var rand_ad = parseInt(Math.random()*10);
+var ad_ga = 'none';
+var ad_right_ga = 'none';
+if(window.matchMedia('(min-width: 711px)').matches){
+  if(rand_ad < 0){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=adsense_pc_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'adsense_pc_menu';
+  }else if(rand_ad < 11){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=kauli_pc_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'kauli_pc_menu';
+  }else if(rand_ad < 11){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=imobile_pc_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'imobile_pc_menu';
+  }
+
+  if(rand_ad < 11){
+    var ad_right_iframe = '<iframe src="/htm/ad_right/?af=adsense_pc_right" width="160" height="600" frameborder="0" scrolling="no" class="ad_frame_right"></iframe>';
+    var ad_right_ga = 'adsense_pc_right';
+  }else if(rand_ad < 11){
+    var ad_right_iframe = '<iframe src="/htm/ad_right/?af=kauli_pc_right" width="160" height="600" frameborder="0" scrolling="no" class="ad_frame_right"></iframe>';
+    var ad_right_ga = 'kauli_pc_right';
+  }else if(rand_ad < 11){
+    var ad_right_iframe = '<iframe src="/htm/ad_right/?af=imobile_pc_right" width="160" height="600" frameborder="0" scrolling="no" class="ad_frame_right"></iframe>';
+    var ad_right_ga = 'imobile_pc_right';
+  }
+
+}else{
+  if(rand_ad < 9){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=adsense_sp_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'adsense_sp_menu';
+  }else if(rand_ad < 11){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=nend_sp_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'nend_sp_menu';
+  }else if(rand_ad < 11){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=kauli_sp_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'kauli_sp_menu';
+  }else if(rand_ad < 11){
+    var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=imobile_sp_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
+    var ad_menu_ga = 'imobile_sp_menu';
+  }
+  
+  if(rand_ad < 7){
+    var ad_iframe = '<iframe src="/htm/ad/?af=adsense_sp" width="320" height="50" frameborder="0" scrolling="no" data-af="adsense_sp" class="ad_frame"></iframe>';
+    var ad_ga = 'adsense_sp';
+  }else if(rand_ad < 11){
+    var ad_iframe = '<iframe src="/htm/ad/?af=nend_sp" width="320" height="50" frameborder="0" scrolling="no" data-af="adsense_sp" class="ad_frame"></iframe>';
+    var ad_ga = 'nend_sp';
+  }
+
+}
+if(navigator.onLine){
+  ga('set', 'dimension16', ad_ga+','+ad_menu_ga+','+ad_right_ga);
+
+  $(function(){
+    if(window.matchMedia('(min-width: 711px)').matches){
+      $('#ad_menu').append(ad_menu_iframe);
+      $('#ad_right').append(ad_right_iframe);
+    }else{
+      $('#ad_menu').append(ad_menu_iframe);
+      $('#ad').append(ad_iframe);
+    }
+  });
 }

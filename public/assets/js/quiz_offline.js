@@ -350,6 +350,11 @@ var resInco = [];
 var amt_co = 0;
 var amt_answer = 0;
 
+if(!navigator.onLine){
+  $('#sns').css({'display':'none'});
+}
+
+
 
 
 
