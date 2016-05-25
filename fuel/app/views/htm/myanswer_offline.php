@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="/mf.manifest">
+<html manifest="/myanswer.mf">
   <head>
     <meta charset="UTF-8" />
     <title>マイアンサー(復習)</title>
