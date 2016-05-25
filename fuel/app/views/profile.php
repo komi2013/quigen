@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <title><?=$usr_name?></title>
+<?php if( $seo_index ){ ?>
     <meta name="description" content="<?=$meta_description?>、 フォロワー数：<?=$follower?>、 フォローしているユーザー数：<?=$following?>">
-    <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
+<?php } else { ?>
+    <meta name="robots" content="noindex,follow">
+<?php } ?>
+    <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />

@@ -24,8 +24,7 @@ class Controller_Profile extends Controller
     $view->css  = $util->eto_css;
     $view->introduce = '';
     $introduce = '';
-    if ( isset($usr->id) )
-    {
+    if ( isset($usr->id) ) {
       $view->usr_name = Security::htmlentities($usr->name);
       $view->usr_img = $usr->img ? Security::htmlentities($usr->img) : $util->eto_img;
       $view->css = '';
@@ -43,7 +42,10 @@ class Controller_Profile extends Controller
       }
       $introduce = $introduce;
     }
-
+    $seo_index = false;
+    if ($introduce) {
+      $seo_index = true;
+    }
     $res = DB::query("select count(*) from question where usr_id = ".$_GET['u'])->execute()->as_array();
     $view->num_quiz = $res[0]['count'];
     $res = DB::query("SELECT * FROM follow WHERE receiver = ".$_GET['u'])->execute()->as_array();
@@ -57,6 +59,7 @@ class Controller_Profile extends Controller
         ++$cnt_follower;
       }
     }
+    $view->seo_index = $seo_index;
     $view->status = $status;
     $view->follower = $cnt_follower;
     $res = DB::query("select count(*) from answer_key_u where usr_id = ".$_GET['u']." AND create_at > '".date('Y-m-d H:i:s',strtotime('-1 week'))."'" )->execute()->as_array();
