@@ -10,6 +10,8 @@ CACHE:
 /assets/css/pc.css
 /assets/css/sp.css
 /assets/img/icon/menu.png
+/assets/img/icon/circle_big.png
+/assets/img/icon/cross_big.png
 /assets/img/icon/answer.png
 /assets/img/icon/fb.jpg
 /assets/img/icon/tw.jpg
