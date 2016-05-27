@@ -97,6 +97,7 @@ class Controller_Search extends Controller
       }
       $view->noindex = false;
     }
+    arsort($arr_qu);
     $view->cnt = $cnt; 
     $view->tag = isset($_GET['tag']) ? $_GET['tag'] : '';
     $view->question = $arr_qu;
