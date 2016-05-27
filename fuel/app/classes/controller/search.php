@@ -12,8 +12,14 @@ class Controller_Search extends Controller
       ->execute()->as_array();
     $arr_qu_id = [0];
     $cnt = 0;
+    $arr_qu = [];
     foreach ($query as $d) {
       $arr_qu_id[] = $d['question_id'];
+      $arr_qu[$d['question_id']]['quiz_num'] = $d['quiz_num'];
+//      $arr_qu[$d['question_id']]['id'] = 0;
+//      $arr_qu[$d['question_id']]['img'] = '';
+//      $arr_qu[$d['question_id']]['q_data'] = '';
+//      $arr_qu[$d['question_id']]['txt'] = '';
       ++$cnt;
     }
     if ( $cnt < 1 ) {
@@ -56,7 +62,6 @@ class Controller_Search extends Controller
       $next_page = $page-1;
     }
 
-    $arr_qu = [];
     $left_cnt = 0;
     $description = '';
     foreach ($query as $k => $d) {
@@ -70,6 +75,13 @@ class Controller_Search extends Controller
       $end_time = $open_time->getTimestamp();
       $description .= Security::htmlentities($d['txt']).'..';
       ++$left_cnt;
+    }
+    foreach ($arr_qu as $k => $d) {
+      if ( isset($d['id']) ) {
+        $arr_qu[$k]['txt'] = $d['quiz_num'].'問. '.$d['txt'];
+      } else {
+        unset($arr_qu[$k]);
+      }
     }
     $query = DB::select()->from('mt_seo_tag')
       ->where('tag','=',$_GET['tag'])

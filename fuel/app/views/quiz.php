@@ -27,7 +27,7 @@
 
 <table cellspacing="0" boroder="0" id="header">
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="unread font_8">クイジェン</h1></td>
+  <td id="center"><h1 class="unread font_8"></h1></td>
   <td class="edge" id="right"></td>
 </table>
 <?php

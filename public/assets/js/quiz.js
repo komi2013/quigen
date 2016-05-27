@@ -426,9 +426,10 @@ function tag_show(){
   .always(function(res){
     if(res[0]==1){
       for(i = 0; i < res[1].length; i++){
-        $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]+'">#'+res[1][i]+'</a>&nbsp;');
+        $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]['txt']+'">#'+res[1][i]['txt']+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
+      $('.unread').append('第'+res[1][0]['quiz_num']+'問.');
       if(res[3] && res[3][0]){
         next_q = res[3][0];
       }
@@ -450,14 +451,16 @@ function addNavi(res,nextPrev) {
     '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
     '<img src="'+res[nextPrev][2]+'" alt="quiz" class="icon"></a>'+
     '</td><td colspan="85" class="td_84_t">'+
-    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+decodeURIComponent(res[nextPrev][1])+
+    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
+    res[nextPrev][3]+'問. '+decodeURIComponent(res[nextPrev][1])+
     '</a>'+
     '</td>'+
     '</tr>';
   }else{
     append = 
     '<tr><td colspan="100" class="td_84_t">'+
-    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+decodeURIComponent(res[nextPrev][1])+
+    '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
+    res[nextPrev][3]+'問. '+decodeURIComponent(res[nextPrev][1])+
     '</a>'+
     '</td>'+
     '</tr>';
