@@ -41,10 +41,10 @@ class Controller_Quiz extends Controller
     }
 
     $random_choice = array(
-      Security::htmlentities($arr_choice_1[0]['choice_0']),
-      Security::htmlentities($arr_choice_1[0]['choice_1']),
-      Security::htmlentities($arr_choice_1[0]['choice_2']),
-      Security::htmlentities($arr_choice_1[0]['choice_3'])
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']) ),
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_1']) ),
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_2']) ),
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_3']) )
     );
     $view = View::forge('quiz');
     $description = 
@@ -52,7 +52,7 @@ class Controller_Quiz extends Controller
       .'②'.Str::truncate($random_choice[1], 20)
       .'③'.Str::truncate($random_choice[2], 20)
       .'④'.Str::truncate($random_choice[3], 20);
-    $q_txt = Security::htmlentities($q_txt);
+    $q_txt = Security::htmlentities( preg_replace('/[\t]/', '　', $q_txt) );
     
     $query = DB::select()->from('comment')
       ->where('question_id','=',$question_id)
@@ -75,7 +75,7 @@ class Controller_Quiz extends Controller
           $arr_comment[$k]['u_img'] = $util->eto_img;
           $arr_comment[$k]['eto_css'] = $util->eto_css;
         }
-        $comment_offline .= nl2br( Security::htmlentities($d['txt']) );
+        $comment_offline .= nl2br( Security::htmlentities( preg_replace('/[\t]/', '　', $d['txt']) ) ).'<br>';
       }
       
     }
@@ -84,7 +84,7 @@ class Controller_Quiz extends Controller
     shuffle($random_choice);
     $view->arr_choice = $random_choice;
     $view->question = $question_id;
-    $view->correct = $arr_choice_1[0]['choice_0'];
+    $view->correct = preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']);
     $view->usr = $q_u_id;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
         Config::get('my.domain').

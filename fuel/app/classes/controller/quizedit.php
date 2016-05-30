@@ -27,17 +27,17 @@ class Controller_QuizEdit extends Controller
     }
 
     $random_choice = array(
-      Security::htmlentities($arr_choice_1[0]['choice_0']),
-      Security::htmlentities($arr_choice_1[0]['choice_1']),
-      Security::htmlentities($arr_choice_1[0]['choice_2']),
-      Security::htmlentities($arr_choice_1[0]['choice_3'])
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']) ),
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_1']) ),
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_2']) ),
+      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_3']) )
     );
     $view = View::forge('quiz_edit');
-    $q_txt = Security::htmlentities($q_txt);
+    $q_txt = Security::htmlentities( preg_replace('/[\t]/', '　', $q_txt) );
     $view->img = $q_img;
     $view->arr_choice = $random_choice;
     $view->question = $question_id;
-    $view->correct = $arr_choice_1[0]['choice_0'];
+    $view->correct = Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']) );
     $view->usr = $q_u_id;
     $view->q_txt = $q_txt;
     $json_arr_q_data = json_encode(array($question_id,$q_txt,$q_img,$q_u_id));

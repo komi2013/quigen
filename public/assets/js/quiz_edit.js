@@ -7,11 +7,15 @@ function tag_show(){
   .always(function(res){
     if(res[0]==1){
       for(i = 0; i < res[1].length; i++){
-        $('#tag_0').val(res[1][i]);
+        $('#tag_0').val(res[1][i]['txt']+' ');
+        ga('set','dimension13',res[1][i]);
       }
+    }else{
+     //console.log(res);
     }
   });
 }
+
 
 $('#generate').click(function(){
   if(!u_id){

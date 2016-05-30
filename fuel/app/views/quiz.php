@@ -169,7 +169,7 @@
 
 <script>
   var correct = '<?=urlencode($correct)?>';
-  correct = decodeURIComponent(correct).replace( /\+/g,' ');
+  correct = decodeURIComponent(correct);
   var q_id = '<?=$question?>';
   var usr = '<?=$usr?>';
   var q_data = '<?=$q_data?>';
@@ -179,7 +179,7 @@
   var domain = '<?=Config::get('my.domain')?>';
   var cho_4 = '<?=json_encode($arr_choice)?>';
   var comment_offline = '<?=urlencode($comment_offline)?>';
-  comment_offline = decodeURIComponent(comment_offline).replace( /\+/g,' ');
+  comment_offline = decodeURIComponent(comment_offline);
 </script>
 <script src="/assets/js/basic.js?ver=74"></script>
 <script src="/assets/js/check_news.js?ver=74"></script>
