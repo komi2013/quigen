@@ -131,11 +131,11 @@ if(localStorage.answer){
 }
 
 var already = 0;
-for(var i = 0; i < answer.length; i++){  
+for(var i = 0; i < answer.length; i++){
   if(answer[i][0] == q_id){
     already = 1;
   }
-}  
+}
 var clicked = 0;
 $('.choice').click(function(){
   if(clicked == 2){
@@ -270,6 +270,7 @@ function answer_1(this_seq){
       ,q_id
       ,comment_offline
       ,$(this_seq).html()
+      ,quiz_num
     ]);
     if(offline_q.length > 99){
       var diff = offline_q.length - 100;
@@ -418,6 +419,7 @@ function answer_by_q_show(){
   });
 }
 var next_q = 0;
+var quiz_num = 0;
 function tag_show(){
   var param = {
     q : q_id
@@ -430,6 +432,7 @@ function tag_show(){
         ga('set','dimension13',res[1][i]);
       }
       $('.unread').append('第'+res[1][0]['quiz_num']+'問.');
+      quiz_num = res[1][0]['quiz_num'];
       if(res[3] && res[3][0]){
         next_q = res[3][0];
       }

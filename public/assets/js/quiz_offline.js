@@ -38,6 +38,7 @@ if(localStorage.offline_q){
         arr_prev = offline_q[i+1];
       }
       var comment = offline_q[i][8];
+      var quiz_num = offline_q[i][10];
     }
   }
   $('#question').empty().append(q_txt);
@@ -46,6 +47,7 @@ if(localStorage.offline_q){
   $('#choice_2').empty().append(ch_2);
   $('#choice_3').empty().append(ch_3);
   $('#comment').empty().append(comment);
+  $('#question').prepend(comment);
   document.title = q_txt.slice(0,30);
   if(q_img){
     $('#photo').attr({'src':q_img});

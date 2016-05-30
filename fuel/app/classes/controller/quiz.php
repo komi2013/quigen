@@ -36,23 +36,23 @@ class Controller_Quiz extends Controller
     $arr_choice_1 = DB::select()->from('choice')->where('question_id','=',$question_id)->execute()->as_array();
     if ( !isset($arr_choice_1[0]['choice_0']) ) {
       $view = View::forge('404');
-      
       die($view);
     }
-
-    $random_choice = array(
-      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']) ),
-      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_1']) ),
-      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_2']) ),
-      Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_3']) )
-    );
+    
+    $cho_0 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_0']) );
+    $cho_1 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_1']) );
+    $cho_2 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_2']) );
+    $cho_3 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_3']) );
+    $correct = $cho_0;
+    $random_choice = [$cho_0,$cho_1,$cho_2,$cho_3];
+    
     $view = View::forge('quiz');
     $description = 
       '①'.Str::truncate($random_choice[0], 20)
       .'②'.Str::truncate($random_choice[1], 20)
       .'③'.Str::truncate($random_choice[2], 20)
       .'④'.Str::truncate($random_choice[3], 20);
-    $q_txt = Security::htmlentities( preg_replace('/[\t]/', '　', $q_txt) );
+    $q_txt = Security::htmlentities( preg_replace('/\[|\[|[\t]|\\\/u', ' ', $q_txt) );
     
     $query = DB::select()->from('comment')
       ->where('question_id','=',$question_id)
@@ -75,7 +75,7 @@ class Controller_Quiz extends Controller
           $arr_comment[$k]['u_img'] = $util->eto_img;
           $arr_comment[$k]['eto_css'] = $util->eto_css;
         }
-        $comment_offline .= nl2br( Security::htmlentities( preg_replace('/[\t]/', '　', $d['txt']) ) ).'<br>';
+        $comment_offline .= nl2br( Security::htmlentities( preg_replace('/\[|\[|[\t]|\\\/u', ' ', $d['txt']) ) ).'<br>';
       }
       
     }
@@ -84,7 +84,7 @@ class Controller_Quiz extends Controller
     shuffle($random_choice);
     $view->arr_choice = $random_choice;
     $view->question = $question_id;
-    $view->correct = preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']);
+    $view->correct = $correct;
     $view->usr = $q_u_id;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
         Config::get('my.domain').
@@ -113,7 +113,7 @@ class Controller_Quiz extends Controller
     $json_arr_q_data = json_encode(array($question_id,$q_txt,$q_img,$q_u_id));
     $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
     $view->q_data = $q_data;
-    $view->reference = $arr_choice_1[0]['reference'];
+    $view->reference = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['reference']) );
     $view->u_id = Model_Cookie::get_usr();
 
     $expires = 3600 * 24;

@@ -6,8 +6,7 @@ class Controller_Myquestionadd extends Controller
     $res[0] = 2;
     Model_Csrf::check();
     $usr_id = Model_Cookie::get_usr();
-    if (!$usr_id)
-    {
+    if (!$usr_id) {
       Model_Log::warn('no usr');
       die(json_encode($res));
     }
@@ -37,7 +36,15 @@ class Controller_Myquestionadd extends Controller
       Model_Log::warn('limited');
       die(json_encode($res));
     }
-    $open_time = date("Y-m-d H:i:s",strtotime($open_time."+100 year"));
+    $auth = false;
+    foreach (Config::get('my.adm') as $d) {
+      if ($d == $usr_id) {
+        $auth = true;
+      }
+    }
+    if (!$auth) {
+      $open_time = date("Y-m-d H:i:s",strtotime($open_time."+100 year"));
+    }
     $open_time = date("Y-m-d H:i:s",strtotime($open_time."+1 hour"));
     $query = DB::select()->from('mt_block_generate')
       ->where('usr_id','=',$usr_id)
@@ -49,12 +56,9 @@ class Controller_Myquestionadd extends Controller
 
     $question = new Model_Question();
     $question_id = $question->get_new_id();
-    if ($_POST["img"] == 'no')
-    {
+    if ($_POST["img"] == 'no') {
       $web_path = '';
-    }
-    else
-    {
+    } else {
       @mkdir(DOCROOT.'assets/img/quiz/'.date('Ymd'), 0777);
       @chmod(DOCROOT.'assets/img/quiz/'.date('Ymd'), 0777);
       $img_path = DOCROOT.'assets/img/quiz/'.date('Ymd').'/'.$question_id.'.png';
@@ -72,6 +76,7 @@ class Controller_Myquestionadd extends Controller
 //       $question_id = $question->get_new_id();
       $question->id = $question_id;
       $question->txt = $_POST['q_txt'];
+      //$question->txt = preg_replace('/\[|\[|[\t]|\\\/u', ' ', $_POST['q_txt']);
       $question->usr_id = $usr_id;
       $question->img = $web_path;
       $question->create_at = date("Y-m-d H:i:s");
@@ -79,26 +84,28 @@ class Controller_Myquestionadd extends Controller
       $question->save();
       
       $choice = new Model_Choice();
-      $choice->choice_0 = $_POST['choice_0'];
-      $choice->choice_1 = $_POST['choice_1'];
-      $choice->choice_2 = $_POST['choice_2'];
-      $choice->choice_3 = $_POST['choice_3'];
+      $choice->choice_0 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_0']);
+      $choice->choice_1 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_1']);
+      $choice->choice_2 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_2']);
+      $choice->choice_3 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_3']);
       $choice->question_id = $question_id;
-      $choice->reference = $_POST['reference'] ?: '';
+      $choice->reference = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['reference']) ?: '';
       $choice->save();
 
       $arr_post[] = preg_replace('/\W+/u', '_', $_POST['tag_0']);
       $arr_post[] = preg_replace('/\W+/u', '_', $_POST['tag_1']);
       $arr_post[] = preg_replace('/\W+/u', '_', $_POST['tag_2']);
-      
+
       if ($arr_post[0]) {
-        $sql = "INSERT INTO tag (question_id,txt,open_time) VALUES (".$question_id.",'".$arr_post[0]."','".$open_time."')";
+        $arr = DB::query("SELECT MAX(quiz_num) FROM tag WHERE txt = '".$arr_post[0]."'")->execute()->as_array();
+        $quiz_num = $arr[0]['max']+1;
+        $sql = "INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".$question_id.",'".$arr_post[0]."','".$open_time."',".$quiz_num.")";
       }
       if ($arr_post[1]) {
-        $sql = $sql.",(".$question_id.",'".$arr_post[1]."','".$open_time."')";
+        $sql = $sql.",(".$question_id.",'".$arr_post[1]."','".$open_time."',0)";
       }
       if ($arr_post[2]) {
-        $sql = $sql.",(".$question_id.",'".$arr_post[2]."','".$open_time."')";
+        $sql = $sql.",(".$question_id.",'".$arr_post[2]."','".$open_time."',0)";
       }
       if ($arr_post[0]) {
         DB::query($sql)->execute();

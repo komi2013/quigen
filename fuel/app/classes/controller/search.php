@@ -9,6 +9,7 @@ class Controller_Search extends Controller
     }
     $query = DB::select()->from('tag')
       ->where('txt','=',$_GET['tag'])
+      ->and_where( 'open_time','<',date("Y-m-d H:i:s") )
       ->execute()->as_array();
     $arr_qu_id = [0];
     $cnt = 0;

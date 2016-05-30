@@ -75,6 +75,7 @@ addCel(offline_q);
 //   7   ,q_id
 //   8   ,comment_offline
 //   9   ,$(this_seq).html()  my answer
+//  10   ,quiz_num  my answer
 //    ]);
 function addCel(res){
   if(!res[0]){
@@ -88,9 +89,13 @@ function addCel(res){
     }else{
       var result = '<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="icon result" id="img_'+cellId+'">';
     }
+    var quiz_num_txt = '';
+    if(res[celNum][10]){
+      quiz_num_txt = '第'+res[celNum][10]+'問.'; // only migration time cz localstorage data
+    }
     var append = 
     '<tr><td colspan="100" class="td_84">'+
-    '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+    '<a href="/quiz/?q='+cellId+'">'+result+quiz_num_txt+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
     '...</a>'+
     '</td>'+
     '</tr><tr>'+
