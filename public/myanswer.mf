@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver=73
+#ver=75
 CACHE:
 /htm/myanswer/
 /third/jquery-2.1.1.min.js
