@@ -22,16 +22,16 @@ function addCel(resData){
     if(resData[celNum][2]){
       var append = 
       '<tr><td class="td_15_c">'+
-      '<a href="/paidquiz/?crypt_q='+cellQdata+'">'+
+      '<a href="/paidquiz/?q='+resData[celNum][0]+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
       '</td><td class="td_68_ct">'+
-      '<a href="/paidquiz/?crypt_q='+cellQdata+'">'+
+      '<a href="/paidquiz/?q='+resData[celNum][0]+'">'+
       '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
       '</td><td class="td_15_c">'+result+'</td></tr>';
     }else{
       var append = 
       '<tr><td colspan="2" class="td_84_ct">'+
-      '<a href="/paidquiz/?crypt_q='+cellQdata+'">'+
+      '<a href="/paidquiz/?q='+resData[celNum][0]+'">'+
       '<input type="text" value="'+cellTxt+'" readonly class="input_txt_c"></a>'+
       '</td><td class="td_15_c">'+result+'</td></tr>';
     }

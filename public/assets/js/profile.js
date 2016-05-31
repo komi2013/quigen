@@ -105,16 +105,16 @@ function addCel(resData){
     if(resData[celNum][2]){
       var append = 
       '<tr><td colspan="15" class="td_15_t">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][2]+'">'+
+      '<a href="/quiz/?q='+cellId+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
       '</td><td colspan="85" class="td_84_t">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '<a href="/quiz/?q='+cellId+'">'+cellTxt+
       '</a></td>'+
       '</tr>';
     }else{
       var append = 
       '<tr><td colspan="100" class="td_99_t">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '<a href="/quiz/?q='+cellId+'">'+cellTxt+
       '</a></td>'+
       '</tr>';
     }

@@ -281,10 +281,10 @@ function addCel(resData){
     if(resData[celNum][2]){
       var append = 
       '<tr><td colspan="15" class="td_15">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][2]+'">'+
+      '<a href="/quiz/?q='+cellId+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
       '</td><td colspan="85" class="td_84">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '<a href="/quiz/?q='+cellId+'">'+cellTxt+
       '</a></td>'+
       '</tr><tr>'+
       '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
@@ -293,7 +293,7 @@ function addCel(resData){
     }else{
       var append = 
       '<tr><td colspan="100" class="td_99">'+
-      '<a href="/quiz/?crypt_q='+resData[celNum][3]+'">'+cellTxt+
+      '<a href="/quiz/?q='+cellId+'">'+cellTxt+
       '</a></td>'+
       '</tr><tr>'+
       '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+

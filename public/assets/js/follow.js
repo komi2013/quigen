@@ -9,15 +9,15 @@ function addCel(resData){
     if(resData[celNum][2]){ // img is not empty
       var append = 
       '<tr><td class="td_15_t">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+
+      '<a href="/quiz/?q='+resData[celNum][0]+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
       '</td><td class="td_84_t">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+cellTxt+'</a>'+
+      '<a href="/quiz/?q='+resData[celNum][0]+'">'+cellTxt+'</a>'+
       '</td></tr>';
     }else{
       var append = 
       '<tr><td colspan="2" class="td_99_tt">'+
-      '<a href="/quiz/?crypt_q='+cellQdata+'">'+cellTxt+'</a>'+
+      '<a href="/quiz/?q='+resData[celNum][0]+'">'+cellTxt+'</a>'+
       '</td></tr>';
     }
     $('#cel').append(append);
