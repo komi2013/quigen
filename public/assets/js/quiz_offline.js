@@ -47,7 +47,9 @@ if(localStorage.offline_q){
   $('#choice_2').empty().append(ch_2);
   $('#choice_3').empty().append(ch_3);
   $('#comment').empty().append(comment);
-  $('#question').prepend(comment);
+  if(quiz_num){
+    $('.unread').append('第'+quiz_num+'問.');  
+  }
   document.title = q_txt.slice(0,30);
   if(q_img){
     $('#photo').attr({'src':q_img});
