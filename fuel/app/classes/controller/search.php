@@ -4,7 +4,6 @@ class Controller_Search extends Controller
   public function action_index()
   {
     if ( !isset($_GET['tag']) ) {
-      Model_Log::warn('no tag');
       die( View::forge('404') );
     }
     $query = DB::select()->from('tag')
@@ -24,7 +23,6 @@ class Controller_Search extends Controller
       ++$cnt;
     }
     if ( $cnt < 1 ) {
-      Model_Log::warn('no record');
       die( View::forge('404') );
     }
     $no_param = true;

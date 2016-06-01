@@ -6,8 +6,7 @@ class Controller_Answer extends Controller
     $res[0] = 2;
     //Model_Csrf::check();
     if (!isset($_POST['question']) OR !is_numeric($_POST['question'])) {
-      Model_Log::warn('no question');
-      die(json_encode($res));
+      die( View::forge('404') );
     }
     $question_id = $_POST['question'];
     $usr_id = Model_Cookie::get_usr('u_id');
