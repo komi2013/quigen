@@ -115,15 +115,21 @@ if(window.matchMedia('(min-width: 711px)').matches){
 
 ga('set', 'dimension16', ad_ga+','+ad_menu_ga+','+ad_right_ga);
 
-$(function(){
+
+setTimeout(function(){
   if(window.matchMedia('(min-width: 711px)').matches){
-    $('#ad_menu').append(ad_menu_iframe);
+    setTimeout(function(){
+      $('#ad_menu').append(ad_menu_iframe);
+    },6000);
     $('#ad_right').append(ad_right_iframe);
   }else{
-    $('#ad_menu').append(ad_menu_iframe);
+    setTimeout(function(){
+      $('#ad_menu').append(ad_menu_iframe);
+    },6000);
     $('#ad').append(ad_iframe);
   }
+},3000);
 //  $('.ad_frame').click(function(){
 //
 //  });
-});
+

@@ -70,7 +70,7 @@ var rand_ad = parseInt(Math.random()*10);
 var ad_ga = 'none';
 var ad_right_ga = 'none';
 if(window.matchMedia('(min-width: 711px)').matches){
-  if(rand_ad < 0){
+  if(rand_ad < 11){
     var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=adsense_pc_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
     var ad_menu_ga = 'adsense_pc_menu';
   }else if(rand_ad < 11){
@@ -93,7 +93,7 @@ if(window.matchMedia('(min-width: 711px)').matches){
   }
 
 }else{
-  if(rand_ad < 9){
+  if(rand_ad < 11){
     var ad_menu_iframe = '<iframe src="/htm/ad_menu/?af=adsense_sp_menu" width="300" height="250" frameborder="0" scrolling="no" class="ad_frame"></iframe>';
     var ad_menu_ga = 'adsense_sp_menu';
   }else if(rand_ad < 11){
@@ -107,7 +107,7 @@ if(window.matchMedia('(min-width: 711px)').matches){
     var ad_menu_ga = 'imobile_sp_menu';
   }
   
-  if(rand_ad < 7){
+  if(rand_ad < 11){
     var ad_iframe = '<iframe src="/htm/ad/?af=adsense_sp" width="320" height="50" frameborder="0" scrolling="no" data-af="adsense_sp" class="ad_frame"></iframe>';
     var ad_ga = 'adsense_sp';
   }else if(rand_ad < 11){
@@ -119,13 +119,17 @@ if(window.matchMedia('(min-width: 711px)').matches){
 if(navigator.onLine){
   ga('set', 'dimension16', ad_ga+','+ad_menu_ga+','+ad_right_ga);
 
-  $(function(){
+  setTimeout(function(){
     if(window.matchMedia('(min-width: 711px)').matches){
-      $('#ad_menu').append(ad_menu_iframe);
+      setTimeout(function(){
+        $('#ad_menu').append(ad_menu_iframe);
+      },6000);
       $('#ad_right').append(ad_right_iframe);
     }else{
-      $('#ad_menu').append(ad_menu_iframe);
+      setTimeout(function(){
+        $('#ad_menu').append(ad_menu_iframe);
+      },6000);
       $('#ad').append(ad_iframe);
     }
-  });
+  },3000);
 }
