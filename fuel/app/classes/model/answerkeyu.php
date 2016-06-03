@@ -16,6 +16,7 @@ class Model_AnswerKeyU extends \Orm\Model
     'comment',
     'myanswer',
     'correct_choice',
+    'quiz_num',
   );
   protected static $_table_name = 'answer_key_u';
 

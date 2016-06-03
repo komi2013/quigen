@@ -75,8 +75,7 @@ class Controller_Myquestionadd extends Controller
       $question = new Model_Question();
 //       $question_id = $question->get_new_id();
       $question->id = $question_id;
-      $question->txt = $_POST['q_txt'];
-      //$question->txt = preg_replace('/\[|\[|[\t]|\\\/u', ' ', $_POST['q_txt']);
+      $question->txt = preg_replace('/\[|\[|[\t]|\\\/u', ' ', $_POST['q_txt']);
       $question->usr_id = $usr_id;
       $question->img = $web_path;
       $question->create_at = date("Y-m-d H:i:s");

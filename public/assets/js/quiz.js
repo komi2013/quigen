@@ -240,6 +240,7 @@ function answer_1(this_seq){
     ,comment : comment_offline
     ,myanswer : $(this_seq).html()
     ,correct_choice : correct
+    ,quiz_num : quiz_num
   };
   if(already < 1){
     $.post('/answer/',param,function(){},"json")

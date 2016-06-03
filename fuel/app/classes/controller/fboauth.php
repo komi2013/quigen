@@ -51,7 +51,7 @@ class Controller_FbOAuth extends Controller
       $correct = $correct*1 + $d['result']*1;
       ++$total;
       if ($k < 200) {
-        $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
+        $arr_myanswer[] = [$d['question_id'],$d['result'],urlencode($d['q_txt']),$d['q_img'],1];
       }
     }
     $js_answer_by_u = json_encode([$correct,$total]);
@@ -60,7 +60,7 @@ class Controller_FbOAuth extends Controller
     foreach ($arr_answer as $k => $d) {
      if ($k < 200) {
         $arr_offline_q[] = [
-            $d['q_txt']
+            urlencode($d['q_txt'])
             ,$d['choice_0']
             ,$d['choice_1']
             ,$d['choice_2']
@@ -68,8 +68,9 @@ class Controller_FbOAuth extends Controller
             ,$d['correct_choice']
             ,$d['q_img']
             ,(string)$d['question_id']
-            ,$d['comment']
+            ,urlencode($d['comment'])
             ,$d['myanswer']
+            ,$d['quiz_num']
           ];
       }
     }

@@ -68,9 +68,11 @@ class Controller_Answer extends Controller
       $answer_key_u->choice_1 = $_POST['choice_1'];
       $answer_key_u->choice_2 = $_POST['choice_2'];
       $answer_key_u->choice_3 = $_POST['choice_3'];
-      $answer_key_u->comment  = $_POST['comment'];
+      $comment = preg_replace('/\n|\r|\r\n/', '', $_POST['comment']);
+      $answer_key_u->comment  = preg_replace('/\t/', '　', $comment);
       $answer_key_u->myanswer = $_POST['myanswer'];
       $answer_key_u->correct_choice = $_POST['correct_choice'];
+      $answer_key_u->quiz_num = $_POST['quiz_num'];
       $answer_key_u->save();
       
       $answer_key_q = new Model_AnswerKeyQ();
