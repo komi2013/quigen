@@ -50,7 +50,7 @@ class Controller_TwCallback extends Controller
       $correct = $correct*1 + $d['result']*1;
       ++$total;
       if ($k < 200) {
-        $arr_myanswer[] = [$d['question_id'],$d['result'],urlencode($d['q_txt']),$d['q_img'],1];
+        $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
       }
     }
     $js_answer_by_u = json_encode([$correct,$total]);
@@ -67,7 +67,7 @@ class Controller_TwCallback extends Controller
             ,$d['correct_choice']
             ,$d['q_img']
             ,(string)$d['question_id']
-            ,urlencode($d['comment'])
+            ,$d['comment']
             ,$d['myanswer']
             ,$d['quiz_num']
           ];
