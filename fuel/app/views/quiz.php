@@ -166,11 +166,9 @@
 <?php if( !isset($_GET['iframe']) ){?>
 <div id="ad_right"></div>
 <?php } ?>
-
+<div id="correct" style="display: none;"></div>
 <script>
-
-  var correct = '<?=urlencode($correct)?>';
-  correct = decodeURIComponent(correct).replace( /\+/g,' ');
+  
   var q_id = '<?=$question?>';
   var usr = '<?=$usr?>';
   var q_data = '<?=$q_data?>';

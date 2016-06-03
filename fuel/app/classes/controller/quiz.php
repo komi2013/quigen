@@ -43,7 +43,6 @@ class Controller_Quiz extends Controller
     $cho_1 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_1']) );
     $cho_2 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_2']) );
     $cho_3 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_3']) );
-    $correct = $cho_0;
     $random_choice = [$cho_0,$cho_1,$cho_2,$cho_3];
     
     $view = View::forge('quiz');
@@ -82,9 +81,9 @@ class Controller_Quiz extends Controller
     $view->comment_offline = $comment_offline;
     $view->img = $q_img;
     shuffle($random_choice);
+    $random_choice[4] = $cho_0;
     $view->arr_choice = $random_choice;
     $view->question = $question_id;
-    $view->correct = $correct;
     $view->usr = $q_u_id;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
         Config::get('my.domain').
