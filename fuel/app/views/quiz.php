@@ -8,16 +8,16 @@
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/quiz/?q='.$question?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css?ver=81" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css?ver=82" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=81"></script>
+    <script src="/assets/js/analytics.js?ver=82"></script>
     <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=81" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=82" />
 <?php if( isset($_GET['iframe']) ){?>
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=81">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=82">
 <?php }else{ ?>
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=81" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=81" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=82" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=82" media="only screen and (max-width : 710px)">
 <?php } ?>    
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
@@ -180,9 +180,9 @@
   var comment_offline = '<?=urlencode($comment_offline)?>';
   comment_offline = decodeURIComponent(comment_offline).replace( /\+/g,'');
 </script>
-<script src="/assets/js/basic.js?ver=81"></script>
-<script src="/assets/js/check_news.js?ver=81"></script>
-<script src="/assets/js/quiz.js?ver=81"></script>
+<script src="/assets/js/basic.js?ver=82"></script>
+<script src="/assets/js/check_news.js?ver=82"></script>
+<script src="/assets/js/quiz.js?ver=82"></script>
 <script>
 setTimeout(function(){
   ga('set', 'dimension7', iframe);
