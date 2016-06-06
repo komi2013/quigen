@@ -9,10 +9,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=80"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=80" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=80" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=80" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=81"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=81" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=81" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=81" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -96,8 +96,8 @@
 
 </table>
 </div>
-<script src="/assets/js/basic.js?ver=80"></script>
-<script src="/assets/js/check_news.js?ver=80"></script>
+<script src="/assets/js/basic.js?ver=81"></script>
+<script src="/assets/js/check_news.js?ver=81"></script>
 <script>
   
 if(localStorage.quest){
