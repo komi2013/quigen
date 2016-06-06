@@ -1,12 +1,18 @@
 CACHE MANIFEST
-#ver=72222
+#ver=80
 CACHE:
 /htm/quiz_offline/
+
 /third/jquery-2.1.1.min.js
 /third/jquery.cookie.js
-/assets/css/quiz.css
+
 /assets/js/analytics.js
 /assets/js/analytics_offline.js
+/assets/js/basic_offline.js
+/assets/js/check_news.js
+/assets/js/quiz_offline.js
+
+/assets/css/quiz.css
 /assets/css/basic.css
 /assets/css/pc.css
 /assets/css/sp.css
@@ -20,10 +26,7 @@ CACHE:
 /assets/img/icon/tw.jpg
 /assets/img/icon/ln.jpg
 /assets/img/icon/clip.png
+/assets/img/icon/no_internet.png
 
 NETWORK:
 *
-
-
-
-
