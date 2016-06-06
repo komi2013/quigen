@@ -196,7 +196,7 @@ function answer_1(this_seq){
   });
   
   $('.choice').each(function(i){
-    if(correct == $('#choice_'+i).html()){
+    if($('#correct').html() == $('#choice_'+i).html()){
       $('#choice_'+i).css({
         'background-color': 'lime',
       });
