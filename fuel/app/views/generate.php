@@ -88,7 +88,7 @@
 <canvas id="mycanvas" height="300" width="300"></canvas>
 </div>
 
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 
 <div id="ad_right"></div>

@@ -31,7 +31,7 @@
   <tr><td class="td_99"><a href="/htm/mypaid/">&nbsp;&nbsp;下記の時間以降作成できます</a></td></tr>
   <tr><td class="td_99"><a href="/payment1/">&nbsp;&nbsp;<?=$available?></a></td></tr>
 </table>
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 <script src="/assets/js/check_news.js?ver=81"></script>
 <script src="/assets/js/basic.js?ver=81"></script>

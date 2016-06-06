@@ -119,14 +119,14 @@ ga('set', 'dimension16', ad_ga+','+ad_menu_ga+','+ad_right_ga);
 setTimeout(function(){
   if(window.matchMedia('(min-width: 711px)').matches){
     setTimeout(function(){
-      $('#ad_menu').append(ad_menu_iframe);
+      $('#ad_menu').empty().append(ad_menu_iframe);
     },6000);
-    $('#ad_right').append(ad_right_iframe);
+    $('#ad_right').empty().append(ad_right_iframe);
   }else{
     setTimeout(function(){
-      $('#ad_menu').append(ad_menu_iframe);
+      $('#ad_menu').empty().append(ad_menu_iframe);
     },6000);
-    $('#ad').append(ad_iframe);
+    $('#ad').empty().append(ad_iframe);
   }
 },3000);
 //  $('.ad_frame').click(function(){

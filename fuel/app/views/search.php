@@ -40,7 +40,7 @@
   </td></tr>
 </table>
 <div class="tag_desc"><?=$description?></div>
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table id="cel">
 <?php foreach($question as $k => $d){ ?>
 <tr>
@@ -62,7 +62,7 @@
 <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$tag?>&page=<?=$next_page?>" target=”_blank”>・・・別ページで開く・・・</a></td></tr>
 <?php } ?>
 </table>
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <span id="nextPage" style="display:none;"><?=$next_page?></span>
 </div>
 <div id="ad_right"></div>

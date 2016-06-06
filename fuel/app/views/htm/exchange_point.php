@@ -89,7 +89,7 @@
   <tr><td id="txt"><input type="email" placeholder="email" value="" id="email"></td></tr>
 </table>
 <?php } ?>
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 <script>
   var u_id = '<?=$u_id?>';

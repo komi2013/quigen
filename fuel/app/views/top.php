@@ -49,8 +49,8 @@
   &nbsp;&nbsp;
 <?php } ?>
 </div>
-<div style="width:100%;border-bottom: 1px solid #F5F5F5;"></div>
 <?php } ?>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
 <?php
   $i = 0;
@@ -98,8 +98,6 @@
   </td>
   </tr>
 </table>
-<br>
-<div id="ad"></div>
 </div>
 <div id="ad_right"></div>
 

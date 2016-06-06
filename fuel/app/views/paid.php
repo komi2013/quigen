@@ -53,7 +53,7 @@
   <td class="move"><a href="/paid/?page=<?=$page-1?>"> >> </a></td>
   </tr>
 </table>
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 <script src="/assets/js/basic.js?ver=81"></script>
 <script src="/assets/js/check_news.js?ver=81"></script>

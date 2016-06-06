@@ -30,7 +30,7 @@
 ?>
 
 <div id="content">
-<br> <div id="ad"></div>
+<br> <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
 <div id="div_photo">
 <img src="/assets/img/icon/no_img.png" alt="quiz photo" id="photo">

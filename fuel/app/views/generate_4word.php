@@ -47,7 +47,7 @@
 <input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_1">
 <input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_2">
 </div>
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 <div id="ad_right"></div>
 <script>

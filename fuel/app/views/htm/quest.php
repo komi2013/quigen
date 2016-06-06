@@ -32,7 +32,7 @@
 ?>
 
 <div id="content">
-<br> <div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr>
     <td class="td_68"><a id="pre_quiz" href="/">クイズに戻る</a></td>
@@ -111,7 +111,7 @@
   </tr>
 </table>
 
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 <div id="ad_right"></div>
 

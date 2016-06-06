@@ -95,7 +95,7 @@
 </tr>
 </table>
 
-<div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <?php if( !isset($_GET['list']) ){ ?>
 <table cellspacing="1" boroder="0"><tr>
   <td class="td_49" style="text-align: center;"><img src="/assets/img/icon/answer.png" class="icon"></td>

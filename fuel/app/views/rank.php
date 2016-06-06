@@ -27,6 +27,7 @@
 ?>
 
 <div id="content">
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr><td style="text-align: center;">
     <select class="txt_84" id="tag_name">
@@ -37,7 +38,6 @@
   </td></tr>
 </table>
 <table id="cel"></table>
-<div id="ad"></div>
 </div>
 <div id="ad_right"></div>
 

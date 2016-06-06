@@ -37,7 +37,7 @@
 ?>
 
 <div id="content">
-<br> <div id="ad"></div>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <?php if($img){?>
 <div id="div_photo">
 <img src="<?=$img?>" alt="quiz photo" id="photo">
