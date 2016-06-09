@@ -16,11 +16,6 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">マイアンサー</h1></td>
-  <td class="edge"></td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = 'myanswer';
@@ -65,7 +60,7 @@
 </table>
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-
+<div class="td_99_c"><a href="/htm/quiz_offline/">前回のオフラインクイズ</a></div>
 <table id="cel"></table>
 </div>
 

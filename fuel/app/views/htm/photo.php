@@ -36,14 +36,8 @@ body{
 <script>var ua = '<?=Config::get("my.ua")?>';</script>
 <script src="/assets/js/analytics.js"></script>
 
-<table cellspacing="0" id="header">
-  <td class="edge"></td>
-  <td id="center">写真アップロード</td>
-  <td class="edge">
     <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
     <img src="/assets/img/icon/circle_big.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</table>
 
 <table cellspacing="0">
   <tr>

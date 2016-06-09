@@ -22,12 +22,6 @@
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="font_8 unread">マイパック</h1></td>
   <td class="edge">
-    <?php if($q_amt < 20){ ?>
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-    <?php }else { ?>
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success">
-    <?php }?>
   </td>
 </table>
 <?php
@@ -36,7 +30,12 @@
   echo $side;
 ?>
 <div id="content">
-
+    <?php if($q_amt < 20){ ?>
+    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+    <?php }else { ?>
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success">
+    <?php }?>
 <table><tr><td class="td_99_c"><input type="text" value="<?=Str::truncate(Security::htmlentities($pack_txt), 30)?>" readonly class="input_txt_c"></td></tr></table>
 
 <table id="cel">

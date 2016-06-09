@@ -22,14 +22,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-    
 
-
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="unread font_8"></h1></td>
-  <td class="edge" id="right"></td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
@@ -56,7 +49,7 @@
   <tr><td class="choice" id="choice_3"><?=$arr_choice[3]?></td></tr>
 </table>
 </div>
-<table cellspacing="1" boroder="0">
+<table>
 <tr>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" alt="correct ratio" class="icon"></td>
   <td class="td_15" id="num_ratio">0 % </td>
@@ -66,37 +59,44 @@
   <td class="td_15" id="ticket" style="color:red;">0</td>
 </tr>
 </table>
-<table cellspacing="0" boroder="0">
+<table>
 <tr>
-
 <?php $i=0; while($i<16){ ?>
   <?php if($i == 8){ ?>
     </tr><tr>
   <?php } ?>
   <td id="co_<?=$i?>" class="ans_u_correct"></td>
-
 <?php ++$i;} ?>
 </tr>
-
 </table>
 
-<table cellspacing="0" boroder="0">
+<table>
 <tr>
 <?php $i=0; while($i<16){ ?>
   <?php if($i == 8){ ?>
     </tr><tr>
   <?php } ?>
   <td id="inco_<?=$i?>" class="ans_u_incorrect"></td>
-
 <?php ++$i;} ?>
 </tr>
 </table>
 
-<table cellspacing="0" cellspacing="1" boroder="0">
-  <tr><td id="tag"></td></tr>
-</table>
+<span id="generator"></span> <span id="tag"></span>
 <br>
-<table cellspacing="1" boroder="0" id="sns">
+<?php foreach ($arr_comment as $d) { ?>
+  <div style="word-wrap:break-word;"><?=$d['txt']?></div>
+  <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
+<?php } ?>
+<textarea placeholder="コメント" class="comment_input" id="comment_data"></textarea>
+<div class="div_right">
+<img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
+<img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+</div>
+
+<?php if($reference){ ?> 
+<div style="word-wrap:break-word;">引用元:<?=$reference?></div>
+<?php } ?>
+<table id="sns">
 <tr>
 <td style="width:70px;">
   <a href="<?=$fb_url?>" target="_blank">
@@ -125,21 +125,6 @@
   </td>
 </tr>
 </table>
-<br>
-
-<?php foreach ($arr_comment as $d) { ?>
-  <div style="word-wrap:break-word;"><?=$d['txt']?></div>
-  <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
-<?php } ?>
-<textarea placeholder="コメント" class="comment_input" id="comment_data"></textarea>
-<div class="div_right">
-<img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
-<img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-</div>
-
-<?php if($reference){ ?> 
-<div style="word-wrap:break-word;">引用元:<?=$reference?></div>
-<?php } ?>
 
 <table id="next_prev"></table>
 

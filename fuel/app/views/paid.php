@@ -16,12 +16,6 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">有料クイズ</h1></td>
-  <td class="edge" id="search"><img src="/assets/img/icon/magnifier.png" alt="search" class="icon"></td>
-</table>
-
 <?php
   $side = View::forge('side');
   $side->this_page = 'paid';
@@ -29,6 +23,7 @@
 ?>
 
 <div id="content">
+    <img src="/assets/img/icon/magnifier.png" alt="search" id="search" class="icon">
 <table>
 <tr><td colspan="2"><input type="text" placeholder="#日本の城" maxlength="12" id="tag_name" class="txt_84"></td></tr>
 <tr><td class="td_49">所持ポイント</td><td class="td_49" id="point"></td></tr>

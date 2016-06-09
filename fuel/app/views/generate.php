@@ -17,20 +17,13 @@
   </head>
 <body>
 <script src="/third/img-touch-canvas_1.js?ver=82"></script>
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">作成</h1></td>
-  <td class="edge">
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = 'generate';
   echo $side;
 ?>
 <div id="content">
+
 <table style="text-align:center;">
 <tr><td><textarea placeholder="Q." maxlength="2000" class="txt_long" id="q_txt"></textarea></td></tr>
 </table>
@@ -50,7 +43,10 @@
 <tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
 <tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
 </table>
-
+<div style="width:98%;text-align:right;">
+  <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+  <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
+</div>
 <table>
   <tr><td class="td_99_c">オプション</td></tr>  
 </table>

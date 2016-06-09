@@ -20,11 +20,7 @@
   background-color: #CBFFD3;
 }
 </style>
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">クエスト</h1></td>
-  <td class="edge"></td>
-</table>
+
 <?php
   $side = View::forge('side');
   $side->this_page = '';
@@ -63,8 +59,7 @@
 <table>
   <tr><td class="quest_1 td_99_c">クイズに答える</td>                                   <td class="td_15_c"><img src="/assets/img/icon/star_1.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/">他のクイズを確認</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/htm/myanswer/">マイアンサー(復習)を確認</a></td><td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/myprofile/">マイプロファイルを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/myprofile/">マイページを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 
   <tr><td class="quest_2 td_99_c"><a href="/rank/">ランクを確認</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">使い方と規約を確認</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>

@@ -16,11 +16,6 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">マイアンサー</h1></td>
-  <td class="edge"></td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = 'myanswer';
@@ -30,7 +25,7 @@
 
 <table>
 <tr>
-  <td class="td_68_c"><a href="/category/">タグカテゴリ</a></td>
+  <td class="td_68_c">タグカテゴリ</td>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>
   <td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>
 </tr>

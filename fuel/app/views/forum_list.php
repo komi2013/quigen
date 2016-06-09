@@ -23,11 +23,6 @@
 <body>
 <script src="/third/img-touch-canvas_1.js?ver=82"></script>
 
-<table id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">画像掲示板</h1></td>
-  <td class="edge"></td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = 'forumlist';
@@ -87,19 +82,14 @@
   </tr>
 </table>
 
-<table>
-  <tr>
-    <td style="width:84%;"></td>
-    <td style="width:15%;">
-      <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
-      <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-    </td>
-  </tr>
-</table>
 <table style="text-align:center;">
 <tr><td><textarea placeholder="Q." maxlength="400" class="txt_long" id="txt"></textarea></td></tr>
 </table>
-    
+<div style="width:100%;text-align:right;">
+  <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
+  <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+</div>
+
 <table>
   <tr>
   <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>

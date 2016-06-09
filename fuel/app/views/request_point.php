@@ -20,11 +20,6 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">パックNo.<?=$_GET['p']?></h1></td>
-  <td class="edge"></td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
@@ -32,6 +27,7 @@
 ?>
 
 <div id="content">
+パックNo.<?=$_GET['p']?>
 <table>
 <tr><td class="td_49">所持ポイント</td><td class="td_49" id="point"></td></tr>
 </table>

@@ -386,7 +386,7 @@ function quizUsrShow(){
       append = 
       '<a href="/profile/?u='+res[1][0]+'">'+
       '<img src="'+res[1][2]+'" alt="generator" class="icon" '+res[1][3]+'></a>';
-      $('#right').append(append);
+      $('#generator').append(append);
       addCel(res[2],'co');
       addCel(res[3],'inco');
       resCo = res[2];
@@ -473,6 +473,10 @@ function addNavi(res,nextPrev) {
   $('#next_prev').append(append);
 }
 $('#comment_add').click(function(){
+  if(!u_id){
+    alert('はじめにクイズに答えてください');
+    return;
+  }
   var validate = 1;
   if($('#comment_data').val()==''){
     $('#comment_data').css({'border-color':'red'});
@@ -491,7 +495,7 @@ $('#comment_add').click(function(){
   if(localStorage.myphoto){
     var myphoto = localStorage.myphoto;
   }else{
-    var myphoto = '';
+    var myphoto = '/assets/img/icon/guest.png';
   }
   var param = {
     csrf : csrf

@@ -26,16 +26,6 @@ h1 {
   vertical-align: middle;
   cursor: pointer;
 }
-.edge {
-  width: 25%;
-  text-align: center;
-  background-color: #EEEEEE;
-}
-#center {
-  width: 48%;
-  text-align: center;
-  background-color: #EEEEEE;
-}
 #drawer td {
   background-color: #EEEEEE;
   height: 50px;
@@ -99,7 +89,10 @@ h1 {
   padding: 0px 10px 19px 10px;
   border-bottom: 1px solid #F5F5F5;
 }
-
+.td_50{
+  width: 50%;
+  text-align:center;
+}
 .td_50_c{
   background-color: #F5F5F5;
   width: 50%;
@@ -174,6 +167,10 @@ h1 {
   height: 48px;
   width: 49%;
 }
+.txt_80{
+  height: 48px;
+  width: 80%;
+}
 .txt_84{
   font-size: 15px;
   height: 48px;
@@ -217,4 +214,44 @@ h1 {
   height: 48px;
   width: 90%;
   margin: 5px;
+}
+
+#header td {
+  width: 20%;
+  text-align: center;
+  background-color: #EEEEEE;
+}
+
+#header td.this_page {
+  background-color: #FCFCFC;
+  border-color: silver;
+}
+
+.img_input {
+  width: 100%;
+  text-align: center;
+}
+
+.input_with {
+  width: 60%;
+  display: inline-block;
+  height: 45px;
+  font-size:18px;
+  border-width: 1px;
+}
+#news_num {
+  position: absolute;
+  background-color: rgba(0,255,0,1.0);
+  color: white;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  display: none;
+}
+.cell_20 {
+  width: 20%;
+  text-align: center;
+  display: table-cell;
 }

@@ -6,12 +6,42 @@ class Controller_Myprofile extends Controller
     $view = View::forge('myprofile');
     $view->follower = 0;
     $usr_id = Model_Cookie::get_usr();
+    $profile_fb_url = '';
+    $profile_tw_url = '';
+    $profile_ln_url = '';
+    $profile_clip_url = '';
+    $introduce = '';
+
     if ($usr_id) {
       $res = DB::query("select count(*) from follow where receiver = ".$usr_id." AND status = 2")
         ->execute()->as_array();
       $view->follower = $res[0]['count'];
       $res = DB::query("select * from usr where id = ".$usr_id)->execute()->as_array();
-      $view->introduce = ( isset($res[0]['introduce']) ) ? $res[0]['introduce'] : '';
+      $introduce = ( isset($res[0]['introduce']) ) ? $res[0]['introduce'] : '';
+
+      $profile_fb_url = 'http://www.facebook.com/sharer.php?u=http://'
+        .Config::get('my.domain')
+        .'/profile/?u='
+        .$usr_id
+        .'%26cpn=share_fb'
+        ;
+      $profile_tw_url = 'https://twitter.com/intent/tweet?url=http://'
+        .Config::get('my.domain')
+        .'/profile/?u='
+        .$usr_id
+        .'%26cpn=share_tw&text='
+        .$introduce
+        .'+@quigen2015'
+        ;
+      $profile_ln_url = 'line://msg/text/?'
+        .$introduce
+        .'%0D%0Ahttp://'
+        .Config::get('my.domain')
+        .'/profile/?u='
+        .$usr_id
+        .'%26cpn=share_ln'
+        ;
+      $profile_clip_url = 'http://'.Config::get('my.domain').'/profile/?u='.$usr_id;
     }
     $view->fb_url = 'https://www.facebook.com/dialog/oauth?client_id='
       .Config::get('my.fb_id')
@@ -26,6 +56,11 @@ class Controller_Myprofile extends Controller
       .'&redirect_uri='.Config::get('my.gp_callback')    
       ;
     
+    $view->profile_fb_url = $profile_fb_url;
+    $view->profile_tw_url = $profile_tw_url;
+    $view->profile_ln_url = $profile_ln_url;
+    $view->profile_clip_url = $profile_clip_url;
+    $view->introduce = $introduce;
     $view->u_id = $usr_id;
     die($view);
   }

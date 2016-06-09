@@ -14,20 +14,14 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<table id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center">admin</td>
-  <td class="edge">
-    <img src="/assets/img/icon/cross_big.png" alt="generate" class="icon" id="delete">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
   echo $side;
 ?>
 <div id="content">
+  <img src="/assets/img/icon/cross_big.png" alt="generate" class="icon" id="delete">
+  <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
 <table cellspacing="1" boroder="0">
     
 <?php if( isset($question) ){ foreach($question as $k => $d){ ?>

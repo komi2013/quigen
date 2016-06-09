@@ -15,21 +15,14 @@
   </head>
 <body>
 <script src="/third/img-touch-canvas_1.js?ver=82"></script>
-<table id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">編集</h1></td>
-  <td class="edge">
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
   echo $side;
 ?>
 <div id="content">
-
+    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
 <table style="text-align:center;">
 <tr><td><textarea maxlength="2000" class="txt_long" id="q_txt"><?=$q_txt?></textarea></td></tr>
 </table>

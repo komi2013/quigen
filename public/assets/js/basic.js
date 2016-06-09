@@ -40,12 +40,12 @@ $(window).scroll(function(){
     }else{
       $('#drawer').css({'position':'absolute','margin-top':'-1px'});
     }
-  }else{
+  }else{ //sp
     diffPosition = nowPosition - $(window).scrollTop();
     nowPosition = $(window).scrollTop();
     if(scrTop < 4000){
       $('#drawer').css({'position':'absolute','top':'51px'});
-    }else if(diffPosition > 0){
+    }else if(diffPosition > 200){
       $('#drawer').css({'top':$(window).scrollTop()+51+'px'});
     }
     if(diffPosition < 0 || nowPosition < 4000){ //down scroll
@@ -62,6 +62,115 @@ if(localStorage.quest_level > 2){
   $('.disp_quest').css({ 'display': 'none'});
 }
 
+function get_eto(u_id){
+  left   = Math.floor( u_id / 100).toString().substr(-1);
+  left   = decimal_hexadecimal(left);
+  middle = Math.floor(u_id / 10).toString().substr(-1);
+  middle = decimal_hexadecimal(middle);
+  right  = Math.floor(u_id / 1).toString().substr(-1);
+  right  = decimal_hexadecimal(right);
+
+  eto_num = ( u_id % 12 ) + 1;
+  switch (eto_num) {
+    case 1:
+      eto_img = '/assets/img/eto/01_rat.png';
+      eto_txt = 'ねずみ';
+      break;
+    case 2:
+      eto_img = '/assets/img/eto/02_buffalo.png';
+      eto_txt = 'うし';
+      break;
+    case 3:
+      eto_img = '/assets/img/eto/03_tiger.png';
+      eto_txt = 'とら';
+      break;
+    case 4:
+      eto_img = '/assets/img/eto/04_rabbit.png';
+      eto_txt = 'うさぎ';
+      break;
+    case 5:
+      eto_img = '/assets/img/eto/05_dragon.png';
+      eto_txt = 'たつ';
+      break;
+    case 6:
+      eto_img = '/assets/img/eto/06_snake.png';
+      eto_txt = 'へび';
+      break;
+    case 7:
+      eto_img = '/assets/img/eto/07_horse.png';
+      eto_txt = 'うま';
+      break;
+    case 8:
+      eto_img = '/assets/img/eto/08_sheep.png';
+      eto_txt = 'ひつじ';
+      break;
+    case 9:
+      eto_img = '/assets/img/eto/09_monkey.png';
+      eto_txt = 'さる';
+      break;
+    case 10:
+      eto_img = '/assets/img/eto/10_hen.png';
+      eto_txt = 'とり';
+      break;
+    case 11:
+      eto_img = '/assets/img/eto/11_dog.png';
+      eto_txt = 'いぬ';
+      break;
+    case 12:
+      eto_img = '/assets/img/eto/12_pig.png';
+      eto_txt = 'いのしし';
+      break;
+  }
+  var eto = [];
+  eto[0] = u_id;
+  eto[1] = eto_txt+u_id;
+  eto[2] = eto_img;
+  eto[3] = '#'+left+left+middle+middle+right+right;
+  return eto;
+}
+function decimal_hexadecimal(res)
+{
+  switch (res) {
+    case 1:
+      res = 'A';
+      break;
+    case 3:
+      res = 'B';
+      break;
+    case 5:
+      res = 'C';
+      break;
+    case 7:
+      res = 'D';
+      break;
+    case 9:
+      res = 'E';
+      break;
+  }
+  return res;
+}
+
+myphoto = '';
+myname = '';
+mybgcolor = '';
+if(localStorage.myphoto){
+  myphoto = localStorage.myphoto;
+  myname = localStorage.myname;
+}else if(localStorage.ua_u_id){
+  var eto = get_eto(localStorage.ua_u_id);
+  myphoto = eto[2];
+  myname = eto[1];
+  mybgcolor = eto[3];
+}
+if(myphoto){
+  $('#page_myimg').attr('src',myphoto); 
+}
+if(mybgcolor){
+  $('#page_myimg').css({
+    'background-color':mybgcolor
+    ,'opacity':'0.7'
+  });
+}
 var rand_ad = parseInt(Math.random()*10);
 var ad_ga = 'none';
 var ad_right_ga = 'none';

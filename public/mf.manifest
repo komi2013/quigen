@@ -16,6 +16,7 @@ CACHE:
 /assets/css/basic.css
 /assets/css/pc.css
 /assets/css/sp.css
+
 /assets/img/icon/menu.png
 /assets/img/icon/no_img.png
 /assets/img/icon/circle_big.png
@@ -27,6 +28,12 @@ CACHE:
 /assets/img/icon/ln.jpg
 /assets/img/icon/clip.png
 /assets/img/icon/no_internet.png
+/assets/img/icon/mail.png
+/assets/img/icon/guest.png
+/assets/img/icon/ranking.png
+/assets/img/icon/pencil.png
+
+
 
 NETWORK:
 *

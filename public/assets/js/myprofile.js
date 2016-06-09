@@ -3,93 +3,6 @@ if(getVal.warn){
   location.href = '/myprofile/';
 }
 
-function get_eto(u_id){
-  left   = Math.floor( u_id / 100).toString().substr(-1);
-  left   = decimal_hexadecimal(left);
-  middle = Math.floor(u_id / 10).toString().substr(-1);
-  middle = decimal_hexadecimal(middle);
-  right  = Math.floor(u_id / 1).toString().substr(-1);
-  right  = decimal_hexadecimal(right);
-
-  eto_num = ( u_id % 12 ) + 1;
-  switch (eto_num) {
-    case 1:
-      eto_img = '/assets/img/eto/01_rat.png';
-      eto_txt = 'ねずみ';
-      break;
-    case 2:
-      eto_img = '/assets/img/eto/02_buffalo.png';
-      eto_txt = 'うし';
-      break;
-    case 3:
-      eto_img = '/assets/img/eto/03_tiger.png';
-      eto_txt = 'とら';
-      break;
-    case 4:
-      eto_img = '/assets/img/eto/04_rabbit.png';
-      eto_txt = 'うさぎ';
-      break;
-    case 5:
-      eto_img = '/assets/img/eto/05_dragon.png';
-      eto_txt = 'たつ';
-      break;
-    case 6:
-      eto_img = '/assets/img/eto/06_snake.png';
-      eto_txt = 'へび';
-      break;
-    case 7:
-      eto_img = '/assets/img/eto/07_horse.png';
-      eto_txt = 'うま';
-      break;
-    case 8:
-      eto_img = '/assets/img/eto/08_sheep.png';
-      eto_txt = 'ひつじ';
-      break;
-    case 9:
-      eto_img = '/assets/img/eto/09_monkey.png';
-      eto_txt = 'さる';
-      break;
-    case 10:
-      eto_img = '/assets/img/eto/10_hen.png';
-      eto_txt = 'とり';
-      break;
-    case 11:
-      eto_img = '/assets/img/eto/11_dog.png';
-      eto_txt = 'いぬ';
-      break;
-    case 12:
-      eto_img = '/assets/img/eto/12_pig.png';
-      eto_txt = 'いのしし';
-      break;
-  }
-  var eto = [];
-  eto[0] = u_id;
-  eto[1] = eto_txt+u_id;
-  eto[2] = eto_img;
-  eto[3] = 'style="background-color:#'+left+left+middle+middle+right+right+';opacity:0.7;"';
-  return eto;
-}
-function decimal_hexadecimal(res)
-{
-  switch (res) {
-    case 1:
-      res = 'A';
-      break;
-    case 3:
-      res = 'B';
-      break;
-    case 5:
-      res = 'C';
-      break;
-    case 7:
-      res = 'D';
-      break;
-    case 9:
-      res = 'E';
-      break;
-  }
-  return res;
-}
 function highlighting(highlight,sc_height,drawer_open){
   scrollTo(0,sc_height);
   if (matchMedia('only screen and (max-width : 710px)').matches && drawer_open) {
@@ -110,6 +23,7 @@ function highlighting(highlight,sc_height,drawer_open){
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
   if(quest[2] != 1){
+    quest[1] = 1;
     quest[2] = 1;
     localStorage.quest = JSON.stringify(quest);
     setTimeout(function(){
@@ -119,18 +33,6 @@ if(localStorage.quest){
     ticket[0] = ticket[0] + 12;
     localStorage.ticket = JSON.stringify(ticket);
   }
-}
-if(localStorage.myphoto){
-  $('#photo').attr('src',localStorage.myphoto);
-  $('#myname').val(localStorage.myname);
-}else if(localStorage.ua_u_id){
-  var eto = get_eto(localStorage.ua_u_id);
-  $('#photo').attr('src',eto[2]); 
-  $('#myname').val(eto[1]);
-  $('#photo').css({
-    'background-color':eto[3]
-    ,'opacity':'0.7'
-  });
 }
 
 if(localStorage.follow){
@@ -239,23 +141,6 @@ function checkClick(){
   }
 }
 
-function delQuiz(cellId){
-  r = confirm('削除します');
-  if(r){
-    var quiz_id=[cellId];
-    var param = {
-      csrf : csrf
-      ,quiz_id : quiz_id
-    };
-    $.post('/myquizdelete/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        location.href='';
-      }
-    });  
-  }
-}
-
 $('#del_cookie').click(function(){
   r = confirm('ログアウト・削除します');
   if(r){
@@ -269,65 +154,81 @@ $('#del_cookie').click(function(){
   }
 });
 
-var endTime = Math.round( new Date().getTime() / 1000 );
-endTime = endTime + 86400 * 20;
-var addLimit = 20;
-var celNum = 0;
-var resData = [];
-function addCel(resData){
-  while(celNum < addLimit){
-    var cellId = resData[celNum][0];
-    var cellTxt = resData[celNum][1];
-    if(resData[celNum][2]){
-      var append = 
-      '<tr><td colspan="15" class="td_15">'+
-      '<a href="/quiz/?q='+cellId+'">'+
-      '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
-      '</td><td colspan="85" class="td_84">'+
-      '<a href="/quiz/?q='+cellId+'">'+cellTxt+
-      '</a></td>'+
-      '</tr><tr>'+
-      '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
-      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delQuiz('+cellId+')"></td>'+
-      '</tr>';
-    }else{
-      var append = 
-      '<tr><td colspan="100" class="td_99">'+
-      '<a href="/quiz/?q='+cellId+'">'+cellTxt+
-      '</a></td>'+
-      '</tr><tr>'+
-      '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
-      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delQuiz('+cellId+')"></td>'+
-      '</tr>';
-    }
-    $('#cel').append(append);
-    ++celNum;
-    if(!resData[celNum]){
-      return;
+if(getVal.list){
+  function delQuiz(cellId){
+    r = confirm('削除します');
+    if(r){
+      var quiz_id=[cellId];
+      var param = {
+        csrf : csrf
+        ,quiz_id : quiz_id
+      };
+      $.post('/myquizdelete/',param,function(){},"json")
+      .always(function(res){
+        if(res[0]==1){
+          location.href='';
+        }
+      });  
     }
   }
-}
-
-function getData(first){
-  var param = {
-    endTime : endTime
-  };
-  $.get('/myquestionshow/',param,function(){},"json")
-  .always(function(res){
-//     resData = id, txt, img
-    if(res[0]==1){
-      resData = $.merge($.merge([], resData), res[1]);
-      endTime = res[1].pop()[4];
-      if(first == 1){
-        addCel(resData);
+  var endTime = Math.round( new Date().getTime() / 1000 );
+  endTime = endTime + 86400 * 20;
+  var addLimit = 20;
+  var celNum = 0;
+  var resData = [];
+  function addQ(resData){
+    while(celNum < addLimit){
+      var cellId = resData[celNum][0];
+      var cellTxt = resData[celNum][1];
+      if(resData[celNum][2]){
+        var append = 
+        '<tr><td colspan="15" class="td_15">'+
+        '<a href="/quiz/?q='+cellId+'">'+
+        '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
+        '</td><td colspan="85" class="td_84">'+
+        '<a href="/quiz/?q='+cellId+'">'+cellTxt+
+        '</a></td>'+
+        '</tr><tr>'+
+        '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
+        '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delQuiz('+cellId+')"></td>'+
+        '</tr>';
+      }else{
+        var append = 
+        '<tr><td colspan="100" class="td_99">'+
+        '<a href="/quiz/?q='+cellId+'">'+cellTxt+
+        '</a></td>'+
+        '</tr><tr>'+
+        '<td colspan="50" class="td_49_t"><a href="/quizedit/?q='+cellId+'"><img src="/assets/img/icon/pencil.png" alt="edit" class="icon"></a></td>'+
+        '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delQuiz('+cellId+')"></td>'+
+        '</tr>';
       }
-    }else if(res[0]==2){
+      $('#cel').append(append);
+      ++celNum;
+      if(!resData[celNum]){
+        return;
+      }
     }
-  });
-}
+  }
 
-var dataLimit = 80;
-$(function(){
+  function getData(first){
+    var param = {
+      endTime : endTime
+    };
+    $.get('/myquestionshow/',param,function(){},"json")
+    .always(function(res){
+  //     resData = id, txt, img
+      if(res[0]==1){
+        resData = $.merge($.merge([], resData), res[1]);
+        endTime = res[1].pop()[4];
+        if(first == 1){
+          addQ(resData);
+        }
+      }else if(res[0]==2){
+      }
+    });
+  }
+
+  var dataLimit = 80;
   getData(1);
   var detect = 300;
   $(window).scroll(function(){
@@ -340,8 +241,137 @@ $(function(){
         getData();
       }
       if(resData[celNum]){
-        addCel(resData);
+        addQ(resData);
       }
     }
   });
+
+}else{
+  var endNum = 0;
+  var addLimit = 100;
+  var celNum = 0;
+  if(localStorage.answer){
+    var answer = JSON.parse(localStorage.answer);
+  }else{
+    var answer = [];
+  }
+
+  var offline_q = [];
+  if(localStorage.offline_q){
+    offline_q = JSON.parse(localStorage.offline_q);
+  }
+
+  addCel(offline_q);
+  //    offline_q.unshift([
+  //   0   $('#question').html()  
+  //   1   ,$('#choice_0').html()
+  //   2   ,$('#choice_1').html()
+  //   3   ,$('#choice_2').html()
+  //   4   ,$('#choice_3').html()
+  //   5   ,correct
+  //   6   ,$('#photo').attr('src')
+  //   7   ,q_id
+  //   8   ,comment_offline
+  //   9   ,$(this_seq).html()  my answer
+  //  10   ,quiz_num  my answer
+  //    ]);
+  function addCel(res){
+    if(!res[0]){
+      return;
+    }
+    while(celNum < addLimit){
+      var cellId = res[celNum][7];
+      var cellTxt = res[celNum][0];
+      if(res[celNum][5] == res[celNum][9]){
+        var result = '<img src="/assets/img/icon/circle_big.png" alt="correct" class="icon result" id="img_'+cellId+'">';
+      }else{
+        var result = '<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="icon result" id="img_'+cellId+'">';
+      }
+      var quiz_num_txt = '';
+      if(res[celNum][10]){
+        quiz_num_txt = '第'+res[celNum][10]+'問.'; // only migration time cz localstorage data
+      }
+      var append = 
+      '<tr><td colspan="100" class="td_84">'+
+      '<a href="/quiz/?q='+cellId+'">'+result+quiz_num_txt+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+      '...</a>'+
+      '</td>'+
+      '</tr><tr>'+
+      '<td colspan="50" class="td_49_t">'+
+      '<img src="/assets/img/icon/no_internet.png" alt="offline" class="icon" onClick="goOffline('+cellId+')">'+
+      '</td>'+
+      '<td colspan="50" class="td_50_t"><img src="/assets/img/icon/trash.png" alt="delete" class="icon" onClick="delAnswer('+cellId+')"></td>'
+      '</tr>';
+      $('#cel').append(append);    
+      ++celNum;
+      if(!res[celNum]){
+        return;
+      }
+    }
+  }
+
+  function delAnswer(cellId) {
+    r = confirm('削除します');
+    if(r){
+      var new_answer = [];
+      var ii=0;
+      for(var i=0; i<answer.length; i++){
+        if(answer[i][0] != cellId){
+          new_answer[ii] = answer[i];
+          ii++;
+        }
+      }
+      var new_offline_q = [];
+      var i2 = 0;
+      for(var i=0; i<offline_q.length; i++){
+        if(offline_q[i][7] != cellId){
+          new_offline_q[i2] = offline_q[i];
+          i2++;
+        }
+      }
+      setTimeout(function(){
+        localStorage.answer = JSON.stringify(new_answer);
+        localStorage.offline_q = JSON.stringify(new_offline_q);
+        location.href = '';
+      },1000);
+    }
+  }
+  function goOffline(cellId) {
+    localStorage.current_q = cellId;
+    location.href = '/htm/quiz_offline/ ';
+  }
+}
+
+if(localStorage.answer_by_u){
+  var answer_by_u = JSON.parse(localStorage.answer_by_u);
+  $('#num_answer').empty().append(answer_by_u[1]);
+  if(answer_by_u[1] > 0){
+    $('#num_ratio').empty().append(Math.round(answer_by_u[0]/answer_by_u[1] * 100)+' %');
+  }else{
+    $('#num_ratio').empty().append('0 %');
+  }
+}
+
+var rank = ''
+  +'<tr>'
+    +'<td class="td_68_c">タグカテゴリ</td>'
+    +'<td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>'
+    +'<td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>'
+  +'</tr>';
+
+$.get('/myanswershow/',{},function(){},"json")
+.always(function(res){
+  if(res[0]==1){
+    for (var i=0; i<res[1].length; i++){
+      rank = rank+''
+        +'<tr>'
+          +'<td class="td_68_c"><a href="/search/?tag='+decodeURIComponent(res[1][i][0])+'">'+decodeURIComponent(res[1][i][0])+'</a></td>'
+          +'<td class="td_15">'+res[1][i][1]+'</td>'
+          +'<td class="td_15">'+res[1][i][2]+'</td>'
+        +'</tr>';
+    }
+    $('#rank').append(rank);
+  }else if(res[0]==2){
+  }
 });
+

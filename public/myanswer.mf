@@ -1,14 +1,23 @@
 CACHE MANIFEST
-#ver=80
+#ver=804
 CACHE:
 /htm/myanswer/
+
 /third/jquery-2.1.1.min.js
 /third/jquery.cookie.js
 /assets/js/analytics.js
 /assets/js/analytics_offline.js
+
+/assets/js/basic.js
+/assets/js/basic_offline.js
+/assets/js/check_news.js
+/assets/js/quiz_offline.js
+/assets/js/myanswer.js
+
 /assets/css/basic.css
 /assets/css/pc.css
 /assets/css/sp.css
+
 /assets/img/icon/menu.png
 /assets/img/icon/circle_big.png
 /assets/img/icon/cross_big.png
@@ -21,11 +30,10 @@ CACHE:
 /assets/img/icon/trash.png
 /assets/img/icon/ranking.png
 /assets/img/icon/quiz_generator.png
-/assets/js/basic.js
-/assets/js/basic_offline.js
-/assets/js/check_news.js
-/assets/js/quiz_offline.js
-/assets/js/myanswer.js
+/assets/img/icon/mail.png
+/assets/img/icon/guest.png
+/assets/img/icon/ranking.png
+/assets/img/icon/pencil.png
 
 NETWORK:
 /myanswershow/

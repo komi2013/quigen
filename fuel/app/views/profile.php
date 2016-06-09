@@ -22,15 +22,6 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center" class="font_8 unread">プロファイル</td>
-  <td class="edge" id="right">
-    <img id="following1" src="/assets/img/icon/hourglass.png" class="icon" style="display:none;">
-    <img id="following2" src="/assets/img/icon/star_1.png" class="icon" style="display:none;">
-    <img id="following0" src="/assets/img/icon/star_0.png" class="icon" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
@@ -41,14 +32,21 @@
   <tr>
   　<td id="photo_res"><img src="<?=$usr_img?>" class="icon" id="photo" <?=$css?> ></td>
   　<td id="name"><h1><?=$usr_name?></h1></td>
+    <td>
+      <span id="right">
+        <img id="following1" src="/assets/img/icon/hourglass.png" class="icon" style="display:none;">
+        <img id="following2" src="/assets/img/icon/star_1.png" class="icon" style="display:none;">
+        <img id="following0" src="/assets/img/icon/star_0.png" class="icon" style="display:none;">
+      </span>
+    </td>
   </tr>
-  <tr><td colspan="2" id="introduce" class="txt_long"><?=$introduce?></td></tr>
+  <tr><td colspan="3" id="introduce" class="txt_long"><?=$introduce?></td></tr>
 </table>
 
 <?php if( !isset($_GET['list']) ){ ?>
 <table style="border-collapse: collapse;">
 <tr>
-  <td class="td_68_c" style="text-align: center;"><a href="/category/">タグカテゴリ</a></td>
+  <td class="td_68_c" style="text-align: center;">タグカテゴリ</td>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>
   <td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>
 </tr>
@@ -97,12 +95,12 @@
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <?php if( !isset($_GET['list']) ){ ?>
-<table cellspacing="1" boroder="0"><tr>
+<table><tr>
   <td class="td_49" style="text-align: center;"><img src="/assets/img/icon/answer.png" class="icon"></td>
   <td class="td_50_c" style="text-align: center;"><a href="/profile/?u=<?=$_GET['u']?>&list=quiz"><img src="/assets/img/icon/quiz_generator.png" class="icon"></a></td>
 </tr></table>
 <?php }else{ ?>
-<table cellspacing="1" boroder="0"><tr>
+<table><tr>
   <td class="td_50_c" style="text-align: center;"><a href="/profile/?u=<?=$_GET['u']?>"><img src="/assets/img/icon/answer.png" class="icon"></a></td>
   <td class="td_49" style="text-align: center;"><img src="/assets/img/icon/quiz_generator.png" class="icon"></td>
 </tr></table>

@@ -15,15 +15,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">ログイン完了</h1></td>
-  <td class="edge">
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-    <img src="/assets/img/icon/cross_big.png" alt="success" class="icon" id="delete" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = 'myprofile';

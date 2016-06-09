@@ -16,14 +16,6 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">単語クイズ作成</h1></td>
-  <td class="edge">
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = 'gene4word';
@@ -36,6 +28,10 @@
 <tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_2"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_2"></td></tr>
 <tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_3"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_3"></td></tr>
 </table>
+<div style="width:98%;text-align:right;">
+  <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+  <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
+</div>
 <table>
   <tr><td class="td_99_c">オプション</td></tr>  
 </table>

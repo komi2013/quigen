@@ -15,16 +15,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">フォロワー</h1></td>
-  <td class="edge">
-    <img src="<?=$usr_img?>" id="u_img" class="icon" <?=$css?> >
-    <img src="/assets/img/icon/cross_big.png" id="delete" class="icon" style="display:none;">
-    <img src="/assets/img/icon/success_0.png" id="confirm" class="icon" style="display:none;">
-    <img src="/assets/img/icon/success.png" id="success" class="icon" style="display:none;">
-  </td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
@@ -32,6 +22,10 @@
 ?>
 
 <div id="content">
+  <img src="<?=$usr_img?>" id="u_img" class="icon" <?=$css?> >
+  <img src="/assets/img/icon/cross_big.png" id="delete" class="icon" style="display:none;">
+  <img src="/assets/img/icon/success_0.png" id="confirm" class="icon" style="display:none;">
+  <img src="/assets/img/icon/success.png" id="success" class="icon" style="display:none;">
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table id="cel"></table>
 </div>

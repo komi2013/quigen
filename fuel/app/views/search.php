@@ -22,24 +22,18 @@
   </head>
 <body>
 
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread"><?=$tag?>(<?=$cnt?>)</h1></td>
-  <td class="edge"><img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search"></td>
-</table>
 <?php
   $side = View::forge('side');
   $side->this_page = '';
   echo $side;
 ?>
 <div id="content">
-<table>
-  <tr><td style="text-align: center;">
-    <input type="text" list="tag_list" value="<?=$tag?>" maxlength="50" id="tag_name" class="txt_84">
-    <datalist id="tag_list"></datalist>
-  </td></tr>
-</table>
-<div class="tag_desc"><?=$description?></div>
+<div class="img_input">
+  <input type="text" list="tag_list" value="<?=$tag?>" maxlength="50" id="tag_name" class="input_with">
+  <datalist id="tag_list"></datalist>
+  <img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search">
+</div>
+<div class="tag_desc"><?=$tag?>(全<?=$cnt?>問)　<?=$description?></div>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table id="cel">
 <?php foreach($question as $k => $d){ ?>

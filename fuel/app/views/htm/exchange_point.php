@@ -15,18 +15,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<table cellspacing="0" boroder="0" id="header">
-  <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
-  <td id="center"><h1 class="font_8 unread">ポイント交換</h1></td>
-  <td class="edge">
-<?php if( isset($_GET['send']) ){?>
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate_send">
-<?php }else{ ?>
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-<?php } ?>
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</table>
+
 <?php
   $side = View::forge('side');
   $side->this_page = '';
@@ -34,6 +23,7 @@
 ?>
 
 <div id="content">
+
 <?php if( isset($_GET['send']) ){?>
 <div id="after_post">
 <table>
@@ -89,6 +79,14 @@
   <tr><td id="txt"><input type="email" placeholder="email" value="" id="email"></td></tr>
 </table>
 <?php } ?>
+<div style="width:100%;text-align: right;">
+<?php if( isset($_GET['send']) ){?>
+    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate_send">
+<?php }else{ ?>
+    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+<?php } ?>
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+</div>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>
 <script>

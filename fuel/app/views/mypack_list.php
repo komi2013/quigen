@@ -20,9 +20,6 @@
   <td class="edge"><img src="/assets/img/icon/menu.png" alt="menu" class="icon" id="menu"></td>
   <td id="center"><h1 class="font_8 unread">マイパックリスト</h1></td>
   <td class="edge">
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-    <img src="/assets/img/icon/cross_big.png" alt="delete" class="icon" id="delete" style="display:none;">
   </td>
 </table>
 <?php
@@ -32,6 +29,9 @@
 ?>
 
 <div id="content">
+    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+    <img src="/assets/img/icon/cross_big.png" alt="delete" class="icon" id="delete" style="display:none;">
 <table>
 <tr><td class="td_49">所持ポイント</td><td class="td_49" id="point"></td></tr>
 </table>

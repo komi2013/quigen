@@ -59,9 +59,10 @@ function getNews(){
   $.get('/newsshow/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
-      $('#page_news').append(' ('+res[1].length+')');
+      $('#news_num').empty().append(res[1].length);
+      $('#news_num').css('display','inline');
       $('title').prepend(' ('+res[1].length+')');
-      $('.unread').prepend(' ('+res[1].length+')');
+      //$('.unread').prepend(' ('+res[1].length+')');
       if(notify[4] < 3){
         if (matchMedia('only screen and (max-width : 710px)').matches) {
           $('#drawer').css({

@@ -129,6 +129,8 @@ return array(
     'forum_list_title' => 'FAQ | 中国語の文法などのわからない部分の画像をアップすれば教えてくれるかも',
     'forum_list_description' => 'わからない所が教科書や問題集にあった場合その画像をアップすれば他に見ている誰かが教えてくれるかも、簡単に画像を投稿できるのでためしにアップしてみては？',
     'top_limit' => '10',
+      
+    'display_error' => false,
   ),
 
 );
