@@ -28,12 +28,6 @@ var formatDate = function (date, format) {
   return format;
 };
 
-function highlighting(target){
-  $(target).fadeOut(1000,function(){
-    $(target).css("background-color","yellow");
-  }).fadeIn(1000);
-}
-
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
   for(var i = 0; i < quest.length; i++){
@@ -55,7 +49,7 @@ if(localStorage.quest_level){
       ticket[0] = 100;
       ticket[3] = 100;
       quested = 1;
-      setInterval('highlighting("#light_1")',2200);
+      highlighting('#light_1',0,false);
       $('#light_1').empty().append('<img src="/assets/img/icon/star_1.png"><img src="/assets/img/icon/star_1.png">');
     }else{
       $('.quest_2').css({ 'display': ''});
@@ -81,7 +75,7 @@ if(localStorage.quest_level){
     ticket[0] = 50;
     ticket[3] = 50;
     quested = 1;
-    setInterval('highlighting("#light_1")',2200);
+    highlighting('#light_1',0,false);
     $('#light_1').append('<img src="/assets/img/icon/star_1.png">');
   }else{
     $('.quest_2').css({ 'display': 'none' }); 

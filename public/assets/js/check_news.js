@@ -64,12 +64,6 @@ function getNews(){
       $('title').prepend(' ('+res[1].length+')');
       //$('.unread').prepend(' ('+res[1].length+')');
       if(notify[4] < 3){
-        if (matchMedia('only screen and (max-width : 710px)').matches) {
-          $('#drawer').css({
-            'left': -1
-          });
-        }
-        drawerIsOpen = true;
         var limit = 0;
         while(limit < 3){
           $('#page_news').fadeOut(1000,function(){

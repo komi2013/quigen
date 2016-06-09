@@ -7,6 +7,10 @@ $('#menu').click(function(){
     $('#drawer').css({'left': '-1px','top':$(window).scrollTop()+51+'px'});
     drawerIsOpen = true;
   }
+  if(still_closed){
+    $('#ad_menu').empty().append(ad_menu_iframe);
+    still_closed = false;
+  }
 });
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 //393009 = 2014-11-01 18:00:00
@@ -126,10 +130,10 @@ if(navigator.onLine){
       },6000);
       $('#ad_right').empty().append(ad_right_iframe);
     }else{
-      setTimeout(function(){
-        $('#ad_menu').empty().append(ad_menu_iframe);
-      },6000);
       $('#ad').empty().append(ad_iframe);
     }
   },3000);
+}else{
+  $('#ad_menu').empty();
+  $('#ad').empty();
 }

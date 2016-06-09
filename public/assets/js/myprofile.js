@@ -3,23 +3,6 @@ if(getVal.warn){
   location.href = '/myprofile/';
 }
 
-function highlighting(highlight,sc_height,drawer_open){
-  scrollTo(0,sc_height);
-  if (matchMedia('only screen and (max-width : 710px)').matches && drawer_open) {
-    $('#drawer').css({
-      'left': -1
-    });
-  }
-  drawerIsOpen = drawer_open;
-  var limit = 0;
-  while(limit < 3){
-    $(highlight).fadeOut(1000,function(){
-      $(this).css("background-color","yellow");
-    }).fadeIn(1000);
-    ++limit;
-  }
-}
-
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
   if(quest[2] != 1){
@@ -27,7 +10,7 @@ if(localStorage.quest){
     quest[2] = 1;
     localStorage.quest = JSON.stringify(quest);
     setTimeout(function(){
-      highlighting('#page_quest',200,true);
+      highlighting('#page_quest',0,true);
     },3000);
     var ticket = JSON.parse(localStorage.ticket);
     ticket[0] = ticket[0] + 12;

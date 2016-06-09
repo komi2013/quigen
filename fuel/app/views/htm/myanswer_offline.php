@@ -23,44 +23,8 @@
 ?>
 <div id="content">
 
-<table id="rank"></table>    
-
-<table>
-<tr>
-  <td><img src="/assets/img/icon/circle_big.png" class="icon"></td>
-  <td class="td_34" id="num_ratio">0 % </td>
-  <td><img src="/assets/img/icon/answer.png" class="icon"></td>
-  <td class="td_34" id="num_answer">0</td>
-</tr>
-</table>
-
-<table>
-<tr>
-<td style="width:70px;">
-  <a href="" target="_blank">
-    <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon">
-  </a>
-</td>
-<td style="width:70px;">
-  <a href="" target="_blank">
-  <img src="/assets/img/icon/tw.jpg" alt="twitter" class="icon">
-  </a>
-</td>
-<td style="width:70px;">
-  <a href="" target="_blank">
-  <img src="/assets/img/icon/ln.jpg" alt="line" class="icon">
-  </a>
-</td>
-<td style="width:70px;">
-  <a href="" target="_blank">
-  <img src="/assets/img/icon/clip.png" alt="clip" class="icon">
-  </a>
-</td>
-</tr>
-</table>
-
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<div class="td_99_c"><a href="/htm/quiz_offline/">前回のオフラインクイズ</a></div>
+<div class="cell_99"><a href="/htm/quiz_offline/">前回のオフラインクイズ</a></div>
 <table id="cel"></table>
 </div>
 
