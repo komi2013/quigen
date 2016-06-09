@@ -35,10 +35,10 @@ body{
 </style>
 <script>var ua = '<?=Config::get("my.ua")?>';</script>
 <script src="/assets/js/analytics.js"></script>
-
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/circle_big.png" alt="success" class="icon" id="success" style="display:none;">
-
+<div style="width:100%;text-align:right;">
+  <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+  <img src="/assets/img/icon/circle_big.png" alt="success" class="icon" id="success" style="display:none;">
+</div>
 <table cellspacing="0">
   <tr>
   <td id="rotate" style="width:50px;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>

@@ -11,9 +11,9 @@ if(localStorage.notify){  //[396105,396413,"read",1,2]
   }
   if(notify[2] == 'yet'){ //current news wasn't read yet
     if(notify[3] > 0){
-      $('#page_news').append(' ('+notify[3]+')');
+      $('#news_num').empty().append(notify[3]);
+      $('#news_num').css('display','inline');
       $('title').prepend(' ('+notify[3]+')');
-      $('.unread').prepend(' ('+notify[3]+')');  
     }
     chk = 2;
   }

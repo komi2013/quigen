@@ -107,13 +107,13 @@
   <table><tr>
     <td style="width:33%;text-align:center;"><img src="/assets/img/icon/answer.png" class="icon"></td>
     <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/myprofile/?list=quiz"><img src="/assets/img/icon/quiz_generator.png" class="icon"></a></td>
-    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/htm/myanswer_offline/"><img src="/assets/img/icon/no_internet_0.png" class="icon" style="background-color:gray;"></a></td>
+    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/htm/myanswer_offline/"><img src="/assets/img/icon/answer_0.png" class="icon"></a></td>
   </tr></table>
 <?php }else{ ?>
   <table><tr>
     <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/myprofile/"><img src="/assets/img/icon/answer.png" class="icon"></a></td>
     <td style="width:33%;text-align:center;"><img src="/assets/img/icon/quiz_generator.png" class="icon"></td>
-    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/htm/myanswer_offline/"><img src="/assets/img/icon/no_internet_0.png" class="icon" style="background-color:gray;"></a></td>
+    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/htm/myanswer_offline/"><img src="/assets/img/icon/answer_0.png" class="icon"></a></td>
   </tr></table>
 <?php } ?>
 <table id="cel"></table>
