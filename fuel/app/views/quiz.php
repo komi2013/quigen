@@ -55,7 +55,7 @@
   <td class="td_15" id="num_ratio">0 % </td>
   <td class="td_15"><img src="/assets/img/icon/answer.png" alt="amount of answer" class="icon"></td>
   <td class="td_15" id="num_answer">0</td>
-  <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
+  <td class="td_15"><a href="/htm/quest/" rel="nofollow" ><img src="/assets/img/icon/ticket.png" alt="ticket"></a></td>
   <td class="td_15" id="ticket" style="color:red;">0</td>
 </tr>
 </table>

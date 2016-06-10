@@ -24,7 +24,7 @@
 <div id="content">
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<div class="cell_99"><a href="/htm/quiz_offline/">前回のオフラインクイズ</a></div>
+<table><tr><td class="td_99_c"><a href="/htm/quiz_offline/">前回のオフラインクイズ</a></td></tr></table>
 <table id="cel"></table>
 </div>
 

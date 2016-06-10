@@ -47,9 +47,7 @@
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
 </div>
-<table>
-  <tr><td class="td_99_c">オプション</td></tr>  
-</table>
+<table><tr><td class="td_99_c">オプション</td></tr></table>
 <table>
   <tr><td class="tag">#<input type="text" placeholder="タグを追加.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>

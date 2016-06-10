@@ -24,10 +24,6 @@
 ?>
 <div id="content">
 <table>
-  <tr><td class="td_99_c"><a href="https://www.youtube.com/watch?v=ZQlq1a-jPHw" target="_blank">使い方（動画）</a></td></tr>  
-  <tr><td class="td_99_c"><a href="http://quizgenerator-help.hatenadiary.jp/archive/2015" target="_blank">使い方（ブログ）</a></td></tr> 
-</table>
-<table>
   <tr><td class="td_99" style="background-color:#CBFFD3;">利用規約</td></tr>
   <tr><td class="td_99_c">第1条(本規約の適用)</td></tr>  
   <tr><td>本規約はkomahana（以下、「弊社」といいます。）と「クイジェン」（以下、「本サービス」といいます。）の利用者との間の本サービスの利用にかかわる一切の関係に適用されます。

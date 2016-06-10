@@ -21,10 +21,9 @@
   <tr><td id="ad_menu"><iframe src="/htm/ad_blank/" width="300" height="250" frameborder="0" scrolling="no"></iframe></td></tr>
   <tr><td id="page_quest"      class="<?= $this_page == 'quest'     ? 'this_page' : '' ?>" >             <a href="/htm/quest/"   rel="nofollow" >&nbsp;&nbsp;&nbsp;クエスト</a></td></tr>
   <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >             <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;単語クイズ作成</a></td></tr>
-  <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;他のクイズ</a></td></tr>
-  <tr><td                      class="<?= $this_page == 'follow'    ? 'this_page' : '' ?> disp_quest" >  <a href="/htm/follow/" rel="nofollow"  >&nbsp;&nbsp;&nbsp;フォロー</a></td></tr>
   <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                  >&nbsp;&nbsp;&nbsp;FAQ掲示板</a></td></tr>
-  <tr><td                      class="<?= $this_page == 'rule'      ? 'this_page' : '' ?>" >             <a href="/htm/rule/"                   >&nbsp;&nbsp;&nbsp;使い方と規約</a></td></tr>
+  <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;他のクイズ</a></td></tr>
+  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >             <a href="/htm/myanswer_offline/" rel="nofollow" >&nbsp;&nbsp;&nbsp;オフライン</a></td></tr>
 <?php /*
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>

@@ -241,17 +241,12 @@ h1 {
 }
 #news_num {
   position: absolute;
-  background-color: rgba(0,255,0,1.0);
-  color: white;
+  background-color: yellow;
+  color: black;
   border-radius: 12px;
   width: 24px;
   height: 24px;
   line-height: 24px;
   text-align: center;
   display: none;
-}
-.cell_99 {
-  width: 99%;
-  text-align: center;
-  display: table-cell;
 }

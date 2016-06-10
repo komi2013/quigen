@@ -32,6 +32,8 @@ if(localStorage.ticket){
 }else{
   var ticket = [10,1,hour_stamp,10];
   localStorage.ticket = JSON.stringify(ticket);
+  $('#ticket').css({ 'color': 'green' });
+  $('#ticket').empty().append(10);
 }
 ga('set', 'dimension7',q_id);
 if(localStorage.ua_u_id && localStorage.ua_u_id == usr){

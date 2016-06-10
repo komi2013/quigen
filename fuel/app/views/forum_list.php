@@ -113,6 +113,12 @@
 </div>
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
+<table>
+  <tr><td class="td_99_c"><a href="https://www.youtube.com/watch?v=ZQlq1a-jPHw" target="_blank">使い方（動画）</a></td></tr>
+  <tr><td class="td_99_c"><a href="http://quizgenerator-help.hatenadiary.jp/archive/2015" target="_blank">使い方（ブログ）</a></td></tr>
+  <tr><td class="td_99_c"><a href="/htm/rule/">規約</a></td></tr>
+</table>
+
 </div>
 
 <div id="ad_right"></div>
