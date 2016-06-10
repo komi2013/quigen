@@ -15,11 +15,22 @@ if(localStorage.quest){
     quest[3] = 1;
     localStorage.quest = JSON.stringify(quest);
     setTimeout(function(){
-      highlighting('#page_quest',0,true);
+      highlighting('#page_news',0,false);
     },3000);
     var ticket = JSON.parse(localStorage.ticket);
     ticket[0] = ticket[0] + 12;
     localStorage.ticket = JSON.stringify(ticket);
+    notify[2] = 'yet';
+    notify[3] = 1;
+    notify[4] = notify[4]+1;
+    if(localStorage.news){
+      var news = JSON.parse(localStorage.news);
+    }else{
+      var news = [];
+    }
+    news.unshift('<a href="/htm/quest/">ランクを確認しました<img src="/assets/img/icon/star_1.png"></a>');
+    localStorage.news = JSON.stringify(news);
+    localStorage.notify = JSON.stringify(notify);
   }
 }
 

@@ -9,10 +9,10 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
     <script src="/third/img-touch-canvas_1.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=83"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=83" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=83" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=83" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=84"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=84" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=84" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=84" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
     <meta name="viewport" content="width=device-width, user-scalable=no" >
     </head>

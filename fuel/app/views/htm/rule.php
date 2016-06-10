@@ -9,10 +9,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=83"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=83" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=83" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=83" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=84"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=84" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=84" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=84" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -87,8 +87,8 @@
 
 </table>
 </div>
-<script src="/assets/js/basic.js?ver=83"></script>
-<script src="/assets/js/check_news.js?ver=83"></script>
+<script src="/assets/js/basic.js?ver=84"></script>
+<script src="/assets/js/check_news.js?ver=84"></script>
 <script>
   
 if(localStorage.quest){
@@ -99,6 +99,17 @@ if(localStorage.quest){
     var ticket = JSON.parse(localStorage.ticket);
     ticket[0] = ticket[0] + 12;
     localStorage.ticket = JSON.stringify(ticket);
+    notify[2] = 'yet';
+    notify[3] = 1;
+    notify[4] = notify[4]+1;
+    if(localStorage.news){
+      var news = JSON.parse(localStorage.news);
+    }else{
+      var news = [];
+    }
+    news.unshift('<a href="/htm/quest/">規約を確認しました<img src="/assets/img/icon/star_1.png"></a>');
+    localStorage.news = JSON.stringify(news);
+    localStorage.notify = JSON.stringify(notify);
   }
 }
 $(function(){ ga('send', 'pageview'); });

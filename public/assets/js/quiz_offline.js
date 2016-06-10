@@ -255,13 +255,6 @@ function goOffline(cellId) {
   location.href = '/htm/quiz_offline/ ';
 }
 
-$('#sns td a').click(function(){
-  if(localStorage.quest){
-    var quest = JSON.parse(localStorage.quest);
-    quest[5] = 1;
-    localStorage.quest = JSON.stringify(quest);
-  }
-});
 var resCo = [];
 var resInco = [];
 var amt_co = 0;

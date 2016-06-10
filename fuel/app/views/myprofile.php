@@ -8,10 +8,10 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=83"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=83" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=83" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=83" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=84"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=84" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=84" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=84" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -105,15 +105,17 @@
 
 <?php if( !isset($_GET['list']) ){ ?>
   <table><tr>
-    <td style="width:33%;text-align:center;"><img src="/assets/img/icon/answer.png" class="icon"></td>
-    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/myprofile/?list=quiz"><img src="/assets/img/icon/quiz_generator.png" class="icon"></a></td>
-    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/htm/follow/" rel="nofollow"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
+    <td style="width:25%;text-align:center;"><img src="/assets/img/icon/answer.png" class="icon"></td>
+    <td style="width:25%;text-align:center;background-color:#F5F5F5;"><a href="/myprofile/?list=quiz"><img src="/assets/img/icon/quiz_generator.png" class="icon"></a></td>
+    <td style="width:25%;text-align:center;background-color:#F5F5F5;"><a href="/htm/follow/" rel="nofollow"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
+    <td style="width:25%;text-align:center;background-color:#F5F5F5;"><a href="/htm/quest/" rel="nofollow"><img src="/assets/img/icon/ticket.png" class="icon"></a></td>
   </tr></table>
 <?php }else{ ?>
   <table><tr>
-    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/myprofile/"><img src="/assets/img/icon/answer.png" class="icon"></a></td>
-    <td style="width:33%;text-align:center;"><img src="/assets/img/icon/quiz_generator.png" class="icon"></td>
-    <td style="width:33%;text-align:center;background-color:#F5F5F5;"><a href="/htm/follow/" rel="nofollow"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
+    <td style="width:25%;text-align:center;background-color:#F5F5F5;"><a href="/myprofile/"><img src="/assets/img/icon/answer.png" class="icon"></a></td>
+    <td style="width:25%;text-align:center;"><img src="/assets/img/icon/quiz_generator.png" class="icon"></td>
+    <td style="width:25%;text-align:center;background-color:#F5F5F5;"><a href="/htm/follow/" rel="nofollow"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
+    <td style="width:25%;text-align:center;background-color:#F5F5F5;"><a href="/htm/quest/" rel="nofollow"><img src="/assets/img/icon/ticket.png" class="icon"></a></td>
   </tr></table>
 <?php } ?>
 <table id="cel"></table>
@@ -124,9 +126,9 @@
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/basic.js?ver=83"></script>
-<script src="/assets/js/check_news.js?ver=83"></script>
-<script src="/assets/js/myprofile.js?ver=83"></script>
+<script src="/assets/js/basic.js?ver=84"></script>
+<script src="/assets/js/check_news.js?ver=84"></script>
+<script src="/assets/js/myprofile.js?ver=84"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>
