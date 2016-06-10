@@ -5,10 +5,8 @@ $('#menu').click(function(){
     drawerIsOpen = false;
   }else{
     $('#drawer').css({'left': '-1px','top':$(window).scrollTop()+51+'px'});
-    drawerIsOpen = true;
-  }
-  if(!drawerIsOpen){
     $('#ad_menu').empty().append(ad_menu_iframe);
+    drawerIsOpen = true;
   }
 });
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
