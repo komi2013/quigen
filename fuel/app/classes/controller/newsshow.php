@@ -54,10 +54,10 @@ class Controller_Newsshow extends Controller
       $q_img = strip_tags( preg_replace('/http/', 'url', $d['q_img']) );
       $u_img = strip_tags( preg_replace('/http/', 'url', $d['u_img']) );
       $arr_res[] = 
-        '<img src="'.$u_img.'" class="icon '.$d['css'].'">&nbsp;'
-        .'<img src="/assets/img/icon/answer.png" class="icon">&nbsp;'
+        '<img src="'.$u_img.'" class="icon '.$d['css'].'">'
+        .'が'
         .'<a href="/quiz/?q='.$d['question_id'].'">'
-        .'<img src="'.$q_img.'" class="icon edge_click"></a>';
+        .'<img src="'.$q_img.'" class="icon edge_click"></a>に回答しました。';
       $res[0] = 1;
     }  
     $res[1] = $arr_res;
@@ -105,11 +105,9 @@ class Controller_Newsshow extends Controller
     {
       $q_img = preg_replace('/http/', 'url', $d['q_img']);
       $q_img = $q_img ?: '/assets/img/icon/quiz_generator.png';
-      $arr_res[] = $d['summary'].'&nbsp;'.
-        '<img src="/assets/img/icon/people.png" class="icon">&nbsp;'.
-        '<img src="/assets/img/icon/answer.png" class="icon">&nbsp;'.
+      $arr_res[] = $d['summary'].'他のユーザーも'.
         '<a href="/quiz/?q='.$d['question_id'].'">'.
-        '<img src="'.$q_img.'" class="icon edge_click"></a>';
+        '<img src="'.$q_img.'" class="icon edge_click"></a>に回答しました。';
       $res[0] = 1;
     }
     $res[1] = array_merge($res[1], $arr_res);
