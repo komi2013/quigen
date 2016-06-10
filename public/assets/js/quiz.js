@@ -246,22 +246,24 @@ function after_post(correct_answer){
 $('#sns td a').click(function(){
   if(localStorage.quest){
     var quest = JSON.parse(localStorage.quest);
-    quest[5] = 1;
-    localStorage.quest = JSON.stringify(quest);
-    var ticket = JSON.parse(localStorage.ticket);
-    ticket[0] = ticket[0] + 3;
-    localStorage.ticket = JSON.stringify(ticket);
-    notify[2] = 'yet';
-    notify[3] = 1;
-    notify[4] = notify[4]+1;
-    if(localStorage.news){
-      var news = JSON.parse(localStorage.news);
-    }else{
-      var news = [];
+    if(quest[5] != 1){
+      quest[5] = 1;
+      localStorage.quest = JSON.stringify(quest);
+      var ticket = JSON.parse(localStorage.ticket);
+      ticket[0] = ticket[0] + 3;
+      localStorage.ticket = JSON.stringify(ticket);
+      notify[2] = 'yet';
+      notify[3] = 1;
+      notify[4] = notify[4]+1;
+      if(localStorage.news){
+        var news = JSON.parse(localStorage.news);
+      }else{
+        var news = [];
+      }
+      news.unshift('<a href="/htm/quest/">クイズをシェアしました<img src="/assets/img/icon/star_1.png"></a>');
+      localStorage.news = JSON.stringify(news);
+      localStorage.notify = JSON.stringify(notify);
     }
-    news.unshift('<a href="/htm/quest/">クイズをシェアしました<img src="/assets/img/icon/star_1.png"></a>');
-    localStorage.news = JSON.stringify(news);
-    localStorage.notify = JSON.stringify(notify);
   }
   ga('set','dimension9','share_'+$(this).children('img').attr('alt'));  
   ga('send','event','share',$(this).children('img').attr('alt'),q_id,1);  
@@ -397,19 +399,21 @@ $('#comment_add').click(function(){
   }
   if(localStorage.quest){
     var quest = JSON.parse(localStorage.quest);
-    quest[6] = 1;
-    localStorage.quest = JSON.stringify(quest);
-    notify[2] = 'yet';
-    notify[3] = 1;
-    notify[4] = notify[4]+1;
-    if(localStorage.news){
-      var news = JSON.parse(localStorage.news);
-    }else{
-      var news = [];
+    if(quest[6] != 1){
+      quest[6] = 1;
+      localStorage.quest = JSON.stringify(quest);
+      notify[2] = 'yet';
+      notify[3] = 1;
+      notify[4] = notify[4]+1;
+      if(localStorage.news){
+        var news = JSON.parse(localStorage.news);
+      }else{
+        var news = [];
+      }
+      news.unshift('<a href="/htm/quest/">コメントしました<img src="/assets/img/icon/star_1.png"></a>');
+      localStorage.news = JSON.stringify(news);
+      localStorage.notify = JSON.stringify(notify);
     }
-    news.unshift('<a href="/htm/quest/">コメントしました<img src="/assets/img/icon/star_1.png"></a>');
-    localStorage.news = JSON.stringify(news);
-    localStorage.notify = JSON.stringify(notify);
   }
   $('#comment_add').css({'display': 'none'});
   $('#success').css({'display':''});

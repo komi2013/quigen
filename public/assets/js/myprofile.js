@@ -6,7 +6,6 @@ if(getVal.warn){
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
   if(quest[2] != 1){
-    quest[1] = 1;
     quest[2] = 1;
     localStorage.quest = JSON.stringify(quest);
     setTimeout(function(){

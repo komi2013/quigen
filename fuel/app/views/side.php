@@ -19,7 +19,6 @@
 </table>
 <table id="drawer">
   <tr><td id="ad_menu"><iframe src="/htm/ad_blank/" width="300" height="250" frameborder="0" scrolling="no"></iframe></td></tr>
-  <tr><td id="page_quest"      class="<?= $this_page == 'quest'     ? 'this_page' : '' ?>" >             <a href="/htm/quest/"   rel="nofollow" >&nbsp;&nbsp;&nbsp;クエスト</a></td></tr>
   <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >             <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;単語クイズ作成</a></td></tr>
   <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                  >&nbsp;&nbsp;&nbsp;FAQ掲示板</a></td></tr>
   <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;他のクイズ</a></td></tr>

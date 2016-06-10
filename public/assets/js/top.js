@@ -14,19 +14,21 @@ if(localStorage.last_tag){
 }
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
-  quest[0] = 1;
-  localStorage.quest = JSON.stringify(quest);
-  notify[2] = 'yet';
-  notify[3] = 1;
-  notify[4] = notify[4]+1;
-  if(localStorage.news){
-    var news = JSON.parse(localStorage.news);
-  }else{
-    var news = [];
+  if(quest[0] != 1){
+    quest[0] = 1;
+    localStorage.quest = JSON.stringify(quest);
+    notify[2] = 'yet';
+    notify[3] = 1;
+    notify[4] = notify[4]+1;
+    if(localStorage.news){
+      var news = JSON.parse(localStorage.news);
+    }else{
+      var news = [];
+    }
+    news.unshift('<a href="/htm/quest/">他のクイズを確認しました<img src="/assets/img/icon/star_1.png"></a>');
+    localStorage.news = JSON.stringify(news);
+    localStorage.notify = JSON.stringify(notify);
   }
-  news.unshift('<a href="/htm/quest/">他のクイズを確認しました<img src="/assets/img/icon/star_1.png"></a>');
-  localStorage.news = JSON.stringify(news);
-  localStorage.notify = JSON.stringify(notify);
 }
 $('#search').click(function(){
   if( !$('#tag_name').val() ){

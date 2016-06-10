@@ -1,5 +1,4 @@
 var drawerIsOpen = false;
-var still_closed = true;
 $('#menu').click(function(){
   if(drawerIsOpen){
     $('#drawer').css({'left':'-100%'});
@@ -8,9 +7,8 @@ $('#menu').click(function(){
     $('#drawer').css({'left': '-1px','top':$(window).scrollTop()+51+'px'});
     drawerIsOpen = true;
   }
-  if(still_closed){
+  if(!drawerIsOpen){
     $('#ad_menu').empty().append(ad_menu_iframe);
-    still_closed = false;
   }
 });
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
