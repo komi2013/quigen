@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver=83_1
+#ver=83_2
 CACHE:
 /htm/myanswer/
 
