@@ -21,8 +21,7 @@
   echo $side;
 ?>
 <div id="content">
-    <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+
 <table style="text-align:center;">
 <tr><td><textarea maxlength="2000" class="txt_long" id="q_txt"><?=$q_txt?></textarea></td></tr>
 </table>
@@ -32,7 +31,10 @@
 <tr><td><input type="text" value="<?=$arr_choice[2]?>" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
 <tr><td><input type="text" value="<?=$arr_choice[3]?>" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
 </table>
-
+<div class="div_right">
+  <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
+  <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+</div>
 <table>
   <tr><td class="td_99_c">オプション</td></tr>  
 </table>
