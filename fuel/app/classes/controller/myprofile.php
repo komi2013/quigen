@@ -11,6 +11,7 @@ class Controller_Myprofile extends Controller
     $profile_ln_url = '';
     $profile_clip_url = '';
     $introduce = '';
+    $myname = '';
 
     if ($usr_id) {
       $res = DB::query("select count(*) from follow where receiver = ".$usr_id." AND status = 2")
@@ -18,6 +19,7 @@ class Controller_Myprofile extends Controller
       $view->follower = $res[0]['count'];
       $res = DB::query("select * from usr where id = ".$usr_id)->execute()->as_array();
       $introduce = ( isset($res[0]['introduce']) ) ? $res[0]['introduce'] : '';
+      $myname = ( isset($res[0]['name']) ) ? $res[0]['name'] : '';
 
       $profile_fb_url = 'http://www.facebook.com/sharer.php?u=http://'
         .Config::get('my.domain')
@@ -61,6 +63,7 @@ class Controller_Myprofile extends Controller
     $view->profile_ln_url = $profile_ln_url;
     $view->profile_clip_url = $profile_clip_url;
     $view->introduce = $introduce;
+    $view->myname = $myname;
     $view->u_id = $usr_id;
     die($view);
   }

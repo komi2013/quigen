@@ -83,18 +83,18 @@ $('#whole_url').val(whole_url);
 
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 
-if(localStorage.answer){
-  var answer = JSON.parse(localStorage.answer);
+if(localStorage.offline_q){
+  var offline_q = JSON.parse(localStorage.offline_q);
 }else{
-  var answer = [];
+  var offline_q = [];
 }
 
 var already = 0;
-for(var i = 0; i < answer.length; i++){  
-  if(answer[i][0] == q_id){
+for(var i = 0; i < offline_q.length; i++){
+  if(offline_q[i][7] == q_id){
     already = 1;
   }
-}  
+}
 var clicked = 0;
 $('.choice').click(function(){
   if(clicked == 2){
@@ -155,42 +155,13 @@ function answer_1(this_seq){
     tag[i] = $(this).html();
     localStorage.last_tag = $(this).html();
   });
-  var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '';
-  }
-  if(localStorage.myname){
-    var myname = localStorage.myname;
-  }else{
-    var myname = '';
-  }
-  var param = {
-    csrf : csrf
-    ,correct : correct_answer
-    ,question : q_id
-    ,q_txt : $('#question').html()
-    ,q_img : q_img
-    ,generator : usr
-    ,arr_tag : tag
-    ,u_img : myphoto
-    ,u_name : myname
-  };
-  if(already < 1){
-    answer.unshift([q_id,$(this_seq).html(),$('#question').html(),q_img,correct]);
-    if(answer.length > 99){
-      var diff = answer.length - 100;
-      answer.splice(-diff, diff);
+  var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '';
+  var myphoto = localStorage.myphoto ? localStorage.myphoto : '';
+  var myname = localStorage.myname ? localStorage.myname : '';
+  for(var i = 0; i < offline_q.length; i++){
+    if(offline_q[i][7] == q_id){
+      offline_q[i][9] = $(this_seq).html();
     }
-    localStorage.answer = JSON.stringify(answer);
-  }else{
-    for(var i = 0; i < answer.length; i++){  
-      if(answer[i][0] == q_id){
-        answer[i] = [q_id,$(this_seq).html(),$('#question').html(),q_img,correct];
-      }
-    }
-    localStorage.answer = JSON.stringify(answer);
   }
   amt_answer++;  
   after_post(correct_answer);

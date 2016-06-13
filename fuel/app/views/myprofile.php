@@ -25,7 +25,7 @@
 <div id="content">
 <div class="img_input">
   <span id="photo_res"><img src="/assets/img/icon/camera.png" id="photo" class="icon"></span>
-  <input type="text" placeholder="name" maxlength="12" id="myname" class="input_with">
+  <input type="text" placeholder="name" maxlength="12" id="myname" class="input_with" value="<?=$myname?>">
 </div>
 
 <div style="text-align:center;width:100%;">
@@ -47,7 +47,7 @@
     <td style="width:20%;">
       <img src="/assets/img/icon/gp.png" alt="google plus" class="icon auth" data-url="<?=$gp_url?>">
     </td>
-    <td style="width:20%;"><img src="/assets/img/icon/power.png" id="del_cookie" class="icon"></td>
+    <td style="width:20%;"><img src="/assets/img/icon/power_0.png" id="del_cookie" class="icon"></td>
     <td style="width:20%;">
       <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
       <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">

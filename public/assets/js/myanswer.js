@@ -1,11 +1,6 @@
 var endNum = 0;
 var addLimit = 100;
 var celNum = 0;
-if(localStorage.answer){
-  var answer = JSON.parse(localStorage.answer);
-}else{
-  var answer = [];
-}
 
 var offline_q = [];
 if(localStorage.offline_q){
@@ -64,14 +59,6 @@ function addCel(res){
 function delAnswer(cellId) {
   r = confirm('削除します');
   if(r){
-    var new_answer = [];
-    var ii=0;
-    for(var i=0; i<answer.length; i++){
-      if(answer[i][0] != cellId){
-        new_answer[ii] = answer[i];
-        ii++;
-      }
-    }
     var new_offline_q = [];
     var i2 = 0;
     for(var i=0; i<offline_q.length; i++){
@@ -81,7 +68,6 @@ function delAnswer(cellId) {
       }
     }
     setTimeout(function(){
-      localStorage.answer = JSON.stringify(new_answer);
       localStorage.offline_q = JSON.stringify(new_offline_q);
       location.href = '';
     },1000);

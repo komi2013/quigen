@@ -46,16 +46,11 @@ class Controller_FbOAuth extends Controller
     }
     $arr_answer = DB::query("SELECT * FROM answer_key_u WHERE usr_id = ".$usr_id." ORDER BY create_at desc")->execute()->as_array();
     $correct = 0; $total = 0;
-    $arr_myanswer = [];
     foreach ($arr_answer as $k => $d) {
       $correct = $correct*1 + $d['result']*1;
       ++$total;
-      if ($k < 200) {
-        $arr_myanswer[] = [$d['question_id'],$d['result'],$d['q_txt'],$d['q_img'],1];
-      }
     }
     $js_answer_by_u = json_encode([$correct,$total]);
-    $js_answer = json_encode($arr_myanswer);
     $arr_offline_q = [];
     foreach ($arr_answer as $k => $d) {
      if ($k < 200) {
@@ -88,8 +83,8 @@ class Controller_FbOAuth extends Controller
     $view->myname = Security::htmlentities($myname);
     $view->myphoto = Security::htmlentities($myphoto);
     $view->point = $point;
-    $view->js_answer = $js_answer;
     $view->js_offline_q = $js_offline_q;
+    $view->arr_offline_q = $arr_offline_q;
     $view->js_answer_by_u = $js_answer_by_u;
     $view->introduce = urlencode($introduce);
 

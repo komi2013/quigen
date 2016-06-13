@@ -41,15 +41,15 @@ if(localStorage.ua_u_id && localStorage.ua_u_id == usr){
   //ga('set', 'metric1', usr);
 }
 
-if(localStorage.answer){
-  var answer = JSON.parse(localStorage.answer);
+if(localStorage.offline_q){
+  var offline_q = JSON.parse(localStorage.offline_q);
 }else{
-  var answer = [];
+  var offline_q = [];
 }
 
 var already = 0;
-for(var i = 0; i < answer.length; i++){
-  if(answer[i][0] == q_id){
+for(var i = 0; i < offline_q.length; i++){
+  if(offline_q[i][7] == q_id){
     already = 1;
   }
 }
@@ -166,17 +166,6 @@ function answer_1(this_seq){
       }else{
       }
     });
-    answer.unshift([q_id,$(this_seq).html(),$('#question').html(),q_img,$('#correct').html()]);
-    if(answer.length > 99){
-      var diff = answer.length - 100;
-      answer.splice(-diff, diff);
-    }
-    localStorage.answer = JSON.stringify(answer);
-    if(localStorage.offline_q){
-      var offline_q = JSON.parse(localStorage.offline_q);
-    }else{
-      var offline_q = [];
-    }
     offline_q.unshift([
       $('#question').html()
       ,$('#choice_0').html()
@@ -190,19 +179,30 @@ function answer_1(this_seq){
       ,$(this_seq).html()
       ,quiz_num
     ]);
-    if(offline_q.length > 99){
-      var diff = offline_q.length - 100;
+    if(offline_q.length > 199){
+      var diff = offline_q.length - 200;
       offline_q.splice(-diff, diff);
     }
-    localStorage.offline_q = JSON.stringify(offline_q);
   }else{
-    for(var i = 0; i < answer.length; i++){
-      if(answer[i][0] == q_id){
-        answer[i] = [q_id,$(this_seq).html(),$('#question').html(),q_img,$('#correct').html()];
+    for(var i = 0; i < offline_q.length; i++){
+      if(offline_q[i][7] == q_id){
+        offline_q[i] = [
+          $('#question').html()
+          ,$('#choice_0').html()
+          ,$('#choice_1').html()
+          ,$('#choice_2').html()
+          ,$('#choice_3').html()
+          ,$('#correct').html()
+          ,q_img
+          ,q_id
+          ,comment_offline
+          ,$(this_seq).html()
+          ,quiz_num
+        ];
       }
     }
-    localStorage.answer = JSON.stringify(answer);
   }
+  localStorage.offline_q = JSON.stringify(offline_q);
   amt_answer++;  
   after_post(correct_answer);
 }

@@ -32,6 +32,12 @@ if(localStorage.follow){
   var follow = JSON.parse(localStorage.follow);
   $('#num_following').empty().append(follow.length); 
 }
+if(localStorage.ua_u_id){
+  $('#del_cookie').attr('src','/assets/img/icon/power_1.png'); 
+}
+if(localStorage.login_db){
+  $('#del_cookie').attr('src','/assets/img/icon/power_2.png');
+}
 
 $('.auth').click(function(){
   r = confirm('ログイン・同期します');
@@ -39,7 +45,7 @@ $('.auth').click(function(){
     (localStorage.myphoto)? myphoto = localStorage.myphoto : myphoto = '';
     (localStorage.myname)? myname = localStorage.myname : myname = '';
     (localStorage.answer_by_u)? answer_by_u = localStorage.answer_by_u : answer_by_u = [];
-    (localStorage.answer)? answer = localStorage.answer : answer = [];
+    (localStorage.offline_q)? offline_q = localStorage.offline_q : offline_q = [];
     ga('set', 'dimension10',$(this).attr('alt'));
     ga('send','event','auth',$(this).attr('alt'),localStorage.ua_u_id,1);
     location.href = $(this).data('url');
@@ -243,11 +249,6 @@ if(getVal.list){
   var endNum = 0;
   var addLimit = 100;
   var celNum = 0;
-  if(localStorage.answer){
-    var answer = JSON.parse(localStorage.answer);
-  }else{
-    var answer = [];
-  }
 
   var offline_q = [];
   if(localStorage.offline_q){
@@ -306,14 +307,6 @@ if(getVal.list){
   function delAnswer(cellId) {
     r = confirm('削除します');
     if(r){
-      var new_answer = [];
-      var ii=0;
-      for(var i=0; i<answer.length; i++){
-        if(answer[i][0] != cellId){
-          new_answer[ii] = answer[i];
-          ii++;
-        }
-      }
       var new_offline_q = [];
       var i2 = 0;
       for(var i=0; i<offline_q.length; i++){
@@ -323,7 +316,6 @@ if(getVal.list){
         }
       }
       setTimeout(function(){
-        localStorage.answer = JSON.stringify(new_answer);
         localStorage.offline_q = JSON.stringify(new_offline_q);
         location.href = '';
       },1000);
@@ -367,4 +359,6 @@ $.get('/myanswershow/',{},function(){},"json")
   }else if(res[0]==2){
   }
 });
+
+
 

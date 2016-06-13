@@ -26,47 +26,55 @@
 &nbsp;
 </div>
 <div id="ad_right"></div>
-
-<script>
-var u_id = '<?=$u_id?>';
-
-var follow = '<?=$follow?>';
-var myname = '<?=$myname?>';
-var myphoto = '<?=$myphoto?>';
-var point = '<?=$point?>';
-var ua_u_id = '<?=$u_id?>';
-var answer_by_u = '<?=$js_answer_by_u?>';
-var answer = '<?=$js_answer?>';
-var offline_q = '<?=$js_offline_q?>';
-var introduce = '<?=$introduce?>';
+<div style="display: none;">
+  <i id="myphoto"><?=$myphoto?></i><i id="myname"><?=$myname?></i><i id="introduce"><?=$introduce?></i>
+  <?php foreach ($arr_offline_q as $k => $d){?>
+    <div class="offline_q">
+      <i id="q_txt_<?=$k?>"><?=$d[0]?></i>
+      <i id="choice_0_<?=$k?>"><?=$d[1]?></i>
+      <i id="choice_1_<?=$k?>"><?=$d[2]?></i>
+      <i id="choice_2_<?=$k?>"><?=$d[3]?></i>
+      <i id="choice_3_<?=$k?>"><?=$d[4]?></i>
+      <i id="correct_choice_<?=$k?>"><?=$d[5]?></i>
+      <i id="q_img_<?=$k?>"><?=$d[6]?></i>
+      <i id="question_id_<?=$k?>"><?=$d[7]?></i>
+      <i id="comment_<?=$k?>"><?=$d[8]?></i>
+      <i id="myanswer_<?=$k?>"><?=$d[9]?></i>
+      <i id="quiz_num_<?=$k?>"><?=$d[10]?></i>
+    </div>
+  <?php } ?>
+  <?php foreach ($arr_offline_q as $k => $d){?>
   
-if(follow){
-  localStorage.follow = follow;
-}
-if(myname){
-  localStorage.myname = myname;
-}
-if(myphoto){
-  localStorage.myphoto = myphoto;
-}
-if(point){
-  localStorage.point = point;
-}
-if(ua_u_id){
-  localStorage.ua_u_id = ua_u_id;
-}
-if(answer_by_u){
-  localStorage.answer_by_u = answer_by_u;
-}
-if(answer){
-  localStorage.answer = answer;
-}
-if(offline_q){
-  localStorage.offline_q = offline_q;
-}
-if(introduce){
-  localStorage.introduce = introduce;
-}
+  <?php } ?>
+</div>
+<script>
+
+localStorage.follow = '<?=$follow?>';
+localStorage.point = '<?=$point?>';
+localStorage.ua_u_id = '<?=$u_id?>';
+localStorage.answer_by_u = '<?=$js_answer_by_u?>';
+localStorage.myname =  $('#myname').html();
+localStorage.myphoto = $('#myphoto').html();
+localStorage.introduce = $('#introduce').html();
+
+var offline_q = [];
+$(".offline_q").each(function(i){
+  offline_q[i] = [
+    $('#q_txt_'+i).html()
+    ,$('#choice_0_'+i).html()
+    ,$('#choice_1_'+i).html()
+    ,$('#choice_2_'+i).html()
+    ,$('#choice_3_'+i).html()
+    ,$('#correct_choice_'+i).html()
+    ,$('#q_img_'+i).html()
+    ,$('#question_id_'+i).html()
+    ,$('#comment_'+i).html()
+    ,$('#myanswer_'+i).html()
+    ,$('#quiz_num_'+i).html()
+  ];
+});
+
+localStorage.offline_q = JSON.stringify(offline_q);
 
 location.href = '/myprofile/ ';
 
