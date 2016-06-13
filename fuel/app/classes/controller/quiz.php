@@ -58,7 +58,6 @@ class Controller_Quiz extends Controller
       ->order_by('create_at', 'asc')      
       ->execute()->as_array();
     $arr_comment = [];
-    $comment_offline = '';
     if ( isset($query[0]['id']) ) {
       $arr_u_id = [];
       $util = new Model_Util();
@@ -74,11 +73,9 @@ class Controller_Quiz extends Controller
           $arr_comment[$k]['u_img'] = $util->eto_img;
           $arr_comment[$k]['eto_css'] = $util->eto_css;
         }
-        $comment_offline .= nl2br( Security::htmlentities( preg_replace('/\[|\[|[\t]|\\\/u', ' ', $d['txt']) ) ).'<br>';
       }
       
     }
-    $view->comment_offline = $comment_offline;
     $view->img = $q_img;
     shuffle($random_choice);
     $random_choice[4] = $cho_0;
@@ -105,6 +102,7 @@ class Controller_Quiz extends Controller
         Config::get('my.domain').
         '/quiz/?q='.
         $question_id;
+    $view->correct = $cho_0;
     $view->description = $description;
     $view->q_txt = nl2br($q_txt);
     $view->title = Str::truncate($q_txt, 32);

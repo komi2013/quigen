@@ -15,12 +15,17 @@ function shuffle(array) {
 
 var rand_ch = [0,1,2,3];
 rand_ch = shuffle(rand_ch);
-var q = JSON.parse(cho_4);
+var q = [$('#choice_0').html(),$('#choice_1').html(),$('#choice_2').html(),$('#choice_3').html()];
 $('#choice_0').empty().append(q[rand_ch[0]]);
 $('#choice_1').empty().append(q[rand_ch[1]]);
 $('#choice_2').empty().append(q[rand_ch[2]]);
 $('#choice_3').empty().append(q[rand_ch[3]]);
-$('#correct').empty().append(q[4]);
+
+var comment_offline = '';
+$(".comment").each(function(i){
+  comment_offline = comment_offline+$(this).html();
+});
+
 
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 if(localStorage.ticket){

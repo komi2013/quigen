@@ -84,7 +84,7 @@
 <span id="generator"></span> <span id="tag"></span>
 <br>
 <?php foreach ($arr_comment as $d) { ?>
-  <div style="word-wrap:break-word;"><?=$d['txt']?></div>
+  <div style="word-wrap:break-word;" class="comment"><?=$d['txt']?></div>
   <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
 <?php } ?>
 <textarea placeholder="コメント" class="comment_input" id="comment_data"></textarea>
@@ -151,7 +151,7 @@
 <?php if( !isset($_GET['iframe']) ){?>
 <div id="ad_right"></div>
 <?php } ?>
-<div id="correct" style="display: none;"></div>
+<div id="correct" style="display: none;"><?=$correct?></div>
 <script>
   
   var q_id = '<?=$question?>';
@@ -161,9 +161,7 @@
   var csrf = '<?=Model_Csrf::setcsrf()?>';
   var iframe = '<?=isset($_GET['iframe'])?>';
   var domain = '<?=Config::get('my.domain')?>';
-  var cho_4 = '<?=json_encode($arr_choice)?>';
-  var comment_offline = '<?=urlencode($comment_offline)?>';
-  comment_offline = decodeURIComponent(comment_offline).replace( /\+/g,'');
+
 </script>
 <script src="/assets/js/basic.js?ver=86"></script>
 <script src="/assets/js/check_news.js?ver=86"></script>
