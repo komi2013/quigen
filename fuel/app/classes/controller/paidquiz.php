@@ -3,19 +3,7 @@ class Controller_Paidquiz extends Controller
 {
   public function action_index()
   {
-    if (isset($_GET['crypt_q'])) {
-      $json_arr_q_data = Crypt::decode($_GET['crypt_q'],Config::get('crypt_key.q_data'));
-      $arr_q_data = json_decode($json_arr_q_data);
-      if ($arr_q_data) {
-        $question_id =  $arr_q_data[0];
-        $q_txt = $arr_q_data[1];
-        $q_img = $arr_q_data[2];
-      } else {
-        $view = View::forge('404');
-        
-        die($view);
-      }
-    } else if (isset($_GET['q'])) {
+    if (isset($_GET['q'])) {
       $arr_pay_q = DB::select()->from('pay_q')->where('id','=',$_GET['q'])->execute()->as_array();
       if (isset($arr_pay_q[0]['id'])) {
         $question_id =  $arr_pay_q[0]['id'];

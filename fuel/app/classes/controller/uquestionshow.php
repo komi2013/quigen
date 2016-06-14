@@ -46,9 +46,7 @@ class Controller_Uquestionshow extends Controller
         $txt = Security::htmlentities($d['txt']);
         $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
         $res[1][$i][2] = $img = Security::htmlentities($d['img']);
-        $json_arr_q_data = json_encode(array($d['id'],$txt,$img,$d['usr_id']));
-        $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-        $res[1][$i][3] = $q_data;
+        $res[1][$i][3] = '';
         $open_time = new DateTime($d['open_time']);
         $res[1][$i][4] = $open_time->getTimestamp();
         $res[0] = 1;

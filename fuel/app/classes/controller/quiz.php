@@ -3,20 +3,7 @@ class Controller_Quiz extends Controller
 {
   public function action_index()
   {
-    if (isset($_GET['crypt_q'])) {
-      $json_arr_q_data = Crypt::decode($_GET['crypt_q'],Config::get('crypt_key.q_data'));
-      $arr_q_data = json_decode($json_arr_q_data);
-      if ($arr_q_data) {
-        $question_id =  $arr_q_data[0];
-        $q_txt = $arr_q_data[1];
-        $q_img = $arr_q_data[2];
-        $q_u_id = $arr_q_data[3];
-      } else {
-        $view = View::forge('404');
-        
-        die($view);
-      }
-    } else if ( isset($_GET['q']) AND is_numeric($_GET['q']) ) {
+    if ( isset($_GET['q']) AND is_numeric($_GET['q']) ) {
       $arr_question = DB::select()->from('question')->where('id','=',$_GET['q'])->execute()->as_array();
       if ( isset($arr_question[0]['id']) ) {
         $question_id =  $arr_question[0]['id'];
@@ -24,14 +11,10 @@ class Controller_Quiz extends Controller
         $q_img = $arr_question[0]['img'];
         $q_u_id = $arr_question[0]['usr_id'];
       } else {
-        $view = View::forge('404');
-        
-        die($view);
+        die(View::forge('404'));
       }
     } else {
-      $view = View::forge('404');
-      
-      die($view);
+      die(View::forge('404'));
     }
     $arr_choice_1 = DB::select()->from('choice')->where('question_id','=',$question_id)->execute()->as_array();
     if ( !isset($arr_choice_1[0]['choice_0']) ) {
@@ -107,9 +90,7 @@ class Controller_Quiz extends Controller
     $view->q_txt = nl2br($q_txt);
     $view->title = Str::truncate($q_txt, 32);
     $view->arr_comment = $arr_comment;
-    $json_arr_q_data = json_encode(array($question_id,$q_txt,$q_img,$q_u_id));
-    $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-    $view->q_data = $q_data;
+    $view->q_data = '';
     $view->reference = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['reference']) );
     $view->u_id = Model_Cookie::get_usr();
 

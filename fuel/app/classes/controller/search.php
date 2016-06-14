@@ -67,9 +67,7 @@ class Controller_Search extends Controller
       $arr_qu[$d['id']]['id'] = $d['id'];
       $arr_qu[$d['id']]['img'] = $d['img'];
       $arr_qu[$d['id']]['txt'] = Str::truncate(Security::htmlentities($d['txt']), 40);
-      $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$d['usr_id']));
-      $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-      $arr_qu[$d['id']]['q_data'] = $q_data;
+      $arr_qu[$d['id']]['q_data'] = '';
       $open_time = new DateTime($d['open_time']);
       $end_time = $open_time->getTimestamp();
       $description .= Security::htmlentities($d['txt']).'..';

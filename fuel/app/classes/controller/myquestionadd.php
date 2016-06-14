@@ -134,9 +134,6 @@ class Controller_Myquestionadd extends Controller
       die(json_encode($res));
     }
     $res[0] = 1;
-
-//    $json_arr_q_data = json_encode(array($question_id,$_POST['q_txt'],$web_path,$usr_id));
-//    $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
     $res[1] = $question_id;
     die(json_encode($res));
   }

@@ -40,9 +40,7 @@ class Controller_QuizEdit extends Controller
     $view->correct = Security::htmlentities( preg_replace('/[\n\r\t]/', '　', $arr_choice_1[0]['choice_0']) );
     $view->usr = $q_u_id;
     $view->q_txt = $q_txt;
-    $json_arr_q_data = json_encode(array($question_id,$q_txt,$q_img,$q_u_id));
-    $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-    $view->q_data = $q_data;
+    $view->q_data = '';
     $view->reference = $arr_choice_1[0]['reference'];
     $view->open_time = $arr_question[0]['open_time'];
     $view->u_id = Model_Cookie::get_usr();

@@ -64,9 +64,7 @@ class Controller_Packqushow extends Controller
       if (isset($arr_res[$d['id']]['res'])) {
         $status = $arr_res[$d['id']]['res'];
       }
-      $json_arr_q_data = json_encode(array($d['id'],$d['txt'],$d['img'],$status));
-      $q_data = Crypt::encode($json_arr_q_data,Config::get('crypt_key.q_data'));
-      $res[1][$i][3] = $q_data;
+      $res[1][$i][3] = '';
       $res[1][$i][4] = $status;
       $res[0] = 1;
       ++$i;
