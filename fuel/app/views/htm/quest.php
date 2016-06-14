@@ -38,22 +38,23 @@
 </table>
 
 <table>
-  <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降に回答できます</td></tr>  
+  <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降に回答チケットをもらえます</td></tr>  
 </table>
 
 <table>
-  <tr><td class="td_99" id="open_time" style="text-align:center;"></td></tr>
+  <tr></tr>
 </table>
 
 <table>
   <tr>
-    <td class="td_15"><img src="/assets/img/icon/hourglass.png" alt="wait"></td>
-    <td class="td_84" id="left_time">0</td>
+    <td class="td_15" rowspan="2"><img src="/assets/img/icon/hourglass.png" alt="wait"></td>
+    <td class="td_84" id="open_time" style="text-align:center;"></td>
   </tr>
+  <tr><td class="td_84" id="left_time" style="text-align:center;">0</td></tr>
 </table>
 <br>
 <table>
-  <tr><td class="td_99 quest_do" id="light_1">○もしくは下記のページにいけばまたクイズに回答できます</td></tr>
+  <tr><td class="td_99 quest_do" id="light_1">○もしくは下記のページにいけば回答チケットをもらえます</td></tr>
 </table>
 
 <table>
@@ -71,7 +72,7 @@
 <br>
 <table>
   <tr>
-    <td class="td_84 quest_do" id="light_3">○もしくはポイントでチケットをGET</td>
+    <td class="td_84 quest_do" id="light_3">○もしくはポイントで回答チケットをGET</td>
     <td class="td_15 quest_do">
       <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
       <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">

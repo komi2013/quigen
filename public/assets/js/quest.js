@@ -1,5 +1,5 @@
-if(getVal.q){
-  $('#pre_quiz').attr('href','/quiz/?q='+getVal.q);
+if(localStorage.last_q){
+  $('#pre_quiz').attr('href','/quiz/?q='+localStorage.last_q);
 }
 
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);

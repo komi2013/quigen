@@ -12,6 +12,7 @@ function shuffle(array) {
   }
   return array;
 }
+localStorage.last_q = q_id;
 
 var rand_ch = [0,1,2,3];
 rand_ch = shuffle(rand_ch);
@@ -26,8 +27,6 @@ $(".comment").each(function(i){
   comment_offline = comment_offline+$(this).html();
 });
 
-
-var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
 if(localStorage.ticket){
   var ticket = JSON.parse(localStorage.ticket);
   if(ticket[0] > 0){
@@ -77,7 +76,7 @@ $('.choice').click(function(){
   $('#ticket').empty().append(ticket[0] -1);
   if(ticket[0] < 1){
     setTimeout(function(){
-      location.href = '/htm/quest/?q='+q_id;
+      location.href = '/htm/quest/';
       return;
     },1000);
   }else{

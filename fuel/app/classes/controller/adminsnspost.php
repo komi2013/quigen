@@ -5,17 +5,14 @@ class Controller_AdminSnsPost extends Controller
   {
     $usr_id = Model_Cookie::get_usr();
     $auth = false;
-    foreach (Config::get('my.adm') as $d)
-    {
+    foreach (Config::get('my.adm') as $d) {
       if ($d == $usr_id)
       {
         $auth = true;
       }
     }
-    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '153.126.217.154')
-    {
+    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '153.126.217.154') {
       $view = View::forge('404');
-      
       die($view);
     }
     require APPPATH.'vendor/facebook-php-sdk/src/facebook.php';
