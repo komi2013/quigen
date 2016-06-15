@@ -6,7 +6,11 @@ $('#menu').click(function(){
   }else{
     $('#drawer').css({'left': '-1px','top':$(window).scrollTop()+51+'px'});
     drawerIsOpen = true;
-    $('#ad_menu').empty().append(ad_menu_iframe);
+    if(navigator.onLine){
+      $('#ad_menu').empty().append(ad_menu_iframe);
+    }else{
+      $('#ad_menu').empty();
+    }
   }
 });
 var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60);
@@ -132,5 +136,8 @@ if(navigator.onLine){
   },3000);
 }else{
   $('#ad_menu').empty();
+  $('#ad').empty();
+}
+if(window.matchMedia('(min-width: 711px)').matches){
   $('#ad').empty();
 }

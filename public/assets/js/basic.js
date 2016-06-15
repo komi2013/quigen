@@ -148,6 +148,9 @@ setTimeout(function(){
     $('#ad').empty().append(ad_iframe);
   }
 },3000);
+if(window.matchMedia('(min-width: 711px)').matches){
+  $('#ad').empty();
+}
 //  $('.ad_frame').click(function(){
 //
 //  });
