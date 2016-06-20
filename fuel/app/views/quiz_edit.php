@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>クイズ編集</title>
+    <title>edit quiz</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
@@ -36,7 +36,7 @@
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
 </div>
 <table>
-  <tr><td class="td_99_c">オプション</td></tr>  
+  <tr><td class="td_99_c">option</td></tr>  
 </table>
 <table>
   <tr><td class="tag">#<input type="text" value="" maxlength="12" class="txt_84" id="tag_0"></td></tr>
@@ -47,7 +47,7 @@
 </div>    
 
 <table>
-  <tr><td class="td_99"><input type="text" value="<?=$reference?>" placeholder="画像の参照" maxlength="1000" class="txt_99" id="reference"></td></tr>
+  <tr><td class="td_99"><input type="text" value="<?=$reference?>" placeholder="image reference" maxlength="1000" class="txt_99" id="reference"></td></tr>
 </table>
 
 <table>

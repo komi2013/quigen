@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>クイズ作成</title>
-    <meta name="description" content="非公開のクイズを作成できます。友達にシェアすればその友達はクイズに答える事ができます">
+    <title>make quiz</title>
+    <meta name="description" content="you can make unofficial quiz, if you share, your friend can answer your quiz">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <link rel="canonical" href="<?='http://'.Config::get("my.domain").'/generate/'?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -28,14 +28,14 @@
 <tr><td><textarea placeholder="Q." maxlength="2000" class="txt_long" id="q_txt"></textarea></td></tr>
 </table>
 <table id="from_text" style="text-align:center;">
-<tr><td><input type="text" placeholder="O　正" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
-<tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
-<tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
-<tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
+<tr><td><input type="text" placeholder="O correct" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
+<tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
+<tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
+<tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
 </table>
 <table id="from_device" style="text-align:center;display:none;">
-  <tr><td><input type="text" placeholder="O　正" maxlength="1000" class="choice"></td><td></td></tr>
-  <tr><td><input type="text" placeholder="X　誤" maxlength="1000" class="choice"></td><td></td></tr>
+  <tr><td><input type="text" placeholder="O correct" maxlength="1000" class="choice"></td><td></td></tr>
+  <tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="choice"></td><td></td></tr>
 </table>
 <table id="from_url" style="text-align:center;display:none;">
 <tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
@@ -47,17 +47,17 @@
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
 </div>
-<table><tr><td class="td_99_c">オプション</td></tr></table>
+<table><tr><td class="td_99_c">option</td></tr></table>
 <table>
-  <tr><td class="tag">#<input type="text" placeholder="タグを追加.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
+  <tr><td class="tag">#<input type="text" placeholder="add tag.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
 <div style="display:none;">
-<input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_1">
-<input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_2">
+<input type="text" placeholder="add tag.." maxlength="12" class="tag_in" id="tag_1">
+<input type="text" placeholder="add tag.." maxlength="12" class="tag_in" id="tag_2">
 </div>    
 
 <table>
-  <tr><td class="td_99"><input type="text" placeholder="引用元:" maxlength="1000" class="txt_99" id="reference"></td></tr>
+  <tr><td class="td_99"><input type="text" placeholder="reference:" maxlength="1000" class="txt_99" id="reference"></td></tr>
 </table>
 
 <table cellspacing="0">

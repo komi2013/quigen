@@ -19,10 +19,10 @@
 </table>
 <table id="drawer">
   <tr><td id="ad_menu"><iframe src="/htm/ad_blank/" width="300" height="250" frameborder="0" scrolling="no"></iframe></td></tr>
-  <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >             <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;単語クイズ作成</a></td></tr>
-  <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                  >&nbsp;&nbsp;&nbsp;FAQ掲示板</a></td></tr>
-  <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;他のクイズ</a></td></tr>
-  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >             <a href="/htm/myanswer_offline/" rel="nofollow" >&nbsp;&nbsp;&nbsp;オフライン</a></td></tr>
+  <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >             <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;make quiz</a></td></tr>
+  <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                  >&nbsp;&nbsp;&nbsp;let't chat</a></td></tr>
+  <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;other quiz</a></td></tr>
+  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >             <a href="/htm/myanswer_offline/" rel="nofollow" >&nbsp;&nbsp;&nbsp;offline</a></td></tr>
 <?php /*
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>

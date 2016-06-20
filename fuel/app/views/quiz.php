@@ -87,14 +87,14 @@
   <div style="word-wrap:break-word;" class="comment"><?=$d['txt']?></div>
   <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
 <?php } ?>
-<textarea placeholder="コメント" class="comment_input" id="comment_data"></textarea>
+<textarea placeholder="comment" class="comment_input" id="comment_data"></textarea>
 <div class="div_right">
 <img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
 <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
 </div>
 
 <?php if($reference){ ?> 
-<div style="word-wrap:break-word;">引用元:<?=$reference?></div>
+<div style="word-wrap:break-word;">reference:<?=$reference?></div>
 <?php } ?>
 <table id="sns">
 <tr>
@@ -135,7 +135,7 @@
 </div>
 
 <table style="display: none;">
-<tr><td colspan="2" class="td_98">このクイズを購入</td></tr>
+<tr><td colspan="2" class="td_98">buy this quiz</td></tr>
 <tr>
 <td class="td_32">
   <a href="#" id="20pt">20 pt</a>

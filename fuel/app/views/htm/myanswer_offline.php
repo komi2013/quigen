@@ -2,7 +2,7 @@
 <html manifest="/myanswer.mf">
   <head>
     <meta charset="UTF-8" />
-    <title>マイアンサー(復習)</title>
+    <title>offline</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -24,7 +24,7 @@
 <div id="content">
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<table><tr><td class="td_99_c"><a href="/htm/quiz_offline/">前回のオフラインクイズ</a></td></tr></table>
+<table><tr><td class="td_99_c"><a href="/htm/quiz_offline/">previous offline quiz</a></td></tr></table>
 <table id="cel"></table>
 </div>
 

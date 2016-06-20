@@ -2,7 +2,7 @@
 <html manifest="/mf.manifest">
   <head>
     <meta charset="UTF-8" />
-    <title>オフラインクイズ</title>
+    <title>offline quiz</title>
     <meta name="robots" content="noindex">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>

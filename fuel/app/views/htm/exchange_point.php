@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>ポイント交換</title>
+    <title>exchange point</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -28,39 +28,39 @@
 <div id="after_post">
 <table>
   <tr> <td class="td_99">
-どのポイントを欲しいかを選んで下さい。
-その後こちらからご連絡します。
-そして銀行口座に振り込んでもらって、
-それをこちらで確認して、ポイントを差し上げます。
+choose which point you want
+I will contact with you later
+then you would put the money my bacnk account
+as soon as I confirm, I will give you point
   </td> </tr>
 </table>
 
 <table>
   <tr>
     <td class="td_15"><input type="radio" name="buy_point" value="100"></td>
-    <td class="td_42">100 円</td>
+    <td class="td_42">100 yen</td>
     <td class="td_42">200 pt</td>
   </tr>
   <tr>
     <td class="td_15"><input type="radio" name="buy_point" value="800"></td>
-    <td class="td_42">800 円</td>
+    <td class="td_42">800 yen</td>
     <td class="td_42">1700 pt</td>
   </tr>
   <tr>
     <td class="td_15"><input type="radio" name="buy_point" value="1400"></td>
-    <td class="td_42">1400 円</td>
+    <td class="td_42">1400 yen</td>
     <td class="td_42">3000 pt</td>
   </tr>
 </table>
 
 <table>
-  <tr><td><input type="text" placeholder="振込み名義" id="sender" class="txt_99"></td></tr>
+  <tr><td><input type="text" placeholder="bank account" id="sender" class="txt_99"></td></tr>
 </table>
 </div>
 <?php }else{ ?>
 <table>
   <tr><td class="explain">point</td><td id="point" class="numeric">0</td><td class="currecncy">pt</td></tr>
-  <tr><td class="explain">ポイントと円を交換する</td><td id="exchange" class="numeric" style="text-align:left;">
+  <tr><td class="explain">exchange point</td><td id="exchange" class="numeric" style="text-align:left;">
     <select id="unit">
       <option>0</option>
       <option>2</option>
@@ -71,11 +71,11 @@
     </select>
       0,000</td><td class="currecncy">pt</td>
   </tr>
-  <tr><td class="explain">手数料</td><td id="fee" class="numeric">1000</td><td class="currecncy">yen</td></tr>
-  <tr><td class="explain">受取額</td><td id="money" class="numeric"></td><td class="currecncy">yen</td></tr>
+  <tr><td class="explain">fee</td><td id="fee" class="numeric">1000</td><td class="currecncy">yen</td></tr>
+  <tr><td class="explain">point</td><td id="money" class="numeric"></td><td class="currecncy">yen</td></tr>
 </table>
 <table>
-  <tr><td id="info"><textarea placeholder="銀行情報" id="bank_info"></textarea></td></tr>
+  <tr><td id="info"><textarea placeholder="bank info" id="bank_info"></textarea></td></tr>
   <tr><td id="txt"><input type="email" placeholder="email" value="" id="email"></td></tr>
 </table>
 <?php } ?>

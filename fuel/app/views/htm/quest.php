@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>クエスト</title>
+    <title>quest</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -31,14 +31,14 @@
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr>
-    <td class="td_68"><a id="pre_quiz" href="/">クイズに戻る</a></td>
+    <td class="td_68"><a id="pre_quiz" href="/">back to quiz</a></td>
     <td class="td_15"><img src="/assets/img/icon/ticket.png" alt="ticket"></td>
     <td class="td_15" id="ticket" style="color:red;">0</td>
   </tr>
 </table>
 
 <table>
-  <tr><td class="td_99 quest_do" id="light_2">○下記の時間以降に回答チケットをもらえます</td></tr>  
+  <tr><td class="td_99 quest_do" id="light_2">you can get ticket after this time</td></tr>  
 </table>
 
 <table>
@@ -54,25 +54,25 @@
 </table>
 <br>
 <table>
-  <tr><td class="td_99 quest_do" id="light_1">○もしくは下記のページにいけば回答チケットをもらえます</td></tr>
+  <tr><td class="td_99 quest_do" id="light_1">or you go to those pages to get ticket</td></tr>
 </table>
 
 <table>
-  <tr><td class="quest_1 td_99_c">クイズに答える</td>                                   <td class="td_15_c"><img src="/assets/img/icon/star_1.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/">他のクイズを確認</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/htm/myanswer_offline/">オフラインを確認</a></td> <td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/myprofile/">マイページを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c">answer quiz</td>                                   <td class="td_15_c"><img src="/assets/img/icon/star_1.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/">go other quiz</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/htm/myanswer_offline/">go offline</a></td> <td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/myprofile/">go mypage</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 
-  <tr><td class="quest_2 td_99_c"><a href="/rank/">ランクを確認</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">規約を確認</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_2 td_99_c">クイズをシェア</td>                                   <td class="quest_2 td_15_c" id="img_quest_5"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_2 td_99_c">クイズにコメント</td>                                 <td class="quest_2 td_15_c" id="img_quest_6"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_2 td_99_c">クイズを作成</td>                                     <td class="quest_2 td_15_c" id="img_quest_7"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c"><a href="/rank/">go rank</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">go rule</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c">share quiz</td>                                   <td class="quest_2 td_15_c" id="img_quest_5"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c">comment on quiz</td>                                 <td class="quest_2 td_15_c" id="img_quest_6"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c">make quiz</td>                                     <td class="quest_2 td_15_c" id="img_quest_7"><img src="/assets/img/icon/star_0.png"></td></tr>
 </table>
 <br>
 <table>
   <tr>
-    <td class="td_84 quest_do" id="light_3">○もしくはポイントで回答チケットをGET</td>
+    <td class="td_84 quest_do" id="light_3">or get ticket with point</td>
     <td class="td_15 quest_do">
       <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
       <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
@@ -81,30 +81,30 @@
 </table>
 
 <table>
-<tr><td class="td_49">所持ポイント</td><td class="td_49" id="point">0 pt</td></tr>
+<tr><td class="td_49">my point</td><td class="td_49" id="point">0 pt</td></tr>
 </table>
 
 <table>
   <tr>
     <td class="td_15"><input type="radio" name="pay_point" value="100"></td>
-    <td class="td_42">100ポイント</td>
-    <td class="td_42">20チケット</td>
+    <td class="td_42">100 point</td>
+    <td class="td_42">20 ticket</td>
   </tr>
   <tr>
     <td class="td_15"><input type="radio" name="pay_point" value="800"></td>
-    <td class="td_42">800ポイント</td>
-    <td class="td_42">170チケット</td>
+    <td class="td_42">800 point</td>
+    <td class="td_42">170 ticket</td>
   </tr>
   <tr>
     <td class="td_15"><input type="radio" name="pay_point" value="1400"></td>
-    <td class="td_42">1400ポイント</td>
-    <td class="td_42">300チケット</td>
+    <td class="td_42">1400 point</td>
+    <td class="td_42">300 ticket</td>
   </tr>
 </table>
 
 <table>
   <tr>
-  <td class="td_99_c"><a href="/htm/exchange_point/?send=1">ポイントを購入</a></td>
+  <td class="td_99_c"><a href="/htm/exchange_point/?send=1">buy point</a></td>
   </tr>
 </table>
 

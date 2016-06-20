@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>フォロー</title>
+    <title>follow</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>

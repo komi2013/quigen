@@ -250,21 +250,21 @@ return array(
   ),
 
   'my' => array(
-    'domain' => 'juken-stg.quigen.info',
+    'domain' => 'english-stg.quigen.info',
 
     'fb_id' => '993621604001745',
     'fb_secret' => '9c13db858b058a95f16fde47fec39b02',
 
     'tw_key' => 'DpzkuTc9aZrbSFZ2yly5owvTz',
     'tw_secret' => 'QVMvOuLOBhHuy01j3PsxohhwYJnypIPr73akUK5YZllj2RdnRU',
-    'tw_callback' => 'http://juken-stg.quigen.info/twcallback/',
+    'tw_callback' => 'http://english-stg.quigen.info/twcallback/',
     'tw_access' => '2864849020-1isA1N8WmiW2cfUQFekXNZ5wvwAAtmjazPMshi1',
     'tw_access_secret' => 'MRiPs1bkXsYr65odO1rA99OlhQgleJ076hK3k7EwauHoh',
 
     'gp_id' => '155056049737-lfh0t3007h5n2husc51enrh2bgo1k9gj.apps.googleusercontent.com',
     'gp_secret' => 'yyBoHOg18ZZzNj6um9IuxLFo',
-    'gp_callback' => 'http://juken-stg.quigen.info/gpcallback/',
-    'gp_login' => 'http://juken-stg.quigen.info/gplogin/',
+    'gp_callback' => 'http://english-stg.quigen.info/gpcallback/',
+    'gp_login' => 'http://english-stg.quigen.info/gplogin/',
 
     'adm' => array(
         11  //facebook komatsuka@yahoo.com
@@ -282,7 +282,7 @@ return array(
     'PAYPAL_URL' => 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=',
     'PAYPAL_DG_URL' => 'https://www.sandbox.paypal.com/incontext?token=',
       
-    'dir' => '/stg/juken/',
+    'dir' => '/stg/english/',
       
     'top_title' => 'クイジェン | 大学受験の生物、日本史、世界史、英語の問題集',
     'top_description' => 'ログインなしで4択クイズに答えれます。クイズの内容はセンター試験の内容もあります。ランクも表示されます。自分でもプライベートクイズを作成できます。復習機能で単語も覚えやすいです。',

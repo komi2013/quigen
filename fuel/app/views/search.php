@@ -33,7 +33,7 @@
   <datalist id="tag_list"></datalist>
   <img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search">
 </div>
-<div class="tag_desc"><?=$tag?>(全<?=$cnt?>問)　<?=$description?></div>
+<div class="tag_desc"><?=$tag?>(total <?=$cnt?> quiz) <?=$description?></div>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table id="cel">
 <?php foreach($question as $k => $d){ ?>
@@ -53,7 +53,7 @@
 </tr>
 <?php } ?>
 <?php if($left_cnt == $limit){ ?>
-<tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$tag?>&page=<?=$next_page?>" target=”_blank”>・・・別ページで開く・・・</a></td></tr>
+<tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$tag?>&page=<?=$next_page?>" target=”_blank”>* * open another page * *</a></td></tr>
 <?php } ?>
 </table>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>

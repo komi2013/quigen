@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>単語クイズ作成</title>
+    <title>make word quiz</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -23,25 +23,25 @@
 ?>
 <div id="content">
 <table>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_0"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_0"></td></tr>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_1"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_1"></td></tr>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_2"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_2"></td></tr>
-<tr><td><input type="text" placeholder="質問" maxlength="20" class="txt_99" id="q_3"></td><td><input type="text" placeholder="答え" maxlength="200" class="txt_99" id="a_3"></td></tr>
+<tr><td><input type="text" placeholder="Q." maxlength="20" class="txt_99" id="q_0"></td><td><input type="text" placeholder="A." maxlength="200" class="txt_99" id="a_0"></td></tr>
+<tr><td><input type="text" placeholder="Q." maxlength="20" class="txt_99" id="q_1"></td><td><input type="text" placeholder="A." maxlength="200" class="txt_99" id="a_1"></td></tr>
+<tr><td><input type="text" placeholder="Q." maxlength="20" class="txt_99" id="q_2"></td><td><input type="text" placeholder="A." maxlength="200" class="txt_99" id="a_2"></td></tr>
+<tr><td><input type="text" placeholder="Q." maxlength="20" class="txt_99" id="q_3"></td><td><input type="text" placeholder="A." maxlength="200" class="txt_99" id="a_3"></td></tr>
 </table>
 <div style="width:98%;text-align:right;">
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
 </div>
 <table>
-  <tr><td class="td_99_c">オプション</td></tr>  
+  <tr><td class="td_99_c">option</td></tr>  
 </table>
 
 <table>
-  <tr><td>#<input type="text" placeholder="タグを追加.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
+  <tr><td>#<input type="text" placeholder="add tag.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
 <div style="display:none;">
-<input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_1">
-<input type="text" placeholder="タグを追加.." maxlength="12" class="tag_in" id="tag_2">
+<input type="text" placeholder="add tag.." maxlength="12" class="tag_in" id="tag_1">
+<input type="text" placeholder="add tag.." maxlength="12" class="tag_in" id="tag_2">
 </div>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 </div>

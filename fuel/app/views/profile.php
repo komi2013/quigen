@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title><?=$usr_name?></title>
 <?php if( $seo_index ){ ?>
-    <meta name="description" content="<?=$meta_description?>、 フォロワー数：<?=$follower?>、 フォローしているユーザー数：<?=$following?>">
+    <meta name="description" content="<?=$meta_description?>, <?=$follower?> follower, <?=$following?> following user">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
 <?php } else { ?>
     <meta name="robots" content="noindex,follow">
@@ -46,7 +46,7 @@
 <?php if( !isset($_GET['list']) ){ ?>
 <table style="border-collapse: collapse;">
 <tr>
-  <td class="td_68_c" style="text-align: center;">タグカテゴリ</td>
+  <td class="td_68_c" style="text-align: center;">tag category</td>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>
   <td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>
 </tr>

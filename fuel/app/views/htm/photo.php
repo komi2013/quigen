@@ -2,7 +2,7 @@
 <html>
     <head>
     <meta charset="UTF-8" />
-    <title>写真アップロード</title>
+    <title>upload</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
@@ -97,7 +97,7 @@ $('#generate').click(function(){
   localStorage.setItem('img',imgdata);
   window.opener.document.getElementById("photo").src = imgdata;
   window.opener.winCloseB();
-  $('#canvas_div_img').empty().append('閉じてください');
+  $('#canvas_div_img').empty().append('close this page');
 });
 
 $('#rotate').click(function(){

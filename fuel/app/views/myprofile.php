@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>マイプロファイル</title>
+    <title>mypage</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -32,7 +32,7 @@
 <?php if($introduce){ ?>
   <textarea maxlength="120" id="introduce" class="txt_long"><?=$introduce?></textarea>
 <?php }else{ ?>
-  <textarea placeholder="自己紹介" maxlength="120" id="introduce" class="txt_long"></textarea>
+  <textarea placeholder="introduce.." maxlength="120" id="introduce" class="txt_long"></textarea>
 <?php } ?>
 </div>
 

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>お待ちください</title>
+    <title>wait</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
@@ -22,7 +22,7 @@
 ?>
 <div id="content">
 <table>
-  <tr><td class="td_99"><a href="/htm/mypaid/">&nbsp;&nbsp;下記の時間以降作成できます</a></td></tr>
+  <tr><td class="td_99"><a href="/htm/mypaid/">&nbsp;&nbsp;you can make quiz after this time</a></td></tr>
   <tr><td class="td_99"><a href="/payment1/">&nbsp;&nbsp;<?=$available?></a></td></tr>
 </table>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
