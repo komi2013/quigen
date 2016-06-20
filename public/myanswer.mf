@@ -36,7 +36,6 @@ CACHE:
 /assets/img/icon/pencil.png
 
 NETWORK:
-/myanswershow/
 *
 
 
