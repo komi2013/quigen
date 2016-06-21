@@ -48,7 +48,7 @@ if(localStorage.offline_q){
   $('#choice_3').empty().append(ch_3);
   $('#comment').empty().append(comment);
   if(quiz_num){
-    $('.unread').append('第'+quiz_num+'問.');  
+    $('.unread').append('No.'+quiz_num+' ');  
   }
   document.title = q_txt.slice(0,30);
   if(q_img){
@@ -234,10 +234,3 @@ var amt_answer = 0;
 if(!navigator.onLine){
   $('#sns').css({'display':'none'});
 }
-
-
-
-
-
-
-

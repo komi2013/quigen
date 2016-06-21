@@ -55,7 +55,7 @@ class Controller_QuizBuy extends Controller
         '<img src="'.$usr_img.'" class="icon"></a>&nbsp;が'.
         '<a href="/quiz/?q='.$question_id.'"><img src="'.$q_img.'" alt="quiz"></a>の'.
         '<a href="#" onClick="accept('.$quiz_buy_id.')">'.
-        '買取を'.$point.'ポイントで要求しています'.
+        'try to buy this quiz with '.$point.' point'.
         '</a>'      
       ;
 

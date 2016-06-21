@@ -14,7 +14,7 @@ if(localStorage.news){
   localStorage.news = JSON.stringify(news);
 }
 function accept(quiz_buy_id){
-  r = confirm('売却しますか？');
+  r = confirm('sell?');
   if(r){
     var param = {
       csrf : csrf
@@ -33,7 +33,7 @@ function accept(quiz_buy_id){
 }
 
 function follow_confirm(sender){
-  r = confirm('フォロー承認');
+  r = confirm('follow confirm');
   if(r){
     var param = {
       csrf : csrf

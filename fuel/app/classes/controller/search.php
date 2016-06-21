@@ -31,7 +31,7 @@ class Controller_Search extends Controller
     $pager_cnt = ceil($cnt/$limit);
     if ( isset($_GET['page']) ) {
       $page = $_GET['page'];
-      $amt_page = '｜ページ'.$_GET['page'];
+      $amt_page = ' page'.$_GET['page'];
       $offset = ($pager_cnt - $page)*$limit;
       if ($page > 0 && $offset > -1)
       {
@@ -75,7 +75,7 @@ class Controller_Search extends Controller
     }
     foreach ($arr_qu as $k => $d) {
       if ( isset($d['id']) ) {
-        $arr_qu[$k]['txt'] = $d['quiz_num'].'問. '.$d['txt'];
+        $arr_qu[$k]['txt'] = 'No.'.$d['quiz_num'].$d['txt'];
       } else {
         unset($arr_qu[$k]);
       }

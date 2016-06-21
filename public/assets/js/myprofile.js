@@ -1,5 +1,5 @@
 if(getVal.warn){
-  alert('他のアカウントのログアウト・削除してから、ログイン・同期してください');
+  alert('please logout,delete first');
   location.href = '/myprofile/';
 }
 
@@ -22,7 +22,7 @@ if(localStorage.quest){
     }else{
       var news = [];
     }
-    news.unshift('<a href="/htm/quest/">マイページを確認しました<img src="/assets/img/icon/star_1.png"></a>');
+    news.unshift('<a href="/htm/quest/">mypage is completed<img src="/assets/img/icon/star_1.png"></a>');
     localStorage.news = JSON.stringify(news);
     localStorage.notify = JSON.stringify(notify);
   }
@@ -40,7 +40,7 @@ if(localStorage.login_db){
 }
 
 $('.auth').click(function(){
-  r = confirm('ログイン・同期します');
+  r = confirm('login,synchronize');
   if(r){
     (localStorage.myphoto)? myphoto = localStorage.myphoto : myphoto = '';
     (localStorage.myname)? myname = localStorage.myname : myname = '';
@@ -55,7 +55,7 @@ $('.auth').click(function(){
 var childWindow;
 $('#photo').click(function() {
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   childWindow = window.open("/htm/photo/", "winB");
@@ -78,7 +78,7 @@ function winCloseB(){
 
 $('#generate').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   var validate = 1;
@@ -93,7 +93,7 @@ $('#generate').click(function(){
   if(validate==2){
     return;
   }
-  r = confirm('プロファイルを変更します');
+  r = confirm('change profile');
   if(r){
     $('#generate').css({'display': 'none'});  
     $('#success').css({'display': ''});
@@ -141,7 +141,7 @@ function checkClick(){
 }
 
 $('#del_cookie').click(function(){
-  r = confirm('ログアウト・削除します');
+  r = confirm('logout,delete');
   if(r){
     localStorage.clear();
     $.post('/myprofiledel/',{csrf:csrf},function(){},"json")
@@ -155,7 +155,7 @@ $('#del_cookie').click(function(){
 
 if(getVal.list){
   function delQuiz(cellId){
-    r = confirm('削除します');
+    r = confirm('delete');
     if(r){
       var quiz_id=[cellId];
       var param = {
@@ -283,7 +283,7 @@ if(getVal.list){
       }
       var quiz_num_txt = '';
       if(res[celNum][10]){
-        quiz_num_txt = '第'+res[celNum][10]+'問.'; // only migration time cz localstorage data
+        quiz_num_txt = 'No.'+res[celNum][10]+' '; // only migration time cz localstorage data
       }
       var append = 
       '<tr><td colspan="100" class="td_84">'+
@@ -305,7 +305,7 @@ if(getVal.list){
   }
 
   function delAnswer(cellId) {
-    r = confirm('削除します');
+    r = confirm('delete');
     if(r){
       var new_offline_q = [];
       var i2 = 0;
@@ -339,7 +339,7 @@ if(localStorage.answer_by_u){
 
 var rank = ''
   +'<tr>'
-    +'<td class="td_68_c">タグカテゴリ</td>'
+    +'<td class="td_68_c">tag category</td>'
     +'<td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>'
     +'<td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>'
   +'</tr>';
@@ -359,6 +359,3 @@ $.get('/myanswershow/',{},function(){},"json")
   }else if(res[0]==2){
   }
 });
-
-
-

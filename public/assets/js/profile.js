@@ -9,7 +9,7 @@ if(status == 1){
 var second_1 = Math.round(new Date().getTime() /1000);
 $('#right').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   if($('#following1').css('display') == 'inline'){

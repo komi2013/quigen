@@ -55,9 +55,9 @@ class Controller_Newsshow extends Controller
       $u_img = strip_tags( preg_replace('/http/', 'url', $d['u_img']) );
       $arr_res[] = 
         '<img src="'.$u_img.'" class="icon '.$d['css'].'">'
-        .'が'
-        .'<a href="/quiz/?q='.$d['question_id'].'">'
-        .'<img src="'.$q_img.'" class="icon edge_click"></a>に回答しました。';
+        .' answer '
+        .'<a href="/quiz/?q='.$d['question_id'].'">this quiz'
+        .'<img src="'.$q_img.'" class="icon edge_click"></a>';
       $res[0] = 1;
     }  
     $res[1] = $arr_res;
@@ -105,9 +105,9 @@ class Controller_Newsshow extends Controller
     {
       $q_img = preg_replace('/http/', 'url', $d['q_img']);
       $q_img = $q_img ?: '/assets/img/icon/quiz_generator.png';
-      $arr_res[] = $d['summary'].'他のユーザーも'.
-        '<a href="/quiz/?q='.$d['question_id'].'">'.
-        '<img src="'.$q_img.'" class="icon edge_click"></a>に回答しました。';
+      $arr_res[] = $d['summary'].'other users also answer '.
+        '<a href="/quiz/?q='.$d['question_id'].'">this quiz'.
+        '<img src="'.$q_img.'" class="icon edge_click"></a>';
       $res[0] = 1;
     }
     $res[1] = array_merge($res[1], $arr_res);

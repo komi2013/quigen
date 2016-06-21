@@ -1,6 +1,6 @@
 $('#generate').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   var validate = 1;

@@ -125,7 +125,7 @@ if(ticket[0] < ticket[3]){
 if(ticket[0] > 0){
   $('#ticket').css({ 'color': 'green' });
   $('#ticket').empty().append(ticket[0]);
-  $('#light_2').empty().append('○下記の時間以降に回答できます');
+  $('#light_2').empty().append('you can answer after this time');
   localStorage.ticket = JSON.stringify(ticket);
 }
 
@@ -135,7 +135,7 @@ if(localStorage.point){
 
 $('#generate').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   if( !$('input[name=pay_point]:checked').val() ){
@@ -143,7 +143,7 @@ $('#generate').click(function(){
     return;
   }
   if( !localStorage.point || $('input[name=pay_point]:checked').val() > localStorage.point){
-    alert('ポイントが足りません');
+    alert('no point');
     return;
   }
   $('#generate').css({'display': 'none'});

@@ -35,7 +35,7 @@ function addCel(res){
     }
     var quiz_num_txt = '';
     if(res[celNum][10]){
-      quiz_num_txt = '第'+res[celNum][10]+'問.'; // only migration time cz localstorage data
+      quiz_num_txt = 'No.'+res[celNum][10]+' '; // only migration time cz localstorage data
     }
     var append = 
     '<tr><td colspan="100" class="td_84">'+
@@ -57,7 +57,7 @@ function addCel(res){
 }
 
 function delAnswer(cellId) {
-  r = confirm('削除します');
+  r = confirm('delete');
   if(r){
     var new_offline_q = [];
     var i2 = 0;
@@ -97,7 +97,7 @@ if(localStorage.quest){
     }else{
       var news = [];
     }
-    news.unshift('<a href="/htm/quest/">オフラインを確認しました<img src="/assets/img/icon/star_1.png"></a>');
+    news.unshift('<a href="/htm/quest/">offline is completed<img src="/assets/img/icon/star_1.png"></a>');
     localStorage.news = JSON.stringify(news);
     localStorage.notify = JSON.stringify(notify);
   }

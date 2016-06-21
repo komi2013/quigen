@@ -13,7 +13,7 @@ function checkClick(status,u_id){
 }
 
 $('#delete').click(function(){
-  r = confirm('削除します');
+  r = confirm('delete');
   if(r){
     var arr_u=[];
     $('[name="u_id"]:checked').each(function(){
@@ -30,14 +30,14 @@ $('#delete').click(function(){
       if(res[0]==1){
         location.href='';
       }else{
-        alert('通信エラー');
+        alert('connection error');
       }
     });  
   }
 });
 
 $('#confirm').click(function(){
-  r = confirm('承認します');
+  r = confirm('confirm');
   if(r){
     var arr_u=[];
     $('[name="u_id"]:checked').each(function(){
@@ -54,7 +54,7 @@ $('#confirm').click(function(){
       if(res[0]==1){
         location.href='';
       }else{
-        alert('通信エラー');
+        alert('connection error');
       }
     });  
   }

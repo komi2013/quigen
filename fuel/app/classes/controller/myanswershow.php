@@ -25,8 +25,8 @@ class Controller_Myanswershow extends Controller
         foreach($query as $k => $d){
           if($i < 5){
             $description .= $d['tag'];
-            $description .= ' 正解数'.$d['cnt'].'で';
-            $description .= $d['rank'].'位';
+            $description .= 'correct answer is '.$d['cnt'].' ';
+            $description .= 'No.'.$d['rank'];
             ++$i; 
           }
         }

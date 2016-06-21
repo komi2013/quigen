@@ -264,7 +264,7 @@ $('#sns td a').click(function(){
       }else{
         var news = [];
       }
-      news.unshift('<a href="/htm/quest/">クイズをシェアしました<img src="/assets/img/icon/star_1.png"></a>');
+      news.unshift('<a href="/htm/quest/">share quiz is completed<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
     }
@@ -349,7 +349,7 @@ function tag_show(){
         $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]['txt']+'">#'+res[1][i]['txt']+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
-      $('#question').prepend('第'+res[1][0]['quiz_num']+'問.');
+      $('#question').prepend('No.'+res[1][0]['quiz_num']+' ');
       quiz_num = res[1][0]['quiz_num'];
       if(res[3] && res[3][0]){
         next_q = res[3][0];
@@ -373,7 +373,7 @@ function addNavi(res,nextPrev) {
     '<img src="'+res[nextPrev][2]+'" alt="quiz" class="icon"></a>'+
     '</td><td colspan="85" class="td_84_t">'+
     '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
-    res[nextPrev][3]+'問. '+decodeURIComponent(res[nextPrev][1])+
+    'No.'+res[nextPrev][3]+' '+decodeURIComponent(res[nextPrev][1])+
     '</a>'+
     '</td>'+
     '</tr>';
@@ -381,7 +381,7 @@ function addNavi(res,nextPrev) {
     append = 
     '<tr><td colspan="100" class="td_84_t">'+
     '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
-    res[nextPrev][3]+'問. '+decodeURIComponent(res[nextPrev][1])+
+    'No.'+res[nextPrev][3]+' '+decodeURIComponent(res[nextPrev][1])+
     '</a>'+
     '</td>'+
     '</tr>';
@@ -390,7 +390,7 @@ function addNavi(res,nextPrev) {
 }
 $('#comment_add').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   var validate = 1;
@@ -414,7 +414,7 @@ $('#comment_add').click(function(){
       }else{
         var news = [];
       }
-      news.unshift('<a href="/htm/quest/">コメントしました<img src="/assets/img/icon/star_1.png"></a>');
+      news.unshift('<a href="/htm/quest/">comment is completed<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
     }
@@ -447,10 +447,10 @@ $('#comment_add').click(function(){
 
 $('#report').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
-  r = confirm('報告します');
+  r = confirm('report');
   if(r){
     var param = {
       csrf : csrf
@@ -471,10 +471,10 @@ $('#report').click(function(){
 });
 $('#0pt').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
-  r = confirm('0ポイントで買取要求します');
+  r = confirm('buy quiz with 0 point');
   if(r){
     var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
     var param = {
@@ -501,14 +501,14 @@ $('#0pt').click(function(){
 });
 $('#20pt').click(function(){
   if(!localStorage.point || localStorage.point < 20){
-    alert('ポイントが足りません');
+    alert('no point');
     return;
   }
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
-  r = confirm('20ポイントで買取要求します');
+  r = confirm('buy quiz with 20 point');
   if(r){
     var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
     var param = {

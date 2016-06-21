@@ -3,7 +3,7 @@ if(localStorage.last_tag){
 }
 $('#generate').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   var validate = 1;
@@ -33,7 +33,7 @@ $('#generate').click(function(){
       }else{
         var news = [];
       }
-      news.unshift('<a href="/htm/quest/">クイズを作成しました<img src="/assets/img/icon/star_1.png"></a>');
+      news.unshift('<a href="/htm/quest/">making quiz is completed<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
     }

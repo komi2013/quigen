@@ -72,51 +72,51 @@ function get_eto(u_id){
   switch (eto_num) {
     case 1:
       eto_img = '/assets/img/eto/01_rat.png';
-      eto_txt = 'ねずみ';
+      eto_txt = 'rat';
       break;
     case 2:
       eto_img = '/assets/img/eto/02_buffalo.png';
-      eto_txt = 'うし';
+      eto_txt = 'ox';
       break;
     case 3:
       eto_img = '/assets/img/eto/03_tiger.png';
-      eto_txt = 'とら';
+      eto_txt = 'tiger';
       break;
     case 4:
       eto_img = '/assets/img/eto/04_rabbit.png';
-      eto_txt = 'うさぎ';
+      eto_txt = 'rabbit';
       break;
     case 5:
       eto_img = '/assets/img/eto/05_dragon.png';
-      eto_txt = 'たつ';
+      eto_txt = 'dragon';
       break;
     case 6:
       eto_img = '/assets/img/eto/06_snake.png';
-      eto_txt = 'へび';
+      eto_txt = 'snake';
       break;
     case 7:
       eto_img = '/assets/img/eto/07_horse.png';
-      eto_txt = 'うま';
+      eto_txt = 'horse';
       break;
     case 8:
       eto_img = '/assets/img/eto/08_sheep.png';
-      eto_txt = 'ひつじ';
+      eto_txt = 'goat';
       break;
     case 9:
       eto_img = '/assets/img/eto/09_monkey.png';
-      eto_txt = 'さる';
+      eto_txt = 'monkey';
       break;
     case 10:
       eto_img = '/assets/img/eto/10_hen.png';
-      eto_txt = 'とり';
+      eto_txt = 'rooster';
       break;
     case 11:
       eto_img = '/assets/img/eto/11_dog.png';
-      eto_txt = 'いぬ';
+      eto_txt = 'dog';
       break;
     case 12:
       eto_img = '/assets/img/eto/12_pig.png';
-      eto_txt = 'いのしし';
+      eto_txt = 'pig';
       break;
   }
   var eto = [];

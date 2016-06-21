@@ -9,7 +9,7 @@ var fee =$('#fee').text();
 
 $('#generate').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   var unit = 0;
@@ -57,7 +57,7 @@ $('#generate').click(function(){
 
 $('#generate_send').click(function(){
   if(!u_id){
-    alert('はじめにクイズに答えてください');
+    alert('answer first');
     return;
   }
   var validate = 1;
@@ -83,7 +83,7 @@ $('#generate_send').click(function(){
   $.post('/forumadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
-      $('#after_post').empty().append('ありがとうございます。3日以内に<a href="/htm/?p=news">お知らせを送ります。</a>');
+      $('#after_post').empty().append('thanks. you will know <a href="/htm/?p=news">on this page</a>');
       csrf = res[1];
     }else{
       $('#success').css({'display': 'none'});  

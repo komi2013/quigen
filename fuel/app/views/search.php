@@ -67,6 +67,7 @@
   var nextPage = '<?=$next_page?>';
   var leftCnt = '<?=$left_cnt?>';
   var limit = '<?=$limit?>';
+  var mydomain = "<?=Config::get('my.domain')?>";
 </script>
 <script src="/assets/js/basic.js?ver=87"></script>
 <script src="/assets/js/check_news.js?ver=87"></script>

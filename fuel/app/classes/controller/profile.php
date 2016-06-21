@@ -64,12 +64,12 @@ class Controller_Profile extends Controller
     $view->follower = $cnt_follower;
     $res = DB::query("select count(*) from answer_key_u where usr_id = ".$_GET['u']." AND create_at > '".date('Y-m-d H:i:s',strtotime('-1 week'))."'" )->execute()->as_array();
     if ($res[0]['count'] > 0) {
-      $answer_cnt_1week = '1週間で'.$res[0]['count'].'件回答しました。';  
+      $answer_cnt_1week = $res[0]['count'].' answer within a week';  
     } else {
       $answer_cnt_1week = '';
     }
     if (!$introduce AND !$answer_cnt_1week) {
-      $introduce = '自己紹介：';
+      $introduce = 'introduce：';
     } else {
       $introduce =   $answer_cnt_1week.$introduce;
     }
@@ -95,8 +95,8 @@ class Controller_Profile extends Controller
       foreach($res as $k => $d){
         if($i < 5){
           $description .= $d['tag'];
-          $description .= ' 正解数 '.$d['cnt'].' で';
-          $description .= $d['rank'].'位';
+          $description .= $d['cnt'].' correct answer';
+          $description .= 'No.'.$d['rank'];
           ++$i; 
         }
       }

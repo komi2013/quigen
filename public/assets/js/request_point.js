@@ -12,10 +12,10 @@ $('#point').empty().append(point+' pt');
 
 $('#buy_point').click(function(){
   if(!localStorage.point || localStorage.point < 200){
-    alert('ポイントが足りません');
+    alert('no point');
     return;
   }
-  r = confirm('このクイズを購入します');
+  r = confirm('buy this quiz');
   if(r){
     var param = {
       csrf : csrf
