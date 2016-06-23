@@ -5,53 +5,14 @@ class Controller_4wordmoreadd extends Controller
   {
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
-    $auth = false;
-    foreach (Config::get('my.adm') as $d)
-    {
-      if ($d == $usr_id)
-      {
-        $auth = true;
-      }
-    }
-    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.242.146.131')
-    {
-      die(json_encode($res));
-    }
-    $arr = DB::query("    select category_parent_id,category_id from w_col_05_01 where leaf_category = '0' and category_parent_id in 
-    (
-      select category_id from w_col_04_02
-    )
-")->execute()->as_array();
-    $i = 0;
-    foreach ($arr as $k => $d) {
-      $arr_1 = DB::query("select category_id from w_col_05_01 where leaf_category = '1' and category_parent_id = '".$d['category_id']."'")->execute()->as_array();
-      foreach ($arr_1 as $dd) {
-        $arr_2 = DB::query("select category_id from w_col_05_01 where leaf_category = '1' and category_parent_id = '".$dd['category_id']."'")->execute()->as_array();
-        foreach ($arr_2 as $ddd) {
-          $arr_3 = DB::query("select category_id from w_col_05_01 where leaf_category = '1' and category_parent_id = '".$ddd['category_id']."'")->execute()->as_array();
-          foreach ($arr_3 as $dddd) {
-            DB::query("INSERT INTO w_col_05_03 (col1,col6) VALUES ('".$d['category_parent_id']."','".$dddd['category_id']."')")->execute();  
-            ++$i;
-          }
-        }
-      }
-      
-      
-      
-      
-       
-    }
+    $arr = DB::query("select * from ".$_GET['table']."")->execute()->as_array();
+    $ii = 1; $i2 = 1;
+    $wh_time = 1453448861; //change
     
-    
-    
-    die($i);
-    $ii = 1;
-    $wh_time = 1446319900; //change
-    
-    foreach ($arr_word as $d) {
+    foreach ($arr as $d) {
       //change
-      $arr_word_q[] = $d['answer'].'　に該当する薬は？';
-      $arr_word_a[] = $d['quiz'];
+      $arr_word_q[] = $d['col2']."\r\n".$_GET['imi'];
+      $arr_word_a[] = $d['col1'];
 
       if ( ($ii % 4) == 0 ) {
         $i = 0;
@@ -85,9 +46,11 @@ class Controller_4wordmoreadd extends Controller
           $answer_by_q->create_at = date("Y-m-d H:i:s");
           $answer_by_q->update_at = date("Y-m-d H:i:s");
           $answer_by_q->save();
+  DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
+  $question_id.",'".$_GET['tag']."','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+  ->execute(); //change
 
-          $i++;
-          DB::query("INSERT INTO tag (question_id,txt,open_time) VALUES (".$question_id.",'調剤薬局','".date("Y-m-d H:i:s", $wh_time)."')")->execute(); //change
+          $i++; $i2++;
         }
         $arr_word_q = [];
         $arr_word_a = [];

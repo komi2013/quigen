@@ -284,11 +284,11 @@ return array(
       
     'dir' => '/stg/english/',
       
-    'top_title' => 'クイジェン | 大学受験の生物、日本史、世界史、英語の問題集',
-    'top_description' => 'ログインなしで4択クイズに答えれます。クイズの内容はセンター試験の内容もあります。ランクも表示されます。自分でもプライベートクイズを作成できます。復習機能で単語も覚えやすいです。',
-    'forum_list_title' => 'FAQ | 数学や英語などのわからない部分の画像をアップすれば教えてくれるかも',
-    'forum_list_description' => 'わからない所が教科書や問題集にあった場合その画像をアップすれば他に見ている誰かが教えてくれるかも、簡単に画像を投稿できるのでためしにアップしてみては？',
-    'top_limit' => '20',
+    'top_title' => "Quigen. let's English study together on the world",
+    'top_description' => 'You can answer from 4 choices, able to make your question, chat with anyone who study english all of the world',
+    'forum_list_title' => "Let's share your episode or opinion through learning english",
+    'forum_list_description' => 'You can get used to english. If you post text, people might correct your text if it is wrong. ',
+    'top_limit' => '6',
       
     'display_error' => true,
   ),
