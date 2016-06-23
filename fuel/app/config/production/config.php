@@ -321,6 +321,7 @@ return array(
 
   'my' => array(
     'domain' => 'juken.quigen.info',
+    'sitemap' => '',
 
     'fb_id' => '1460997554206402',
     'fb_secret' => '63c63a3d47a248d7806807e06be45e57',

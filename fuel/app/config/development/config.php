@@ -251,18 +251,19 @@ return array(
 
   'my' => array(
     'domain' => 'english-stg.quigen.info',
+    'sitemap' => 's3V-64fqf7q7n0h1RNvJARHEBvbrIocNaH7tos3JzWU',
 
-    'fb_id' => '993621604001745',
-    'fb_secret' => '9c13db858b058a95f16fde47fec39b02',
+    'fb_id' => '1212985642054775',
+    'fb_secret' => 'f88276168295f0f4efdfc3421ece7944',
 
-    'tw_key' => 'DpzkuTc9aZrbSFZ2yly5owvTz',
-    'tw_secret' => 'QVMvOuLOBhHuy01j3PsxohhwYJnypIPr73akUK5YZllj2RdnRU',
+    'tw_key' => 'bQRI6emWEmsqJZ46CCnoyRCTA',
+    'tw_secret' => 'er9BHX0sqkDCrAyV9hTIBKJTqCfigZ7qpNRr7nxQEar3Tps5wh',
     'tw_callback' => 'http://english-stg.quigen.info/twcallback/',
-    'tw_access' => '2864849020-1isA1N8WmiW2cfUQFekXNZ5wvwAAtmjazPMshi1',
-    'tw_access_secret' => 'MRiPs1bkXsYr65odO1rA99OlhQgleJ076hK3k7EwauHoh',
+    'tw_access' => '2864849020-yVk2qA42EhF042mWqzQj7tLrv2ERHxpNsGKj55b',
+    'tw_access_secret' => 'G3xct3C4wZXvoHxGmuWSXDqbFwMOpPZ6uG8vEEltb3spu',
 
-    'gp_id' => '155056049737-lfh0t3007h5n2husc51enrh2bgo1k9gj.apps.googleusercontent.com',
-    'gp_secret' => 'yyBoHOg18ZZzNj6um9IuxLFo',
+    'gp_id' => '680215777007-8ph080ejb43s6eqke232rg3tqu1fgjs8.apps.googleusercontent.com',
+    'gp_secret' => 'GAGkwYIYBbmfSNr7UELOMwsI',
     'gp_callback' => 'http://english-stg.quigen.info/gpcallback/',
     'gp_login' => 'http://english-stg.quigen.info/gplogin/',
 

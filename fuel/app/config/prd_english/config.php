@@ -89,22 +89,22 @@ return array(
   ),
 
   'my' => array(
-    'domain' => 'shikaku.quigen.info',
+    'domain' => 'english.quigen.info',
     'sitemap' => 's3V-64fqf7q7n0h1RNvJARHEBvbrIocNaH7tos3JzWU',
 
-    'fb_id' => '1688503281371952',
-    'fb_secret' => 'ce5a324b3e6d38c9e21ffb2c545d2058',
+    'fb_id' => '284457388571956',
+    'fb_secret' => '723dbfe077fc90099c402a8dbd9b0778',
 
-    'tw_key' => 'RYk3vRhp2agjW5pOqYcTkRSGb',
-    'tw_secret' => 'YyeQiBTlnswdsZn9Vil1drxllxsYJgYBe7AhpDVVo1qR9FD9FX',
-    'tw_callback' => 'http://shikaku.quigen.info/twcallback/',
-    'tw_access' => '2864849020-Xa38CqNBpvMXTi9MuC6bpFRvaOhUPqIyz98l2wy',
-    'tw_access_secret' => 'MRVVF8HMh7zRlgWJZRYHloDQU9DnZvClTGferZVBT0xSx',
+    'tw_key' => 'u8oFfE0332okfOfN0xT3KzgqX',
+    'tw_secret' => 'os5RRoVGsrnSPxeyEFHb7nEX1dmKO8fGXF7zdMrrVkqWoOe7pd',
+    'tw_callback' => 'http://english.quigen.info/twcallback/',
+    'tw_access' => '2864849020-ushWEkxm1jD6J6FLVtNKPJqTFikauSivtdTigMg',
+    'tw_access_secret' => 'uoAR9SB61hiSmObe9Zehl7XjcU8PaW9r1ecLHYt0sGHQc',
 
-    'gp_id' => '527982563510-2i8h8q76jkupd8nrvf5evkv244o2kqe6.apps.googleusercontent.com',
-    'gp_secret' => 'cie4WYM-K5Ab4TNFw3ZNnN3c',
-    'gp_callback' => 'http://shikaku.quigen.info/gpcallback/',
-    'gp_login' => 'http://shikaku.quigen.info/gplogin/',
+    'gp_id' => '330926095143-8qaioeb9n2bsu7t9e14nljdme2gu8l3q.apps.googleusercontent.com',
+    'gp_secret' => 'kUbSjgn5qksNaR4AFzjAqm9N',
+    'gp_callback' => 'http://english.quigen.info/gpcallback/',
+    'gp_login' => 'http://english.quigen.info/gplogin/',
 
     'adm' => array(
         11  //facebook komatsuka@yahoo.com
@@ -122,13 +122,13 @@ return array(
     'PAYPAL_URL' => 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=',
     'PAYPAL_DG_URL' => 'https://www.sandbox.paypal.com/incontext?token=',
       
-    'dir' => '/prd/shikaku/',
+    'dir' => '/prd/english/',
       
-    'top_title' => '資格の問題集、中国語検定、TOEICなど | クイジェン',
-    'top_description' => '中国語、ロシア語、ドイツ語、フランス語、中国語の発音、通関士、スペイン語、TOEIC英単語などの問題をクイズ形式で答えて暗記できます',
-    'forum_list_title' => 'FAQ | 中国語の文法などのわからない部分の画像をアップすれば教えてくれるかも',
-    'forum_list_description' => 'わからない所が教科書や問題集にあった場合その画像をアップすれば他に見ている誰かが教えてくれるかも、簡単に画像を投稿できるのでためしにアップしてみては？',
-    'top_limit' => '10',
+    'top_title' => "Quigen. let's English study together on the world",
+    'top_description' => 'You can answer from 4 choices, able to make your question, chat with anyone who study english all of the world',
+    'forum_list_title' => "Let's share your episode or opinion through learning english",
+    'forum_list_description' => 'You can get used to english. If you post text, people might correct your text if it is wrong. ',
+    'top_limit' => '6',
       
     'display_error' => false,
   ),
