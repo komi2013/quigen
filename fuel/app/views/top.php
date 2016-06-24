@@ -11,7 +11,6 @@
 <?php }else{ ?>
     <meta name="robots" content="noindex,follow">
 <?php } ?>
-    <link rel="alternate" hreflang="ja" href="http://<?=Config::get("my.domain")?>/" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>

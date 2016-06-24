@@ -16,10 +16,6 @@ class Controller_Search extends Controller
     foreach ($query as $d) {
       $arr_qu_id[] = $d['question_id'];
       $arr_qu[$d['question_id']]['quiz_num'] = $d['quiz_num'];
-//      $arr_qu[$d['question_id']]['id'] = 0;
-//      $arr_qu[$d['question_id']]['img'] = '';
-//      $arr_qu[$d['question_id']]['q_data'] = '';
-//      $arr_qu[$d['question_id']]['txt'] = '';
       ++$cnt;
     }
     if ( $cnt < 1 ) {
@@ -38,13 +34,6 @@ class Controller_Search extends Controller
         $no_param = false;
       }
     }
-      
-//    if ( isset($_GET['endTime']) AND is_integer($_GET['endTime']) ) {
-//      $end_time = date('Y-m-d H:i:s',$_GET['endTime']);
-//    } else {
-//      $end_time = date('Y-m-d H:i:s');
-//    }
-//    var_dump($offset);
     if ($no_param) {
       $query = DB::select()->from('question')
         ->where('id','in',$arr_qu_id)
@@ -87,6 +76,7 @@ class Controller_Search extends Controller
     $view->title = $_GET['tag'].$amt_page;
     $view->description = Str::truncate($description, 200);
     $view->noindex = true;
+    $arr_hreflang = [];
     foreach ($query as $k => $d) {
       if ($no_param) {
         $view->title = $d['title'];
@@ -94,7 +84,17 @@ class Controller_Search extends Controller
       }
       $view->noindex = false;
     }
+    $query = DB::select()->from('mt_seo_tag')->execute()->as_array();
+    $i = 0;
+    foreach ($query as $k => $d) {
+      if ($d['code'] AND $d['tag'] != $_GET['tag']) {
+        $arr_hreflang[$i]['code'] = $d['code'];
+        $arr_hreflang[$i]['tag'] = urlencode($d['tag']);
+        ++$i;
+      }
+    }
     arsort($arr_qu);
+    $view->arr_hreflang = $arr_hreflang; 
     $view->cnt = $cnt; 
     $view->tag = isset($_GET['tag']) ? $_GET['tag'] : '';
     $view->question = $arr_qu;
