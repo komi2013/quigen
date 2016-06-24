@@ -23,8 +23,8 @@ class Controller_Uquestionshow extends Controller
         $res[0] = 1;
         $res[1][$i][0] = $d['question_id'];
         $res[1][$i][1] = Str::truncate(Security::htmlentities($d['q_txt']), 40);
-        $res[1][$i][2] = strip_tags( preg_replace('/http/', 'url', $d['q_img']) );
-        $res[1][$i][3] = 0;
+        $res[1][$i][2] = $d['q_img'];
+        $res[1][$i][3] = $d['quiz_num'];
         $create_at = new DateTime($d['create_at']);
         $res[1][$i][4] = $create_at->getTimestamp();
         $res[1][$i][5] = $d['result'];
