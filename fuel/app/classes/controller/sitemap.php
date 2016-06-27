@@ -26,9 +26,9 @@ class Controller_Sitemap extends Controller
   }
   public function action_static()
   {
-      echo 'http://'.Config::get("my.domain").'/generate/'."\r\n";
-      echo 'http://'.Config::get("my.domain").'/htm/rule/'."\r\n";
-      echo 'http://'.Config::get("my.domain").'/htm/quest/'."\r\n";
+      //echo 'http://'.Config::get("my.domain").'/generate/'."\r\n";
+      //echo 'http://'.Config::get("my.domain").'/htm/rule/'."\r\n";
+      //echo 'http://'.Config::get("my.domain").'/htm/quest/'."\r\n";
       echo 'http://'.Config::get("my.domain").'/forumlist/'."\r\n";
       
   }

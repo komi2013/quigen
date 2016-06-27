@@ -5,7 +5,6 @@
     <title>rule and term</title>
     <meta name="robots" content="noindex">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
-    <link rel="canonical" href="http://juken.quigen.info/htm/rule/" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
