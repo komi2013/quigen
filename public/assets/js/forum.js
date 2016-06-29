@@ -5,7 +5,7 @@ $('#generate').click(function(){
   }
   var validate = 1;
   if(change_pic == 1){
-    var mycanvas = document.getElementById('mycanvas');
+    var mycanvas = document.getElementById('mycanvas1');
     var imgdata = mycanvas.toDataURL();
   }else{
     var imgdata = 'no';
@@ -55,7 +55,7 @@ function handleImage(e){
     var img = new Image();
     img.src = event.target.result;
     var gesturableImg = new ImgTouchCanvas({
-        canvas: document.getElementById('mycanvas')
+        canvas: document.getElementById('mycanvas1')
         ,path: img.src
         ,desktop: true
     });
@@ -64,19 +64,19 @@ function handleImage(e){
   reader.readAsDataURL(e.target.files[0]);     
 }
 
-var resImg = document.getElementById('mycanvas');
+var resImg = document.getElementById('mycanvas1');
 var gesturableImg = new ImgTouchCanvas({
     canvas: resImg,
     path: "/assets/img/icon/camera.png"
 });
 
-var imageLoader = document.getElementById('imageLoader');
+var imageLoader = document.getElementById('file_load');
     imageLoader.addEventListener('change', handleImage, false);
 var change_pic = 0;
 //.end. canvas edit
 
 $('#rotate').click(function(){
-  var canvas = document.getElementById('mycanvas');
+  var canvas = document.getElementById('mycanvas1');
   var ctx = canvas.getContext('2d');
   var image = new Image();
   image.src = canvas.toDataURL();

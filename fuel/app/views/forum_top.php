@@ -35,19 +35,19 @@
 <?php $arr_forum = []; foreach($forum as $k => $d){ ?>
 <tr>
   <?php if($d['img']){ ?>
-  <td colspan="15" class="td_15">
+  <td colspan="15" class="td_15_t">
     <a href="/forum/?f=<?=$d['id']?>">
       <img src="<?=$d['img']?>" alt="forum" class="icon">
     </a>
   </td>
-  <td colspan="85" class="td_84">
+  <td colspan="85" class="td_84_t">
     <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
       <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
     </a>
   </td>
 
   <?php }else{ ?>
-  <td colspan="100" class="td_99">
+  <td colspan="100" class="td_99_t">
     <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
       <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
     </a>
@@ -56,7 +56,7 @@
 </tr>
 <?php $arr_forum[] = $d['id']; } ?>
 </table>
-<br>
+<?php if( isset($top) AND $page > 2) {?>
 <table>
   <tr>
   <td class="td_33">
@@ -64,9 +64,7 @@
     <a href="/forumlist/?page=<?=$page+1?>"> << </a>
     <?php }?>
   </td>
-  <?php if( isset($top) AND $page > 2) {?>
   <td class="td_33">||</td>
-  <?php } ?>
   <td class="td_33">
     <?php if($page > 2){ ?>
     <a href="/forumlist/?page=<?=$page-1?>"> >> </a>
@@ -74,10 +72,11 @@
   </td>
   </tr>
 </table>
-
+<?php } ?>
 <table style="text-align:center;">
-<tr><td><textarea placeholder="Q." maxlength="400" class="txt_long2" id="txt"></textarea></td></tr>
+<tr><td><textarea placeholder="new topic" maxlength="400" class="txt_long2" id="txt"></textarea></td></tr>
 </table>
+<div style="z-index: 4">
 <table><tr>
   <td class="td_33">
     <input type="file" id="file_load" >
@@ -110,6 +109,18 @@
 <div id="canvas_div_img" style="text-align:center;">
 
 <canvas id="mycanvas1" height="300" width="300"></canvas>
+</div>
+<table><tr><td class="td_99_c1"><img src="/assets/img/icon/ranking.png" class="icon">rank</td></tr></table>
+<table>
+  <tr><td style="text-align: center;">
+    <select class="txt_84" id="tag_name">
+      <?php foreach($arr_tag as $d){ ?>
+        <option value="#<?=$d['tag']?>">#<?=$d['tag']?></option>
+      <?php } ?>
+    </select>
+  </td></tr>
+</table>
+<table id="cel"></table>
 </div>
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>

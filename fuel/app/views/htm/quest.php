@@ -63,7 +63,7 @@
   <tr><td class="quest_1 td_99_c"><a href="/htm/myanswer_offline/">go offline</a></td> <td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/myprofile/">go mypage</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 
-  <tr><td class="quest_2 td_99_c"><a href="/rank/">go rank</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_2 td_99_c"><a href="/forumlist/">go chat</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">go rule</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c">share quiz</td>                                   <td class="quest_2 td_15_c" id="img_quest_5"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c">comment on quiz</td>                                 <td class="quest_2 td_15_c" id="img_quest_6"><img src="/assets/img/icon/star_0.png"></td></tr>

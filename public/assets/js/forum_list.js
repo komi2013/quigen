@@ -5,7 +5,7 @@ $('#generate').click(function(){
   }
   var validate = 1;
   if(change_pic == 1){
-    var mycanvas = document.getElementById('mycanvas');
+    var mycanvas = document.getElementById('mycanvas1');
     var imgdata = mycanvas.toDataURL();
   }else{
     var imgdata = 'no';
@@ -46,15 +46,18 @@ $('#generate').click(function(){
 //.begin. canvas edit
 
 function handleImage(e){
-  $('#imageLoader').css({
-    'display': 'none'
+  $('#canvas_menu').css({'display': 'inline'});
+  $('#mycanvas1').css({
+    'position': 'static'
+    ,'opacity': '1'
+    ,'left': '0px'
   });
   var reader = new FileReader();
   reader.onload = function(event){
     var img = new Image();
     img.src = event.target.result;
     var gesturableImg = new ImgTouchCanvas({
-        canvas: document.getElementById('mycanvas')
+        canvas: document.getElementById('mycanvas1')
         ,path: img.src
         ,desktop: true
     });
@@ -63,19 +66,19 @@ function handleImage(e){
   reader.readAsDataURL(e.target.files[0]);     
 }
 
-var resImg = document.getElementById('mycanvas');
+var resImg = document.getElementById('mycanvas1');
 var gesturableImg = new ImgTouchCanvas({
     canvas: resImg,
     path: "/assets/img/icon/camera.png"
 });
 
-var imageLoader = document.getElementById('imageLoader');
+var imageLoader = document.getElementById('file_load');
     imageLoader.addEventListener('change', handleImage, false);
 var change_pic = 0;
 //.end. canvas edit
 
 $('#rotate').click(function(){
-  var canvas = document.getElementById('mycanvas');
+  var canvas = document.getElementById('mycanvas1');
   var ctx = canvas.getContext('2d');
   var image = new Image();
   image.src = canvas.toDataURL();
@@ -96,46 +99,91 @@ $('[name=scale]').change(function(){
   localStorage.scale = $('[name=scale] option:selected').text();
 });
 
-var arr_nice = [];
-if(localStorage.nice){
-  arr_nice = JSON.parse(localStorage.nice);
-}
-
-for (var i=0; i<arr_nice.length; i++){
-  for (var ii=0; ii<arr_forum.length; ii++){
-    if(arr_nice[i] == arr_forum[ii]){
-      is_nice = true;
-      $('#f_img_'+arr_forum[ii]).attr({'src': '/assets/img/icon/thumbup_1.png'});
+if(localStorage.quest){
+  var quest = JSON.parse(localStorage.quest);
+  if(quest[3] != 1){
+    quest[3] = 1;
+    localStorage.quest = JSON.stringify(quest);
+    setTimeout(function(){
+      highlighting('#page_news',0,false);
+    },3000);
+    var ticket = JSON.parse(localStorage.ticket);
+    ticket[0] = ticket[0] + 12;
+    localStorage.ticket = JSON.stringify(ticket);
+    notify[2] = 'yet';
+    notify[3] = 1;
+    notify[4] = notify[4]+1;
+    if(localStorage.news){
+      var news = JSON.parse(localStorage.news);
+    }else{
+      var news = [];
     }
+    news.unshift('<a href="/htm/quest/">chat is completed<img src="/assets/img/icon/star_1.png"></a>');
+    localStorage.news = JSON.stringify(news);
+    localStorage.notify = JSON.stringify(notify);
   }
 }
 
-$('.nice').click(function(){
-  var is_nice = false;
-  for (var i=0; i<arr_nice.length; i++){
-    if( arr_nice[i] == $(this).data('forum')){
-      is_nice = true;
+/* rank */
+if(localStorage.last_tag){
+  $('#tag_name').val( localStorage.last_tag );
+}
+$('#tag_name').change(function () {
+  if( !$('#tag_name').val() || $('#tag_name').val() == localStorage.last_tag){
+    return;
+  }
+  localStorage.last_tag = $('#tag_name').val();
+  location.href = '';    
+}).change();
+
+var endTime = Math.round( new Date().getTime() / 1000 );
+var addLimit = 20;
+var celNum = 0;
+var resData = [];
+
+function addCel(resData){
+  while(celNum < addLimit){
+    var append = 
+    '<tr><td class="td_15_t">'+
+    '<a href="/profile/?u='+resData[celNum][0]+'">'+
+    '<img src="'+resData[celNum][2]+'" alt="usr" class="icon" '+resData[celNum][4]+'></a>'+
+    '</td><td class="td_50_t">'+
+    '<a href="/profile/?u='+resData[celNum][0]+'">'+resData[celNum][1]+'</a>'+
+    '</td><td class="td_15_t">'+resData[celNum][3]+
+    '</td><td class="td_15_t">'+'<img src="/assets/img/icon/circle_big.png" alt="correct" class="icon">'+
+    '</td></tr>';
+
+    $('#cel').append(append);
+    ++celNum;
+    if(!resData[celNum]){
+      return;
     }
   }
-  if (!is_nice) {
-    var amt_nice = $('#nice_'+$(this).data('forum') ).text();
-    $('#nice_'+$(this).data('forum')).text(amt_nice*1 + 1);
-    $('#f_img_'+$(this).data('forum')).attr({'src': '/assets/img/icon/thumbup_1.png'});
-    $(this).attr({'src': '/assets/img/icon/thumbup_1.png'});  
+}
+var last_tag = (localStorage.last_tag)? localStorage.last_tag : '';
+if(last_tag){
+  function getData(first){
     var param = {
-      csrf : csrf
-      ,f_id : $(this).data('forum')
+      endTime : endTime
+      ,tag : last_tag
     };
-    $.post('/niceadd/',param,function(){},"json")
+    $.get('/rankshow/',param,function(){},"json")
     .always(function(res){
+  //     resData = id, txt, img, crypt, endtime
       if(res[0]==1){
-        csrf = res[1];
+        resData = $.merge($.merge([], resData), res[1]);
+        endTime = res[1].pop()[4];
+        if(first == 1){
+          addCel(resData);
+        }
       }else if(res[0]==2){
-        alert('connection error');
       }
     });
-    arr_nice[arr_nice.length] = $(this).data('forum');
-    localStorage.nice = JSON.stringify(arr_nice);
   }
+}
+
+var dataLimit = 80;
+$(function(){
+  getData(1);
 });
 

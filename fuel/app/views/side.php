@@ -6,8 +6,8 @@
   <td id="page_news" class="<?= $this_page == 'news' ? 'this_page' : '' ?>" style="position: relative;">
     <a href="/htm/news/" rel="nofollow"><span id="news_num"></span><img src="/assets/img/icon/mail.png" class="icon"></a>
   </td>
-  <td id="page_rank" class="<?= $this_page == 'rank'  ? 'this_page' : '' ?>">
-    <a href="/rank/" rel="nofollow" ><img src="/assets/img/icon/ranking.png" class="icon"></a>
+  <td id="page_rank" class="<?= $this_page == 'forumlist'  ? 'this_page' : '' ?>">
+    <a href="/forumlist/" rel="nofollow" ><img src="/assets/img/icon/chat.png" class="icon"></a>
   </td>
   <td id="page_generate" class="<?= $this_page == 'generate'  ? 'this_page' : '' ?>" >
     <a href="/generate/" ><img src="/assets/img/icon/pencil.png" alt="generate" class="icon"></a>
@@ -20,7 +20,6 @@
 <table id="drawer">
   <tr><td id="ad_menu"><iframe src="/htm/ad_blank/" width="300" height="250" frameborder="0" scrolling="no"></iframe></td></tr>
   <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >             <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;make quiz</a></td></tr>
-  <tr><td                      class="<?= $this_page == 'forumlist' ? 'this_page' : '' ?>" >             <a href="/forumlist/"                  >&nbsp;&nbsp;&nbsp;let't chat</a></td></tr>
   <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;other quiz</a></td></tr>
   <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >             <a href="/htm/myanswer_offline/" rel="nofollow" >&nbsp;&nbsp;&nbsp;offline</a></td></tr>
 <?php /*

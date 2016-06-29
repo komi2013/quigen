@@ -44,13 +44,22 @@
 <?php $arr_forum[] = $d['id']; } ?>
 </table>
 <div style="text-align:center;">
-<textarea placeholder="A." maxlength="400" class="txt_long" id="txt"></textarea>
+<textarea placeholder="A." maxlength="400" class="txt_long2" id="txt"></textarea>
 </div>
-<div style="width:100%;text-align:right;">
-  <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
-  <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-</div>
-<table>
+
+<table><tr>
+  <td class="td_33">
+    <input type="file" id="file_load" >
+    <img src="/assets/img/icon/camera.png" class="icon">
+  </td>
+  <td class="td_33"></td>
+  <td class="td_33">
+    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+  </td>
+</tr></table>
+
+<table style="display:none;" id="canvas_menu">
   <tr>
   <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
   <td id="minus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
@@ -68,10 +77,10 @@
 </table>
 
 <div id="canvas_div_img" style="text-align:center;">
-<input type="file" id="imageLoader" name="imageLoader">
-<canvas id="mycanvas" height="300" width="300"></canvas>
+
+<canvas id="mycanvas1" height="300" width="300"></canvas>
 </div>
- 
+
 </div>
 <script>
   var arr_forum = JSON.parse( '<?= json_encode($arr_forum) ?>' );
