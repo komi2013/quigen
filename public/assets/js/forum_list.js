@@ -49,7 +49,7 @@ function handleImage(e){
   $('#canvas_menu').css({'display': 'inline'});
   $('#mycanvas1').css({
     'position': 'static'
-    ,'opacity': '1'
+    ,'top': '0px'
     ,'left': '0px'
   });
   var reader = new FileReader();

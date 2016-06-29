@@ -259,9 +259,8 @@ h1 {
 }
 #mycanvas1 {
   position: absolute;
-  opacity: 0;
+  top: -10000px;
   left: -150px;
-  z-index: 0;
 }
 #file_load {
   opacity: 0;

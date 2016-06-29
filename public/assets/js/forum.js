@@ -47,8 +47,11 @@ $('#generate').click(function(){
 //.begin. canvas edit
 
 function handleImage(e){
-  $('#imageLoader').css({
-    'display': 'none'
+  $('#canvas_menu').css({'display': 'inline'});
+  $('#mycanvas1').css({
+    'position': 'static'
+    ,'top': '0px'
+    ,'left': '0px'
   });
   var reader = new FileReader();
   reader.onload = function(event){

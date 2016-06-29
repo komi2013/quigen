@@ -110,7 +110,7 @@
 
 <canvas id="mycanvas1" height="300" width="300"></canvas>
 </div>
-<table><tr><td class="td_99_c1"><img src="/assets/img/icon/ranking.png" class="icon">rank</td></tr></table>
+<table><tr><td class="td_99_c1"><img src="/assets/img/icon/ranking.png" class="icon">rankings for the last month</td></tr></table>
 <table>
   <tr><td style="text-align: center;">
     <select class="txt_84" id="tag_name">
