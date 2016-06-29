@@ -12,7 +12,8 @@ class Controller_Forumadd extends Controller
       die(json_encode($res));
     }
     
-    $open_time = date("Y-m-d H:i:s",strtotime("+100 year"));
+    //$open_time = date("Y-m-d H:i:s",strtotime("+100 year"));
+    $open_time = date("Y-m-d H:i:s");
     $query = DB::select()->from('mt_block_generate')
       ->where('usr_id','=',$usr_id)
       ->execute()->as_array();
