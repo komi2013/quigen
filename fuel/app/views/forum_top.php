@@ -73,7 +73,7 @@
   </tr>
 </table>
 <?php } ?>
-<table id="input_icon"><tr><td class="td_99_icon"><img src="/assets/img/icon/pencil.png" class="icon"></td></tr></table>
+<table id="input_icon"><tr><td class="td_99_icon"><img src="/assets/img/icon/pencil.png" class="icon">new topic</td></tr></table>
 <div style="display:none;" id="input_form">
 <table style="text-align:center;">
 <tr><td><textarea placeholder="new topic" maxlength="400" class="txt_long_60" id="txt"></textarea></td></tr>
