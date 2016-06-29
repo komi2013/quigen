@@ -73,10 +73,12 @@
   </tr>
 </table>
 <?php } ?>
+<table id="input_icon"><tr><td class="td_99_icon"><img src="/assets/img/icon/pencil.png" class="icon"></td></tr></table>
+<div style="display:none;" id="input_form">
 <table style="text-align:center;">
-<tr><td><textarea placeholder="new topic" maxlength="400" class="txt_long2" id="txt"></textarea></td></tr>
+<tr><td><textarea placeholder="new topic" maxlength="400" class="txt_long_60" id="txt"></textarea></td></tr>
 </table>
-<div style="z-index: 4">
+
 <table><tr>
   <td class="td_33">
     <input type="file" id="file_load" >
@@ -105,12 +107,12 @@
   </td>
   </tr>
 </table>
-
+</div>
 <div id="canvas_div_img" style="text-align:center;">
 
 <canvas id="mycanvas1" height="300" width="300"></canvas>
 </div>
-<table><tr><td class="td_99_c1"><img src="/assets/img/icon/ranking.png" class="icon">rankings for the last month</td></tr></table>
+<table><tr><td class="td_99_icon"><img src="/assets/img/icon/ranking.png" class="icon">rankings for the last month</td></tr></table>
 <table>
   <tr><td style="text-align: center;">
     <select class="txt_84" id="tag_name">
@@ -121,7 +123,7 @@
   </td></tr>
 </table>
 <table id="cel"></table>
-</div>
+
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>

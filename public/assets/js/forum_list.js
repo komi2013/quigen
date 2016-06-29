@@ -42,7 +42,11 @@ $('#generate').click(function(){
   });
   ga('send','event','forum','upload',localStorage.ua_u_id,1);
 });
-
+$('#input_icon').click(function(){
+  $('#input_icon').css({'display': 'none'});
+  $('#input_form').css({'display': 'inline'});
+  ga('send','event','forum','show form',localStorage.ua_u_id,1);
+});
 //.begin. canvas edit
 
 function handleImage(e){

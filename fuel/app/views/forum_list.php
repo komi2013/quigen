@@ -75,43 +75,6 @@
   </tr>
 </table>
 
-<table style="text-align:center;">
-<tr><td><textarea placeholder="Q." maxlength="400" class="txt_long2" id="txt"></textarea></td></tr>
-</table>
-<table><tr>
-  <td class="td_33">
-    <input type="file" id="file_load" >
-    <img src="/assets/img/icon/camera.png" class="icon">
-  </td>
-  <td class="td_33"></td>
-  <td class="td_33">
-    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
-    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-  </td>
-</tr></table>
-
-<table style="display:none;" id="canvas_menu">
-  <tr>
-  <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
-  <td id="minus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
-  <td id="plus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
-  <td class="sp_disp_none" style="width:50px;cursor:pointer;">
-    <select name='scale' style="font-size:20px;">
-        <option>1</option>
-        <option>5</option>
-        <option>10</option>
-        <option>20</option>
-        <option>40</option>
-    </select>
-  </td>
-  </tr>
-</table>
-
-<div id="canvas_div_img" style="text-align:center;">
-
-<canvas id="mycanvas1" height="300" width="300"></canvas>
-</div>
-
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr><td class="td_99_c"><a href="https://www.youtube.com/watch?v=ZQlq1a-jPHw" target="_blank">how to use(video)</a></td></tr>

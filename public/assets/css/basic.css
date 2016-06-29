@@ -250,12 +250,11 @@ h1 {
   text-align: center;
   display: none;
 }
-.txt_long2 {
-  height: 40px;
+.txt_long_60 {
+  height: 60px;
   width: 90%;
   font-size: 15px;
   word-break : break-all;
-  padding: 20px 10px 20px 10px;
 }
 #mycanvas1 {
   position: absolute;
@@ -269,7 +268,7 @@ h1 {
   width: 48px;
   z-index: 5;
 }
-.td_99_c1{
+.td_99_icon{
   background-color: #F5F5F5;
   width: 99%;
   text-align: center;

@@ -44,7 +44,7 @@
 <?php $arr_forum[] = $d['id']; } ?>
 </table>
 <div style="text-align:center;">
-<textarea placeholder="A." maxlength="400" class="txt_long2" id="txt"></textarea>
+<textarea placeholder="reply.." maxlength="400" class="txt_long_60" id="txt"></textarea>
 </div>
 
 <table><tr>
