@@ -63,6 +63,7 @@ function handleImage(e){
         ,desktop: true
     });
     change_pic = 1;
+    location.hash = 'mycanvas1';
   }
   reader.readAsDataURL(e.target.files[0]);     
 }
