@@ -32,8 +32,7 @@ CACHE:
 /assets/img/icon/guest.png
 /assets/img/icon/ranking.png
 /assets/img/icon/pencil.png
-
-
+/assets/img/icon/chat.png
 
 NETWORK:
 *
