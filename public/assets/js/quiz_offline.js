@@ -208,13 +208,13 @@ function add_navi(arr_q) {
     '<tr><td colspan="15" class="td_15_t">'+
     '<img src="'+arr_q[6]+'" alt="quiz" class="icon" onClick="goOffline('+arr_q[7]+')">'+
     '</td><td colspan="85" class="td_84_t anchor" onClick="goOffline('+arr_q[7]+')">'
-    +decodeURIComponent(arr_q[0].replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+    +decodeURIComponent(arr_q[0].replace(/\+/g,'%20').replace(/&lt;br&gt;/g,'')).substring(0,30)+
     '</td>'+
     '</tr>';
   }else{
     append = 
     '<tr><td colspan="100" class="td_84_t anchor" onClick="goOffline('+arr_q[7]+')">'
-    +decodeURIComponent(arr_q[0].replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+    +decodeURIComponent(arr_q[0].replace(/\+/g,'%20').replace(/&lt;br&gt;/g,'')).substring(0,30)+
     '</td>'+
     '</tr>';
   }

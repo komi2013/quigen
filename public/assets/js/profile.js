@@ -78,14 +78,14 @@ function addCelAnswer(resData){
       '<a href="/quiz/?q='+cellId+'">'+
       '<img src="'+resData[celNum][2]+'" alt="quiz" class="icon"></a>'+
       '</td><td colspan="85" class="td_84_t">'+
-      '<a href="/quiz/?q='+cellId+'">'+result+resData[celNum][3]+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
       '</a>'+
       '</td>'+
       '</tr>';
     }else{
       var append = 
       '<tr><td colspan="100" class="td_84_t">'+
-      '<a href="/quiz/?q='+cellId+'">'+result+resData[celNum][3]+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
       '</a>'+
       '</td>'+
       '</tr>';

@@ -287,7 +287,7 @@ if(getVal.list){
       }
       var append = 
       '<tr><td colspan="100" class="td_84">'+
-      '<a href="/quiz/?q='+cellId+'">'+result+quiz_num_txt+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,'')).substring(0,30)+
+      '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
       '...</a>'+
       '</td>'+
       '</tr><tr>'+
