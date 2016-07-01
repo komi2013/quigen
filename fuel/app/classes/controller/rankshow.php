@@ -10,18 +10,15 @@ class Controller_Rankshow extends Controller
       Model_Log::warn('no tag');
       die(json_encode($res));
     }
-
-    $tag = preg_replace('/\W+/u', '', $_GET['tag']);
-    $tag_rank = DB::query(
-      "SELECT usr_id, COUNT(*) as cnt, u_name, u_img FROM tag_rank WHERE tag = "
-      ." '".$tag."' "
+    $tag = preg_replace('/#/u', '', $_GET['tag']);
+    $sql = "SELECT usr_id, COUNT(*) as cnt, u_name, u_img FROM tag_rank WHERE tag = "
+      ." :tag "
       ." AND create_at > "
       ." '".date('Y-m-d H:i:s',strtotime('-1 month'))."' "
-        ." GROUP BY usr_id, u_name, u_img ORDER BY cnt DESC ,usr_id DESC LIMIT 50"
-      )->execute()->as_array();    
+      ." GROUP BY usr_id, u_name, u_img ORDER BY cnt DESC ,usr_id DESC LIMIT 50";
+    $tag_rank = DB::query($sql)->bind('tag', $tag)->execute()->as_array();    
     $i = 0;
-    foreach ($tag_rank as $k => $d)
-    {
+    foreach ($tag_rank as $k => $d) {
       
       if ($d['u_name']) {
         $u_name = Str::truncate(Security::htmlentities($d['u_name']), 30);

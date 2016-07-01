@@ -350,7 +350,7 @@ $.get('/myanswershow/',{},function(){},"json")
     for (var i=0; i<res[1].length; i++){
       rank = rank+''
         +'<tr>'
-          +'<td class="td_68_c"><a href="/search/?tag='+decodeURIComponent(res[1][i][0])+'">'+decodeURIComponent(res[1][i][0])+'</a></td>'
+          +'<td class="td_68_c"><a href="/search/?tag='+res[1][i][0]+'">'+res[1][i][3]+'</a></td>'
           +'<td class="td_15">'+res[1][i][1]+'</td>'
           +'<td class="td_15">'+res[1][i][2]+'</td>'
         +'</tr>';

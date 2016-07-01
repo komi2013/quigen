@@ -34,25 +34,22 @@ class Controller_Answer extends Controller
           $sql_value = 'INSERT INTO tag_rank (usr_id,tag,create_at,u_img,u_name) VALUES ';
           if(isset($_POST['arr_tag'][0])){
             $without_hash = preg_replace('/#/u', '', $_POST['arr_tag'][0]);
-            $secure_tag = preg_replace('/\W+/u', '_', $without_hash);
-            $secure_u_img = str_replace("'", "", $_POST['u_img']);
-            $secure_u_name = str_replace("'", "", $_POST['u_name']);
-            $sql_value = $sql_value."(".$usr_id.",'".$secure_tag."','".date('Y-m-d H:i:s')."','".$secure_u_img."','".$secure_u_name."')";
+            $sql_value = $sql_value."(".$usr_id.",'".$without_hash."','".date('Y-m-d H:i:s')."','".$_POST['u_img']."','".$_POST['u_name']."')";
           }
-          if(isset($_POST['arr_tag'][1])){
-            $without_hash = preg_replace('/#/u', '', $_POST['arr_tag'][1]);
-            $secure_tag = preg_replace('/\W+/u', '_', $without_hash);
-            $secure_u_img = str_replace("'", "", $_POST['u_img']);
-            $secure_u_name = str_replace("'", "", $_POST['u_name']);
-            $sql_value = $sql_value.",(".$usr_id.",'".$secure_tag."','".date('Y-m-d H:i:s')."','".$secure_u_img."','".$secure_u_name."')";
-          }
-          if(isset($_POST['arr_tag'][2])){
-            $without_hash = preg_replace('/#/u', '', $_POST['arr_tag'][2]);
-            $secure_tag = preg_replace('/\W+/u', '_', $without_hash);
-            $secure_u_img = str_replace("'", "", $_POST['u_img']);
-            $secure_u_name = str_replace("'", "", $_POST['u_name']);
-            $sql_value = $sql_value.",(".$usr_id.",'".$secure_tag."','".date('Y-m-d H:i:s')."','".$secure_u_img."','".$secure_u_name."')";
-          }
+//          if(isset($_POST['arr_tag'][1])){
+//            $without_hash = preg_replace('/#/u', '', $_POST['arr_tag'][1]);
+//            $secure_tag = preg_replace('/\W+/u', '_', $without_hash);
+//            $secure_u_img = str_replace("'", "", $_POST['u_img']);
+//            $secure_u_name = str_replace("'", "", $_POST['u_name']);
+//            $sql_value = $sql_value.",(".$usr_id.",'".$secure_tag."','".date('Y-m-d H:i:s')."','".$secure_u_img."','".$secure_u_name."')";
+//          }
+//          if(isset($_POST['arr_tag'][2])){
+//            $without_hash = preg_replace('/#/u', '', $_POST['arr_tag'][2]);
+//            $secure_tag = preg_replace('/\W+/u', '_', $without_hash);
+//            $secure_u_img = str_replace("'", "", $_POST['u_img']);
+//            $secure_u_name = str_replace("'", "", $_POST['u_name']);
+//            $sql_value = $sql_value.",(".$usr_id.",'".$secure_tag."','".date('Y-m-d H:i:s')."','".$secure_u_img."','".$secure_u_name."')";
+//          }
           DB::query($sql_value)->execute();
         }
       }

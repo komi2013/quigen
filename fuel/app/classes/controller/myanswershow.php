@@ -24,7 +24,7 @@ class Controller_Myanswershow extends Controller
       if ( isset($query) ) {
         foreach($query as $k => $d){
           if($i < 5){
-            $description .= $d['tag'];
+            $description .= Security::htmlentities($d['tag']);
             $description .= 'correct answer is '.$d['cnt'].' ';
             $description .= 'No.'.$d['rank'];
             ++$i; 
@@ -32,9 +32,10 @@ class Controller_Myanswershow extends Controller
         }
         $arr = [];
         foreach ($query as $k => $d) {
-          $arr[$k][0] = $d['tag'];
+          $arr[$k][0] = urlencode($d['tag']);
           $arr[$k][1] = $d['cnt'];
           $arr[$k][2] = $d['rank'];
+          $arr[$k][3] = Security::htmlentities($d['tag']);
         }
         $res[0] = 1;
         $res[1] = $arr;

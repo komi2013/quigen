@@ -79,6 +79,7 @@ class Controller_Profile extends Controller
     $view->u_id = $usr_id;
     $description = '';
     if( !isset($_GET['list']) ){
+      $arr = [];
       $res = DB::query("
         select tag, usr_id,cnt,rank from (
           select tag, usr_id, cnt, rank() over(PARTITION BY tag order by cnt desc) as rank from (
@@ -94,13 +95,16 @@ class Controller_Profile extends Controller
       $i = 0;
       foreach($res as $k => $d){
         if($i < 5){
-          $description .= $d['tag'];
+          $description .= Security::htmlentities($d['tag']);
           $description .= $d['cnt'].' correct answer';
           $description .= 'No.'.$d['rank'];
           ++$i; 
         }
+        $arr[$k] = $d;
+        $arr[$k]['tag'] = Security::htmlentities($d['tag']);
+        $arr[$k]['url_tag'] = urlencode($d['tag']);
       }
-      $view->rank = $res;
+      $view->rank = $arr;
     }
     $view->description = $description;
     $view->introduce = $introduce;
