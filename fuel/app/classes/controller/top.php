@@ -18,6 +18,7 @@ class Controller_Top extends Controller
       $arr_tag[$k]['url_txt'] = urlencode($d['tag']);
       $arr_tag[$k]['txt'] = Str::truncate(Security::htmlentities($d['tag']), 40);
       $arr_tag[$k]['code'] = $d['code'];
+      $arr_tag[$k]['country'] = $d['country'];
     }
     $this->arr_tag = $arr_tag;
     if ( isset($_GET['page']) ) {

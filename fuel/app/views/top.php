@@ -38,7 +38,7 @@
 <div style="line-height: 50px;">
 <?php foreach($arr_tag as $k => $d){ ?>
   &nbsp;&nbsp;
-  <a href="/search/?tag=<?=$d['url_txt']?>" rel="nofollow"> <?=$d['txt']?> </a>
+  <a href="/search/?tag=<?=$d['url_txt']?>" rel="nofollow"><?=$d['txt']?>(<?=$d['country']?>)</a>
   &nbsp;&nbsp;
 <?php } ?>
 </div>
