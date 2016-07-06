@@ -109,7 +109,7 @@
   </a>
 </td>
 <td style="width:70px;">
-  <a href="<?=$ln_url?>" target="_blank">
+  <a href="<?=$ln_url?>" target="_blank" class="pc_disp_none">
   <img src="/assets/img/icon/ln.jpg" alt="line" class="icon">
   </a>
 </td>

@@ -58,7 +58,7 @@
   </a>
 </td>
 <td style="width:70px;">
-  <a href="" target="_blank" id="href_ln">
+  <a href="" target="_blank" id="href_ln" class="pc_disp_none">
   <img src="/assets/img/icon/ln.jpg" alt="line" class="icon">
   </a>
 </td>

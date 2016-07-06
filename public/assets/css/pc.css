@@ -29,3 +29,6 @@ body {
   position : fixed;
   margin: 0px 0px 0px 10px; 
 }
+.pc_disp_none{
+  display: none;
+}

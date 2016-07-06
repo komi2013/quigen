@@ -80,7 +80,7 @@
   <img src="/assets/img/icon/tw.jpg" alt="twitter" class="icon">
   </a>
 </td>
-<td style="width:70px;">
+<td style="width:70px;" class="pc_disp_none">
   <a href="<?=$ln_url?>" target="_blank">
   <img src="/assets/img/icon/ln.jpg" alt="line" class="icon">
   </a>
