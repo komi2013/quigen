@@ -11,7 +11,7 @@ class Model_Question extends \Orm\Model
     'id',
     'txt' => array(
       'data_type' => 'varchar',
-      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(1000)),
+      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(100000)),
       'default' => '',
     ),
     'usr_id' => array(
