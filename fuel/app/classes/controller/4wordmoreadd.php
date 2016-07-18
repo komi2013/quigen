@@ -3,6 +3,7 @@ class Controller_4wordmoreadd extends Controller
 {
   public function action_index()
   {
+    die('close');
     ini_set("memory_limit","1256M");
     ini_set('max_execution_time', 30000);
     $res[0] = 2;
