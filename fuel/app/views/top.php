@@ -34,15 +34,6 @@
   <datalist id="tag_list"></datalist>
   <img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search">
 </div>
-<?php if($exactly_top){ ?>
-<div style="line-height: 50px;">
-<?php foreach($arr_tag as $k => $d){ ?>
-  &nbsp;&nbsp;
-  <a href="/search/?tag=<?=$d['url_txt']?>" rel="nofollow"><?=$d['txt']?>(<?=$d['country']?>)</a>
-  &nbsp;&nbsp;
-<?php } ?>
-</div>
-<?php } ?>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
 <?php
@@ -52,7 +43,7 @@
 ?>
 <?php foreach($question as $k => $d){ ?>
 <?php if( $exactly_top AND $prev_tag != $d['tag']){ ?>
-    <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$d['tag']?>"><?=$d['tag']?></a></td></tr>
+    <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$d['tag']?>"><?=$d['tag']?>(<?=$d['country']?>)</a></td></tr>
 <?php } ?>    
 <tr>
   <?php if($d['img']){ ?>

@@ -27,16 +27,17 @@ class Controller_Admintopcreate extends Controller
         $txt = Security::htmlentities($dd['txt']);
         $top_qu[$i]['txt'] = $txt;
         $top_qu[$i]['seq'] = $seq;
+        $top_qu[$i]['country'] = $d['country'];
         ++$i;
       }
     }
     DB::query("DELETE FROM mt_tag_top")->execute();
-    $sql = "INSERT INTO mt_tag_top (tag, question_id, img, txt, seq) VALUES ";
+    $sql = "INSERT INTO mt_tag_top (tag, question_id, img, txt, seq, country) VALUES ";
     foreach ($top_qu as $k => $d) {
       if ($k < 1) {
-        $sql .= "  ('".$d['tag']."',".$d['question_id'].",'".$d['img']."','".$d['txt']."',".$d['seq'].") ";  
+        $sql .= "  ('".$d['tag']."',".$d['question_id'].",'".$d['img']."','".$d['txt']."',".$d['seq'].",'".$d['country']."') ";  
       } else {
-        $sql .= ", ('".$d['tag']."',".$d['question_id'].",'".$d['img']."','".$d['txt']."',".$d['seq'].") ";  
+        $sql .= ", ('".$d['tag']."',".$d['question_id'].",'".$d['img']."','".$d['txt']."',".$d['seq'].",'".$d['country']."') ";  
       }
     }
     try
