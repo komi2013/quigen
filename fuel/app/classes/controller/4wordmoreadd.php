@@ -9,16 +9,16 @@ class Controller_4wordmoreadd extends Controller
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
     $i2 = 0;
-    $arr = DB::query("select * from w_en2en ORDER BY col4 limit 50000 OFFSET ".$i2)->execute()->as_array();
+    $arr = DB::query("select * from w_eiwa order by random() ")->execute()->as_array();
     $ii = 1; $i2++;
-    $wh_time = 1468548311; //change
+    $wh_time = 1468558311; //change
     try {
       DB::start_transaction();
       foreach ($arr as $d) {
         //change
-        $arr_word_q[] = $d['col2'];
-        $arr_word_a[] = $d['col1'];
-        $arr_comment[] = $d['col3'];
+        $arr_word_q[] = $d['col3'].' を意味する単語は？';
+        $arr_word_a[] = $d['col2'];
+        //$arr_comment[] = $d['col3'];
 
         if ( ($ii % 4) == 0 ) {
           $i = 0;
@@ -54,15 +54,13 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'english','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'英語','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
-            if ($arr_comment[$i]) {
-              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".
-                ",33,".$question_id.",'".date("Y-m-d H:i:s", $wh_time)."','/assets/img/profile/20160624/33.png')";
-              DB::query($sql)->bind('txt', $arr_comment[$i])->execute(); //change            
-            }
-
-
+//            if ($arr_comment[$i]) {
+//              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".
+//                ",33,".$question_id.",'".date("Y-m-d H:i:s", $wh_time)."','/assets/img/profile/20160624/33.png')";
+//              DB::query($sql)->bind('txt', $arr_comment[$i])->execute(); //change            
+//            }
             $i++; $i2++;
           }
           $arr_word_q = [];
@@ -75,8 +73,11 @@ class Controller_4wordmoreadd extends Controller
       $res[0] = 1;
       die(json_encode($res));
     } catch (Exception $e) {
+      var_dump($e->getMessage());
+      $res[1] = $e;
       DB::rollback_transaction();
-      $res[0] = 1;
+      $res[0] = 2;
+      
       die(json_encode($res));
     }
   }
