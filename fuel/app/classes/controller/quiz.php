@@ -27,8 +27,13 @@ class Controller_Quiz extends Controller
     $cho_2 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_2']) );
     $cho_3 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_3']) );
     $random_choice = [$cho_0,$cho_1,$cho_2,$cho_3];
-    
-    $view = View::forge('quiz');
+
+    if ( isset($_GET['amp']) ) {
+      $view = View::forge('quiz_amp');
+    } else {
+      $view = View::forge('quiz');
+    }
+
     $description = 
       '①'.Str::truncate($random_choice[0], 20)
       .'②'.Str::truncate($random_choice[1], 20)
