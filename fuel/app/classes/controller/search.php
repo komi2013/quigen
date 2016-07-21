@@ -64,7 +64,7 @@ class Controller_Search extends Controller
     }
     foreach ($arr_qu as $k => $d) {
       if ( isset($d['id']) ) {
-        $arr_qu[$k]['txt'] = 'No.'.$d['quiz_num'].$d['txt'];
+        $arr_qu[$k]['txt'] = 'No.'.$d['quiz_num'].$d['txt'].' ';
       } else {
         unset($arr_qu[$k]);
       }
