@@ -273,3 +273,15 @@ h1 {
   width: 99%;
   text-align: center;
 }
+.img_frame{
+  height:200px;
+}
+.img_frame_top{
+  height:130px;
+}
+.img_frame_bottom{
+  height:80px;
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,0.85) 100%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 100%);
+  color: white;
+}

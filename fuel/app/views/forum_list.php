@@ -31,31 +31,33 @@
 
 <div id="content">
 
-<table>
 <?php $arr_forum = []; foreach($forum as $k => $d){ ?>
-<tr>
-  <?php if($d['img']){ ?>
-  <td colspan="15" class="td_15">
-    <a href="/forum/?f=<?=$d['id']?>">
-      <img src="<?=$d['img']?>" alt="forum" class="icon">
-    </a>
-  </td>
-  <td colspan="85" class="td_84">
-    <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
-      <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
-    </a>
-  </td>
-
-  <?php }else{ ?>
-  <td colspan="100" class="td_99">
-    <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
-      <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
-    </a>
-  </td>
-  <?php } ?>
-</tr>
+<a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
+<div style="background-image:url(<?=$d['img']?>);" class="img_frame">
+  <div class="img_frame_top"></div>
+  <div class="img_frame_bottom">
+    <br><?=Str::truncate(Security::htmlentities($d['txt']), 30)?>  
+  </div>  
+</div>
+</a>
 <?php $arr_forum[] = $d['id']; } ?>
+<?php if( isset($top) AND $page > 2) {?>
+<table>
+  <tr>
+  <td class="td_33">
+    <?php if(!isset($top)){ ?>
+    <a href="/forumlist/?page=<?=$page+1?>"> << </a>
+    <?php }?>
+  </td>
+  <td class="td_33">||</td>
+  <td class="td_33">
+    <?php if($page > 2){ ?>
+    <a href="/forumlist/?page=<?=$page-1?>"> >> </a>
+    <?php }?>
+  </td>
+  </tr>
 </table>
+<?php } ?>
 <br>
 <table>
   <tr>

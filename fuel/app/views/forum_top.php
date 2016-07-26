@@ -31,31 +31,16 @@
 
 <div id="content">
 
-<table>
 <?php $arr_forum = []; foreach($forum as $k => $d){ ?>
-<tr>
-  <?php if($d['img']){ ?>
-  <td colspan="15" class="td_15_t">
-    <a href="/forum/?f=<?=$d['id']?>">
-      <img src="<?=$d['img']?>" alt="forum" class="icon">
-    </a>
-  </td>
-  <td colspan="85" class="td_84_t">
-    <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
-      <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
-    </a>
-  </td>
-
-  <?php }else{ ?>
-  <td colspan="100" class="td_99_t">
-    <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
-      <?=Str::truncate(Security::htmlentities($d['txt']), 30)?>
-    </a>
-  </td>
-  <?php } ?>
-</tr>
+<a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
+<div style="background-image:url(<?=$d['img']?>);" class="img_frame">
+  <div class="img_frame_top"></div>
+  <div class="img_frame_bottom">
+    <br><?=Str::truncate(Security::htmlentities($d['txt']), 30)?>  
+  </div>  
+</div>
+</a>
 <?php $arr_forum[] = $d['id']; } ?>
-</table>
 <?php if( isset($top) AND $page > 2) {?>
 <table>
   <tr>
@@ -73,8 +58,8 @@
   </tr>
 </table>
 <?php } ?>
-<table id="input_icon"><tr><td class="td_99_icon"><img src="/assets/img/icon/pencil.png" class="icon">new topic</td></tr></table>
-<div style="display:none;" id="input_form">
+<br>
+<div id="input_form">
 <table style="text-align:center;">
 <tr><td><textarea placeholder="new topic" maxlength="400" class="txt_long_60" id="txt"></textarea></td></tr>
 </table>
@@ -112,18 +97,6 @@
 
 <canvas id="mycanvas1" height="300" width="300"></canvas>
 </div>
-<table><tr><td class="td_99_icon"><img src="/assets/img/icon/ranking.png" class="icon">rankings for the last month</td></tr></table>
-<table>
-  <tr><td style="text-align: center;">
-    <select class="txt_84" id="tag_name">
-      <?php foreach($arr_tag as $d){ ?>
-        <option value="#<?=$d['tag']?>">#<?=$d['tag']?></option>
-      <?php } ?>
-    </select>
-  </td></tr>
-</table>
-<table id="cel"></table>
-
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>

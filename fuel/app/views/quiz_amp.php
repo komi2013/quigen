@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html amp>
   <head>
-    <meta charset="UTF-8" />
     <title><?=$title?></title>
     <meta name="description" content="<?=$q_txt?> <?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
@@ -382,25 +381,18 @@ h1 {
 </script>
 </amp-analytics>
 
-<?php
-  $side = View::forge('side');
-  $side->this_page = '';
-  echo $side;
-?>
-
 <div id="content">
-<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
+
 <?php if($img){?>
 <div id="div_photo">
-<img src="<?=$img?>" alt="quiz photo" id="photo">
+<amp-img src="<?=$img?>" alt="quiz photo" id="photo"></amp-img>
 </div>
 <?php } ?>
 <table><tr>
   <td id="question" class="td_99_box"><?=$q_txt?></td>
 </tr></table>
 <div id="big_result">
-<img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
-<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
+
 <table>
   <tr><td class="choice" id="choice_0"><a href="/quiz/?q=<?=$question?>"><?=$arr_choice[0]?></a></td></tr>
   <tr><td class="choice" id="choice_1"><a href="/quiz/?q=<?=$question?>"><?=$arr_choice[1]?></a></td></tr>
@@ -408,16 +400,7 @@ h1 {
   <tr><td class="choice" id="choice_3"><a href="/quiz/?q=<?=$question?>"><?=$arr_choice[3]?></a></td></tr>
 </table>
 </div>
-<table>
-<tr>
-  <td class="td_15"><img src="/assets/img/icon/circle_big.png" alt="correct ratio" class="icon"></td>
-  <td class="td_15" id="num_ratio">0 % </td>
-  <td class="td_15"><img src="/assets/img/icon/answer.png" alt="amount of answer" class="icon"></td>
-  <td class="td_15" id="num_answer">0</td>
-  <td class="td_15"><a href="/htm/quest/" rel="nofollow" ><img src="/assets/img/icon/ticket.png" alt="ticket"></a></td>
-  <td class="td_15" id="ticket" style="color:red;">0</td>
-</tr>
-</table>
+
 <table>
 <tr>
 <?php $i=0; while($i<16){ ?>
@@ -443,57 +426,22 @@ h1 {
 <span id="generator"></span> <span id="tag"></span>
 <br>
 <?php foreach ($arr_comment as $d) { ?>
-  <div style="word-wrap:break-word;" class="comment"><?=$d['txt']?></div>
-  <div class="div_right"><img src="<?=$d['u_img']?>" alt="u_img" class="icon" <?=$d['eto_css']?> ></div>
+  <div class="comment"><?=$d['txt']?></div>
 <?php } ?>
-<textarea placeholder="comment" class="comment_input" id="comment_data"></textarea>
-<div class="div_right">
-<img src="/assets/img/icon/upload_0.png" alt="comment" class="icon" id="comment_add">
-<img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-</div>
+
 
 <?php if($reference){ ?> 
-<div style="word-wrap:break-word;">reference:<?=$reference?></div>
+<div >reference:<?=$reference?></div>
 <?php } ?>
-<table id="sns">
-<tr>
-<td style="width:70px;">
-  <a href="<?=$fb_url?>" target="_blank">
-    <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon">
-  </a>
-</td>
-<td style="width:70px;">
-  <a href="<?=$tw_url?>" target="_blank">
-  <img src="/assets/img/icon/tw.jpg" alt="twitter" class="icon">
-  </a>
-</td>
-<td style="width:70px;">
-  <a href="<?=$ln_url?>" target="_blank" class="pc_disp_none">
-  <img src="/assets/img/icon/ln.jpg" alt="line" class="icon">
-  </a>
-</td>
-<td style="width:70px;">
-  <a href="<?=$clip_url?>" target="_blank">
-  <img src="/assets/img/icon/clip.png" alt="line" class="icon">
-  </a>
-</td>
-</tr>
-<tr>
-  <td colspan="4" style="text-align:center;">
-<textarea style="width:90%;"><iframe style="width: 100%;" src="http://<?=Config::get('my.domain')?>/quiz/?q=<?=$question?>&iframe=true" height="500" frameborder="0" scrolling="no"></iframe></textarea>
-  </td>
-</tr>
-</table>
-
 <table id="next_prev"></table>
 
-<div style="width:98%;text-align:right;">
+<div >
   <a href="#" id="report">
-    <img src="/assets/img/icon/exclamation.png" alt="report" class="icon">
+    <amp-img src="/assets/img/icon/exclamation.png"></amp-img>
   </a>
 </div>
 
-<table style="display: none;">
+<table >
 <tr><td colspan="2" class="td_98">buy this quiz</td></tr>
 <tr>
 <td class="td_32">
@@ -507,10 +455,7 @@ h1 {
 
 
 </div>
-<?php if( !isset($_GET['iframe']) ){?>
-<div id="ad_right"></div>
-<?php } ?>
-<div id="correct" style="display: none;"><?=$correct?></div>
+<div id="correct" ><?=$correct?></div>
 
 </body>
 </html>
