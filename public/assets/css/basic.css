@@ -285,3 +285,6 @@ h1 {
   background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 100%);
   color: white;
 }
+.img_frame_txt{
+  margin: 10px;
+}
