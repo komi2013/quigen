@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title><?=$title?></title>
+    <meta name="robots" content="noindex">
     <meta name="description" content="<?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
