@@ -36,7 +36,7 @@
 <div style="background-image:url(<?=$d['img']?>);" class="img_frame">
   <div class="img_frame_top"></div>
   <div class="img_frame_bottom">
-    <br><span class="img_frame_txt"><?=Str::truncate(Security::htmlentities($d['txt']), 80)?></span>  
+    <div class="img_frame_txt"><?=Str::truncate(Security::htmlentities($d['txt']), 80)?></div>  
   </div>  
 </div>
 </a>
