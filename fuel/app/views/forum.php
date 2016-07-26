@@ -9,15 +9,15 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=87"></script>
+    <script src="/assets/js/analytics.js?ver=88"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=87" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=87" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=87" media="only screen and (max-width : 710px)">
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=88" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=88" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=88" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<script src="/third/img-touch-canvas_1.js?ver=87"></script>    
+<script src="/third/img-touch-canvas_1.js?ver=88"></script>    
     
 <?php
   $side = View::forge('side');
@@ -87,9 +87,9 @@
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/basic.js?ver=87"></script>
-<script src="/assets/js/check_news.js?ver=87"></script>
-<script src="/assets/js/forum.js?ver=87"></script>
+<script src="/assets/js/basic.js?ver=88"></script>
+<script src="/assets/js/check_news.js?ver=88"></script>
+<script src="/assets/js/forum.js?ver=88"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>
