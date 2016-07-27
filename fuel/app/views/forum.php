@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title><?=$title?></title>
-    <meta name="robots" content="noindex">
+    <meta name="robots" content="noindex,nofollow">
     <meta name="description" content="<?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
@@ -45,7 +45,7 @@
 <?php $arr_forum[] = $d['id']; } ?>
 </table>
 <div style="text-align:center;">
-<textarea placeholder="reply.." maxlength="400" class="txt_long_60" id="txt"></textarea>
+<textarea placeholder="comment.." maxlength="400" class="txt_long_60" id="txt"></textarea>
 </div>
 
 <table><tr>

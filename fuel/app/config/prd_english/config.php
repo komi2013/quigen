@@ -127,7 +127,7 @@ return array(
     'top_title' => "Quigen. let's English study together on the world",
     'top_description' => 'You can answer from 4 choices, able to make your question, chat with anyone who study english all of the world',
     'forum_list_title' => "Let's share your episode or opinion through learning english",
-    'forum_list_description' => 'You can get used to english. If you post text, people might correct your text if it is wrong. ',
+    'forum_list_description' => 'If you post text, teacher correct your text if it is wrong then you can get used to english more. ',
     'top_limit' => '2',
       
     'display_error' => false,

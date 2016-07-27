@@ -30,7 +30,9 @@
 ?>
 
 <div id="content">
-
+<div style="margin: 10px;">
+<?=Config::get("my.forum_list_description")?>
+</div>
 <?php $arr_forum = []; foreach($forum as $k => $d){ ?>
 <a href="/forum/?f=<?=$d['id']?>" id="q_id_<?=$d['id']?>">
 <div style="background-image:url(<?=$d['img']?>);" class="img_frame">
