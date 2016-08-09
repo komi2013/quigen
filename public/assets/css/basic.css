@@ -273,21 +273,43 @@ h1 {
   width: 99%;
   text-align: center;
 }
-.img_frame{
-  height:200px;
-  background-repeat: no-repeat;
-  background-position: center;
- 
-}
-.img_frame_top{
-  height:130px;
-}
-.img_frame_bottom{
-  height:80px;
-  background: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,0.85) 100%);
-  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 100%);
+.icon_num {
+  position: absolute;
+  background-color: gray;
   color: white;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  opacity: 0.9;
 }
-.img_frame_txt{
-  padding: 20px 10px 0px 10px;
+.forum_txt {
+  width: 98%;
+  margin: 10px 0px 10px 1%;
+  word-break: break-all;
+}
+.forum_img {
+  text-align:center;
+}
+.forum_comment {
+  width: 95%;
+  margin-left: 10px;
+}
+.param {
+  border-width: 0px;
+}
+.div_100_c {
+  background-color: #F5F5F5;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+}
+.forum_form {
+  width: 98%;
+  height: 60px;
+  border: solid 1px;
+}
+#emoji_list img {
+  padding: 10px;
 }

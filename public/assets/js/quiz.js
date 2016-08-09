@@ -421,10 +421,9 @@ $('#comment_add').click(function(){
   }
   $('#comment_add').css({'display': 'none'});
   $('#success').css({'display':''});
+  var myphoto = '';
   if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '/assets/img/icon/guest.png';
+    myphoto = localStorage.myphoto;
   }
   var param = {
     csrf : csrf

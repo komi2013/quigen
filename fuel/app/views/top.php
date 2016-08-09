@@ -5,6 +5,7 @@
     <title><?=Config::get('my.top_title')?></title>
     <meta name="description" content="<?=Config::get('my.top_description')?>">
     <meta name="google-site-verification" content="<?=Config::get('my.sitemap')?>" />
+    <meta name="yandex-verification" content="db2684568031d60c" />
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( $exactly_top ){ ?>
     <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />

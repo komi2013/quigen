@@ -6,49 +6,87 @@ class Controller_Forum extends Controller
     if ( isset($_GET['f']) AND is_numeric($_GET['f']) ) {
       $arr = DB::select()->from('forum')
               ->where('id','=',$_GET['f'])
-              ->or_where('parent_id','=',$_GET['f'])
-              ->order_by('open_time', 'asc')
               ->execute()->as_array();
     } else {
       $view = View::forge('404');
       die($view);
     }
     $arr_forum = [];
-    $description = '';
     $util = new Model_Util();
+    $forum_u_id = 0;
     foreach ($arr as $k => $d) {
-      $arr_forum[$k] = $d;
+      $forum_u_id = $d['usr_id'];
+      $arr_forum[0] = $d;
       if ($d['u_img']) {
-        $arr_forum[$k]['eto_css'] = '';
+        $arr_forum[0]['eto_css'] = '';
       } else {
         $util->eto($d['usr_id']);
-        $arr_forum[$k]['u_img'] = $util->eto_img;
-        $arr_forum[$k]['eto_css'] = $util->eto_css;
-      }
-      
-      $param = preg_replace('/　/', ' ', $d['txt']);
-      //$param = preg_replace('/\s+/', ' ', $param);
-      $arr_keyword = explode(' ', $param);
-      $txt = '';
-      foreach ($arr_keyword as $d2) {
-        if( preg_match('/^(http|https):\/\/([A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?/i', $d2) ) {
-          $txt .= ' '.Html::anchor($d2, $d2);
-        } else {
-          $txt .= ' '.Security::htmlentities($d2);
-        }
-      }
-      //$txt = $d['txt'];
-      $arr_forum[$k]['txt'] = nl2br($txt);
-      if ($k < 5) {
-        $description .= $d['txt'];  
-      }
+        $arr_forum[0]['u_img'] = $util->eto_img;
+        $arr_forum[0]['u_name'] = $util->eto_txt;
+        $arr_forum[0]['eto_css'] = $util->eto_css;
+      } 
+      $title = $description = strip_tags($d['txt']);
+      $forum_nice = $d['nice'];
+      $forum_certify = $d['certify'];
     }
+    
+    $arr = DB::select()->from('forum_comment')
+      ->where('forum_id','=',$_GET['f'])
+      ->order_by('open_time', 'asc')
+      ->execute()->as_array();
+    $arr_comment = [];
+    $arr_comment_id = [];
+    $same_u_id = true;
+    foreach ($arr as $k => $d) {
+      if ($d['usr_id'] == $forum_u_id AND $same_u_id) {
+        $arr_forum[$k+1] = $d;
+        if ($d['u_img']) {
+          $arr_forum[$k+1]['eto_css'] = '';
+        } else {
+          $util->eto($d['usr_id']);
+          $arr_forum[$k+1]['u_img'] = $util->eto_img;
+          $arr_forum[$k+1]['eto_css'] = $util->eto_css;
+        }
+        $arr_forum[$k+1]['id'] = $d['forum_id'];
+      } else {
+        $same_u_id = false;
+        $arr_comment[$d['id']] = $d;
+        $arr_comment[$d['id']]['eto_css'] = '';
+        if (!$d['u_img']) {
+          $util->eto($d['usr_id']);
+          $arr_comment[$d['id']]['u_img'] = $util->eto_img;
+          $arr_comment[$d['id']]['u_name'] = $util->eto_txt;
+          $arr_comment[$d['id']]['eto_css'] = $util->eto_css;
+        }
+        $arr_comment_id[] = $d['id'];
+      }
+      $description .= strip_tags($d['txt']);
+    }
+    
     $view = View::forge('forum');
+    $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
+        Config::get('my.domain').
+        '/forum/?f='.
+        $_GET['f'].'%26cpn=share_fb';
+    $view->tw_url = 
+        'https://twitter.com/intent/tweet?url=http://'.
+        Config::get('my.domain').
+        '/forum/?f='.$_GET['f'].'%26cpn=share_tw'.
+        '&text='.
+        $title.','.$description.'+@quigen2015';
+    $view->clip_url = 'http://'.
+        Config::get('my.domain').
+        '/forum/?f='.
+        $_GET['f'];
     $view->f_id = $_GET['f'];
-    $view->title = $arr_forum[0]['txt'];
-    $view->description = $description;
-    $view->forum = $arr_forum;
+    $view->title = $title;
+    $view->description = Str::truncate($description,120);
+    $view->arr_forum = $arr_forum;
+    $view->arr_comment = $arr_comment;
+    $view->js_comment_id = json_encode($arr_comment_id);
     $view->u_id = Model_Cookie::get_usr();
+    $view->forum_nice = $forum_nice;
+    $view->forum_certify = $forum_certify;
     die($view);
   }
 }

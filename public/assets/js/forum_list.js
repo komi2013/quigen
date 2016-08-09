@@ -10,7 +10,7 @@ $('#generate').click(function(){
   }else{
     var imgdata = 'no';
   }
-  if(imgdata == 'no' && $('#txt').val()==''){
+  if(imgdata == 'no' && $('#txt').html()==''){
     $('#txt').css({'border-color':'red'});
     validate=2
   }
@@ -24,11 +24,17 @@ $('#generate').click(function(){
   }else{
     var myphoto = '';
   }
+  if(localStorage.myname){
+    var myname = localStorage.myname;
+  }else{
+    var myname = '';
+  }
   var param = {
     csrf : csrf
-    ,txt : $('#txt').val()
+    ,txt : $('#txt').html()
     ,img : imgdata
     ,myphoto : myphoto
+    ,myname : myname
   };
   $.post('/forumadd/',param,function(){},"json")
   .always(function(res){
@@ -62,7 +68,6 @@ function handleImage(e){
         ,desktop: true
     });
     change_pic = 1;
-    location.hash = 'mycanvas1';
   }
   reader.readAsDataURL(e.target.files[0]);     
 }
@@ -124,3 +129,103 @@ if(localStorage.quest){
     localStorage.notify = JSON.stringify(notify);
   }
 }
+
+$('#emoji_show').click(function(){
+  $('#emoji_list').css({'display': 'block'});
+  $('#canvas_menu').css({'display': 'none'});
+  $('#mycanvas1').css({'display': 'none'});
+});
+
+$('.emoji').click(function(){
+  $('#txt').append('<img src="'+$(this).attr('src')+'">');
+});
+
+
+var arr_nice = localStorage.nice ? JSON.parse(localStorage.nice) : [];
+for (var i=0; i<arr_nice.length; i++){
+  for (var ii=0; ii<arr_forum.length; ii++){
+    if(arr_nice[i] == arr_forum[ii]){
+      is_nice = true;
+      $('#f_nice_img_'+arr_forum[ii]).attr({'src': '/assets/img/icon/thumbup_1.png'});
+    }
+  }
+}
+
+$('.nice').click(function(){
+  var is_nice = false;
+  for (var i=0; i<arr_nice.length; i++){
+    if( arr_nice[i] == $(this).data('forum')){
+      is_nice = true;
+    }
+  }
+  if (!is_nice) {
+    var amt_nice = $('#f_nice_amt_'+$(this).data('forum') ).text();
+    $('#f_nice_amt_'+$(this).data('forum')).text(amt_nice*1 + 1);
+    $('#f_nice_amt_'+$(this).data('forum')).css({'display': ''});
+    $('#f_nice_img_'+$(this).data('forum')).attr({'src': '/assets/img/icon/thumbup_1.png'});
+    var param = {
+      csrf : csrf
+      ,f_id : $(this).data('forum')
+      ,param : 'nice'
+      ,table : 'forum'
+    };
+    $.post('/forumparamadd/',param,function(){},"json")
+    .always(function(res){
+      if(res[0]==1){
+        csrf = res[1];
+      }else if(res[0]==2){
+        alert('connection error');
+      }
+    });
+    arr_nice[arr_nice.length] = $(this).data('forum');
+    localStorage.nice = JSON.stringify(arr_nice);
+  }
+});
+
+var arr_certify = localStorage.certify ? JSON.parse(localStorage.certify) : [];
+for (var i=0; i<arr_certify.length; i++){
+  for (var ii=0; ii<arr_forum.length; ii++){
+    if(arr_certify[i] == arr_forum[ii]){
+      is_certify = true;
+      $('#f_certify_img_'+arr_forum[ii]).attr({'src': '/assets/img/icon/medal_1.png'});
+    }
+  }
+}
+
+var certified = localStorage.certified ? localStorage.certified : 0;
+$('.certify').click(function(){
+  if(certified > (hour_stamp - 20) ){
+    alert('only once a day');
+    return;
+  }
+  var is_certify = false;
+  for (var i=0; i<arr_certify.length; i++){
+    if( arr_certify[i] == $(this).data('forum')){
+      is_certify = true;
+    }
+  }
+  if (!is_certify) {
+    var amt_certify = $('#f_certify_amt_'+$(this).data('forum') ).text();
+    $('#f_certify_amt_'+$(this).data('forum')).text(amt_certify*1 + 1);
+    $('#f_certify_amt_'+$(this).data('forum')).css({'display': ''});
+    $('#f_certify_img_'+$(this).data('forum')).attr({'src': '/assets/img/icon/medal_1.png'});
+    var param = {
+      csrf : csrf
+      ,f_id : $(this).data('forum')
+      ,param : 'certify'
+      ,table : 'forum'
+    };
+    $.post('/forumparamadd/',param,function(){},"json")
+    .always(function(res){
+      if(res[0]==1){
+        csrf = res[1];
+      }else if(res[0]==2){
+        alert('connection error');
+      }
+    });
+    arr_certify[arr_certify.length] = $(this).data('forum');
+    localStorage.certify = JSON.stringify(arr_certify);
+    certified = hour_stamp;
+  }
+});
+
