@@ -168,6 +168,7 @@ $('.nice').click(function(){
       ,f_id : $(this).data('forum')
       ,param : 'nice'
       ,table : 'forum'
+      ,u_id : $(this).data('f_u_id')
     };
     $.post('/forumparamadd/',param,function(){},"json")
     .always(function(res){
@@ -214,6 +215,7 @@ $('.certify').click(function(){
       ,f_id : $(this).data('forum')
       ,param : 'certify'
       ,table : 'forum'
+      ,u_id : $(this).data('f_u_id')
     };
     $.post('/forumparamadd/',param,function(){},"json")
     .always(function(res){

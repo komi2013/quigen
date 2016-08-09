@@ -90,11 +90,11 @@
 <table>
   <tr>
     <td style="width:20%;border-width:0px;"></td>
-    <td data-forum="<?=$d['id']?>" class="nice param">
+    <td data-forum="<?=$d['id']?>"  data-f_u_id="<?=$d['usr_id']?>" class="nice param">
       <span class="icon_num" id="f_nice_amt_<?=$d['id']?>" <?php if($d['nice'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['nice']?></span>
       <img src="/assets/img/icon/thumbup_0.png" class="icon" id="f_nice_img_<?=$d['id']?>">
     </td>
-    <td data-forum="<?=$d['id']?>" class="certify param">
+    <td data-forum="<?=$d['id']?>" data-f_u_id="<?=$d['usr_id']?>" class="certify param">
       <span class="icon_num" id="f_certify_amt_<?=$d['id']?>" <?php if($d['certify'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['certify']?></span>
       <img src="/assets/img/icon/medal_0.png" class="icon" id="f_certify_img_<?=$d['id']?>">
     </td>
