@@ -117,18 +117,24 @@ class Controller_Myquestionadd extends Controller
       $answer_by_q->create_at = $open_time;
       $answer_by_q->update_at = $open_time;
       $answer_by_q->save();
-
-//      $a_news_time = new Model_ANewsTime();
-//      $a_news_time->following_u_id = $usr_id;
-//      $a_news_time->question_id = $question_id;
-//      $a_news_time->q_img = $web_path;
-//      $a_news_time->u_img = $_POST['myphoto'];
-//      $a_news_time->create_at = date( "Y-m-d H:i:s" );
-//      $a_news_time->generator = $usr_id;
-//      $a_news_time->save();
-    }
-    catch (Orm\ValidationFailed $e)
-    {
+      
+      $myphoto = htmlspecialchars($_POST['myphoto'], ENT_QUOTES);
+      $myname = htmlspecialchars($_POST['myname'], ENT_QUOTES);
+      
+      $txt = htmlspecialchars($_POST['q_txt'], ENT_QUOTES);
+      $txt = nl2br($txt);
+      $txt = '<a href="/quiz/?q='.$question_id.'" contenteditable="false">'.$txt.'</a>';
+      $query = DB::insert('forum');
+      $query->set(array(
+        'txt' => $txt,
+        'usr_id' => $usr_id,
+        'update_at' => date("Y-m-d H:i:s"),
+        'open_time' => date("Y-m-d H:i:s"),
+        'u_img' => $myphoto,
+        'u_name' => $myname,
+      ));
+      $query->execute();
+    } catch (Orm\ValidationFailed $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn($res[1]);
       die(json_encode($res));

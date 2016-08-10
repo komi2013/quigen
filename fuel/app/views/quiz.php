@@ -129,9 +129,7 @@
 <table id="next_prev"></table>
 
 <div style="width:98%;text-align:right;">
-  <a href="#" id="report">
-    <img src="/assets/img/icon/exclamation.png" alt="report" class="icon">
-  </a>
+  <img src="/assets/img/icon/exclamation.png" alt="report" class="icon" id="report">
 </div>
 
 <table style="display: none;">

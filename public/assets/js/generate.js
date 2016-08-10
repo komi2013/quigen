@@ -46,11 +46,8 @@ $('#generate').click(function(){
   }else{
     var imgdata = 'no';
   }
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '';
-  }
+  var myphoto = localStorage.myphoto ? localStorage.myphoto : '';
+  var myname = localStorage.myname ? localStorage.myname : '';
   var param = {
     csrf : csrf
     ,q_txt : $('#q_txt').val()
@@ -63,6 +60,7 @@ $('#generate').click(function(){
     ,tag_1 : $('#tag_1').val()
     ,tag_2 : $('#tag_2').val()
     ,myphoto : myphoto
+    ,myname : myname
     ,reference : $('#reference').val()
   };
   $.post('/myquestionadd/',param,function(){},"json")

@@ -7,8 +7,13 @@ class Controller_Forumlist extends Controller
     $usr_id = Model_Cookie::get_usr();
     $offset = 0;
     $unit = 20;
+    $next_page = 0;
     if ( isset($_GET['page']) ) {
       $offset = $_GET['page'] * $unit;
+      $next_page = $_GET['page'];
+    }
+    if ( isset($_GET['page']) AND $_GET['page'] == 0) {
+      die( View::forge('404') );
     }
     $arr = DB::select()->from('forum')
       ->where('open_time','<',date('Y-m-d H:i:s'))
@@ -34,7 +39,14 @@ class Controller_Forumlist extends Controller
         $arr_forum[$d['id']]['eto_css'] = $util->eto_css;
       }
     }
-    
+    if (!isset($k)) {
+      die( View::forge('404') );
+    }
+    if ($k == $unit -1) {
+      ++$next_page;
+    } else {
+      $next_page = 0;
+    }
     $arr = DB::select()->from('forum_comment')
       ->where('forum_id','in',$arr_forum_id)
       ->order_by('open_time', 'asc')
@@ -80,6 +92,7 @@ class Controller_Forumlist extends Controller
       $arr_forum[$k]['arr_comment'] = $arr4;
     }
     $view->arr_forum = $arr_forum;
+    $view->next_page = $next_page;
     $view->js_forum_id = json_encode($arr_forum_id);
     $view->u_id = $usr_id;
     die($view);

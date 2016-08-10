@@ -421,15 +421,14 @@ $('#comment_add').click(function(){
   }
   $('#comment_add').css({'display': 'none'});
   $('#success').css({'display':''});
-  var myphoto = '';
-  if(localStorage.myphoto){
-    myphoto = localStorage.myphoto;
-  }
+  var myphoto = localStorage.myphoto ? localStorage.myphoto : '';
+  var myname = localStorage.myname ? localStorage.myname : '';
   var param = {
     csrf : csrf
     ,txt : $('#comment_data').val()
     ,q : q_id
     ,u_img : myphoto
+    ,u_name : myname
   };
   $.post('/commentadd/',param,function(){},"json")
   .always(function(res){
@@ -443,30 +442,9 @@ $('#comment_add').click(function(){
   ga('send','event','comment',usr,$('#comment_data').val(),1);  
   return false;
 });
-
 $('#report').click(function(){
-  if(!u_id){
-    alert('answer first');
-    return;
-  }
-  r = confirm('report');
-  if(r){
-    var param = {
-      csrf : csrf
-      ,q_id : q_id
-    };
-    $.post('/report/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else{
-        alert('connection error');
-      }
-    });  
-  }
-  ga('set','dimension15','report');  
-  ga('send','event','report',usr,'none','2');
-  return false;
+  $('#comment_data').append('#report ');
+  location.hash = "comment_data" ;
 });
 $('#0pt').click(function(){
   if(!u_id){

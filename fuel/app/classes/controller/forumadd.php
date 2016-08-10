@@ -41,10 +41,12 @@ class Controller_Forumadd extends Controller
       imagepng($image ,$img_path);
     }
     $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
-    $search = array_keys(Model_Emoji::$table);
-    $replace = array_values(Model_Emoji::$table);
+    $arr = Model_Emoji::$table;
+    $arr['&lt;br&gt;'] = '<br>';
+    $search = array_keys($arr);
+    $replace = array_values($arr);
     $txt = str_replace($search,$replace,$txt);
-
+    
     try {
       $query = DB::insert('forum');
       $query->set(array(

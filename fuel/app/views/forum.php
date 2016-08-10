@@ -101,7 +101,7 @@
 <table><tr>
   <td class="td_33">
     <input type="file" id="file_load" >
-    <img src="/assets/img/icon/camera.png" class="icon">
+    <img src="/assets/img/icon/camera.png" class="icon" id="camera">
   </td>
   <td class="td_33"><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
   <td class="td_33">
@@ -147,6 +147,7 @@
 <script src="/assets/js/basic.js?ver=89"></script>
 <script src="/assets/js/check_news.js?ver=89"></script>
 <script src="/assets/js/forum.js?ver=89"></script>
+<script src="/assets/js/forum_param.js?ver=89"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>

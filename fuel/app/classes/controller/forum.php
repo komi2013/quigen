@@ -29,7 +29,10 @@ class Controller_Forum extends Controller
       $forum_nice = $d['nice'];
       $forum_certify = $d['certify'];
     }
-    
+    if ( !isset($k) ) {
+      $view = View::forge('404');
+      die($view);
+    }
     $arr = DB::select()->from('forum_comment')
       ->where('forum_id','=',$_GET['f'])
       ->order_by('open_time', 'asc')

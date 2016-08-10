@@ -1,4 +1,6 @@
+var intermittent = true;
 $('#generate').click(function(){
+  intermittent = false;
   if(!u_id){
     alert('answer first');
     return;
@@ -45,13 +47,21 @@ $('#generate').click(function(){
       $('#generate').css({'display': ''});  
       alert('connection error');
     }
+    intermittent = true;
   });
   ga('send','event','forum','upload',localStorage.ua_u_id,1);
 });
 
-//.begin. canvas edit
+$('div[contenteditable]').keydown(function(e) {
+  if (e.keyCode === 13) {
+    document.execCommand('insertHTML', false, '<br><br>');
+    return false;
+  }
+});
 
+//.begin. canvas edit
 function handleImage(e){
+  $('#emoji_list').css({'display': 'none'});
   $('#canvas_menu').css({'display': 'inline'});
   $('#mycanvas1').css({
     'position': 'static'
@@ -68,6 +78,7 @@ function handleImage(e){
         ,desktop: true
     });
     change_pic = 1;
+    $('#file_load').css({'display': 'none'});
   }
   reader.readAsDataURL(e.target.files[0]);     
 }
@@ -81,6 +92,18 @@ var gesturableImg = new ImgTouchCanvas({
 var imageLoader = document.getElementById('file_load');
     imageLoader.addEventListener('change', handleImage, false);
 var change_pic = 0;
+
+$('#camera').click(function(){
+  if(change_pic > 0){
+    $('#emoji_list').css({'display': 'none'});
+    $('#canvas_menu').css({'display': 'inline'});
+    $('#mycanvas1').css({
+      'position': 'static'
+      ,'top': '0px'
+      ,'left': '0px'
+    });
+  }
+});
 //.end. canvas edit
 
 $('#rotate').click(function(){
@@ -133,101 +156,33 @@ if(localStorage.quest){
 $('#emoji_show').click(function(){
   $('#emoji_list').css({'display': 'block'});
   $('#canvas_menu').css({'display': 'none'});
-  $('#mycanvas1').css({'display': 'none'});
+  $('#mycanvas1').css({
+    'position': 'absolute'
+    ,'top': '-10000px'
+    ,'left': '-150px'
+  });
 });
 
 $('.emoji').click(function(){
   $('#txt').append('<img src="'+$(this).attr('src')+'">');
 });
 
-
-var arr_nice = localStorage.nice ? JSON.parse(localStorage.nice) : [];
-for (var i=0; i<arr_nice.length; i++){
-  for (var ii=0; ii<arr_forum.length; ii++){
-    if(arr_nice[i] == arr_forum[ii]){
-      is_nice = true;
-      $('#f_nice_img_'+arr_forum[ii]).attr({'src': '/assets/img/icon/thumbup_1.png'});
-    }
-  }
-}
-
-$('.nice').click(function(){
-  var is_nice = false;
-  for (var i=0; i<arr_nice.length; i++){
-    if( arr_nice[i] == $(this).data('forum')){
-      is_nice = true;
-    }
-  }
-  if (!is_nice) {
-    var amt_nice = $('#f_nice_amt_'+$(this).data('forum') ).text();
-    $('#f_nice_amt_'+$(this).data('forum')).text(amt_nice*1 + 1);
-    $('#f_nice_amt_'+$(this).data('forum')).css({'display': ''});
-    $('#f_nice_img_'+$(this).data('forum')).attr({'src': '/assets/img/icon/thumbup_1.png'});
-    var param = {
-      csrf : csrf
-      ,f_id : $(this).data('forum')
-      ,param : 'nice'
-      ,table : 'forum'
-      ,u_id : $(this).data('f_u_id')
-    };
-    $.post('/forumparamadd/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else if(res[0]==2){
-        alert('connection error');
+$(window).scroll(function(){
+  if($(window).scrollTop() > $('.trigger:last').offset().top - $(window).height() && intermittent && nextPage > 0){
+    intermittent = false;
+    $.ajax({
+      type: 'GET',
+      url: '/forumlist/',
+      dataType: 'html',
+      data: {
+        page: nextPage
+      },
+      success: function(data) {
+        $('#timeline_frame').append($(data).find('#timeline_frame div'));
+        nextPage = $(data).find('#nextPage').html();
+        intermittent = true;
       }
     });
-    arr_nice[arr_nice.length] = $(this).data('forum');
-    localStorage.nice = JSON.stringify(arr_nice);
-  }
-});
-
-var arr_certify = localStorage.certify ? JSON.parse(localStorage.certify) : [];
-for (var i=0; i<arr_certify.length; i++){
-  for (var ii=0; ii<arr_forum.length; ii++){
-    if(arr_certify[i] == arr_forum[ii]){
-      is_certify = true;
-      $('#f_certify_img_'+arr_forum[ii]).attr({'src': '/assets/img/icon/medal_1.png'});
-    }
-  }
-}
-
-var certified = localStorage.certified ? localStorage.certified : 0;
-$('.certify').click(function(){
-  if(certified > (hour_stamp - 20) ){
-    alert('only once a day');
-    return;
-  }
-  var is_certify = false;
-  for (var i=0; i<arr_certify.length; i++){
-    if( arr_certify[i] == $(this).data('forum')){
-      is_certify = true;
-    }
-  }
-  if (!is_certify) {
-    var amt_certify = $('#f_certify_amt_'+$(this).data('forum') ).text();
-    $('#f_certify_amt_'+$(this).data('forum')).text(amt_certify*1 + 1);
-    $('#f_certify_amt_'+$(this).data('forum')).css({'display': ''});
-    $('#f_certify_img_'+$(this).data('forum')).attr({'src': '/assets/img/icon/medal_1.png'});
-    var param = {
-      csrf : csrf
-      ,f_id : $(this).data('forum')
-      ,param : 'certify'
-      ,table : 'forum'
-      ,u_id : $(this).data('f_u_id')
-    };
-    $.post('/forumparamadd/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else if(res[0]==2){
-        alert('connection error');
-      }
-    });
-    arr_certify[arr_certify.length] = $(this).data('forum');
-    localStorage.certify = JSON.stringify(arr_certify);
-    certified = hour_stamp;
   }
 });
 
