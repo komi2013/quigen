@@ -313,3 +313,12 @@ h1 {
 #emoji_list img {
   padding: 10px;
 }
+.another_page {
+  text-align: center;
+  background-color: #EEEEEE;  
+}
+.this_page {
+  text-align: center;
+  background-color: #FCFCFC;
+  border-color: silver;
+}

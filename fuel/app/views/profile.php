@@ -61,10 +61,22 @@
 <?php } ?>
 <table cellspacing="1" boroder="0">
 <tr>
-  <td><a href="/follower/?u=<?=$usr_id?>"><img src="/assets/img/icon/people.png" class="icon"></a></td>
-  <td style="width:34%"><a href="/follower/?u=<?=$usr_id?>"><?=$follower?></a></td>
-  <td><a href="/following/?u=<?=$usr_id?>"><img src="/assets/img/icon/star_1.png" class="icon"></a></td>
-  <td style="width:34%"><a href="/following/?u=<?=$usr_id?>"><?=$following?></a></td>
+  <td> <a href="/follower/?u=<?=$usr_id?>">
+    <span class="icon_num"><?=$follower?></span>
+    <img src="/assets/img/icon/people.png" class="icon">
+  </a> </td>
+  <td> <a href="/following/?u=<?=$usr_id?>">
+    <span class="icon_num"><?=$following?></span>
+    <img src="/assets/img/icon/star_1.png" class="icon">
+  </a> </td>
+  <td>
+    <span class="icon_num"><?=$nice?></span>
+    <img src="/assets/img/icon/thumbup_1.png" class="icon">
+  </td>
+  <td>
+    <span class="icon_num"><?=$certify?></span>
+    <img src="/assets/img/icon/medal_1.png" class="icon">
+  </td>
 </tr>
 </table>
 
@@ -94,16 +106,29 @@
 </table>
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<?php if( !isset($_GET['list']) ){ ?>
-<table><tr>
-  <td class="td_49" style="text-align: center;"><img src="/assets/img/icon/answer.png" class="icon"></td>
-  <td class="td_50_c" style="text-align: center;"><a href="/profile/?u=<?=$_GET['u']?>&list=quiz"><img src="/assets/img/icon/quiz_generator.png" class="icon"></a></td>
-</tr></table>
-<?php }else{ ?>
-<table><tr>
-  <td class="td_50_c" style="text-align: center;"><a href="/profile/?u=<?=$_GET['u']?>"><img src="/assets/img/icon/answer.png" class="icon"></a></td>
-  <td class="td_49" style="text-align: center;"><img src="/assets/img/icon/quiz_generator.png" class="icon"></td>
-</tr></table>
+<table>
+  <tr>
+  <td class="<?= $list == '' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>">
+    <span class="icon_num"><?=$amt_answer?></span>
+    <img src="/assets/img/icon/answer.png" class="icon">
+  </a> </td>
+  <td class="<?= $list == 'quiz' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=quiz">
+    <span class="icon_num"><?=$amt_quiz?></span>
+    <img src="/assets/img/icon/quiz_generator.png" class="icon">
+  </a> </td>
+  <td class="<?= $list == 'forum' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=forum">
+    <span class="icon_num"><?=$amt_forum?></span>
+    <img src="/assets/img/icon/pencil.png" class="icon">
+  </a> </td>
+  <td class="<?= $list == 'forum_comment' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=forum_comment">
+    <span class="icon_num"><?=$amt_forum_comment?></span>
+    <img src="/assets/img/icon/chat.png" class="icon">
+  </a> </td>
+  </tr>
+</table>
+
+<?php foreach($arr_list as $d ){?>
+<div class="forum_txt" contenteditable="true"> <?=$d['txt']?> &nbsp; <?=$d['open_time']?></div>
 <?php } ?>
 
 <table id="cel"></table>

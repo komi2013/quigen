@@ -85,6 +85,7 @@
 <div class="div_100_c"><a href="/forum/?f=<?=$d['id']?>"> ... View All ... </a></div>
 <?php } ?>
 <div style="background-color:#F5F5F5;">
+<?php if(!$d['no_param']){?>
 <table>
   <tr>
     <td style="width:20%;border-width:0px;"></td>
@@ -102,6 +103,7 @@
     </td>
   </tr>
 </table>
+<?php } ?>
 <?php foreach($d['arr_comment'] as $k2 => $d2){ ?>
 <div class="forum_comment" contenteditable="true">
   <span><?=$d2['txt']?></span>

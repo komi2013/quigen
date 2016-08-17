@@ -132,6 +132,7 @@ class Controller_Myquestionadd extends Controller
         'open_time' => date("Y-m-d H:i:s"),
         'u_img' => $myphoto,
         'u_name' => $myname,
+        'no_param' => 1,
       ));
       $query->execute();
     } catch (Orm\ValidationFailed $e) {

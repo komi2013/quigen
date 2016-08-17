@@ -153,7 +153,7 @@ $('#del_cookie').click(function(){
   }
 });
 
-if(getVal.list){
+if(getVal.list && getVal.list == 'quiz'){
   function delQuiz(cellId){
     r = confirm('delete');
     if(r){
@@ -244,8 +244,7 @@ if(getVal.list){
       }
     }
   });
-
-}else{
+}else if(!getVal.list){
   var endNum = 0;
   var addLimit = 100;
   var celNum = 0;

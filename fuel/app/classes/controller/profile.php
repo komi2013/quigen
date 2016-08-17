@@ -10,11 +10,14 @@ class Controller_Profile extends Controller
     $usr_id = Model_Cookie::get_usr();
     $view = View::forge('profile');
     
-    $usr = Model_Usr::find('first', array(
-      'where' => array(
-        array('id', '=',$_GET['u']),
-      ),
-    ));
+//    $usr = Model_Usr::find('first', array(
+//      'where' => array(
+//        array('id', '=',$_GET['u']),
+//      ),
+//    ));
+    $usr = DB::select()->from('usr')
+      ->where('id','=',$_GET['u'])
+      ->execute()->as_array();
     $view->usr_id = $_GET['u'];
 
     $util = new Model_Util();
@@ -22,14 +25,18 @@ class Controller_Profile extends Controller
     $view->usr_name = $util->eto_txt;
     $view->usr_img  = $util->eto_img;
     $view->css  = $util->eto_css;
-    $view->introduce = '';
     $introduce = '';
-    if ( isset($usr->id) ) {
-      $view->usr_name = Security::htmlentities($usr->name);
-      $view->usr_img = $usr->img ? Security::htmlentities($usr->img) : $util->eto_img;
+    $nice = 0;
+    $certify = 0;
+    $amt_forum = 0;
+    $amt_forum_comment = 0;
+    $amt_quiz = 0;
+    if ( isset($usr[0]['id']) ) {
+      $view->usr_name = Security::htmlentities($usr[0]['name']);
+      $view->usr_img = $usr[0]['img'] ? Security::htmlentities($usr[0]['img']) : $util->eto_img;
       $view->css = '';
       
-      $param = preg_replace('/　/', ' ', $usr->introduce);
+      $param = preg_replace('/　/', ' ', $usr[0]['introduce']);
       $param = preg_replace('/\s+/', ' ', $param);
       $arr_keyword = explode(' ', $param);
       
@@ -41,13 +48,18 @@ class Controller_Profile extends Controller
         }
       }
       $introduce = $introduce;
+      $nice = $usr[0]['nice'];
+      $certify = $usr[0]['certify'];
+      $amt_forum = $usr[0]['forum'];
+      $amt_forum_comment = $usr[0]['forum_comment'];
+      $amt_quiz = $usr[0]['quiz'];
     }
+    $res = DB::query("select count(*) as cnt from answer_key_u where usr_id = ".$_GET['u'])->execute()->as_array();
+    $amt_answer = $res[0]['cnt'];
     $seo_index = false;
     if ($introduce) {
       $seo_index = true;
     }
-    $res = DB::query("select count(*) from question where usr_id = ".$_GET['u'])->execute()->as_array();
-    $view->num_quiz = $res[0]['count'];
     $res = DB::query("SELECT * FROM follow WHERE receiver = ".$_GET['u'])->execute()->as_array();
     $cnt_follower = 0;
     $status = 0;
@@ -106,8 +118,32 @@ class Controller_Profile extends Controller
       }
       $view->rank = $arr;
     }
+    $list = '';
+    $arr_list = [];
+    if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
+      $list = 'quiz';
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum') {
+      $arr_list = DB::query("select * from forum where usr_id = ".$_GET['u'])->execute()->as_array();
+      $list = 'forum';
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
+      $arr_list = DB::query("select * from forum_comment where usr_id = ".$_GET['u'])->execute()->as_array();
+      $list = 'forum_comment';
+    }
+    foreach ($arr_list as $k => $d) {
+      $arr_list[$k] = $d;
+      $date = new DateTime($d['open_time']);
+      $arr_list[$k]['open_time'] = $date->format('Y-m-d H');
+    }
+    $view->arr_list = $arr_list;
+    $view->list = $list;
     $view->description = $description;
     $view->introduce = $introduce;
+    $view->nice = $nice;
+    $view->certify = $certify;
+    $view->amt_forum = $amt_forum;
+    $view->amt_forum_comment = $amt_forum_comment;
+    $view->amt_quiz = $amt_quiz;
+    $view->amt_answer = $amt_answer;
     $view->meta_description = strip_tags($introduce).$description;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'
       .Config::get('my.domain')
