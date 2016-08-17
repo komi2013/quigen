@@ -48,7 +48,7 @@ class Controller_CommentAdd extends Controller
         'u_name' => $_POST['u_name'],
       ));
       $query->execute();
-
+      DB::query("UPDATE usr SET forum = forum + 1 WHERE id = ".$usr_id)->execute();
     }
     catch (Orm\ValidationFailed $e)
     {

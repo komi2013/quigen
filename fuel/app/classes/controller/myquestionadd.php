@@ -135,6 +135,8 @@ class Controller_Myquestionadd extends Controller
         'no_param' => 1,
       ));
       $query->execute();
+      DB::query("UPDATE usr SET forum = forum + 1 WHERE id = ".$usr_id)->execute();
+      DB::query("UPDATE usr SET quiz = quiz + 1 WHERE id = ".$usr_id)->execute();
     } catch (Orm\ValidationFailed $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn($res[1]);

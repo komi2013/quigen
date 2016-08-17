@@ -61,6 +61,7 @@ class Controller_Forumadd extends Controller
         'nice' => 0,
       ));
       $query->execute();
+      DB::query("UPDATE usr SET forum = forum + 1 WHERE id = ".$usr_id)->execute();
     } catch (Exception $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn($res[1]);

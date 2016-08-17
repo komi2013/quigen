@@ -63,7 +63,7 @@ class Controller_Forumcommentadd extends Controller
         'nice' => 0,
       ));
       $query->execute();
-
+      DB::query("UPDATE usr SET forum_comment = forum_comment + 1 WHERE id = ".$usr_id)->execute();
     } catch (Exception $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn($res[1]);
