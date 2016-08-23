@@ -11,14 +11,14 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=90"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=90" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=90" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=90" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=91"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=91" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=91" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=91" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-<script src="/third/img-touch-canvas_1.js?ver=90"></script>
+<script src="/third/img-touch-canvas_1.js?ver=91"></script>
 
 <?php
   $side = View::forge('side');
@@ -134,10 +134,10 @@
   var nextPage = '<?=$next_page?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/check_news.js?ver=90"></script>
-<script src="/assets/js/basic.js?ver=90"></script>
-<script src="/assets/js/forum_list.js?ver=90"></script>
-<script src="/assets/js/forum_param.js?ver=90"></script>
+<script src="/assets/js/check_news.js?ver=91"></script>
+<script src="/assets/js/basic.js?ver=91"></script>
+<script src="/assets/js/forum_list.js?ver=91"></script>
+<script src="/assets/js/forum_param.js?ver=91"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>
