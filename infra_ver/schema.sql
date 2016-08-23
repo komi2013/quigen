@@ -75,6 +75,50 @@ ALTER SEQUENCE a_news_time_id_seq OWNED BY a_news_time.id;
 
 
 --
+-- Name: answer_by_day; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE answer_by_day (
+    id integer NOT NULL,
+    usr_id integer DEFAULT 0 NOT NULL,
+    day timestamp without time zone DEFAULT now() NOT NULL,
+    answer integer DEFAULT 0 NOT NULL,
+    spend integer DEFAULT 0 NOT NULL,
+    update_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE answer_by_day OWNER TO postgres;
+
+--
+-- Name: TABLE answer_by_day; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE answer_by_day IS 'for statictics';
+
+
+--
+-- Name: answer_by_day_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE answer_by_day_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE answer_by_day_id_seq OWNER TO postgres;
+
+--
+-- Name: answer_by_day_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE answer_by_day_id_seq OWNED BY answer_by_day.id;
+
+
+--
 -- Name: answer_by_pay_q; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -333,7 +377,8 @@ CREATE TABLE forum (
     nice integer DEFAULT 0 NOT NULL,
     update_at timestamp without time zone DEFAULT now() NOT NULL,
     certify integer DEFAULT 0 NOT NULL,
-    u_name text DEFAULT ''::text NOT NULL
+    u_name text DEFAULT ''::text NOT NULL,
+    no_param integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1262,7 +1307,10 @@ CREATE TABLE usr (
     point integer DEFAULT 0 NOT NULL,
     introduce text DEFAULT ''::text NOT NULL,
     nice integer DEFAULT 0 NOT NULL,
-    certify integer DEFAULT 0 NOT NULL
+    certify integer DEFAULT 0 NOT NULL,
+    quiz integer DEFAULT 0 NOT NULL,
+    forum integer DEFAULT 0 NOT NULL,
+    forum_comment integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1273,6 +1321,27 @@ ALTER TABLE usr OWNER TO postgres;
 --
 
 COMMENT ON COLUMN usr.provider IS '1=FB, 2=TW, 3=G+, 4=LN';
+
+
+--
+-- Name: COLUMN usr.quiz; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN usr.quiz IS 'amount of quiz post';
+
+
+--
+-- Name: COLUMN usr.forum; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN usr.forum IS 'amount of forum post';
+
+
+--
+-- Name: COLUMN usr.forum_comment; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN usr.forum_comment IS 'amount of comment';
 
 
 --
@@ -1297,10 +1366,31 @@ ALTER SEQUENCE usr_id_seq OWNED BY usr.id;
 
 
 --
+-- Name: w_6000; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE w_6000 (
+    col1 integer,
+    col2 integer,
+    col3 text,
+    col4 text DEFAULT ''::text
+);
+
+
+ALTER TABLE w_6000 OWNER TO postgres;
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY a_news_time ALTER COLUMN id SET DEFAULT nextval('a_news_time_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY answer_by_day ALTER COLUMN id SET DEFAULT nextval('answer_by_day_id_seq'::regclass);
 
 
 --
@@ -1515,6 +1605,14 @@ ALTER TABLE ONLY a_news_time
 
 
 --
+-- Name: answer_by_day_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY answer_by_day
+    ADD CONSTRAINT answer_by_day_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: answer_by_pay_q_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1583,7 +1681,7 @@ ALTER TABLE ONLY followed_news
 --
 
 ALTER TABLE ONLY forum_comment
-    ADD CONSTRAINT forum_comment_pkey PRIMARY KEY (update_at);
+    ADD CONSTRAINT forum_comment_pkey PRIMARY KEY (id);
 
 
 --
