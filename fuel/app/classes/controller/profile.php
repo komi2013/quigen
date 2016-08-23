@@ -119,7 +119,7 @@ class Controller_Profile extends Controller
       $view->rank = $arr;
     }
     $list = '';
-    $arr_list = [];
+    $arr_list = []; $day = [];
     if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
       $list = 'quiz';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum') {
@@ -128,6 +128,42 @@ class Controller_Profile extends Controller
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
       $arr_list = DB::query("select * from forum_comment where usr_id = ".$_GET['u'])->execute()->as_array();
       $list = 'forum_comment';
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'graph') {
+      $date = new DateTime();
+      $i = 0;
+      while ($i < 61) {
+        $key_day = $date->format('M/jS');
+        $arr1['day'] = $key_day;
+        $arr1['answer'] = 0;
+        $arr1['spend'] = 0;
+        $day[$key_day] = $arr1;
+        $date->sub(new DateInterval('P1D'));
+        ++$i;
+      }
+      $sql = "SELECT * FROM answer_key_u WHERE usr_id = "
+                .$usr_id." AND create_at < '".date("Y-m-d H:i:s")."' AND create_at > '".date("Y-m-d H:i:s",strtotime('-2 month'))."'"
+                ." ORDER BY create_at DESC";
+      $arr = DB::query($sql)->execute()->as_array();
+      $max = 1;
+      foreach ($arr as $k => $d) {
+        $date = new DateTime($d['create_at']);
+        $key_day = $date->format('M/jS');
+        $day[$key_day]['day'] = $key_day;
+        $day[$key_day]['answer'] = $day[$key_day]['answer'] + 1;
+        if (isset($last_time) AND strtotime($last_time) - strtotime($d['create_at']) < 60 * 30) {
+          $day[$key_day]['spend'] = $day[$key_day]['spend'] + strtotime($last_time) - strtotime($d['create_at']);
+        } else {
+          $day[$key_day]['spend'] = $day[$key_day]['spend'] + 5;
+        }
+        if ($day[$key_day]['answer'] > $max) {
+          $max = $day[$key_day]['answer'];
+        }
+        $last_time = $d['create_at'];
+        $day[$key_day]['time'] = Model_Time::s2h($day[$key_day]['spend']);
+        //echo $this->s2h($day[$key_day]['spend']) .'<br>';
+      }
+      $view->max = $max;
+      $list = 'graph';
     }
     foreach ($arr_list as $k => $d) {
       $arr_list[$k] = $d;
@@ -135,6 +171,7 @@ class Controller_Profile extends Controller
       $arr_list[$k]['open_time'] = $date->format('Y-m-d H');
     }
     $view->arr_list = $arr_list;
+    $view->day = $day;
     $view->list = $list;
     $view->description = $description;
     $view->introduce = $introduce;

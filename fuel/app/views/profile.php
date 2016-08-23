@@ -112,6 +112,9 @@
     <span class="icon_num"><?=$amt_answer?></span>
     <img src="/assets/img/icon/answer.png" class="icon">
   </a> </td>
+  <td class="<?= $list == 'graph' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=graph">
+    <img src="/assets/img/icon/bar-chart.png" class="icon">
+  </a> </td>
   <td class="<?= $list == 'quiz' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=quiz">
     <span class="icon_num"><?=$amt_quiz?></span>
     <img src="/assets/img/icon/quiz_generator.png" class="icon">
@@ -129,6 +132,16 @@
 
 <?php foreach($arr_list as $d ){?>
 <div class="forum_txt" contenteditable="true"> <?=$d['txt']?> &nbsp; <?=$d['open_time']?></div>
+<?php } ?>
+
+<?php foreach($day as $d ){?>
+<div style="position: absolute;height:30px;width:100%;border-bottom: 1px solid #F5F5F5;">
+  <div style="width:20%;display:inline-block;padding: 4px;"><?=$d['day']?></div>
+  <?php if($d['answer']){?>
+  <div style="display:inline-block;padding: 4px;"><?=$d['answer']?> answer , spend <?=$d['time']?></div>
+  <?php }?>
+</div>
+<div style="width:<?= round($d['answer']/$max * 100)  ?>%;background-color: greenyellow; height:30px;">&nbsp;</div>
 <?php } ?>
 
 <table id="cel"></table>

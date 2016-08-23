@@ -3,11 +3,25 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
-SET standard_conforming_strings = off;
+SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET escape_string_warning = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
 
 SET search_path = public, pg_catalog;
 
@@ -30,7 +44,7 @@ CREATE TABLE a_news_time (
 );
 
 
-ALTER TABLE public.a_news_time OWNER TO postgres;
+ALTER TABLE a_news_time OWNER TO postgres;
 
 --
 -- Name: TABLE a_news_time; Type: COMMENT; Schema: public; Owner: postgres
@@ -46,12 +60,12 @@ COMMENT ON TABLE a_news_time IS 'key is time';
 CREATE SEQUENCE a_news_time_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.a_news_time_id_seq OWNER TO postgres;
+ALTER TABLE a_news_time_id_seq OWNER TO postgres;
 
 --
 -- Name: a_news_time_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -72,7 +86,7 @@ CREATE TABLE answer_by_pay_q (
 );
 
 
-ALTER TABLE public.answer_by_pay_q OWNER TO postgres;
+ALTER TABLE answer_by_pay_q OWNER TO postgres;
 
 --
 -- Name: answer_by_q; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -87,7 +101,7 @@ CREATE TABLE answer_by_q (
 );
 
 
-ALTER TABLE public.answer_by_q OWNER TO postgres;
+ALTER TABLE answer_by_q OWNER TO postgres;
 
 --
 -- Name: answer_key_q; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -103,7 +117,7 @@ CREATE TABLE answer_key_q (
 );
 
 
-ALTER TABLE public.answer_key_q OWNER TO postgres;
+ALTER TABLE answer_key_q OWNER TO postgres;
 
 --
 -- Name: answer_key_q_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -112,12 +126,12 @@ ALTER TABLE public.answer_key_q OWNER TO postgres;
 CREATE SEQUENCE answer_key_q_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.answer_key_q_id_seq OWNER TO postgres;
+ALTER TABLE answer_key_q_id_seq OWNER TO postgres;
 
 --
 -- Name: answer_key_q_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -137,11 +151,19 @@ CREATE TABLE answer_key_u (
     result integer DEFAULT 0 NOT NULL,
     create_at timestamp without time zone DEFAULT now() NOT NULL,
     q_txt text DEFAULT ''::text NOT NULL,
-    q_img text DEFAULT ''::text NOT NULL
+    q_img text DEFAULT ''::text NOT NULL,
+    choice_0 text DEFAULT ''::text NOT NULL,
+    choice_1 text DEFAULT ''::text NOT NULL,
+    choice_2 text DEFAULT ''::text NOT NULL,
+    choice_3 text DEFAULT ''::text NOT NULL,
+    comment text DEFAULT ''::text NOT NULL,
+    myanswer text DEFAULT ''::text NOT NULL,
+    correct_choice text DEFAULT ''::text NOT NULL,
+    quiz_num integer DEFAULT 0 NOT NULL
 );
 
 
-ALTER TABLE public.answer_key_u OWNER TO postgres;
+ALTER TABLE answer_key_u OWNER TO postgres;
 
 --
 -- Name: answer_key_u_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -150,12 +172,12 @@ ALTER TABLE public.answer_key_u OWNER TO postgres;
 CREATE SEQUENCE answer_key_u_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.answer_key_u_id_seq OWNER TO postgres;
+ALTER TABLE answer_key_u_id_seq OWNER TO postgres;
 
 --
 -- Name: answer_key_u_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -178,7 +200,7 @@ CREATE TABLE choice (
 );
 
 
-ALTER TABLE public.choice OWNER TO postgres;
+ALTER TABLE choice OWNER TO postgres;
 
 --
 -- Name: comment; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -194,7 +216,7 @@ CREATE TABLE comment (
 );
 
 
-ALTER TABLE public.comment OWNER TO postgres;
+ALTER TABLE comment OWNER TO postgres;
 
 --
 -- Name: comment_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -203,12 +225,12 @@ ALTER TABLE public.comment OWNER TO postgres;
 CREATE SEQUENCE comment_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.comment_id_seq OWNER TO postgres;
+ALTER TABLE comment_id_seq OWNER TO postgres;
 
 --
 -- Name: comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -230,7 +252,7 @@ CREATE TABLE follow (
 );
 
 
-ALTER TABLE public.follow OWNER TO postgres;
+ALTER TABLE follow OWNER TO postgres;
 
 --
 -- Name: COLUMN follow.status; Type: COMMENT; Schema: public; Owner: postgres
@@ -246,12 +268,12 @@ COMMENT ON COLUMN follow.status IS '1=request, 2=confirm, 3=block';
 CREATE SEQUENCE follow_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.follow_id_seq OWNER TO postgres;
+ALTER TABLE follow_id_seq OWNER TO postgres;
 
 --
 -- Name: follow_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -274,7 +296,7 @@ CREATE TABLE followed_news (
 );
 
 
-ALTER TABLE public.followed_news OWNER TO postgres;
+ALTER TABLE followed_news OWNER TO postgres;
 
 --
 -- Name: followed_news_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -283,12 +305,12 @@ ALTER TABLE public.followed_news OWNER TO postgres;
 CREATE SEQUENCE followed_news_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.followed_news_id_seq OWNER TO postgres;
+ALTER TABLE followed_news_id_seq OWNER TO postgres;
 
 --
 -- Name: followed_news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -303,18 +325,61 @@ ALTER SEQUENCE followed_news_id_seq OWNED BY followed_news.id;
 
 CREATE TABLE forum (
     id integer NOT NULL,
-    parent_id integer DEFAULT 0 NOT NULL,
     txt text DEFAULT ''::text NOT NULL,
     usr_id integer DEFAULT 0 NOT NULL,
     open_time timestamp without time zone DEFAULT now() NOT NULL,
     u_img text DEFAULT ''::text NOT NULL,
     img text DEFAULT ''::text NOT NULL,
     nice integer DEFAULT 0 NOT NULL,
-    update_at timestamp without time zone DEFAULT now() NOT NULL
+    update_at timestamp without time zone DEFAULT now() NOT NULL,
+    certify integer DEFAULT 0 NOT NULL,
+    u_name text DEFAULT ''::text NOT NULL
 );
 
 
-ALTER TABLE public.forum OWNER TO postgres;
+ALTER TABLE forum OWNER TO postgres;
+
+--
+-- Name: forum_comment; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE forum_comment (
+    forum_id integer DEFAULT 0 NOT NULL,
+    txt text DEFAULT ''::text NOT NULL,
+    usr_id integer DEFAULT 0 NOT NULL,
+    open_time timestamp without time zone DEFAULT now() NOT NULL,
+    u_img text DEFAULT ''::text NOT NULL,
+    img text DEFAULT ''::text NOT NULL,
+    nice integer DEFAULT 0 NOT NULL,
+    update_at timestamp without time zone DEFAULT now() NOT NULL,
+    id integer NOT NULL,
+    certify integer DEFAULT 0 NOT NULL,
+    u_name text DEFAULT ''::text NOT NULL
+);
+
+
+ALTER TABLE forum_comment OWNER TO postgres;
+
+--
+-- Name: forum_comment_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE forum_comment_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE forum_comment_id_seq OWNER TO postgres;
+
+--
+-- Name: forum_comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE forum_comment_id_seq OWNED BY forum_comment.id;
+
 
 --
 -- Name: forum_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -323,18 +388,88 @@ ALTER TABLE public.forum OWNER TO postgres;
 CREATE SEQUENCE forum_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.forum_id_seq OWNER TO postgres;
+ALTER TABLE forum_id_seq OWNER TO postgres;
 
 --
 -- Name: forum_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE forum_id_seq OWNED BY forum.id;
+
+
+--
+-- Name: lg_forum_comment_param; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE lg_forum_comment_param (
+    id integer NOT NULL,
+    param text DEFAULT ''::text NOT NULL,
+    usr_id integer DEFAULT 0 NOT NULL,
+    forum_comment_id integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE lg_forum_comment_param OWNER TO postgres;
+
+--
+-- Name: lg_forum_comment_param_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE lg_forum_comment_param_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE lg_forum_comment_param_id_seq OWNER TO postgres;
+
+--
+-- Name: lg_forum_comment_param_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE lg_forum_comment_param_id_seq OWNED BY lg_forum_comment_param.id;
+
+
+--
+-- Name: lg_forum_param; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE lg_forum_param (
+    id integer NOT NULL,
+    param text DEFAULT ''::text NOT NULL,
+    usr_id integer DEFAULT 0 NOT NULL,
+    forum_id integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE lg_forum_param OWNER TO postgres;
+
+--
+-- Name: lg_forum_param_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE lg_forum_param_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE lg_forum_param_id_seq OWNER TO postgres;
+
+--
+-- Name: lg_forum_param_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE lg_forum_param_id_seq OWNED BY lg_forum_param.id;
 
 
 --
@@ -350,7 +485,7 @@ CREATE TABLE lg_pack_tran (
 );
 
 
-ALTER TABLE public.lg_pack_tran OWNER TO postgres;
+ALTER TABLE lg_pack_tran OWNER TO postgres;
 
 --
 -- Name: TABLE lg_pack_tran; Type: COMMENT; Schema: public; Owner: postgres
@@ -366,12 +501,12 @@ COMMENT ON TABLE lg_pack_tran IS 'log pack transaction by 200 point';
 CREATE SEQUENCE lg_pack_tran_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.lg_pack_tran_id_seq OWNER TO postgres;
+ALTER TABLE lg_pack_tran_id_seq OWNER TO postgres;
 
 --
 -- Name: lg_pack_tran_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -395,7 +530,7 @@ CREATE TABLE lg_paypal_order (
 );
 
 
-ALTER TABLE public.lg_paypal_order OWNER TO postgres;
+ALTER TABLE lg_paypal_order OWNER TO postgres;
 
 --
 -- Name: lg_point_tran; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -410,7 +545,7 @@ CREATE TABLE lg_point_tran (
 );
 
 
-ALTER TABLE public.lg_point_tran OWNER TO postgres;
+ALTER TABLE lg_point_tran OWNER TO postgres;
 
 --
 -- Name: lg_point_tran_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -419,12 +554,12 @@ ALTER TABLE public.lg_point_tran OWNER TO postgres;
 CREATE SEQUENCE lg_point_tran_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.lg_point_tran_id_seq OWNER TO postgres;
+ALTER TABLE lg_point_tran_id_seq OWNER TO postgres;
 
 --
 -- Name: lg_point_tran_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -442,7 +577,7 @@ CREATE TABLE mt_block_generate (
 );
 
 
-ALTER TABLE public.mt_block_generate OWNER TO postgres;
+ALTER TABLE mt_block_generate OWNER TO postgres;
 
 --
 -- Name: mt_block_hijack; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -454,7 +589,7 @@ CREATE TABLE mt_block_hijack (
 );
 
 
-ALTER TABLE public.mt_block_hijack OWNER TO postgres;
+ALTER TABLE mt_block_hijack OWNER TO postgres;
 
 --
 -- Name: mt_public_news; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -467,7 +602,7 @@ CREATE TABLE mt_public_news (
 );
 
 
-ALTER TABLE public.mt_public_news OWNER TO postgres;
+ALTER TABLE mt_public_news OWNER TO postgres;
 
 --
 -- Name: mt_public_news_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -476,12 +611,12 @@ ALTER TABLE public.mt_public_news OWNER TO postgres;
 CREATE SEQUENCE mt_public_news_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.mt_public_news_id_seq OWNER TO postgres;
+ALTER TABLE mt_public_news_id_seq OWNER TO postgres;
 
 --
 -- Name: mt_public_news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -496,12 +631,14 @@ ALTER SEQUENCE mt_public_news_id_seq OWNED BY mt_public_news.id;
 
 CREATE TABLE mt_seo_tag (
     tag text NOT NULL,
-    titile text NOT NULL,
-    description text NOT NULL
+    title text NOT NULL,
+    description text NOT NULL,
+    country text DEFAULT ''::text NOT NULL,
+    code text DEFAULT ''::text NOT NULL
 );
 
 
-ALTER TABLE public.mt_seo_tag OWNER TO postgres;
+ALTER TABLE mt_seo_tag OWNER TO postgres;
 
 --
 -- Name: mt_sns_post; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -515,7 +652,7 @@ CREATE TABLE mt_sns_post (
 );
 
 
-ALTER TABLE public.mt_sns_post OWNER TO postgres;
+ALTER TABLE mt_sns_post OWNER TO postgres;
 
 --
 -- Name: mt_sns_post_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -524,18 +661,56 @@ ALTER TABLE public.mt_sns_post OWNER TO postgres;
 CREATE SEQUENCE mt_sns_post_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.mt_sns_post_id_seq OWNER TO postgres;
+ALTER TABLE mt_sns_post_id_seq OWNER TO postgres;
 
 --
 -- Name: mt_sns_post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE mt_sns_post_id_seq OWNED BY mt_sns_post.id;
+
+
+--
+-- Name: mt_tag_top; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mt_tag_top (
+    id integer NOT NULL,
+    tag text DEFAULT ''::text NOT NULL,
+    question_id integer DEFAULT 0 NOT NULL,
+    img text DEFAULT ''::text NOT NULL,
+    txt text DEFAULT ''::text NOT NULL,
+    seq integer DEFAULT 0 NOT NULL,
+    country text DEFAULT ''::text NOT NULL
+);
+
+
+ALTER TABLE mt_tag_top OWNER TO postgres;
+
+--
+-- Name: mt_tag_top_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mt_tag_top_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE mt_tag_top_id_seq OWNER TO postgres;
+
+--
+-- Name: mt_tag_top_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mt_tag_top_id_seq OWNED BY mt_tag_top.id;
 
 
 --
@@ -552,7 +727,7 @@ CREATE TABLE pack (
 );
 
 
-ALTER TABLE public.pack OWNER TO postgres;
+ALTER TABLE pack OWNER TO postgres;
 
 --
 -- Name: COLUMN pack.activate; Type: COMMENT; Schema: public; Owner: postgres
@@ -568,12 +743,12 @@ COMMENT ON COLUMN pack.activate IS '0=not open, 1=open';
 CREATE SEQUENCE pack_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.pack_id_seq OWNER TO postgres;
+ALTER TABLE pack_id_seq OWNER TO postgres;
 
 --
 -- Name: pack_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -594,7 +769,7 @@ CREATE TABLE paid_usr (
 );
 
 
-ALTER TABLE public.paid_usr OWNER TO postgres;
+ALTER TABLE paid_usr OWNER TO postgres;
 
 --
 -- Name: paid_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -603,12 +778,12 @@ ALTER TABLE public.paid_usr OWNER TO postgres;
 CREATE SEQUENCE paid_user_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.paid_user_id_seq OWNER TO postgres;
+ALTER TABLE paid_user_id_seq OWNER TO postgres;
 
 --
 -- Name: paid_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -632,7 +807,7 @@ CREATE TABLE pay_answered_news (
 );
 
 
-ALTER TABLE public.pay_answered_news OWNER TO postgres;
+ALTER TABLE pay_answered_news OWNER TO postgres;
 
 --
 -- Name: pay_answered_news_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -641,12 +816,12 @@ ALTER TABLE public.pay_answered_news OWNER TO postgres;
 CREATE SEQUENCE pay_answered_news_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.pay_answered_news_id_seq OWNER TO postgres;
+ALTER TABLE pay_answered_news_id_seq OWNER TO postgres;
 
 --
 -- Name: pay_answered_news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -668,7 +843,7 @@ CREATE TABLE pay_choice (
 );
 
 
-ALTER TABLE public.pay_choice OWNER TO postgres;
+ALTER TABLE pay_choice OWNER TO postgres;
 
 --
 -- Name: pay_comment; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -683,7 +858,7 @@ CREATE TABLE pay_comment (
 );
 
 
-ALTER TABLE public.pay_comment OWNER TO postgres;
+ALTER TABLE pay_comment OWNER TO postgres;
 
 --
 -- Name: pay_comment_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -692,12 +867,12 @@ ALTER TABLE public.pay_comment OWNER TO postgres;
 CREATE SEQUENCE pay_comment_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.pay_comment_id_seq OWNER TO postgres;
+ALTER TABLE pay_comment_id_seq OWNER TO postgres;
 
 --
 -- Name: pay_comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -718,7 +893,7 @@ CREATE TABLE pay_correct (
 );
 
 
-ALTER TABLE public.pay_correct OWNER TO postgres;
+ALTER TABLE pay_correct OWNER TO postgres;
 
 --
 -- Name: pay_correct_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -727,12 +902,12 @@ ALTER TABLE public.pay_correct OWNER TO postgres;
 CREATE SEQUENCE pay_correct_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.pay_correct_id_seq OWNER TO postgres;
+ALTER TABLE pay_correct_id_seq OWNER TO postgres;
 
 --
 -- Name: pay_correct_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -753,7 +928,7 @@ CREATE TABLE pay_incorrect (
 );
 
 
-ALTER TABLE public.pay_incorrect OWNER TO postgres;
+ALTER TABLE pay_incorrect OWNER TO postgres;
 
 --
 -- Name: pay_incorrect_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -762,12 +937,12 @@ ALTER TABLE public.pay_incorrect OWNER TO postgres;
 CREATE SEQUENCE pay_incorrect_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.pay_incorrect_id_seq OWNER TO postgres;
+ALTER TABLE pay_incorrect_id_seq OWNER TO postgres;
 
 --
 -- Name: pay_incorrect_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -789,7 +964,7 @@ CREATE TABLE pay_q (
 );
 
 
-ALTER TABLE public.pay_q OWNER TO postgres;
+ALTER TABLE pay_q OWNER TO postgres;
 
 --
 -- Name: TABLE pay_q; Type: COMMENT; Schema: public; Owner: postgres
@@ -805,12 +980,12 @@ COMMENT ON TABLE pay_q IS 'this question is needed to be paid';
 CREATE SEQUENCE pay_q_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.pay_q_id_seq OWNER TO postgres;
+ALTER TABLE pay_q_id_seq OWNER TO postgres;
 
 --
 -- Name: pay_q_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -826,12 +1001,12 @@ ALTER SEQUENCE pay_q_id_seq OWNED BY pay_q.id;
 CREATE SEQUENCE paypal_order_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.paypal_order_id_seq OWNER TO postgres;
+ALTER TABLE paypal_order_id_seq OWNER TO postgres;
 
 --
 -- Name: paypal_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -852,7 +1027,7 @@ CREATE TABLE private_news (
 );
 
 
-ALTER TABLE public.private_news OWNER TO postgres;
+ALTER TABLE private_news OWNER TO postgres;
 
 --
 -- Name: private_news_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -861,12 +1036,12 @@ ALTER TABLE public.private_news OWNER TO postgres;
 CREATE SEQUENCE private_news_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.private_news_id_seq OWNER TO postgres;
+ALTER TABLE private_news_id_seq OWNER TO postgres;
 
 --
 -- Name: private_news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -889,7 +1064,7 @@ CREATE TABLE question (
 );
 
 
-ALTER TABLE public.question OWNER TO postgres;
+ALTER TABLE question OWNER TO postgres;
 
 --
 -- Name: COLUMN question.open_time; Type: COMMENT; Schema: public; Owner: postgres
@@ -905,12 +1080,12 @@ COMMENT ON COLUMN question.open_time IS 'select open_time - interval ''100 years
 CREATE SEQUENCE question_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.question_id_seq OWNER TO postgres;
+ALTER TABLE question_id_seq OWNER TO postgres;
 
 --
 -- Name: question_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -933,7 +1108,7 @@ CREATE TABLE quiz_buy (
 );
 
 
-ALTER TABLE public.quiz_buy OWNER TO postgres;
+ALTER TABLE quiz_buy OWNER TO postgres;
 
 --
 -- Name: quiz_buy_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -942,12 +1117,12 @@ ALTER TABLE public.quiz_buy OWNER TO postgres;
 CREATE SEQUENCE quiz_buy_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.quiz_buy_id_seq OWNER TO postgres;
+ALTER TABLE quiz_buy_id_seq OWNER TO postgres;
 
 --
 -- Name: quiz_buy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -970,7 +1145,7 @@ CREATE TABLE send_money (
 );
 
 
-ALTER TABLE public.send_money OWNER TO postgres;
+ALTER TABLE send_money OWNER TO postgres;
 
 --
 -- Name: send_money_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -979,12 +1154,12 @@ ALTER TABLE public.send_money OWNER TO postgres;
 CREATE SEQUENCE send_money_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.send_money_id_seq OWNER TO postgres;
+ALTER TABLE send_money_id_seq OWNER TO postgres;
 
 --
 -- Name: send_money_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1001,11 +1176,12 @@ CREATE TABLE tag (
     question_id integer DEFAULT 0 NOT NULL,
     txt text DEFAULT ''::text NOT NULL,
     id integer NOT NULL,
-    open_time timestamp without time zone DEFAULT now() NOT NULL
+    open_time timestamp without time zone DEFAULT now() NOT NULL,
+    quiz_num integer DEFAULT 0 NOT NULL
 );
 
 
-ALTER TABLE public.tag OWNER TO postgres;
+ALTER TABLE tag OWNER TO postgres;
 
 --
 -- Name: TABLE tag; Type: COMMENT; Schema: public; Owner: postgres
@@ -1021,12 +1197,12 @@ COMMENT ON TABLE tag IS 'quiz tag';
 CREATE SEQUENCE tag_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.tag_id_seq OWNER TO postgres;
+ALTER TABLE tag_id_seq OWNER TO postgres;
 
 --
 -- Name: tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1049,7 +1225,7 @@ CREATE TABLE tag_rank (
 );
 
 
-ALTER TABLE public.tag_rank OWNER TO postgres;
+ALTER TABLE tag_rank OWNER TO postgres;
 
 --
 -- Name: tag_rank_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -1058,12 +1234,12 @@ ALTER TABLE public.tag_rank OWNER TO postgres;
 CREATE SEQUENCE tag_rank_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.tag_rank_id_seq OWNER TO postgres;
+ALTER TABLE tag_rank_id_seq OWNER TO postgres;
 
 --
 -- Name: tag_rank_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1084,11 +1260,13 @@ CREATE TABLE usr (
     img text DEFAULT ''::text NOT NULL,
     update_at timestamp without time zone DEFAULT now() NOT NULL,
     point integer DEFAULT 0 NOT NULL,
-    introduce text DEFAULT ''::text NOT NULL
+    introduce text DEFAULT ''::text NOT NULL,
+    nice integer DEFAULT 0 NOT NULL,
+    certify integer DEFAULT 0 NOT NULL
 );
 
 
-ALTER TABLE public.usr OWNER TO postgres;
+ALTER TABLE usr OWNER TO postgres;
 
 --
 -- Name: COLUMN usr.provider; Type: COMMENT; Schema: public; Owner: postgres
@@ -1104,69 +1282,18 @@ COMMENT ON COLUMN usr.provider IS '1=FB, 2=TW, 3=G+, 4=LN';
 CREATE SEQUENCE usr_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE public.usr_id_seq OWNER TO postgres;
+ALTER TABLE usr_id_seq OWNER TO postgres;
 
 --
 -- Name: usr_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE usr_id_seq OWNED BY usr.id;
-
-
---
--- Name: wh_4choice; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE wh_4choice (
-    _id text,
-    genre text,
-    "Q" text,
-    "A1" text,
-    "A2" text,
-    "A3" text,
-    "A4" text
-);
-
-
-ALTER TABLE public.wh_4choice OWNER TO postgres;
-
---
--- Name: wh_treaty; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE wh_treaty (
-    _id text,
-    genre text,
-    era text,
-    year text,
-    item text
-);
-
-
-ALTER TABLE public.wh_treaty OWNER TO postgres;
-
---
--- Name: word; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE word (
-    quiz text DEFAULT ''::text NOT NULL,
-    answer text DEFAULT ''::text NOT NULL
-);
-
-
-ALTER TABLE public.word OWNER TO postgres;
-
---
--- Name: TABLE word; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE word IS '4wordmoreadd.php';
 
 
 --
@@ -1222,6 +1349,27 @@ ALTER TABLE ONLY forum ALTER COLUMN id SET DEFAULT nextval('forum_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
+ALTER TABLE ONLY forum_comment ALTER COLUMN id SET DEFAULT nextval('forum_comment_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lg_forum_comment_param ALTER COLUMN id SET DEFAULT nextval('lg_forum_comment_param_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lg_forum_param ALTER COLUMN id SET DEFAULT nextval('lg_forum_param_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
 ALTER TABLE ONLY lg_pack_tran ALTER COLUMN id SET DEFAULT nextval('lg_pack_tran_id_seq'::regclass);
 
 
@@ -1251,6 +1399,13 @@ ALTER TABLE ONLY mt_public_news ALTER COLUMN id SET DEFAULT nextval('mt_public_n
 --
 
 ALTER TABLE ONLY mt_sns_post ALTER COLUMN id SET DEFAULT nextval('mt_sns_post_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mt_tag_top ALTER COLUMN id SET DEFAULT nextval('mt_tag_top_id_seq'::regclass);
 
 
 --
@@ -1424,11 +1579,35 @@ ALTER TABLE ONLY followed_news
 
 
 --
+-- Name: forum_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY forum_comment
+    ADD CONSTRAINT forum_comment_pkey PRIMARY KEY (update_at);
+
+
+--
 -- Name: forum_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
 ALTER TABLE ONLY forum
     ADD CONSTRAINT forum_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lg_forum_comment_param_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY lg_forum_comment_param
+    ADD CONSTRAINT lg_forum_comment_param_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lg_forum_param_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY lg_forum_param
+    ADD CONSTRAINT lg_forum_param_pkey PRIMARY KEY (id);
 
 
 --
@@ -1477,6 +1656,14 @@ ALTER TABLE ONLY mt_seo_tag
 
 ALTER TABLE ONLY mt_sns_post
     ADD CONSTRAINT mt_sns_post_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mt_tag_top_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY mt_tag_top
+    ADD CONSTRAINT mt_tag_top_pkey PRIMARY KEY (id);
 
 
 --

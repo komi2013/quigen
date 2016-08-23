@@ -66,7 +66,7 @@ class Controller_Myprofile extends Controller
       .'&redirect_uri='.Config::get('my.gp_callback')    
       ;
     $list = '';
-    $arr_list = [];
+    $arr_list = []; $day = [];
     if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
       $list = 'quiz';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum') {
@@ -75,13 +75,51 @@ class Controller_Myprofile extends Controller
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
       $arr_list = DB::query("select * from forum_comment where usr_id = ".$usr_id)->execute()->as_array();
       $list = 'forum_comment';
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'graph') {
+      $date = new DateTime();
+      $i = 0;
+      while ($i < 61) {
+        $key_day = $date->format('M/jS');
+        $arr1['day'] = $key_day;
+        $arr1['answer'] = 0;
+        $arr1['spend'] = 0;
+        $day[$key_day] = $arr1;
+        $date->sub(new DateInterval('P1D'));
+        ++$i;
+      }
+      $sql = "SELECT * FROM answer_by_day WHERE usr_id = "
+                .$usr_id." AND update_at < '".date("Y-m-d H:i:s")."' AND update_at > '".date("Y-m-d H:i:s",strtotime('-2 month'))."'"
+                ." ORDER BY update_at DESC";
+      $arr = DB::query($sql)->execute()->as_array();
+      $max = 1;
+      foreach ($arr as $k => $d) {
+        $date = new DateTime($d['day']);
+        $key_day = $date->format('M/jS');
+        $day[$key_day]['day'] = $key_day;
+        $day[$key_day]['answer'] = $d['answer'];
+        $day[$key_day]['spend'] = $d['spend'];
+        if ($day[$key_day]['answer'] > $max) {
+          $max = $day[$key_day]['answer'];
+        }
+        $day[$key_day]['time'] = Model_Time::s2h($day[$key_day]['spend']);
+        //echo $this->s2h($day[$key_day]['spend']) .'<br>';
+      }
+      $view->max = $max;
+      $list = 'graph';
     }
+    //die();
+    //echo '<pre>'; var_dump($day); echo '</pre>'; die();
     foreach ($arr_list as $k => $d) {
       $arr_list[$k] = $d;
       $date = new DateTime($d['open_time']);
-      $arr_list[$k]['open_time'] = $date->format('Y-m-d H');
+      $arr_list[$k]['open_time'] = $date->format('M/jS H:i');
+      if ( !isset($d['forum_id']) ) {
+        $arr_list[$k]['forum_id'] = $d['id'];
+      }
+      
     }
     $view->arr_list = $arr_list;
+    $view->day = $day;
     $view->introduce = $introduce;
     $view->list = $list;
     $view->profile_fb_url = $profile_fb_url;

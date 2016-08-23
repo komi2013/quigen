@@ -82,10 +82,32 @@ $('.choice').click(function(){
   }else{
     setTimeout(function(){
       answer_1(this_seq);
-    },1000);    
+    },1000);
+    answer_day();
   }
 });
+function answer_day(){
+  var answer_stamp = Math.floor(new Date().getTime() /1000);
+  var day_stamp = Math.floor(answer_stamp /60 /60 /24);
+  var last_answer_stamp = answer_stamp - 5;
+  if(localStorage.answer_stamp && localStorage.answer_stamp > answer_stamp - 60 * 30){
+    last_answer_stamp = localStorage.answer_stamp;
+  }
+  var day_sum = {};
+  var arr_stamp = [0,0];
+  if(localStorage.day_sum){
+    day_sum = JSON.parse(localStorage.day_sum);
+    if(day_sum[day_stamp]){
+      arr_stamp = day_sum[day_stamp];
+    }
+  }
+  arr_stamp[0] = arr_stamp[0] + 1;
+  arr_stamp[1] = arr_stamp[1] + answer_stamp - last_answer_stamp;
+  day_sum[day_stamp] = arr_stamp;
 
+  localStorage.day_sum = JSON.stringify(day_sum);
+  localStorage.answer_stamp = answer_stamp;
+}
 function answer_1(this_seq){
   if(localStorage.myphoto){
     var myphoto = localStorage.myphoto;

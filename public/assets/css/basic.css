@@ -322,3 +322,7 @@ h1 {
   background-color: #FCFCFC;
   border-color: silver;
 }
+.div_t {
+  border-bottom: 1px solid #F5F5F5;
+  padding: 20px 10px 19px 10px;    
+}
