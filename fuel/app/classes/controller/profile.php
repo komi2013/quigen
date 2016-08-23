@@ -141,7 +141,7 @@ class Controller_Profile extends Controller
         ++$i;
       }
       $sql = "SELECT * FROM answer_key_u WHERE usr_id = "
-                .$usr_id." AND create_at < '".date("Y-m-d H:i:s")."' AND create_at > '".date("Y-m-d H:i:s",strtotime('-2 month'))."'"
+                .$_GET['u']." AND create_at < '".date("Y-m-d H:i:s")."' AND create_at > '".date("Y-m-d H:i:s",strtotime('-2 month'))."'"
                 ." ORDER BY create_at DESC";
       $arr = DB::query($sql)->execute()->as_array();
       $max = 1;
