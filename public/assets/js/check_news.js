@@ -17,7 +17,7 @@ if(localStorage.notify){  //[396105,396413,"read",1,2]
     }
     chk = 2;
   }
-  if(!localStorage.answer){
+  if(!localStorage.offline_q){
     chk = 2;
   }
   if(chk == 1){
@@ -29,12 +29,12 @@ if(localStorage.notify){  //[396105,396413,"read",1,2]
 
 function getNews(){
   var notify = JSON.parse(localStorage.notify);
-  var resData = JSON.parse(localStorage.answer);
+  var resData = JSON.parse(localStorage.offline_q);
 
   var celNum = 0;
   var arrCellId = [];
   while(celNum < 1000){
-    arrCellId[celNum] = resData[celNum][0];
+    arrCellId[celNum] = resData[celNum][7];
     ++celNum;
     if(!resData[celNum]){
       celNum = 1000;

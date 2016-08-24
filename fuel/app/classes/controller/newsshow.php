@@ -87,22 +87,23 @@ class Controller_Newsshow extends Controller
     }
     $res[1] = array_merge($res[1], $arr_res);
 
-    $query = DB::query("select * from private_news where usr_id = ".$usr_id)
-      ->execute()->as_array();
+    $query = DB::query("select * from private_news where usr_id = ".$usr_id)->execute()->as_array();
+    $sql = "INSERT INTO lg_private_news ( id, usr_id, txt, create_at, create_before)
+            SELECT id, usr_id, txt, '".date("Y-m-d H:i:s")."', create_at
+            FROM private_news
+            WHERE usr_id = ".$usr_id;
+    DB::query($sql)->execute();
     DB::query("delete from private_news where usr_id = ".$usr_id)->execute();  
     $arr_res = array();  
-    foreach ($query as $d)
-    {
+    foreach ($query as $d) {
       $arr_res[] = $d['txt'];
       $res[0] = 1;
     }
     $res[1] = array_merge($res[1], $arr_res);  
-    $query = DB::query("select * from pay_answered_news where usr_id = ".$usr_id)
-      ->execute()->as_array();
+    $query = DB::query("select * from pay_answered_news where usr_id = ".$usr_id)->execute()->as_array();
     DB::query("delete from pay_answered_news where usr_id = ".$usr_id)->execute();  
     $arr_res = array();  
-    foreach ($query as $d)
-    {
+    foreach ($query as $d) {
       $q_img = preg_replace('/http/', 'url', $d['q_img']);
       $q_img = $q_img ?: '/assets/img/icon/quiz_generator.png';
       $arr_res[] = $d['summary'].'other users also answer '.
