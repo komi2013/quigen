@@ -33,12 +33,6 @@ $('input').keypress(function (e) {
   }
 });
 
-if(localStorage.answer){
-  var answer = JSON.parse(localStorage.answer);
-}else{
-  var answer = [];
-}
-
 var detect = 9600; //px
 $(window).scroll(function(){
   var scrTop = $(document).scrollTop(); // px

@@ -51,16 +51,4 @@ $('input').keypress(function (e) {
   }
 });
 
-if(localStorage.answer){
-  var answer = JSON.parse(localStorage.answer);
-}else{
-  var answer = [];
-}
-for (var i = 0, len = arr_answer.length; i < len; i++) {
-    for (var ii = 0, lenlen = answer.length; ii < lenlen; ii++) {
-    if(answer[ii][0] == arr_answer[i]){
-      $('#q_id_'+arr_answer[i]).css("color","#990099");
-    }
-  }
-}
 localStorage.removeItem('amt_top');
