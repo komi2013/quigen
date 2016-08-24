@@ -27,7 +27,7 @@
 <table>
   <tr><td style="text-align: center;">
     <select class="txt_84" id="tag_name">
-      <?php foreach($tag_rank as $d){ ?>
+      <?php foreach($tag_group as $d){ ?>
         <option value="#<?=$d['tag']?>">#<?=$d['tag']?></option>
       <?php } ?>
     </select>

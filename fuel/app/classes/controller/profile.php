@@ -133,7 +133,7 @@ class Controller_Profile extends Controller
       $i = 0;
       while ($i < 61) {
         $key_day = $date->format('M/jS');
-        $arr1['day'] = $key_day;
+        $arr1['day'] = $key_day.' '.$date->format('D');
         $arr1['answer'] = 0;
         $arr1['spend'] = 0;
         $day[$key_day] = $arr1;
@@ -148,7 +148,7 @@ class Controller_Profile extends Controller
       foreach ($arr as $k => $d) {
         $date = new DateTime($d['create_at']);
         $key_day = $date->format('M/jS');
-        $day[$key_day]['day'] = $key_day;
+        $day[$key_day]['day'] = $key_day.' '.$date->format('D');
         $day[$key_day]['answer'] = $day[$key_day]['answer'] + 1;
         if (isset($last_time) AND strtotime($last_time) - strtotime($d['create_at']) < 60 * 30) {
           $day[$key_day]['spend'] = $day[$key_day]['spend'] + strtotime($last_time) - strtotime($d['create_at']);

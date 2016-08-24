@@ -135,13 +135,13 @@
 <?php } ?>
 
 <?php foreach($day as $d ){?>
-<div style="position: absolute;height:30px;width:100%;border-bottom: 1px solid #F5F5F5;">
-  <div style="width:20%;display:inline-block;padding: 4px;"><?=$d['day']?></div>
+<div class="graph_frame">
+  <div class="graph_date"><?=$d['day']?></div>
   <?php if($d['answer']){?>
-  <div style="display:inline-block;padding: 4px;"><?=$d['answer']?> answer , spend <?=$d['time']?></div>
+  <div class="graph_txt"><?=$d['answer']?>answer, spend <?=$d['time']?></div>
   <?php }?>
 </div>
-<div style="width:<?= round($d['answer']/$max * 100)  ?>%;background-color: greenyellow; height:30px;">&nbsp;</div>
+<div class="graph_bar" style="width:<?= round($d['answer']/$max * 100)  ?>%;">&nbsp;</div>
 <?php } ?>
 
 <table id="cel"></table>
