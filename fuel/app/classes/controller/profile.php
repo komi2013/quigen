@@ -140,27 +140,26 @@ class Controller_Profile extends Controller
         $date->sub(new DateInterval('P1D'));
         ++$i;
       }
-      $sql = "SELECT * FROM answer_key_u WHERE usr_id = "
-                .$_GET['u']." AND create_at < '".date("Y-m-d H:i:s")."' AND create_at > '".date("Y-m-d H:i:s",strtotime('-2 month'))."'"
-                ." ORDER BY create_at DESC";
+      $sql = "SELECT * FROM answer_by_day WHERE usr_id = "
+                .$_GET['u']." AND day < '".date("Y-m-d H:i:s")."' AND day > '".date("Y-m-d H:i:s",strtotime('-61 day'))."'"
+                ." ORDER BY day DESC";
       $arr = DB::query($sql)->execute()->as_array();
       $max = 1;
       foreach ($arr as $k => $d) {
-        $date = new DateTime($d['create_at']);
+        $date = new DateTime($d['day']);
         $key_day = $date->format('M/jS');
         $day[$key_day]['day'] = $key_day.' '.$date->format('D');
-        $day[$key_day]['answer'] = $day[$key_day]['answer'] + 1;
-        if (isset($last_time) AND strtotime($last_time) - strtotime($d['create_at']) < 60 * 30) {
-          $day[$key_day]['spend'] = $day[$key_day]['spend'] + strtotime($last_time) - strtotime($d['create_at']);
+        if ( isset($day[$key_day]['answer']) ) {
+          $day[$key_day]['answer'] = $day[$key_day]['answer'] + $d['answer'];
+          $day[$key_day]['spend'] = $day[$key_day]['spend'] + $d['spend'];            
         } else {
-          $day[$key_day]['spend'] = $day[$key_day]['spend'] + 5;
+          $day[$key_day]['answer'] = $d['answer'];
+          $day[$key_day]['spend'] = $d['spend'];            
         }
+        $day[$key_day]['time'] = Model_Time::s2h($day[$key_day]['spend']);
         if ($day[$key_day]['answer'] > $max) {
           $max = $day[$key_day]['answer'];
         }
-        $last_time = $d['create_at'];
-        $day[$key_day]['time'] = Model_Time::s2h($day[$key_day]['spend']);
-        //echo $this->s2h($day[$key_day]['spend']) .'<br>';
       }
       $view->max = $max;
       $list = 'graph';

@@ -88,27 +88,29 @@ class Controller_Myprofile extends Controller
         ++$i;
       }
       $sql = "SELECT * FROM answer_by_day WHERE usr_id = "
-                .$usr_id." AND update_at < '".date("Y-m-d H:i:s")."' AND update_at > '".date("Y-m-d H:i:s",strtotime('-2 month'))."'"
-                ." ORDER BY update_at DESC";
+                .$usr_id." AND day < '".date("Y-m-d H:i:s")."' AND day > '".date("Y-m-d H:i:s",strtotime('-61 day'))."'"
+                ." ORDER BY day DESC";
       $arr = DB::query($sql)->execute()->as_array();
       $max = 1;
       foreach ($arr as $k => $d) {
         $date = new DateTime($d['day']);
         $key_day = $date->format('M/jS');
         $day[$key_day]['day'] = $key_day.' '.$date->format('D');
-        $day[$key_day]['answer'] = $d['answer'];
-        $day[$key_day]['spend'] = $d['spend'];
+        if ( isset($day[$key_day]['answer']) ) {
+          $day[$key_day]['answer'] = $day[$key_day]['answer'] + $d['answer'];
+          $day[$key_day]['spend'] = $day[$key_day]['spend'] + $d['spend'];            
+        } else {
+          $day[$key_day]['answer'] = $d['answer'];
+          $day[$key_day]['spend'] = $d['spend'];            
+        }
+        $day[$key_day]['time'] = Model_Time::s2h($day[$key_day]['spend']);
         if ($day[$key_day]['answer'] > $max) {
           $max = $day[$key_day]['answer'];
         }
-        $day[$key_day]['time'] = Model_Time::s2h($day[$key_day]['spend']);
-        //echo $this->s2h($day[$key_day]['spend']) .'<br>';
       }
       $view->max = $max;
       $list = 'graph';
     }
-    //die();
-    //echo '<pre>'; var_dump($day); echo '</pre>'; die();
     foreach ($arr_list as $k => $d) {
       $arr_list[$k] = $d;
       $date = new DateTime($d['open_time']);
