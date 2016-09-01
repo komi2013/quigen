@@ -115,23 +115,27 @@
   <td class="<?= $list == 'graph' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=graph">
     <img src="/assets/img/icon/bar-chart.png" class="icon">
   </a> </td>
-  <td class="<?= $list == 'quiz' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=quiz">
-    <span class="icon_num"><?=$amt_quiz?></span>
-    <img src="/assets/img/icon/quiz_generator.png" class="icon">
-  </a> </td>
   <td class="<?= $list == 'forum' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=forum">
     <span class="icon_num"><?=$amt_forum?></span>
-    <img src="/assets/img/icon/pencil.png" class="icon">
+    <img src="/assets/img/icon/list.png" class="icon">
   </a> </td>
-  <td class="<?= $list == 'forum_comment' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=forum_comment">
-    <span class="icon_num"><?=$amt_forum_comment?></span>
+  <td class="<?= $list == 'msg' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>&list=msg">
     <img src="/assets/img/icon/chat.png" class="icon">
   </a> </td>
   </tr>
 </table>
 
 <?php foreach($arr_list as $d ){?>
-<div class="forum_txt" contenteditable="true"> <?=$d['txt']?> &nbsp; <?=$d['open_time']?></div>
+<div class="div_t" > 
+  <?php if( $d['img']){?>
+    <img src="<?=$d['img']?>" class="icon">
+  <?php }?>
+  <?=$d['txt']?>
+  <?php if( $d['no_param'] == 0 ){?>
+  &nbsp; &nbsp; <a href="/forum/?f=<?=$d['forum_id']?>"> >> </a>
+  <?php }?>
+  <div style="width:100%;text-align:right;"> <?=$d['open_time']?></div>
+</div>
 <?php } ?>
 
 <?php foreach($day as $d ){?>
@@ -143,14 +147,70 @@
 </div>
 <div class="graph_bar" style="width:<?= round($d['answer']/$max * 100)  ?>%;">&nbsp;</div>
 <?php } ?>
+<?php if($list == 'msg'){ ?>
+<script src="/third/img-touch-canvas_1.js?ver=93"></script>
+<div class="forum_form" id="txt" contenteditable="true"></div>
+<table><tr>
+  <td class="td_33">
+    <input type="file" id="file_load" >
+    <img src="/assets/img/icon/camera.png" class="icon" id="camera">
+  </td>
+  <td class="td_33"><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
+  <td class="td_33">
+    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
+    <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
+  </td>
+</tr></table>
+
+<table style="display:none;" id="canvas_menu">
+  <tr>
+  <td id="rotate" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/rotate.png" class="icon" alt="rotate"></td>
+  <td id="minus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/minus.png" class="icon" alt="minus"></td>
+  <td id="plus" class="sp_disp_none" style="width:50px;cursor:pointer;"><img src="/assets/img/icon/plus.png" class="icon" alt="plus"></td>
+  <td class="sp_disp_none" style="width:50px;cursor:pointer;">
+    <select name='scale' style="font-size:20px;">
+        <option>1</option>
+        <option>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>40</option>
+    </select>
+  </td>
+  </tr>
+</table>
+
+<div id="canvas_div_img" style="text-align:center;">
+
+<canvas id="mycanvas1" height="300" width="300"></canvas>
+</div>
+<div id="emoji_list" style="display:none;">
+  <?php foreach(Model_Emoji::$table as $k => $d){ ?>
+    <?=$d?>
+  <?php } ?>
+</div>
+<script src="/assets/js/message.js?ver=93"></script>
+<?php } ?>
+
+<?php foreach($msg_list as $d ){?>
+  <?php if($d['sender'] == $u_id){ ?>
+  <div class="my_img"><img src="<?=$d['img']?>"></div>
+  <div class="my_msg"><?=$d['txt']?> <div style="width:100%;text-align:right;"><?=$d['create_at']?></div></div>
+  <?php } else { ?>
+  <div class="other_img"><img src="<?=$d['img']?>"></div>
+  <div class="other_msg"><img src="<?=$d['u_img']?>" class="icon"><?=$d['txt']?>
+    <div><?=$d['create_at']?></div>
+  </div>
+  <?php } ?>
+<?php } ?>
 
 <table id="cel"></table>
+
 </div>
 <script>
   var receiver = '<?=$usr_id?>'; 
   var u_id = '<?=$u_id?>';
   var status = '<?=$status?>';
-  var list = '<?=isset($_GET['list']) ? 'quiz' : 'answer'; ?>';
+  var list = '<?=$list?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/basic.js?ver=92"></script>

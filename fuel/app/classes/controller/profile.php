@@ -29,7 +29,6 @@ class Controller_Profile extends Controller
     $nice = 0;
     $certify = 0;
     $amt_forum = 0;
-    $amt_forum_comment = 0;
     $amt_quiz = 0;
     if ( isset($usr[0]['id']) ) {
       $view->usr_name = Security::htmlentities($usr[0]['name']);
@@ -50,8 +49,7 @@ class Controller_Profile extends Controller
       $introduce = $introduce;
       $nice = $usr[0]['nice'];
       $certify = $usr[0]['certify'];
-      $amt_forum = $usr[0]['forum'];
-      $amt_forum_comment = $usr[0]['forum_comment'];
+      $amt_forum = $usr[0]['forum'] + $usr[0]['forum_comment'];
       $amt_quiz = $usr[0]['quiz'];
     }
     $res = DB::query("select count(*) as cnt from answer_key_u where usr_id = ".$_GET['u'])->execute()->as_array();
@@ -123,11 +121,31 @@ class Controller_Profile extends Controller
     if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
       $list = 'quiz';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum') {
-      $arr_list = DB::query("select * from forum where usr_id = ".$_GET['u'])->execute()->as_array();
+      $arr = DB::query("select * from forum where usr_id = ".$_GET['u']." order by open_time desc")->execute()->as_array();
+      foreach ($arr as $k => $d) {
+        $arr1['forum_id'] = $d['id'];
+        $arr1['txt'] = $d['txt'];
+        $arr1['img'] = $d['img'];
+        $date = new DateTime($d['open_time']);
+        $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+        $arr1['no_param'] = $d['no_param'];
+        $arr_list[$d['open_time']] = $arr1;
+      }
+      $arr = DB::query("select * from forum_comment where usr_id = ".$_GET['u']." order by open_time desc")->execute()->as_array();
+      foreach ($arr as $k => $d) {
+        $arr1['forum_id'] = $d['forum_id'];
+        $arr1['txt'] = $d['txt'];
+        $arr1['img'] = $d['img'];
+        $date = new DateTime($d['open_time']);
+        $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+        $arr1['no_param'] = 0;
+        $arr_list[$d['open_time']] = $arr1;
+      }
+      krsort($arr_list);
       $list = 'forum';
-    } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
-      $arr_list = DB::query("select * from forum_comment where usr_id = ".$_GET['u'])->execute()->as_array();
-      $list = 'forum_comment';
+//    } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
+//      $arr_list = DB::query("select * from forum_comment where usr_id = ".$_GET['u'])->execute()->as_array();
+//      $list = 'forum_comment';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'graph') {
       $date = new DateTime();
       $i = 0;
@@ -163,22 +181,27 @@ class Controller_Profile extends Controller
       }
       $view->max = $max;
       $list = 'graph';
-    }
-    foreach ($arr_list as $k => $d) {
-      $arr_list[$k] = $d;
-      $date = new DateTime($d['open_time']);
-      $arr_list[$k]['open_time'] = $date->format('Y-m-d H');
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'msg') {
+      $sql = "select * from message where ( sender = ".$_GET['u']." AND receiver = ".$usr_id." ) OR ( sender = "
+              .$usr_id." AND receiver = ".$_GET['u']." ) ORDER BY create_at DESC ";
+      $arr = DB::query($sql)->execute()->as_array();
+      foreach ($arr as $k => $d) {
+        $msg_list[$k] = $d;
+        $date = new DateTime($d['create_at']);
+        $key_day = $date->format('M/jS');
+        $msg_list[$k]['create_at'] = $date->format('M/jS').' '.$date->format('D');
+      }
+      $list = 'msg';
     }
     $view->arr_list = $arr_list;
     $view->day = $day;
+    $view->msg_list = $msg_list;
     $view->list = $list;
     $view->description = $description;
     $view->introduce = $introduce;
     $view->nice = $nice;
     $view->certify = $certify;
     $view->amt_forum = $amt_forum;
-    $view->amt_forum_comment = $amt_forum_comment;
-    $view->amt_quiz = $amt_quiz;
     $view->amt_answer = $amt_answer;
     $view->meta_description = strip_tags($introduce).$description;
     $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'

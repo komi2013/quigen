@@ -7,7 +7,7 @@
     <a href="/htm/news/" rel="nofollow"><span id="news_num"></span><img src="/assets/img/icon/mail.png" class="icon"></a>
   </td>
   <td id="page_forumlist" class="<?= $this_page == 'forumlist'  ? 'this_page' : '' ?>">
-    <a href="/forumlist/" rel="nofollow" ><img src="/assets/img/icon/chat.png" class="icon"></a>
+    <a href="/forumlist/" rel="nofollow" ><img src="/assets/img/icon/list.png" class="icon"></a>
   </td>
   <td id="page_rank" class="<?= $this_page == 'rank'  ? 'this_page' : '' ?>" >
     <a href="/rank/" ><img src="/assets/img/icon/ranking.png" alt="rank" class="icon"></a>

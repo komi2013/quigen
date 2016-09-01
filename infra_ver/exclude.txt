@@ -3,6 +3,7 @@
 - public/assets/img/quiz/*
 - public/assets/img/profile/*
 - public/assets/img/forum/*
+- public/assets/img/message/*
 - public/robots.txt
 - public/BingSiteAuth.xml
 - public/phpPgAdmin_q/

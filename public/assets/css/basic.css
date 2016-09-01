@@ -345,3 +345,30 @@ h1 {
   background-color: #bfd8e4;
   height: 30px;
 }
+.other_msg {
+  background-color: #EEFFFF;
+  border-radius: 12px;
+  padding: 5px;
+  margin-right: 20px;
+}
+.my_msg {
+  background-color: #EEEEEE;
+  border-radius: 12px;
+  padding: 5px;
+  margin-left: 20px;
+}
+.other_img {
+  width: 100%;
+  text-align: center;
+  background-color: #EEFFFF;
+  border-radius: 12px;
+}
+.my_img {
+  width: 100%;
+  text-align: center;
+  background-color: #EEEEEE;
+  border-radius: 12px;
+}
+blockquote {
+  margin: 0px;
+}

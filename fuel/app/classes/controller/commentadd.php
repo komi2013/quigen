@@ -38,6 +38,7 @@ class Controller_CommentAdd extends Controller
       $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
       $txt = nl2br($txt);
       $txt .= '<br>&nbsp;&nbsp;<a href="/quiz/?q='.$_POST['q'].'" contenteditable="false">go to quiz</a>';
+      $txt = '<blockquote>'.$txt.'</blockquote>';
       $query = DB::insert('forum');
       $query->set(array(
         'txt' => $txt,

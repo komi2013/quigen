@@ -123,7 +123,7 @@ class Controller_Myquestionadd extends Controller
       
       $txt = htmlspecialchars($_POST['q_txt'], ENT_QUOTES);
       $txt = nl2br($txt);
-      $txt = '<a href="/quiz/?q='.$question_id.'" contenteditable="false">'.$txt.'</a>';
+      $txt = '<cite><a href="/quiz/?q='.$question_id.'" contenteditable="false">'.$txt.'</a></cite>';
       $query = DB::insert('forum');
       $query->set(array(
         'txt' => $txt,

@@ -125,23 +125,25 @@
   </a> </td>
   <td class="<?= $list == 'forum' ? 'this_page' : 'another_page' ?>"> <a href="/myprofile/?list=forum">
     <span class="icon_num"><?=$amt_forum?></span>
-    <img src="/assets/img/icon/pencil.png" class="icon">
+    <img src="/assets/img/icon/list.png" class="icon">
   </a> </td>
-  <td class="<?= $list == 'forum_comment' ? 'this_page' : 'another_page' ?>"> <a href="/myprofile/?list=forum_comment">
-    <span class="icon_num"><?=$amt_forum_comment?></span>
+  <td class="<?= $list == 'msg' ? 'this_page' : 'another_page' ?>"> <a href="/myprofile/?list=msg">
     <img src="/assets/img/icon/chat.png" class="icon">
-  </a> </td>
-  <td class="<?= $list == 'quiz' ? 'this_page' : 'another_page' ?>"> <a href="/myprofile/?list=quiz">
-    <span class="icon_num"><?=$amt_quiz?></span>
-    <img src="/assets/img/icon/quiz_generator.png" class="icon">
   </a> </td>
   </tr>
 </table>
 
 <?php foreach($arr_list as $d ){?>
-<a href="/forum/?f=<?=$d['forum_id']?>"> <div class="div_t" contenteditable="true"> <?=$d['txt']?>
+<div class="div_t">
+  <?php if( $d['img']){?>
+    <img src="<?=$d['img']?>" class="icon">
+  <?php }?>
+  <?=$d['txt']?>
+  <?php if( $d['no_param'] == 0 ){?>
+  &nbsp; &nbsp; <a href="/forum/?f=<?=$d['forum_id']?>"> >> </a>
+  <?php }?>
   <div style="width:100%;text-align:right;"><?=$d['open_time']?></div>
-</div> </a>
+</div>
 <?php } ?>
 
 <?php foreach($day as $d ){?>
@@ -152,6 +154,10 @@
   <?php }?>
 </div>
 <div class="graph_bar" style="width:<?= round($d['answer']/$max * 100)  ?>%;">&nbsp;</div>
+<?php } ?>
+
+<?php foreach($msg_usr as $d ){?>
+<a href="/profile/?u=<?=$d['usr_id']?>&list=msg"><img src="<?=$d['u_img']?>" class="icon" style="padding:20px;"></a>
 <?php } ?>
 
 <table id="cel"></table>

@@ -20,8 +20,7 @@ class Controller_Myprofile extends Controller
     $view->nice = ( isset($res[0]['nice']) ) ? $res[0]['nice'] : 0;
     $view->certify = ( isset($res[0]['certify']) ) ? $res[0]['certify'] : 0;
     $view->amt_quiz = ( isset($res[0]['quiz']) ) ? $res[0]['quiz'] : 0;
-    $view->amt_forum = ( isset($res[0]['forum']) ) ? $res[0]['forum'] : 0;
-    $view->amt_forum_comment = ( isset($res[0]['forum_comment']) ) ? $res[0]['forum_comment'] : 0;
+    $view->amt_forum = ( isset($res[0]['forum']) ) ? $res[0]['forum'] + $res[0]['forum_comment'] : 0;
     
     $res = DB::query("select count(*) as cnt from answer_key_u where usr_id = ".$usr_id)->execute()->as_array();
     $view->amt_answer = $res[0]['cnt'];
@@ -66,15 +65,32 @@ class Controller_Myprofile extends Controller
       .'&redirect_uri='.Config::get('my.gp_callback')    
       ;
     $list = '';
-    $arr_list = []; $day = [];
+    $arr_list = []; $day = []; $msg_usr = [];
     if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
       $list = 'quiz';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum') {
-      $arr_list = DB::query("select * from forum where usr_id = ".$usr_id)->execute()->as_array();
+      $arr = DB::query("select * from forum where usr_id = ".$usr_id." order by open_time desc")->execute()->as_array();
+      foreach ($arr as $k => $d) {
+        $arr1['forum_id'] = $d['id'];
+        $arr1['txt'] = $d['txt'];
+        $arr1['img'] = $d['img'];
+        $date = new DateTime($d['open_time']);
+        $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+        $arr1['no_param'] = $d['no_param'];
+        $arr_list[$d['open_time']] = $arr1;
+      }
+      $arr = DB::query("select * from forum_comment where usr_id = ".$usr_id." order by open_time desc")->execute()->as_array();
+      foreach ($arr as $k => $d) {
+        $arr1['forum_id'] = $d['forum_id'];
+        $arr1['txt'] = $d['txt'];
+        $arr1['img'] = $d['img'];
+        $date = new DateTime($d['open_time']);
+        $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+        $arr1['no_param'] = 0;
+        $arr_list[$d['open_time']] = $arr1;
+      }
+      krsort($arr_list);
       $list = 'forum';
-    } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
-      $arr_list = DB::query("select * from forum_comment where usr_id = ".$usr_id)->execute()->as_array();
-      $list = 'forum_comment';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'graph') {
       $date = new DateTime();
       $i = 0;
@@ -110,18 +126,24 @@ class Controller_Myprofile extends Controller
       }
       $view->max = $max;
       $list = 'graph';
-    }
-    foreach ($arr_list as $k => $d) {
-      $arr_list[$k] = $d;
-      $date = new DateTime($d['open_time']);
-      $arr_list[$k]['open_time'] = $date->format('M/jS H:i');
-      if ( !isset($d['forum_id']) ) {
-        $arr_list[$k]['forum_id'] = $d['id'];
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'msg') {
+      $sql = "SELECT sender, receiver, u_img FROM message WHERE sender = ".$usr_id." OR receiver = ".$usr_id." GROUP BY sender, receiver, u_img";
+      $arr = DB::query($sql)->execute()->as_array();
+      foreach ($arr as $d) {
+        if ($usr_id != $d['sender']) {
+          $usr = $d['sender'];
+        }
+        if ($usr_id != $d['receiver']) {
+          $usr = $d['receiver'];
+        }
+        $msg_usr[$usr] = $d;
+        $msg_usr[$usr]['usr_id'] = $usr;
       }
-      
+      $list = 'msg';
     }
     $view->arr_list = $arr_list;
     $view->day = $day;
+    $view->msg_usr = $msg_usr;
     $view->introduce = $introduce;
     $view->list = $list;
     $view->profile_fb_url = $profile_fb_url;

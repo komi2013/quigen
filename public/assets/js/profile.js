@@ -30,11 +30,7 @@ $('#right').click(function(){
     $('#following0').css({'display': 'none'});
     $('#following1').css({'display': ''});
   }
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '';
-  }
+  var myphoto = localStorage.myphoto ? localStorage.myphoto : '';
   var param = {
     csrf : csrf
     ,receiver : receiver
@@ -125,52 +121,52 @@ function addCel(resData){
     }
   }
 }
+if(list == 'answer'){
+  function getData(first){
+    var param = {
+      endTime : endTime
+      ,usr : receiver
+      ,list : list
+    };
+    $.get('/uquestionshow/',param,function(){},"json")
+    .always(function(res){
+  //     resData = id, txt, img
+      if(res[0]==1){
+        resData = $.merge($.merge([], resData), res[1]);
+        endTime = res[1].pop()[4];
+        if(first == 1){
+          if(list == 'quiz'){
+            addCel(resData);  
+          }else{
+            addCelAnswer(resData);
+          }
 
-function getData(first){
-  var param = {
-    endTime : endTime
-    ,usr : receiver
-    ,list : list
-  };
-  $.get('/uquestionshow/',param,function(){},"json")
-  .always(function(res){
-//     resData = id, txt, img
-    if(res[0]==1){
-      resData = $.merge($.merge([], resData), res[1]);
-      endTime = res[1].pop()[4];
-      if(first == 1){
-        if(list == 'quiz'){
-          addCel(resData);  
-        }else{
-          addCelAnswer(resData);
         }
-        
+      }else if(res[0]==2){
       }
-    }else if(res[0]==2){
-    }
+    });
+  }
+  var dataLimit = 80;
+  $(function(){
+    getData(1);
+    var detect = 300;
+    $(window).scroll(function(){
+      var scrTop = $(document).scrollTop();
+      if(scrTop > detect){
+        detect = detect + 300;
+        addLimit = addLimit + 20;
+        if(addLimit > dataLimit){
+          dataLimit = dataLimit + 80;
+          getData();
+        }
+        if(resData[celNum]){
+          if(list == 'quiz'){
+            addCel(resData);  
+          }else{
+            addCelAnswer(resData);
+          }
+        }
+      }
+    });
   });
 }
-
-var dataLimit = 80;
-$(function(){
-  getData(1);
-  var detect = 300;
-  $(window).scroll(function(){
-    var scrTop = $(document).scrollTop();
-    if(scrTop > detect){
-      detect = detect + 300;
-      addLimit = addLimit + 20;
-      if(addLimit > dataLimit){
-        dataLimit = dataLimit + 80;
-        getData();
-      }
-      if(resData[celNum]){
-        if(list == 'quiz'){
-          addCel(resData);  
-        }else{
-          addCelAnswer(resData);
-        }
-      }
-    }
-  });
-});

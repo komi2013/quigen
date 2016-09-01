@@ -64,6 +64,13 @@ class Controller_Forumcommentadd extends Controller
       ));
       $query->execute();
       DB::query("UPDATE usr SET forum_comment = forum_comment + 1 WHERE id = ".$usr_id)->execute();
+      $query = DB::update('forum');
+      $query->set(array(
+        'open_time' => date("Y-m-d H:i:s"),
+      ));
+      $query->where('id', '=', $forum_id);
+      $query->execute();
+
     } catch (Exception $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn($res[1]);

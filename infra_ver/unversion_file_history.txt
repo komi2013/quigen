@@ -23,3 +23,5 @@ Disallow: /htm/ad/*
 20150721 change logformat into csv
 20150721 add p=ad no_log
 20160328 delete http*conf
+20160715 /etc/php-fpm.d/www.conf changed
+20160901 made public/assets/img/message/ directory
