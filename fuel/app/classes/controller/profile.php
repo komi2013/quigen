@@ -181,7 +181,7 @@ class Controller_Profile extends Controller
       }
       $view->max = $max;
       $list = 'graph';
-    } else if ( isset($_GET['list']) AND $_GET['list'] == 'msg') {
+    } else if ( isset($_GET['list']) AND $_GET['list'] == 'msg' AND $usr_id) {
       $sql = "select * from message where ( sender = ".$_GET['u']." AND receiver = ".$usr_id." ) OR ( sender = "
               .$usr_id." AND receiver = ".$_GET['u']." ) ORDER BY create_at DESC ";
       $arr = DB::query($sql)->execute()->as_array();
