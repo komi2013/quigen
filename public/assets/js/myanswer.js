@@ -38,7 +38,7 @@ function addCel(res){
       quiz_num_txt = 'No.'+res[celNum][10]+' '; // only migration time cz localstorage data
     }
     var append = 
-    '<tr><td colspan="100" class="td_84">'+
+    '<tr><td colspan="100" class="td_84" id="position_'+cellId+'">'+
     '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
     '...</a>'+
     '</td>'+
@@ -102,3 +102,6 @@ if(localStorage.quest){
     localStorage.notify = JSON.stringify(notify);
   }
 }
+$('#position').click(function(){
+  location.href = '/htm/myanswer_offline/#position_'+localStorage.current_q;
+});
