@@ -19,12 +19,13 @@
   $side->this_page = '';
   echo $side;
 ?>
-<?php if(Config::get("my.display_error")){ ?>
+
 <div id="content">
   <h1>production unexpected error</h1>
+<?php if(Config::get("my.display_error")){ ?>
   <?= isset($contents) ? $contents : 'no contents'; ?>
-</div>
 <?php } ?>
+</div>
 <?php Model_Log::warn('production unexpected error');?>
 <script src="/assets/js/basic.js?ver=93"></script>
 <script>
