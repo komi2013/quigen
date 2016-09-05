@@ -21,7 +21,7 @@
 ?>
 <div id="content">
   <h1>fatal error</h1>
-
+<?php if(Config::get("my.display_error")){ ?>
 		<p class="intro"><?php echo $type; ?> [ <?php echo $severity; ?> ]:<br /><?php echo e($message); ?></p>
 
 		<h2 class="first"><?php echo $filepath; ?> @ line <?php echo $error_line; ?></h2>
@@ -31,7 +31,7 @@
 <span<?php echo ($line_num == $error_line) ? ' class="fuel_line fuel_current_line"' : ' class="fuel_line"'; ?>><span class="fuel_line_number"><?php echo str_pad($line_num, (strlen(count($debug_lines))), ' ', STR_PAD_LEFT); ?></span><span class="fuel_line_content"><?php echo $line_content . PHP_EOL; ?>
 </span></span><?php endforeach; ?></pre>
 <?php endif; ?>
-
+<?php }?>
 </div>
 <?php Model_Log::warn('fatal error');?>
 <script src="/assets/js/basic.js?ver=93"></script>
