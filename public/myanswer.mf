@@ -1,7 +1,7 @@
 CACHE MANIFEST
-#ver=94
+#ver=94_2
 CACHE:
-/htm/myanswer/
+/htm/myanswer_offline/
 
 /third/jquery-2.1.1.min.js
 /third/jquery.cookie.js

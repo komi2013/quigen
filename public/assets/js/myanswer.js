@@ -42,7 +42,7 @@ function addCel(res){
       bg = 'style="background-color:#EEEEEE;border-style:hidden;"';
     }
     var append = 
-    '<tr'+bg+'><td colspan="100" class="td_84" id="position_'+cellId+'">'+
+    '<tr '+bg+'><td colspan="100" class="td_84" id="position_'+cellId+'">'+
     '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
     '...</a>'+
     '</td>'+
