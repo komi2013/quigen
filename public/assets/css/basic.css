@@ -33,6 +33,7 @@ h1 {
 #drawer td.this_page {
   background-color: #FCFCFC;
   border-color: silver;
+  text-align: left;
 }
 #ad_div {
   text-align: center;

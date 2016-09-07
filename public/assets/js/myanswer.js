@@ -37,12 +37,16 @@ function addCel(res){
     if(res[celNum][10]){
       quiz_num_txt = 'No.'+res[celNum][10]+' '; // only migration time cz localstorage data
     }
+    var bg = '';
+    if(cellId == localStorage.current_q){
+      bg = 'style="background-color:#EEEEEE;border-style:hidden;"';
+    }
     var append = 
-    '<tr><td colspan="100" class="td_84" id="position_'+cellId+'">'+
+    '<tr'+bg+'><td colspan="100" class="td_84" id="position_'+cellId+'">'+
     '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
     '...</a>'+
     '</td>'+
-    '</tr><tr>'+
+    '</tr><tr '+bg+'>'+
     '<td colspan="50" class="td_49_t">'+
     '<img src="/assets/img/icon/no_internet.png" alt="offline" class="icon" onClick="goOffline('+cellId+')">'+
     '</td>'+
