@@ -12,10 +12,10 @@
     <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/pack/?p='.$_GET['p']?>" />
     <meta property="og:description" content="このクイズを答えたい場合、まずはポイントを購入してもらいそのポイントでクイズを購入してください" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=93"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=93" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=93" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=93" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=94"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=94" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=94" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=94" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -89,10 +89,10 @@
   <script>
     var csrf = '<?=Model_Csrf::setcsrf()?>';
   </script>
-<script src="/assets/js/basic.js?ver=93"></script>
-<script src="/assets/js/check_news.js?ver=93"></script>
+<script src="/assets/js/basic.js?ver=94"></script>
+<script src="/assets/js/check_news.js?ver=94"></script>
 <script src='https://www.paypalobjects.com/js/external/dg.js'></script>
-<script src="/assets/js/request_point.js?ver=93"></script>
+<script src="/assets/js/request_point.js?ver=94"></script>
 <script>
   $(function(){ ga('send','pageview','/request_point/'); });
 </script>
