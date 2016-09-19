@@ -2,7 +2,7 @@
 <html manifest="/myanswer.mf">
   <head>
     <meta charset="UTF-8" />
-    <title>offline</title>
+    <title>offline my answer</title>
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -24,7 +24,7 @@
 <div id="content">
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<table><tr><td class="td_99_c" id="position">previous offline quiz</td></tr></table>
+<table><tr><td class="td_99_c" id="position" >previous offline quiz</td></tr></table>
 <table id="cel"></table>
 </div>
 
@@ -34,7 +34,7 @@ var domain = '<?=Config::get('my.domain')?>';
 </script>
 <script src="/assets/js/check_news.js"></script>
 <script src="/assets/js/basic_offline.js"></script>
-<script src="/assets/js/myanswer.js"></script>
+<script src="/assets/js/myanswer_offline.js"></script>
 <script>  
 if(navigator.onLine){
   $(function(){ ga('send', 'pageview'); });

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver=94_2
+#ver=95
 CACHE:
 /htm/myanswer_offline/
 
@@ -12,7 +12,7 @@ CACHE:
 /assets/js/basic_offline.js
 /assets/js/check_news.js
 /assets/js/quiz_offline.js
-/assets/js/myanswer.js
+/assets/js/myanswer_offline.js
 
 /assets/css/basic.css
 /assets/css/pc.css
