@@ -148,22 +148,6 @@ function decimal_hexadecimal(res){
   }
   return res;
 }
-var day_stamp = Math.floor(new Date().getTime() /1000 /60 /60 /24);
-var day_sum_sync = localStorage.day_sum_sync ? localStorage.day_sum_sync : 0;
-if(day_sum_sync != day_stamp && localStorage.day_sum){
-  var day_sum = localStorage.day_sum;
-  var param = {
-    csrf : ''
-    ,day_sum : day_sum
-  };
-  $.post('/answerbydayadd/',param,function(){},"json")
-  .always(function(res){
-    if(res[0]==1){
-      localStorage.day_sum = '';
-      localStorage.day_sum_sync = day_stamp;
-    }
-  });
-}
 
 /*
 1 = u_answer_amt 1,2,3...10,20,30

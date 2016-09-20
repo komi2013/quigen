@@ -24,7 +24,7 @@
 <div id="content">
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<table><tr><td class="td_99_c" id="position" >previous offline quiz</td></tr></table>
+<table><tr><td class="td_99_c" id="position" style="color: blue;">previous offline quiz</td></tr></table>
 <table id="cel"></table>
 </div>
 

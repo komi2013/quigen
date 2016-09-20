@@ -89,7 +89,7 @@ $('.choice').click(function(){
 var last_answer_stamp = Math.floor(new Date().getTime() /1000);
 function answer_day(){
   var answer_stamp = Math.floor(new Date().getTime() /1000);
-  var day_stamp = Math.floor(answer_stamp /60 /60 /24);
+  var day_stamp = Math.round(answer_stamp /60 /60 /24);
   var day_sum = {};
   var arr_stamp = [0,0];
   if(localStorage.day_sum){
@@ -104,25 +104,15 @@ function answer_day(){
   localStorage.day_sum = JSON.stringify(day_sum);
 }
 function answer_1(this_seq){
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-    var eto_css = '';
-  }else if(localStorage.ua_u_id){
-    var eto = get_eto(localStorage.ua_u_id);
-    var myphoto = eto[2];
-    var eto_css = eto[3];
-  }else{
-    var myphoto = '/assets/img/icon/guest.png';
-    var eto_css = '';
-  }
+  var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';
   if($('#correct').html() == $(this_seq).html()){
     var correct_answer = 1;
-    resCo.unshift([0,'',myphoto,'',eto_css]);
+    resCo.unshift([0,'',ans_photo,'',mybgcolor]);
     amt_co++;
     $('#big_correct').css({'display': ''});
   }else{
     var correct_answer = 0; 
-    resInco.unshift([0,'',myphoto,'',eto_css]);
+    resInco.unshift([0,'',ans_photo,'',mybgcolor]);
     $('#big_incorrect').css({'display': ''});
   }
   $(this_seq).css({
@@ -151,16 +141,6 @@ function answer_1(this_seq){
     localStorage.last_tag = $(this).html();
   });
   var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '';
-  }
-  if(localStorage.myname){
-    var myname = localStorage.myname;
-  }else{
-    var myname = '';
-  }
   var param = {
     csrf : csrf
     ,correct : correct_answer
@@ -276,11 +256,7 @@ $('#sns td a').click(function(){
       notify[2] = 'yet';
       notify[3] = 1;
       notify[4] = notify[4]+1;
-      if(localStorage.news){
-        var news = JSON.parse(localStorage.news);
-      }else{
-        var news = [];
-      }
+      var news = localStorage.news ? JSON.parse(localStorage.news) : [];
       news.unshift('<a href="/htm/quest/">share quiz is completed<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
@@ -426,11 +402,7 @@ $('#comment_add').click(function(){
       notify[2] = 'yet';
       notify[3] = 1;
       notify[4] = notify[4]+1;
-      if(localStorage.news){
-        var news = JSON.parse(localStorage.news);
-      }else{
-        var news = [];
-      }
+      var news = localStorage.news ? JSON.parse(localStorage.news) : [];
       news.unshift('<a href="/htm/quest/">comment is completed<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);

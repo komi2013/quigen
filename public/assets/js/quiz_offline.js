@@ -116,7 +116,7 @@ $('.choice').click(function(){
 var last_answer_stamp = Math.floor(new Date().getTime() /1000);
 function answer_day(){
   var answer_stamp = Math.floor(new Date().getTime() /1000);
-  var day_stamp = Math.floor(answer_stamp /60 /60 /24);
+  var day_stamp = Math.round(answer_stamp /60 /60 /24);
   var day_sum = {};
   var arr_stamp = [0,0];
   if(localStorage.day_sum){
