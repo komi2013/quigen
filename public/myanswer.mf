@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver=95
+#ver=95_1
 CACHE:
 /htm/myanswer_offline/
 
