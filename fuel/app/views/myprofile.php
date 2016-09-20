@@ -117,7 +117,6 @@
 <table>
   <tr>
   <td class="<?= $list == '' ? 'this_page' : 'another_page' ?>"> <a href="/myprofile/">
-    <span class="icon_num"><?=$amt_answer?></span>
     <img src="/assets/img/icon/answer.png" class="icon">
   </a> </td>
   <td class="<?= $list == 'graph' ? 'this_page' : 'another_page' ?>"> <a href="/myprofile/?list=graph">

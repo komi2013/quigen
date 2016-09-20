@@ -43,7 +43,7 @@ function addCel(res){
     }
     var append = 
     '<tr '+bg+' class="del_'+cellId+'"><td colspan="100" class="td_84" id="position_'+cellId+'">'+
-    '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/&lt;br&gt;/g,' ')).substring(0,30)+
+    '<a href="/quiz/?q='+cellId+'">'+result+decodeURIComponent(cellTxt.replace(/\+/g,'%20').replace(/<br>/g,' ')).substring(0,90)+
     '...</a>'+
     '</td>'+
     '</tr><tr '+bg+' class="del_'+cellId+'">'+

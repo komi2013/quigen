@@ -22,7 +22,7 @@ class Controller_Uquestionshow extends Controller
       foreach ($arr_answer_key_u as $k => $d) {
         $res[0] = 1;
         $res[1][$i][0] = $d['question_id'];
-        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['q_txt']), 40);
+        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['q_txt']), 90);
         $res[1][$i][2] = $d['q_img'];
         $res[1][$i][3] = $d['quiz_num'];
         $create_at = new DateTime($d['create_at']);
@@ -44,7 +44,7 @@ class Controller_Uquestionshow extends Controller
       {
         $res[1][$i][0] = $d['id'];
         $txt = Security::htmlentities($d['txt']);
-        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 40);
+        $res[1][$i][1] = Str::truncate(Security::htmlentities($d['txt']), 90);
         $res[1][$i][2] = $img = Security::htmlentities($d['img']);
         $res[1][$i][3] = '';
         $open_time = new DateTime($d['open_time']);

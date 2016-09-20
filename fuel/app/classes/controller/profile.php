@@ -116,7 +116,7 @@ class Controller_Profile extends Controller
       }
       $view->rank = $arr;
     }
-    $list = '';
+    $list = 'answer';
     $arr_list = []; $day = []; $msg_list = [];
     if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
       $list = 'quiz';
