@@ -74,7 +74,7 @@ function delAnswer(cellId) {
     setTimeout(function(){
       localStorage.offline_q = JSON.stringify(new_offline_q);
       $('.del_'+cellId).fadeOut('slow');
-    },1000);
+    },500);
   }
 }
 

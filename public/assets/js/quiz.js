@@ -45,11 +45,7 @@ if(localStorage.ua_u_id && localStorage.ua_u_id == usr){
   //ga('set', 'metric1', usr);
 }
 
-if(localStorage.offline_q){
-  var offline_q = JSON.parse(localStorage.offline_q);
-}else{
-  var offline_q = [];
-}
+var offline_q = localStorage.offline_q ? JSON.parse(localStorage.offline_q) : [];
 
 var already = 0;
 for(var i = 0; i < offline_q.length; i++){
@@ -141,6 +137,8 @@ function answer_1(this_seq){
     localStorage.last_tag = $(this).html();
   });
   var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
+  var myphoto_ans = localStorage.myphoto ? localStorage.myphoto : '';
+  var myname_ans = localStorage.myname ? localStorage.myname : '';
   var param = {
     csrf : csrf
     ,correct : correct_answer
@@ -149,8 +147,8 @@ function answer_1(this_seq){
     ,q_img : q_img
     ,generator : usr
     ,arr_tag : tag
-    ,u_img : myphoto
-    ,u_name : myname
+    ,u_img : myphoto_ans
+    ,u_name : myname_ans
     ,choice_0 : $('#choice_0').html()
     ,choice_1 : $('#choice_1').html()
     ,choice_2 : $('#choice_2').html()
