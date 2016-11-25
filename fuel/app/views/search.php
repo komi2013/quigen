@@ -8,9 +8,6 @@
     <?php } ?>
     <meta name="description" content="<?=$description?>" >
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" >
-<?php foreach($arr_hreflang as $k => $d){ ?>
-    <link rel="alternate" hreflang="<?=$d['code']?>" href="http://<?=Config::get("my.domain")?>/search/?tag=<?=$d['tag']?>" />
-<?php } ?>
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <meta property="og:title" content="<?=$tag?>" />

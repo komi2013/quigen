@@ -76,7 +76,6 @@ class Controller_Search extends Controller
     $view->title = $_GET['tag'].$amt_page;
     $view->description = Str::truncate($description, 200);
     $view->noindex = true;
-    $arr_hreflang = [];
     foreach ($query as $k => $d) {
       if ($no_param) {
         $view->title = $d['title'];
@@ -84,17 +83,7 @@ class Controller_Search extends Controller
       }
       $view->noindex = false;
     }
-    $query = DB::select()->from('mt_seo_tag')->execute()->as_array();
-    $i = 0;
-    foreach ($query as $k => $d) {
-      if ($d['code'] AND $d['tag'] != $_GET['tag']) {
-        $arr_hreflang[$i]['code'] = $d['code'];
-        $arr_hreflang[$i]['tag'] = urlencode($d['tag']);
-        ++$i;
-      }
-    }
     arsort($arr_qu);
-    $view->arr_hreflang = $arr_hreflang; 
     $view->cnt = $cnt; 
     $view->tag = isset($_GET['tag']) ? $_GET['tag'] : '';
     $view->question = $arr_qu;
