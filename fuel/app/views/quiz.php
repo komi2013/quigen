@@ -42,12 +42,21 @@
 <div id="big_result">
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
+<?php if($descriptive){ ?>
+<table>
+  <tr><td><input type="text" maxlength="1000" class="txt_99" id="txt_answer"></td></tr>
+</table>
+<div style="width:98%;text-align:right;">
+  <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="describe">
+</div>
+<?php } else { ?>
 <table>
   <tr><td class="choice" id="choice_0"><?=$arr_choice[0]?></td></tr>
   <tr><td class="choice" id="choice_1"><?=$arr_choice[1]?></td></tr>
   <tr><td class="choice" id="choice_2"><?=$arr_choice[2]?></td></tr>
   <tr><td class="choice" id="choice_3"><?=$arr_choice[3]?></td></tr>
 </table>
+<?php } ?>
 </div>
 <table>
 <tr>
@@ -163,7 +172,11 @@
 </script>
 <script src="/assets/js/basic.js?ver=96"></script>
 <script src="/assets/js/check_news.js?ver=96"></script>
+<?php if($descriptive){ ?>
+<script src="/assets/js/quiz_desc.js?ver=3"></script>
+<?php } else {?>
 <script src="/assets/js/quiz.js?ver=96"></script>
+<?php } ?>
 <script>
 setTimeout(function(){
   ga('set', 'dimension7', iframe);

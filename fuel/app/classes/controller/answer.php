@@ -61,10 +61,10 @@ class Controller_Answer extends Controller
       $answer_key_u->q_txt = preg_replace('/\t/', '　', $q_txt);
       $answer_key_u->q_img = $_POST['q_img'];
       $answer_key_u->create_at = date( "Y-m-d H:i:s" );
-      $answer_key_u->choice_0 = $_POST['choice_0'];
-      $answer_key_u->choice_1 = $_POST['choice_1'];
-      $answer_key_u->choice_2 = $_POST['choice_2'];
-      $answer_key_u->choice_3 = $_POST['choice_3'];
+      $answer_key_u->choice_0 = isset($_POST['choice_0']) ?: '';
+      $answer_key_u->choice_1 = isset($_POST['choice_1']) ?: '';
+      $answer_key_u->choice_2 = isset($_POST['choice_2']) ?: '';
+      $answer_key_u->choice_3 = isset($_POST['choice_3']) ?: '';
       $comment = preg_replace('/\n|\r|\r\n/', '', $_POST['comment']);
       $answer_key_u->comment  = preg_replace('/\t/', '　', $comment);
       $answer_key_u->myanswer = $_POST['myanswer'];
