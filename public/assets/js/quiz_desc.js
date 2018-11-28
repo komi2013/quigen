@@ -83,7 +83,7 @@ function answer_day(){
 }
 function answer_1(this_seq){
   var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';
-  if($('#correct').html() == $('#txt_answer').val()){
+  if($('#correct').html() == $(this_seq).val()){
     var correct_answer = 1;
     resCo.unshift([0,'',ans_photo,'',mybgcolor]);
     amt_co++;
@@ -94,6 +94,10 @@ function answer_1(this_seq){
     resInco.unshift([0,'',ans_photo,'',mybgcolor]);
     $('#big_incorrect').css({'display': ''});
     $(this_seq).css({'background-color': 'red'});
+    $('#choice_co').css({
+        'display': '',
+        'background-color': 'lime'
+    });
   }
   $(this_seq).css({
     'border-width': '1px 1px',
@@ -210,10 +214,10 @@ function after_post(correct_answer){
       if(iframe){
         top.window.location.href = 'http://'+domain+'/quiz/?q='+next_q;        
       }else{
-//        location.href = '/quiz/?q='+next_q;
+        location.href = '/quiz/?q='+next_q;
       }
     }else{
-//      location.href = '/';
+      location.href = '/';
     }
   },1000);
 }

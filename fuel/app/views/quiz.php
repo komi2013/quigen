@@ -46,6 +46,9 @@
 <table>
   <tr><td><input type="text" maxlength="1000" class="txt_99" id="txt_answer"></td></tr>
 </table>
+<table>
+  <tr><td class="choice" id="choice_co" style="display:none;"><?=$correct?></td></tr>
+</table>
 <div style="width:98%;text-align:right;">
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="describe">
 </div>
@@ -173,7 +176,7 @@
 <script src="/assets/js/basic.js?ver=96"></script>
 <script src="/assets/js/check_news.js?ver=96"></script>
 <?php if($descriptive){ ?>
-<script src="/assets/js/quiz_desc.js?ver=3"></script>
+<script src="/assets/js/quiz_desc.js?ver=96"></script>
 <?php } else {?>
 <script src="/assets/js/quiz.js?ver=96"></script>
 <?php } ?>
