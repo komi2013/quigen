@@ -16,17 +16,17 @@ class Model_Choice extends \Orm\Model
     ),
     'choice_1' => array(
       'data_type' => 'varchar',
-      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(500)),
+      'validation' => array('min_length' => array(0), 'max_length' => array(500)),
       'default' => '',
     ),
     'choice_2' => array(
       'data_type' => 'varchar',
-      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(500)),
+      'validation' => array('min_length' => array(0), 'max_length' => array(500)),
       'default' => '',
     ),
     'choice_3' => array(
       'data_type' => 'varchar',
-      'validation' => array('required', 'min_length' => array(1), 'max_length' => array(500)),
+      'validation' => array('min_length' => array(0), 'max_length' => array(500)),
       'default' => '',
     ),
     'reference' => array(

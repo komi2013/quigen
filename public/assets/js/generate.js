@@ -11,12 +11,20 @@ $('#generate').click(function(){
     $('#q_txt').css({'border-color':'red'});
     validate=2;
   }
-  for(i = 0; i < 4; i++){
-    if($('#choice_'+i).val()==''){
-      $('#choice_'+i).css({'border-color':'red'});
+  if(q_type == 'textbox'){
+    if($('#textbox').val()==''){
+      $('#textbox').css({'border-color':'red'});
       validate=2;
     }
+  }else{
+    for(i = 0; i < 4; i++){
+      if($('#choice_'+i).val()==''){
+        $('#choice_'+i).css({'border-color':'red'});
+        validate=2;
+      }
+    }      
   }
+
   if(validate==2){
     return;
   }
@@ -51,7 +59,7 @@ $('#generate').click(function(){
   var param = {
     csrf : csrf
     ,q_txt : $('#q_txt').val()
-    ,choice_0 : $('#choice_0').val()
+    ,choice_0 : $('#choice_0').val() ? $('#choice_0').val() : $('#textbox').val()
     ,choice_1 : $('#choice_1').val()
     ,choice_2 : $('#choice_2').val()
     ,choice_3 : $('#choice_3').val()

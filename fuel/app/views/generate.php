@@ -27,27 +27,28 @@
 <table style="text-align:center;">
 <tr><td><textarea placeholder="Q." maxlength="2000" class="txt_long" id="q_txt"></textarea></td></tr>
 </table>
+<?php if(isset($_GET['q_type']) AND $_GET['q_type'] == 'textbox'){ ?>
 <table id="from_text" style="text-align:center;">
-<tr><td><input type="text" placeholder="O correct" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
-<tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
-<tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
-<tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
+<tr><td><input type="text" placeholder="answer" maxlength="1000" class="txt_99" id="textbox"></td></tr>
 </table>
-<table id="from_device" style="text-align:center;display:none;">
-  <tr><td><input type="text" placeholder="O correct" maxlength="1000" class="choice"></td><td></td></tr>
-  <tr><td><input type="text" placeholder="X incorrect" maxlength="1000" class="choice"></td><td></td></tr>
+<?php } else { ?>
+<table id="from_text" style="text-align:center;">
+<tr><td><input type="text" placeholder="O" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
+<tr><td><input type="text" placeholder="X" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
+<tr><td><input type="text" placeholder="X" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
+<tr><td><input type="text" placeholder="X" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
 </table>
-<table id="from_url" style="text-align:center;display:none;">
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
-<tr><td><input type="text" placeholder="http://***/**.png" maxlength="1000" class="choice"></td></tr>
-</table>
+<?php } ?>
 <div style="width:98%;text-align:right;">
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
 </div>
 <table><tr><td class="td_99_c">option</td></tr></table>
+<?php if(isset($_GET['q_type']) AND $_GET['q_type'] == 'textbox'){ ?>
+<table><tr><td class="td_99_c"><a href="/generate/">multiple choice</a></td></tr></table>
+<?php } else {?>
+<table><tr><td class="td_99_c"><a href="/generate/?q_type=textbox">single textbox</a></td></tr></table>
+<?php } ?>
 <table>
   <tr><td class="tag">#<input type="text" placeholder="add tag.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
@@ -90,10 +91,11 @@
 <script>
 var u_id = '<?=$u_id?>';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
+var q_type = '<?=isset($_GET['q_type']) ? $_GET['q_type'] : ''?>';
 </script>
 <script src="/assets/js/check_news.js?ver=96"></script>
 <script src="/assets/js/basic.js?ver=96"></script>
-<script src="/assets/js/generate.js?ver=96"></script>
+<script src="/assets/js/generate.js?ver=1"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>

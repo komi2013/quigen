@@ -84,9 +84,9 @@ class Controller_Myquestionadd extends Controller
       
       $choice = new Model_Choice();
       $choice->choice_0 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_0']);
-      $choice->choice_1 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_1']);
-      $choice->choice_2 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_2']);
-      $choice->choice_3 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['choice_3']);
+      $choice->choice_1 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', isset($_POST['choice_1']) ? $_POST['choice_1'] : '');
+      $choice->choice_2 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', isset($_POST['choice_2']) ? $_POST['choice_2'] : '');
+      $choice->choice_3 = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', isset($_POST['choice_3']) ? $_POST['choice_3'] : '');
       $choice->question_id = $question_id;
       $choice->reference = preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $_POST['reference']) ?: '';
       $choice->save();
