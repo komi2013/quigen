@@ -95,7 +95,7 @@ var q_type = '<?=isset($_GET['q_type']) ? $_GET['q_type'] : ''?>';
 </script>
 <script src="/assets/js/check_news.js?ver=96"></script>
 <script src="/assets/js/basic.js?ver=96"></script>
-<script src="/assets/js/generate.js?ver=1"></script>
+<script src="/assets/js/generate.js?ver=96"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>
