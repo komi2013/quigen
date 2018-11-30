@@ -14,10 +14,10 @@
     <script src="/third/jquery.cookie.js"></script>
     <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js?ver=96"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=96" />
-    <link rel="stylesheet" href="/assets/css/pc.css?ver=96" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css?ver=96" media="only screen and (max-width : 710px)">
+    <script src="/assets/js/analytics.js?ver=97"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css?ver=97" />
+    <link rel="stylesheet" href="/assets/css/pc.css?ver=97" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css?ver=97" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -148,7 +148,7 @@
 <div class="graph_bar" style="width:<?= round($d['answer']/$max * 100)  ?>%;">&nbsp;</div>
 <?php } ?>
 <?php if($list == 'msg'){ ?>
-<script src="/third/img-touch-canvas_1.js?ver=96"></script>
+<script src="/third/img-touch-canvas_1.js?ver=97"></script>
 <div class="forum_form" id="txt" contenteditable="true"></div>
 <table><tr>
   <td class="td_33">
@@ -188,7 +188,7 @@
     <?=$d?>
   <?php } ?>
 </div>
-<script src="/assets/js/message.js?ver=96"></script>
+<script src="/assets/js/message.js?ver=97"></script>
 <?php } ?>
 
 <?php foreach($msg_list as $d ){?>
@@ -213,9 +213,9 @@
   var list = '<?=$list?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
-<script src="/assets/js/basic.js?ver=96"></script>
-<script src="/assets/js/check_news.js?ver=96"></script>
-<script src="/assets/js/profile.js?ver=96"></script>
+<script src="/assets/js/basic.js?ver=97"></script>
+<script src="/assets/js/check_news.js?ver=97"></script>
+<script src="/assets/js/profile.js?ver=97"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>
