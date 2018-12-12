@@ -354,7 +354,7 @@ return array(
     'PAYPAL_URL' => 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=',
     'PAYPAL_DG_URL' => 'https://www.paypal.com/incontext?token=',
 
-    'dir' => '/prd/juken/',
+    'dir' => '/var/www/juken/',
       
     'top_title' => 'クイジェン | 大学受験の生物、日本史、世界史、英語の問題集',
     'top_description' => 'ログインなしで4択クイズに答えれます。クイズの内容はセンター試験の内容もあります。ランクも表示されます。自分でもプライベートクイズを作成できます。復習機能で単語も覚えやすいです。',
@@ -363,6 +363,7 @@ return array(
     'top_limit' => '20',
       
     'display_error' => false,
+    'lang' => 'jp',
   ),
 
 );

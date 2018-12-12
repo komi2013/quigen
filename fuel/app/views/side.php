@@ -19,10 +19,14 @@
 </table>
 <table id="drawer">
   <tr><td id="ad_menu"><iframe src="/htm/ad_blank/" width="300" height="250" frameborder="0" scrolling="no"></iframe></td></tr>
-  <tr><td id="page_generate"  class="<?= $this_page == 'generate' ? 'this_page' : '' ?>" >             <a href="/generate/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;make quiz</a></td></tr>
-  <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >             <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;make word quiz</a></td></tr>
-  <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >             <a href="/"                            >&nbsp;&nbsp;&nbsp;other quiz</a></td></tr>
-  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >             <a href="/htm/myanswer_offline/" rel="nofollow" >&nbsp;&nbsp;&nbsp;offline</a></td></tr>
+  <tr><td id="page_generate"  class="<?= $this_page == 'generate' ? 'this_page' : '' ?>" >
+    <a href="/generate/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;make quiz</a></td></tr>
+  <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" >
+    <a href="/gene4word/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;make word quiz</a></td></tr>
+  <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" >
+    <a href="/"                            >&nbsp;&nbsp;&nbsp;other quiz</a></td></tr>
+  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >
+    <a href="/htm/myanswer_offline/" rel="nofollow" >&nbsp;&nbsp;&nbsp;offline</a></td></tr>
 <?php /*
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>

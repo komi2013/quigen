@@ -1,45 +1,11 @@
 <?php
 return array(
-	// 'base_url'  => null,
-	// 'url_suffix'  => '',
-	// 'index_file' => false,
-	// 'profiling'  => false,
-	// 'cache_dir'       => APPPATH.'cache/',
-	// 'caching'         => false,
-	// 'cache_lifetime'  => 3600, // In Seconds
-	// 'ob_callback'  => null,
-	// 'errors'  => array(
-		// Which errors should we show, but continue execution? You can add the following:
-		// E_NOTICE, E_WARNING, E_DEPRECATED, E_STRICT to mimic PHP's default behaviour
-		// (which is to continue on non-fatal errors). We consider this bad practice.
-		// 'continue_on'  => array(),
-		// How many errors should we show before we stop showing them? (prevents out-of-memory errors)
-		// 'throttle'     => 10,
-		// Should notices from Error::notice() be shown?
-		// 'notices'      => true,
-		// Render previous contents or show it as HTML?
-		// 'render_prior' => false,
-	// ),
-	// 'language'           => 'en', // Default language
-	// 'language_fallback'  => 'en', // Fallback language when file isn't available for default language
-	// 'locale'             => 'en_US', // PHP set_locale() setting, null to not set
-	//'encoding'  => 'UTF-8',
-	// 'server_gmt_offset'  => 0,
+
 	'default_timezone'   => 'Asia/Tokyo',
 	'log_threshold'    => Fuel::L_WARNING,
-	// 'log_path'         => APPPATH.'logs/',
-	// 'log_date_format'  => 'Y-m-d H:i:s',
 	'security' => array(
-		// 'csrf_autoload'    => false,
-		// 'csrf_token_key'   => 'fuel_csrf_token',
-		// 'csrf_expiration'  => 0,
-		// 'token_salt'            => 'put your salt value here to make the token more secure',
-		// 'allow_x_headers'       => false,
 		'uri_filter'       => array('htmlentities'),
-		// 'input_filter'  => array(),
 		'output_filter'  => array('Security::htmlentities'),
-		// 'htmlentities_flags' => ENT_QUOTES,
-		// 'htmlentities_double_encode' => false,
 		'auto_filter_output'  => false,
 		'whitelisted_classes' => array(
 			'Fuel\\Core\\Presenter',
@@ -52,24 +18,7 @@ return array(
     'cookie' => array(
   		  'expiration'  => 365 * 24 * 60 * 60,
   		 'path'        => '/',
-  		// Restrict the domain that the cookie is available to
-  		// 'domain'      => null,
-  		// Only transmit cookies over secure connections
-  		// 'secure'      => false,
-  		// Only transmit cookies over HTTP, disabling Javascript access
-  		// 'http_only'   => false,
     ),
-	// 'validation' => array(
-		// 'global_input_fallback' => true,
-	// ),
-	 // 'controller_prefix' => 'Controller_',
-	// 'routing' => array(
-		// 'case_sensitive' => true,
-		// 'strip_extension' => true,
-	// ),
-	// 'module_paths' => array(
-	// 	//APPPATH.'modules'.DS
-	// ),
 	'package_paths' => array(
 		PKGPATH
 	),
@@ -77,10 +26,6 @@ return array(
       'packages'  => array(
 		 	  'orm',
       ),
-		// 'modules'  => array(),
-		// 'classes'  => array(),
-		// 'config'  => array(),
-		// 'language'  => array(),
   ),
   'crypt_key' => array(
     'cookie' => 'Ydjome@feF',
@@ -122,7 +67,7 @@ return array(
     'PAYPAL_URL' => 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=',
     'PAYPAL_DG_URL' => 'https://www.sandbox.paypal.com/incontext?token=',
       
-    'dir' => '/prd/english/',
+    'dir' => '/var/www/english/',
       
     'top_title' => "Quigen. let's English study together on the world",
     'top_description' => 'You can answer from 4 choices, able to make your question, chat with anyone who study english all of the world',
@@ -131,6 +76,7 @@ return array(
     'top_limit' => '2',
       
     'display_error' => false,
+    'lang' => 'en',
   ),
 
 );
