@@ -32,12 +32,22 @@
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
 </div>
-<table>
-  <tr><td class="td_99_c">option</td></tr>  
-</table>
 
 <table>
-  <tr><td>#<input type="text" placeholder="add tag.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
+  <tr>
+  <td class="another_page"> <a href="/generate/?q_type=textbox">
+    <img src="/assets/img/icon/textbox.png" class="icon">
+  </a> </td>
+  <td class="another_page"> <a href="/generate/">
+    <img src="/assets/img/icon/choice.png" class="icon">
+  </a> </td>
+  <td class="this_page"> <a href="/gene4word/">
+    <img src="/assets/img/icon/multiple.png" class="icon">
+  </a> </td>
+  </tr>
+</table>
+<table>
+  <tr><td>#<input type="text" placeholder="category" maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
 <div style="display:none;">
 <input type="text" placeholder="add tag.." maxlength="12" class="tag_in" id="tag_1">

@@ -27,7 +27,7 @@
 <table style="text-align:center;">
 <tr><td><textarea placeholder="Q." maxlength="2000" class="txt_long" id="q_txt"></textarea></td></tr>
 </table>
-<?php if(isset($_GET['q_type']) AND $_GET['q_type'] == 'textbox'){ ?>
+<?php if($q_type == 'textbox'){ ?>
 <table id="from_text" style="text-align:center;">
 <tr><td><input type="text" placeholder="answer" maxlength="1000" class="txt_99" id="textbox"></td></tr>
 </table>
@@ -43,14 +43,23 @@
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
   <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">  
 </div>
-<table><tr><td class="td_99_c">option</td></tr></table>
-<?php if(isset($_GET['q_type']) AND $_GET['q_type'] == 'textbox'){ ?>
-<table><tr><td class="td_99_c"><a href="/generate/">multiple choice</a></td></tr></table>
-<?php } else {?>
-<table><tr><td class="td_99_c"><a href="/generate/?q_type=textbox">single textbox</a></td></tr></table>
-<?php } ?>
+
 <table>
-  <tr><td class="tag">#<input type="text" placeholder="add tag.." maxlength="12" class="txt_84" id="tag_0"></td></tr>
+  <tr>
+  <td class="<?= $q_type == 'textbox' ? 'this_page' : 'another_page' ?>"> <a href="/generate/?q_type=textbox">
+    <img src="/assets/img/icon/textbox.png" class="icon">
+  </a> </td>
+  <td class="<?= $q_type == 'choice' ? 'this_page' : 'another_page' ?>"> <a href="/generate/">
+    <img src="/assets/img/icon/choice.png" class="icon">
+  </a> </td>
+  <td class="another_page"> <a href="/gene4word/">
+    <img src="/assets/img/icon/multiple.png" class="icon">
+  </a> </td>
+  </tr>
+</table>
+
+<table>
+  <tr><td class="tag">#<input type="text" placeholder="category" maxlength="12" class="txt_84" id="tag_0"></td></tr>
 </table>
 <div style="display:none;">
 <input type="text" placeholder="add tag.." maxlength="12" class="tag_in" id="tag_1">
@@ -91,7 +100,7 @@
 <script>
 var u_id = '<?=$u_id?>';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
-var q_type = '<?=isset($_GET['q_type']) ? $_GET['q_type'] : ''?>';
+var q_type = '<?=$q_type?>';
 </script>
 <script src="/assets/js/check_news.js?ver=97"></script>
 <script src="/assets/js/basic.js?ver=97"></script>
