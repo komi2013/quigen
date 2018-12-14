@@ -42,7 +42,7 @@
 <div id="big_result">
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
-<?php if($descriptive){ ?>
+<?php if($an_type == 'no_choice' OR $an_type == 'descriptive'){ ?>
 <table>
   <tr><td><input type="text" maxlength="1000" class="txt_99" id="txt_answer"></td></tr>
 </table>
@@ -61,6 +61,19 @@
 </table>
 <?php } ?>
 </div>
+
+<?php if($an_type != 'no_choice'){ ?>
+<table>
+  <tr>
+      <td class="<?= $an_type == 'descriptive' ? 'this_page' : 'another_page' ?>"> <a href="/quiz/?q=<?=$question?>&an_type=descriptive">
+    <img src="/assets/img/icon/textbox.png" class="icon">
+  </a> </td>
+  <td class="<?= $an_type === '' ? 'this_page' : 'another_page' ?>"> <a href="/quiz/?q=<?=$question?>&an_type=choice">
+    <img src="/assets/img/icon/choice.png" class="icon">
+  </a> </td>
+  </tr>
+</table>
+<?php } ?>
 <table>
 <tr>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" alt="correct ratio" class="icon"></td>
@@ -175,7 +188,7 @@
 </script>
 <script src="/assets/js/basic.js?ver=97"></script>
 <script src="/assets/js/check_news.js?ver=97"></script>
-<?php if($descriptive){ ?>
+<?php if($an_type == 'descriptive'){ ?>
 <script src="/assets/js/quiz_desc.js?ver=97"></script>
 <?php } else {?>
 <script src="/assets/js/quiz.js?ver=97"></script>
