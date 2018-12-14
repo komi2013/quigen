@@ -373,3 +373,8 @@ h1 {
 blockquote {
   margin: 0px;
 }
+.td_a {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

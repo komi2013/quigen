@@ -52,14 +52,14 @@
 <div style="width:98%;text-align:right;">
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="describe">
 </div>
-<?php } else { ?>
-<table>
+<?php } ?>
+<table <?= $an_type === '' ? '' : 'style="display:none"'?> >
   <tr><td class="choice" id="choice_0"><?=$arr_choice[0]?></td></tr>
   <tr><td class="choice" id="choice_1"><?=$arr_choice[1]?></td></tr>
   <tr><td class="choice" id="choice_2"><?=$arr_choice[2]?></td></tr>
   <tr><td class="choice" id="choice_3"><?=$arr_choice[3]?></td></tr>
 </table>
-<?php } ?>
+
 </div>
 
 <?php if($an_type != 'no_choice'){ ?>

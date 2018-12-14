@@ -21,13 +21,11 @@
 <table id="drawer">
   <tr><td id="ad_menu"><iframe src="/htm/ad_blank/" width="300" height="250" frameborder="0" scrolling="no"></iframe></td></tr>
   <tr><td id="page_generate"  class="<?= $this_page == 'generate' ? 'this_page' : '' ?>" style="text-align: center;" >
-    <a href="/generate/" rel="nofollow"><img src="/assets/img/icon/pencil.png" class="icon"></a></td></tr>
-  <tr><td id="page_gene4word"  class="<?= $this_page == 'gene4word' ? 'this_page' : '' ?>" style="text-align: center;">
-    <a href="/gene4word/" rel="nofollow">&nbsp;&nbsp;&nbsp;make word quiz</a></td></tr>
+    <a href="/generate/" rel="nofollow" class="td_a"><img src="/assets/img/icon/pencil.png" class="icon"></a></td></tr>
   <tr><td id="page_top"        class="<?= $this_page == 'top'       ? 'this_page' : '' ?>" style="text-align: center;">
-    <a href="/"><img src="/assets/img/icon/home.png" class="icon"></a></td></tr>
-  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" >
-    <a href="/htm/myanswer_offline/" rel="nofollow" ><img src="/assets/img/icon/no_internet.png" class="icon"></a></td></tr>
+    <a href="/" class="td_a"><img src="/assets/img/icon/home.png" class="icon"></a></td></tr>
+  <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" style="text-align: center;">
+    <a href="/htm/myanswer_offline/" rel="nofollow" class="td_a" ><img src="/assets/img/icon/no_internet.png" class="icon"></a></td></tr>
 <?php /*
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>

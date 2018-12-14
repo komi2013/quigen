@@ -29,7 +29,7 @@
 </table>
 <?php if($q_type == 'textbox'){ ?>
 <table id="from_text" style="text-align:center;">
-<tr><td><input type="text" placeholder="answer" maxlength="1000" class="txt_99" id="textbox"></td></tr>
+<tr><td><input type="text" placeholder="A." maxlength="1000" class="txt_99" id="textbox"></td></tr>
 </table>
 <?php } else { ?>
 <table id="from_text" style="text-align:center;">
@@ -46,13 +46,13 @@
 
 <table>
   <tr>
-  <td class="<?= $q_type == 'textbox' ? 'this_page' : 'another_page' ?>"> <a href="/generate/?q_type=textbox">
+  <td class="<?= $q_type == 'textbox' ? 'this_page' : 'another_page' ?>"> <a href="/generate/?q_type=textbox" class="td_a">
     <img src="/assets/img/icon/textbox.png" class="icon">
   </a> </td>
-  <td class="<?= $q_type == 'choice' ? 'this_page' : 'another_page' ?>"> <a href="/generate/">
+  <td class="<?= $q_type == 'choice' ? 'this_page' : 'another_page' ?>"> <a href="/generate/" class="td_a">
     <img src="/assets/img/icon/choice.png" class="icon">
   </a> </td>
-  <td class="another_page"> <a href="/gene4word/">
+  <td class="another_page"> <a href="/gene4word/"class="td_a" >
     <img src="/assets/img/icon/multiple.png" class="icon">
   </a> </td>
   </tr>
