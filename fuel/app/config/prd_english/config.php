@@ -77,6 +77,7 @@ return array(
       
     'display_error' => false,
     'lang' => 'en',
+    'cache_v' => '98',
   ),
 
 );

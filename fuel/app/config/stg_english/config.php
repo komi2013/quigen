@@ -283,7 +283,7 @@ return array(
     'PAYPAL_URL' => 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=',
     'PAYPAL_DG_URL' => 'https://www.sandbox.paypal.com/incontext?token=',
       
-    'dir' => '/stg/english/',
+    'dir' => '/var/www/zstg_english/',
       
     'top_title' => "Quigen. let's English study together on the world",
     'top_description' => 'You can answer from 4 choices, able to make your question, chat with anyone who study english all of the world',
@@ -292,6 +292,8 @@ return array(
     'top_limit' => '2',
 
     'display_error' => true,
+    'lang' => 'en',
+    'cache_v' => "?cache_v=98",
   ),
 
 );

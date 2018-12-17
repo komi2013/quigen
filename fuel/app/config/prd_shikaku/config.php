@@ -76,6 +76,7 @@ return array(
       
     'display_error' => false,
     'lang' => 'jp',
+    'cache_v' => '98',
   ),
 
 );
