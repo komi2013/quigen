@@ -10,7 +10,7 @@ class Controller_Admintopcreate extends Controller
         $auth = true;
       }
     }
-    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '153.126.217.154') {
+    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.18.20.148') {
       $view = View::forge('404');
       die($view);
     }
