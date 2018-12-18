@@ -28,13 +28,13 @@ class Controller_Myprofile extends Controller
     $view->forum = DB::query("select * from forum where usr_id = ".$usr_id)->execute()->as_array();
     $view->forum_comment = DB::query("select * from forum_comment where usr_id = ".$usr_id)->execute()->as_array();
 
-    $profile_fb_url = 'http://www.facebook.com/sharer.php?u=http://'
+    $profile_fb_url = 'https://www.facebook.com/sharer.php?u=https://'
       .Config::get('my.domain')
       .'/profile/?u='
       .$usr_id
       .'%26cpn=share_fb'
       ;
-    $profile_tw_url = 'https://twitter.com/intent/tweet?url=http://'
+    $profile_tw_url = 'https://twitter.com/intent/tweet?url=https://'
       .Config::get('my.domain')
       .'/profile/?u='
       .$usr_id
@@ -44,17 +44,17 @@ class Controller_Myprofile extends Controller
       ;
     $profile_ln_url = 'line://msg/text/?'
       .$introduce
-      .'%0D%0Ahttp://'
+      .'%0D%0Ahttps://'
       .Config::get('my.domain')
       .'/profile/?u='
       .$usr_id
       .'%26cpn=share_ln'
       ;
-    $profile_clip_url = 'http://'.Config::get('my.domain').'/profile/?u='.$usr_id;
+    $profile_clip_url = 'https://'.Config::get('my.domain').'/profile/?u='.$usr_id;
     
     $view->fb_url = 'https://www.facebook.com/dialog/oauth?client_id='
       .Config::get('my.fb_id')
-      .'&redirect_uri=http://'
+      .'&redirect_uri=https://'
       .$_SERVER['HTTP_HOST']
       .'/fboauth/'
       ;

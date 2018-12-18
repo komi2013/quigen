@@ -7,12 +7,12 @@ class Controller_FbOAuth extends Controller
     $client_secret = Config::get('my.fb_secret');
 
     $fb_url = 'https://graph.facebook.com/oauth/access_token?';
-    $redirect_uri = 'redirect_uri=http://'.$_SERVER['HTTP_HOST'].'/fboauth/&';
+    $redirect_uri = 'redirect_uri=https://'.$_SERVER['HTTP_HOST'].'/fboauth/&';
 
     $contents = file_get_contents($fb_url.'client_id='.$client_id.'&'.$redirect_uri.'client_secret='.$client_secret.'&code='.$_GET['code']);
+    $contents = json_decode($contents,true);
 
-    $arr_url = preg_split('/=/', $contents, -1, PREG_SPLIT_OFFSET_CAPTURE);
-    $contents = file_get_contents('https://graph.facebook.com/me?access_token='.$arr_url[1][0]);
+    $contents = file_get_contents('https://graph.facebook.com/me?access_token='.$contents['access_token']);
     $contents = json_decode($contents);
     $id = $contents->id;
     $arr_pv_usr = DB::query("SELECT * FROM usr WHERE pv_u_id = '".$id."' AND provider = 1 ")->execute()->as_array();
@@ -23,6 +23,7 @@ class Controller_FbOAuth extends Controller
     $js_answer = [];
     $js_answer_by_u = [];
     $introduce = '';
+    
     if ( isset($arr_pv_usr[0]['id']) ) {
       if ( isset($usr_id) AND $usr_id != $arr_pv_usr[0]['id']) {
         Response::redirect('/myprofile/?warn=logout');
@@ -39,7 +40,7 @@ class Controller_FbOAuth extends Controller
       $usr->pv_u_id = $id;
       $usr->provider = 1;
       $usr->name = $myname = $contents->name;
-      $usr->img = $myphoto = 'http://graph.facebook.com/'.$id.'/picture';
+      $usr->img = $myphoto = 'https://graph.facebook.com/'.$id.'/picture';
       $usr->update_at = date("Y-m-d H:i:s");
       $usr->save();
       $point = 0;
