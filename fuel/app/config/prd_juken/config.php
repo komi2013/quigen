@@ -330,14 +330,14 @@ return array(
 
     'tw_key' => 'mFiNn1AulUfkMgAmuCV0FVJoV',
     'tw_secret' => 'N0GL6v2hHN4T8bp0SmcisZkU76CjaKHr6N8ojE2J9u76qXjoMm',
-    'tw_callback' => 'http://juken.quigen.info/twcallback/',
+    'tw_callback' => 'https://juken.quigen.info/twcallback/',
     'tw_access' => '2864849020-e1kyCRpZj42grGkQUiRVvxx8l39DwOQoXOmb4ju',
     'tw_access_secret' => 'gZ5YhhWkVVlV6s11qIrVmlOhPb0yKdb7x2WRvbhPPY1Uo',
 
     'gp_id' => '273637196335-kra4770crt5djul7v51f43vd0gvv2o0s.apps.googleusercontent.com',
     'gp_secret' => 'eOTFQ6Xc9-lomLnEnouDbCzP',
-    'gp_callback' => 'http://juken.quigen.info/gpcallback/',
-    'gp_login' => 'http://juken.quigen.info/gplogin/',
+    'gp_callback' => 'https://juken.quigen.info/gpcallback/',
+    'gp_login' => 'https://juken.quigen.info/gplogin/',
 
     'adm' => array(
         11  //facebook komatsuka@yahoo.com
@@ -364,7 +364,7 @@ return array(
       
     'display_error' => false,
     'lang' => 'jp',
-    'cache_v' => '98',
+    'cache_v' => "?cache_v=98",
   ),
 
 );

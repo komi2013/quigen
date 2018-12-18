@@ -41,14 +41,14 @@ return array(
 
     'tw_key' => 'RYk3vRhp2agjW5pOqYcTkRSGb',
     'tw_secret' => 'YyeQiBTlnswdsZn9Vil1drxllxsYJgYBe7AhpDVVo1qR9FD9FX',
-    'tw_callback' => 'http://shikaku.quigen.info/twcallback/',
+    'tw_callback' => 'https://shikaku.quigen.info/twcallback/',
     'tw_access' => '2864849020-Xa38CqNBpvMXTi9MuC6bpFRvaOhUPqIyz98l2wy',
     'tw_access_secret' => 'MRVVF8HMh7zRlgWJZRYHloDQU9DnZvClTGferZVBT0xSx',
 
     'gp_id' => '527982563510-2i8h8q76jkupd8nrvf5evkv244o2kqe6.apps.googleusercontent.com',
     'gp_secret' => 'cie4WYM-K5Ab4TNFw3ZNnN3c',
-    'gp_callback' => 'http://shikaku.quigen.info/gpcallback/',
-    'gp_login' => 'http://shikaku.quigen.info/gplogin/',
+    'gp_callback' => 'https://shikaku.quigen.info/gpcallback/',
+    'gp_login' => 'https://shikaku.quigen.info/gplogin/',
 
     'adm' => array(
         11  //facebook komatsuka@yahoo.com
@@ -76,7 +76,7 @@ return array(
       
     'display_error' => false,
     'lang' => 'jp',
-    'cache_v' => '98',
+    'cache_v' => "?cache_v=98",
   ),
 
 );

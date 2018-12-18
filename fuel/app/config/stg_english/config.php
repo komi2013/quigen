@@ -258,7 +258,7 @@ return array(
 
     'tw_key' => 'bQRI6emWEmsqJZ46CCnoyRCTA',
     'tw_secret' => 'er9BHX0sqkDCrAyV9hTIBKJTqCfigZ7qpNRr7nxQEar3Tps5wh',
-    'tw_callback' => 'http://english-stg.quigen.info/twcallback/',
+    'tw_callback' => 'https://zstg-english.quigen.info/twcallback/',
     'tw_access' => '2864849020-yVk2qA42EhF042mWqzQj7tLrv2ERHxpNsGKj55b',
     'tw_access_secret' => 'G3xct3C4wZXvoHxGmuWSXDqbFwMOpPZ6uG8vEEltb3spu',
 
