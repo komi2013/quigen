@@ -243,6 +243,7 @@ return array(
 		// 'config'  => array(),
 		// 'language'  => array(),
   ),
+
   'crypt_key' => array(
     'cookie' => 'Qdjsme@ffY',
     'correct' => 'Pdslkmkkll',
@@ -250,7 +251,7 @@ return array(
   ),
 
   'my' => array(
-    'domain' => 'english-stg.quigen.info',
+    'domain' => 'zstg-english.quigen.info',
     'sitemap' => 's3V-64fqf7q7n0h1RNvJARHEBvbrIocNaH7tos3JzWU',
 
     'fb_id' => '1212985642054775',
@@ -264,8 +265,8 @@ return array(
 
     'gp_id' => '680215777007-8ph080ejb43s6eqke232rg3tqu1fgjs8.apps.googleusercontent.com',
     'gp_secret' => 'GAGkwYIYBbmfSNr7UELOMwsI',
-    'gp_callback' => 'http://english-stg.quigen.info/gpcallback/',
-    'gp_login' => 'http://english-stg.quigen.info/gplogin/',
+    'gp_callback' => 'https://zstg-english.quigen.info/gpcallback/',
+    'gp_login' => 'https://zstg-english.quigen.info/gplogin/',
 
     'adm' => array(
         11  //facebook komatsuka@yahoo.com
@@ -293,7 +294,7 @@ return array(
 
     'display_error' => true,
     'lang' => 'en',
-    'cache_v' => "?cache_v=98",
+    'cache_v' => "?cache_v=98"      
   ),
 
 );

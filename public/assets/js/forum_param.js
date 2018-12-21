@@ -58,7 +58,7 @@ for (var i=0; i<arr_certify.length; i++){
 var certified = localStorage.certified ? localStorage.certified : 0;
 $('.certify').click(function(){
   if(certified > (hour_stamp - 20) ){
-    alert('only once a day');
+    alert(''+ certified - (hour_stamp - 20) + '時間後、可能です。');
     return;
   }
   var is_certify = false;

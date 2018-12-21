@@ -338,7 +338,7 @@ if(localStorage.answer_by_u){
 
 var rank = ''
   +'<tr>'
-    +'<td class="td_68_c">tag category</td>'
+    +'<td class="td_68_c">'+tag_category+'</td>'
     +'<td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>'
     +'<td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>'
   +'</tr>';
