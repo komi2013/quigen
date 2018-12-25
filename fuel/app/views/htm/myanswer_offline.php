@@ -31,6 +31,9 @@
 <div id="ad_right"></div>
 <script>
 var domain = '<?=Config::get('my.domain')?>';
+var del = '<?=Config::get("lang.delete")?>';
+var no_ = '<?=Config::get("lang.no_")?>';
+var mon = '<?=Config::get("lang.mon")?>';
 </script>
 <script src="/assets/js/check_news.js"></script>
 <script src="/assets/js/basic_offline.js"></script>

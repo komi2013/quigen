@@ -3,7 +3,7 @@ if(localStorage.last_tag){
 }
 $('#generate').click(function(){
   if(!u_id){
-    alert('answer first');
+    alert(answer_first);
     return;
   }
   var validate = 1;
@@ -41,7 +41,7 @@ $('#generate').click(function(){
       }else{
         var news = [];
       }
-      news.unshift('<a href="/htm/quest/">making quiz is completed<img src="/assets/img/icon/star_1.png"></a>');
+      news.unshift('<a href="/htm/quest/">'+made_quiz+'<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
     }

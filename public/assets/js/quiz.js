@@ -255,7 +255,7 @@ $('#sns td a').click(function(){
       notify[3] = 1;
       notify[4] = notify[4]+1;
       var news = localStorage.news ? JSON.parse(localStorage.news) : [];
-      news.unshift('<a href="/htm/quest/">share quiz is completed<img src="/assets/img/icon/star_1.png"></a>');
+      news.unshift('<a href="/htm/quest/">'+shared_quiz+'<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
     }
@@ -340,7 +340,7 @@ function tag_show(){
         $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]['txt']+'">#'+res[1][i]['txt']+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
-      $('#question').prepend('No.'+res[1][0]['quiz_num']+' ');
+      $('#question').prepend(no_+res[1][0]['quiz_num']+mon);
       quiz_num = res[1][0]['quiz_num'];
       if(res[3] && res[3][0]){
         next_q = res[3][0];
@@ -364,7 +364,7 @@ function addNavi(res,nextPrev) {
     '<img src="'+res[nextPrev][2]+'" alt="quiz" class="icon"></a>'+
     '</td><td colspan="85" class="td_84_t">'+
     '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
-    'No.'+res[nextPrev][3]+' '+decodeURIComponent(res[nextPrev][1])+
+    no_+res[nextPrev][3]+mon+decodeURIComponent(res[nextPrev][1])+
     '</a>'+
     '</td>'+
     '</tr>';
@@ -372,7 +372,7 @@ function addNavi(res,nextPrev) {
     append = 
     '<tr><td colspan="100" class="td_84_t">'+
     '<a href="/quiz/?q='+res[nextPrev][0]+'">'+
-    'No.'+res[nextPrev][3]+' '+decodeURIComponent(res[nextPrev][1])+
+    no_+res[nextPrev][3]+mon+decodeURIComponent(res[nextPrev][1])+
     '</a>'+
     '</td>'+
     '</tr>';
@@ -381,7 +381,7 @@ function addNavi(res,nextPrev) {
 }
 $('#comment_add').click(function(){
   if(!u_id){
-    alert('answer first');
+    alert(answer_first);
     return;
   }
   var validate = 1;
@@ -401,7 +401,7 @@ $('#comment_add').click(function(){
       notify[3] = 1;
       notify[4] = notify[4]+1;
       var news = localStorage.news ? JSON.parse(localStorage.news) : [];
-      news.unshift('<a href="/htm/quest/">comment is completed<img src="/assets/img/icon/star_1.png"></a>');
+      news.unshift('<a href="/htm/quest/">'+commented+'<img src="/assets/img/icon/star_1.png"></a>');
       localStorage.news = JSON.stringify(news);
       localStorage.notify = JSON.stringify(notify);
     }
@@ -430,69 +430,6 @@ $('#comment_add').click(function(){
   return false;
 });
 $('#report').click(function(){
-  $('#comment_data').append('#report ');
+  $('#comment_data').append(report);
   location.hash = "comment_data" ;
-});
-$('#0pt').click(function(){
-  if(!u_id){
-    alert('answer first');
-    return;
-  }
-  r = confirm('buy quiz with 0 point');
-  if(r){
-    var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
-    var param = {
-      csrf : csrf
-      ,q_id: q_id
-      ,q_txt : $('#question').html()
-      ,q_img : q_img
-      ,point: 0
-      ,usr: usr
-    };
-    $.post('/quizbuy/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else{
-        alert('connection error');
-      }
-    });
-    
-  }
-  ga('set','dimension16','buy_0');  
-  ga('send','event','buy_on_quiz',0,usr,1);  
-  return false;
-});
-$('#20pt').click(function(){
-  if(!localStorage.point || localStorage.point < 20){
-    alert('no point');
-    return;
-  }
-  if(!u_id){
-    alert('answer first');
-    return;
-  }
-  r = confirm('buy quiz with 20 point');
-  if(r){
-    var q_img = ($('#photo').attr('src'))? $('#photo').attr('src') : '' ;
-    var param = {
-      csrf : csrf
-      ,q_id: q_id
-      ,q_txt : $('#question').html()
-      ,q_img : q_img
-      ,point: 20
-      ,usr: usr
-    };
-    $.post('/quizbuy/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
-        csrf = res[1];
-      }else{
-        alert('connection error');
-      }
-    });
-  }
-  ga('set','dimension16','buy_20');  
-  ga('send','event','buy_on_quiz',20,usr,1);  
-  return false;
 });

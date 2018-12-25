@@ -36,7 +36,9 @@
 <table id="cel"></table>
 </div>
 <div id="ad_right"></div>
-
+<script>
+  var checked_rank = '<?=Config::get("lang.checked_rank")?>';
+</script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/rank.js<?=Config::get("my.cache_v")?>"></script>

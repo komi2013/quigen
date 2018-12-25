@@ -48,7 +48,7 @@ if(localStorage.offline_q){
   $('#choice_3').empty().append(ch_3);
   $('#comment').empty().append(comment);
   if(quiz_num){
-    $('.unread').append('No.'+quiz_num+' ');  
+    $('.unread').append(no_+quiz_num+mon);  
   }
   document.title = q_txt.slice(0,30);
   if(q_img){

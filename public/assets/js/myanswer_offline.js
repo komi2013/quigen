@@ -33,10 +33,6 @@ function addCel(res){
     }else{
       var result = '<img src="/assets/img/icon/cross_big.png" alt="incorrect" class="icon result" id="img_'+cellId+'">';
     }
-    var quiz_num_txt = '';
-    if(res[celNum][10]){
-      quiz_num_txt = 'No.'+res[celNum][10]+' '; // only migration time cz localstorage data
-    }
     var bg = '';
     if(cellId == localStorage.current_q){
       bg = 'style="background-color:#EEEEEE;border-style:hidden;"';
@@ -61,7 +57,7 @@ function addCel(res){
 }
 
 function delAnswer(cellId) {
-  r = confirm('delete');
+  r = confirm(del);
   if(r){
     var new_offline_q = [];
     var i2 = 0;

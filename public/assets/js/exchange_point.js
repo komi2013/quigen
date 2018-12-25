@@ -83,7 +83,7 @@ $('#generate_send').click(function(){
   $.post('/forumadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
-      $('#after_post').empty().append('thanks. you will know <a href="/htm/?p=news">on this page</a>');
+      $('#after_post').empty().append(thanks);
       csrf = res[1];
     }else{
       $('#success').css({'display': 'none'});  

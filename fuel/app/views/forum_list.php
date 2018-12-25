@@ -133,6 +133,7 @@
   var u_id = '<?=$u_id?>';
   var nextPage = '<?=$next_page?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var checked_chat = '<?=Config::get("lang.checked_chat")?>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>

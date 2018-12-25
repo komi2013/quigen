@@ -157,26 +157,12 @@
   <img src="/assets/img/icon/exclamation.png" alt="report" class="icon" id="report">
 </div>
 
-<table style="display: none;">
-<tr><td colspan="2" class="td_98">buy this quiz</td></tr>
-<tr>
-<td class="td_32">
-  <a href="#" id="20pt">20 pt</a>
-</td>
-<td class="td_32">
-  <a href="#" id="0pt">0 pt</a>
-</td>
-</tr>
-</table>
-
-
 </div>
 <?php if( !isset($_GET['iframe']) ){?>
 <div id="ad_right"></div>
 <?php } ?>
 <div id="correct" style="display: none;"><?=$correct?></div>
 <script>
-  
   var q_id = '<?=$question?>';
   var usr = '<?=$usr?>';
   var q_data = '<?=$q_data?>';
@@ -184,7 +170,11 @@
   var csrf = '<?=Model_Csrf::setcsrf()?>';
   var iframe = '<?=isset($_GET['iframe'])?>';
   var domain = '<?=Config::get('my.domain')?>';
-
+  var no_ = '<?=Config::get("lang.no_")?>';
+  var mon = '<?=Config::get("lang.mon")?>';
+  var shared_quiz = '<?=Config::get("lang.shared_quiz")?>';
+  var commented = '<?=Config::get("lang.commented")?>';
+  var report = '<?=Config::get("lang.report")?>';
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>

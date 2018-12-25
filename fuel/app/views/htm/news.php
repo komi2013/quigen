@@ -31,6 +31,7 @@
 <div id="ad_right"></div>
 <script>
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var follow_confirm = '<?=Config::get("lang.follow_confirm")?>';
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/news.js<?=Config::get("my.cache_v")?>"></script>

@@ -1,5 +1,5 @@
 if(getVal.warn){
-  alert('please logout,delete first');
+  alert(please_logout);
   location.href = '/myprofile/';
 }
 
@@ -22,7 +22,7 @@ if(localStorage.quest){
     }else{
       var news = [];
     }
-    news.unshift('<a href="/htm/quest/">mypage is completed<img src="/assets/img/icon/star_1.png"></a>');
+    news.unshift('<a href="/htm/quest/">'+checked_mypage+'<img src="/assets/img/icon/star_1.png"></a>');
     localStorage.news = JSON.stringify(news);
     localStorage.notify = JSON.stringify(notify);
   }
@@ -40,7 +40,7 @@ if(localStorage.login_db){
 }
 
 $('.auth').click(function(){
-  r = confirm('login,synchronize');
+  r = confirm(login);
   if(r){
     (localStorage.myphoto)? myphoto = localStorage.myphoto : myphoto = '';
     (localStorage.myname)? myname = localStorage.myname : myname = '';
@@ -55,7 +55,7 @@ $('.auth').click(function(){
 var childWindow;
 $('#photo').click(function() {
   if(!u_id){
-    alert('answer first');
+    alert(answer_first);
     return;
   }
   childWindow = window.open("/htm/photo/", "winB");
@@ -78,7 +78,7 @@ function winCloseB(){
 
 $('#generate').click(function(){
   if(!u_id){
-    alert('answer first');
+    alert(answer_first);
     return;
   }
   var validate = 1;
@@ -93,7 +93,7 @@ $('#generate').click(function(){
   if(validate==2){
     return;
   }
-  r = confirm('change profile');
+  r = confirm(change_profile);
   if(r){
     $('#generate').css({'display': 'none'});  
     $('#success').css({'display': ''});
@@ -141,7 +141,7 @@ function checkClick(){
 }
 
 $('#del_cookie').click(function(){
-  r = confirm('logout,delete');
+  r = confirm(logout);
   if(r){
     localStorage.clear();
     $.post('/myprofiledel/',{csrf:csrf},function(){},"json")
@@ -155,7 +155,7 @@ $('#del_cookie').click(function(){
 
 if(getVal.list && getVal.list == 'quiz'){
   function delQuiz(cellId){
-    r = confirm('delete');
+    r = confirm(del);
     if(r){
       var quiz_id=[cellId];
       var param = {
@@ -282,7 +282,7 @@ if(getVal.list && getVal.list == 'quiz'){
       }
       var quiz_num_txt = '';
       if(res[celNum][10]){
-        quiz_num_txt = 'No.'+res[celNum][10]+' '; // only migration time cz localstorage data
+        quiz_num_txt = no_+res[celNum][10]+mon; // only migration time cz localstorage data
       }
       var append = 
       '<tr><td colspan="100" class="td_84">'+
@@ -304,7 +304,7 @@ if(getVal.list && getVal.list == 'quiz'){
   }
 
   function delAnswer(cellId) {
-    r = confirm('delete');
+    r = confirm(del);
     if(r){
       var new_offline_q = [];
       var i2 = 0;

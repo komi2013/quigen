@@ -167,6 +167,16 @@
 <script>
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var del = '<?=Config::get("lang.delete")?>';
+  var no_ = '<?=Config::get("lang.no_")?>';
+  var mon = '<?=Config::get("lang.mon")?>';
+  var please_logout = '<?=Config::get("lang.please_logout")?>';
+  var checked_mypage = '<?=Config::get("lang.checked_mypage")?>';
+  var login = '<?=Config::get("lang.login")?>';
+  var answer_first = '<?=Config::get("lang.answer_first")?>';
+  var change_profile = '<?=Config::get("lang.change_profile")?>';
+  var logout = '<?=Config::get("lang.logout")?>';
+  var tag_category = '<?=Config::get("lang.tag_category")?>';
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>

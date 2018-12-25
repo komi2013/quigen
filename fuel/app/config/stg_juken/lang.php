@@ -4,12 +4,11 @@
 return array(
 
     'answer first' => 'はじめにクイズに答えてください',
-    'thanks' => 'ありがとうございます。3日以内に<a href="/htm/?p=news">お知らせを送ります。</a>',
+    'thanks' => 'ありがとうございます。3日以内に<a href="/htm/?p=news">お知らせを送ります</a>',
     'delete' => '削除します',
     'confirm' => '承認します',
-//    '<a href="/htm/quest/">chat is completed<img src="/assets/img/icon/star_1.png"></a>'
-    'chat is completed' => '<a href="/htm/quest/">チャットを確認しました。<img src="/assets/img/icon/star_1.png"></a>',
-    'after ' => '',' hours, please' => '時間後、可能です。',
+    'chat is completed' => 'チャットを確認しました',
+    'after ' => '',' hours, please' => '時間後、可能です',
 //    '<a href="/htm/quest/">making quiz is completed<img src="/assets/img/icon/star_1.png"></a>'
     'making quiz' => '<a href="/htm/quest/">クイズを作成しました<img src="/assets/img/icon/star_1.png"></a>',
     'No.' => '第', ' mon' => '問',

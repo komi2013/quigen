@@ -143,6 +143,8 @@
   var arr_comment = JSON.parse( '<?=$js_comment_id?>' );
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var after = '<?=Config::get("lang.after")?>';
+  var hours_please = '<?=Config::get("lang.hours_please")?>';
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>

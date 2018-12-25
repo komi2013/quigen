@@ -7,7 +7,7 @@ function checkClick(status,u_id){
 }
 
 $('#delete').click(function(){
-  r = confirm('delete');
+  r = confirm(del);
   if(r){
     var arr_u=[];
     $('[name="u_id"]:checked').each(function(){

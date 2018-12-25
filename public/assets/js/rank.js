@@ -28,7 +28,7 @@ if(localStorage.quest){
     }else{
       var news = [];
     }
-    news.unshift('<a href="/htm/quest/">rank is completed<img src="/assets/img/icon/star_1.png"></a>');
+    news.unshift('<a href="/htm/quest/">'+checked_rank+'<img src="/assets/img/icon/star_1.png"></a>');
     localStorage.news = JSON.stringify(news);
     localStorage.notify = JSON.stringify(notify);
   }

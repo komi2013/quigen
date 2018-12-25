@@ -13,7 +13,7 @@ function checkClick(status,u_id){
 }
 
 $('#delete').click(function(){
-  r = confirm('delete');
+  r = confirm(del);
   if(r){
     var arr_u=[];
     $('[name="u_id"]:checked').each(function(){
@@ -37,7 +37,7 @@ $('#delete').click(function(){
 });
 
 $('#confirm').click(function(){
-  r = confirm('confirm');
+  r = confirm(confirm);
   if(r){
     var arr_u=[];
     $('[name="u_id"]:checked').each(function(){

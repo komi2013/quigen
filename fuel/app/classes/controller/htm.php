@@ -10,12 +10,16 @@ class Controller_Htm extends Controller
     header('Cache-Control: private, max-age=' . $expires);
     header('Pragma: ');
     $file = $this->param('one');
-    if ( !file_exists(APPPATH.'views/htm/'.$file.'.php') ) {
-      die( View::forge('404') );
+    $is = false;
+    if (file_exists(APPPATH.'views/htm/'.$file.'.php')) {
+        $view = View::forge('htm/'.$file);
+        $view->u_id = Model_Cookie::get_usr();
+        die($view);        
     }
-    $view = View::forge('htm/'.$file);
-    $view->u_id = Model_Cookie::get_usr();
-    die($view);
+    if ( file_exists(APPPATH.'views/htm/'.$file.'_'.Config::get("my.lang").'.php') ) {
+        
+    }
+    die( View::forge('404') );
   }
 
 }

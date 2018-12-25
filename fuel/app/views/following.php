@@ -31,6 +31,7 @@
 <script>
   var sender = '<?=$sender?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var del = '<?=Config::get("lang.delete")?>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>

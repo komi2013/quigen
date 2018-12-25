@@ -88,7 +88,8 @@
 
 <script>
   var arr_answer = JSON.parse( '<?= json_encode($arr_answer) ?>' );
-  var mydomain = "<?=Config::get('my.domain')?>";
+  var mydomain = '<?=Config::get('my.domain')?>';
+  var checked_top = '<?=Config::get('lang.checked_top')?>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>

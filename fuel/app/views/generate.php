@@ -101,6 +101,8 @@
 var u_id = '<?=$u_id?>';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
 var q_type = '<?=$q_type?>';
+var made_quiz = '<?=Config::get("lang.made_quiz")?>';
+var answer_first = '<?=Config::get("lang.answer_first")?>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
