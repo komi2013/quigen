@@ -34,13 +34,6 @@ class Controller_Quiz extends Controller
       $view = View::forge('quiz_amp');
     } else if ( (isset($arr_choice_1[0]['choice_1']) AND !$arr_choice_1[0]['choice_1'] )) {
       $an_type = 'no_choice';
-    } else if (Input::get('an_type') == 'descriptive') {
-      $an_type = 'descriptive';
-      Cookie::set('an_type', 'descriptive');
-    } else if (!Input::get('an_type') AND Cookie::get('an_type') == 'descriptive') {
-      $an_type = 'descriptive';
-    } else if(Input::get('an_type') === '' OR Input::get('an_type') == 'choice') {
-      Cookie::delete('an_type');
     }
 
     $description = 

@@ -2,6 +2,22 @@ quizUsrShow();
 answer_by_q_show();
 tag_show();
 
+$('.textbox').hide();
+$('.choice_q').hide();
+$('.alter_an').hide();
+var click_ele = '#descriptive';
+
+if(an_type == 'choice_an'){
+  $('.choice_q').show();
+  click_ele = '.choice';
+}
+if(an_type == 'textbox' || an_type == 'no_choice'){
+  $('.textbox').show();
+}
+if(an_type != 'no_choice'){
+  $('.alter_an').show();
+}
+
 function shuffle(array) {
   var m = array.length, t, i;
   while (m) {
@@ -54,7 +70,7 @@ for(var i = 0; i < offline_q.length; i++){
   }
 }
 var clicked = 0;
-$('.choice').click(function(){
+$(click_ele).click(function(){
   if(clicked == 2){
     return;
   }
@@ -65,7 +81,7 @@ $('.choice').click(function(){
     'border-color': 'silver',
     'border-style': 'solid'
   });
-  var this_seq = $(this);
+  var this_seq = click_ele == '#describe' ? $('#txt_answer') : $(this);
   if(ticket[0] < 1){
     $('#ticket').css({ 'color': 'red' });
   }
@@ -106,13 +122,22 @@ function answer_1(this_seq){
     resCo.unshift([0,'',ans_photo,'',mybgcolor]);
     amt_co++;
     $('#big_correct').css({'display': ''});
+    $(this_seq).css({'background-color': 'lime'});
   }else{
     var correct_answer = 0; 
     resInco.unshift([0,'',ans_photo,'',mybgcolor]);
     $('#big_incorrect').css({'display': ''});
+    $(this_seq).css({'background-color': 'red'});
+    console.log(click_ele);
+    if(click_ele === '#descriptive'){
+      $('#correct').css({
+        'display': '',
+        'background-color': 'lime'
+      });
+    }
   }
+
   $(this_seq).css({
-    'background-color': 'red',
     'border-width': '1px 1px',
     'border-color': 'silver',
     'border-style': 'solid'
@@ -432,4 +457,10 @@ $('#comment_add').click(function(){
 $('#report').click(function(){
   $('#comment_data').append(report);
   location.hash = "comment_data" ;
+});
+$('.chg_an_type').click(function(){
+  localStorage.an_type = $(this).attr('an_type');
+  console.log( $(this).attr('an_type') );
+  return;
+  location.href = "" ;
 });

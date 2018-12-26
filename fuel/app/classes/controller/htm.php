@@ -17,7 +17,9 @@ class Controller_Htm extends Controller
         die($view);        
     }
     if ( file_exists(APPPATH.'views/htm/'.$file.'_'.Config::get("my.lang").'.php') ) {
-        
+        $view = View::forge('htm/'.$file.'_'.Config::get("my.lang"));
+        $view->u_id = Model_Cookie::get_usr();
+        die($view);
     }
     die( View::forge('404') );
   }
