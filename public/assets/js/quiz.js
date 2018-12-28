@@ -6,7 +6,7 @@ $('.textbox').hide();
 $('.choice_q').hide();
 $('.alter_an').hide();
 var click_ele = '#descriptive';
-if(!$('#choice_1').html()){
+if(!$('#choice_1').text()){
   $('.textbox').show();
 } else if (localStorage.an_type == 'choice_an') {
   $('.choice_q').show();
@@ -35,7 +35,7 @@ localStorage.last_q = q_id;
 
 var rand_ch = [0,1,2,3];
 rand_ch = shuffle(rand_ch);
-var q = [$('#choice_0').html(),$('#choice_1').html(),$('#choice_2').html(),$('#choice_3').html()];
+var q = [$('#choice_0').text(),$('#choice_1').text(),$('#choice_2').text(),$('#choice_3').text()];
 $('#choice_0').empty().append(q[rand_ch[0]]);
 $('#choice_1').empty().append(q[rand_ch[1]]);
 $('#choice_2').empty().append(q[rand_ch[2]]);
@@ -119,8 +119,8 @@ function answer_day(){
   localStorage.day_sum = JSON.stringify(day_sum);
 }
 function answer_1(this_seq){
-  var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';
-  if($('#correct').html() == $(this_seq).html()){
+  var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';  
+  if($('#correct').text() == $(this_seq).text()){
     var correct_answer = 1;
     resCo.unshift([0,'',ans_photo,'',mybgcolor]);
     amt_co++;
@@ -146,7 +146,7 @@ function answer_1(this_seq){
   });
   
   $('.choice').each(function(i){
-    if($('#correct').html() == $('#choice_'+i).html()){
+    if($('#correct').text() == $('#choice_'+i).text()){
       $('#choice_'+i).css({'background-color':'lime'});
     }
   });
@@ -174,13 +174,13 @@ function answer_1(this_seq){
     ,arr_tag : tag
     ,u_img : myphoto_ans
     ,u_name : myname_ans
-    ,choice_0 : $('#choice_0').html()
-    ,choice_1 : $('#choice_1').html()
-    ,choice_2 : $('#choice_2').html()
-    ,choice_3 : $('#choice_3').html()
+    ,choice_0 : $('#choice_0').text()
+    ,choice_1 : $('#choice_1').text()
+    ,choice_2 : $('#choice_2').text()
+    ,choice_3 : $('#choice_3').text()
     ,comment : comment_offline
-    ,myanswer : $(this_seq).html()
-    ,correct_choice : $('#correct').html()
+    ,myanswer : $(this_seq).text()
+    ,correct_choice : $('#correct').text()
     ,quiz_num : quiz_num
   };
   if(already < 1){
@@ -192,15 +192,15 @@ function answer_1(this_seq){
     });
     offline_q.unshift([
       $('#question').html()
-      ,$('#choice_0').html()
-      ,$('#choice_1').html()
-      ,$('#choice_2').html()
-      ,$('#choice_3').html()
-      ,$('#correct').html()
+      ,$('#choice_0').text()
+      ,$('#choice_1').text()
+      ,$('#choice_2').text()
+      ,$('#choice_3').text()
+      ,$('#correct').text()
       ,q_img
       ,q_id
       ,comment_offline
-      ,$(this_seq).html()
+      ,$(this_seq).text()
       ,quiz_num
     ]);
     if(offline_q.length > 199){
@@ -212,15 +212,15 @@ function answer_1(this_seq){
       if(offline_q[i][7] == q_id){
         offline_q[i] = [
           $('#question').html()
-          ,$('#choice_0').html()
-          ,$('#choice_1').html()
-          ,$('#choice_2').html()
-          ,$('#choice_3').html()
-          ,$('#correct').html()
+          ,$('#choice_0').text()
+          ,$('#choice_1').text()
+          ,$('#choice_2').text()
+          ,$('#choice_3').text()
+          ,$('#correct').text()
           ,q_img
           ,q_id
           ,comment_offline
-          ,$(this_seq).html()
+          ,$(this_seq).text()
           ,quiz_num
         ];
       }

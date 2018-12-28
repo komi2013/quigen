@@ -43,10 +43,9 @@
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
 
-<table class="textbox">
-  <tr><td maxlength="1000" class="txt_99" id="txt_answer" contenteditable='true'></td></tr>
-</table>
-<table class="textbox"><tr><td id="correct" style="display:none;"><?=$correct?></td></tr></table>
+<table class="textbox"><tr><td class="txt_99" id="txt_answer" contenteditable='true'></td></tr></table>
+<table class="textbox"><tr><td class="txt_99" id="correct" style="display:none;"><?=$correct?></td></tr></table>
+
 <div class="textbox" style="width:98%;text-align:right;">
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="descriptive">
 </div>

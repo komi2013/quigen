@@ -37,13 +37,28 @@
 <div id="big_result">
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
-<table>
+
+<table class="textbox"><tr><td class="txt_99" id="txt_answer" contenteditable='true'></td></tr></table>
+
+<div class="textbox" style="width:98%;text-align:right;">
+  <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="descriptive">
+</div>
+
+<table class="choice_q" >
   <tr><td class="choice" id="choice_0"></td></tr>
   <tr><td class="choice" id="choice_1"></td></tr>
   <tr><td class="choice" id="choice_2"></td></tr>
   <tr><td class="choice" id="choice_3"></td></tr>
 </table>
+
 </div>
+
+<table class="alter_an">
+  <tr>
+  <td id="textbox" class="chg_an_type" an_type="textbox"> <img src="/assets/img/icon/textbox.png" class="icon"></td>
+  <td id="choice_q" class="chg_an_type" an_type="choice_an"> <img src="/assets/img/icon/choice.png" class="icon"> </td>
+  </tr>
+</table>
 
 <table id="sns">
 <tr>
