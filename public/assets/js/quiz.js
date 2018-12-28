@@ -6,16 +6,19 @@ $('.textbox').hide();
 $('.choice_q').hide();
 $('.alter_an').hide();
 var click_ele = '#descriptive';
-
-if(an_type == 'choice_an'){
-  $('.choice_q').show();
-  click_ele = '.choice';
-}
-if(an_type == 'textbox' || an_type == 'no_choice'){
+if(!$('#choice_1').html()){
   $('.textbox').show();
-}
-if(an_type != 'no_choice'){
+} else if (localStorage.an_type == 'choice_an') {
+  $('.choice_q').show();
   $('.alter_an').show();
+  $('#choice_q').addClass("this_page");
+  $('#textbox').addClass("another_page");
+  click_ele = '.choice';    
+} else {
+  $('.textbox').show();
+  $('.alter_an').show();
+  $('#choice_q').addClass("another_page");
+  $('#textbox').addClass("this_page");
 }
 
 function shuffle(array) {
@@ -81,7 +84,7 @@ $(click_ele).click(function(){
     'border-color': 'silver',
     'border-style': 'solid'
   });
-  var this_seq = click_ele == '#describe' ? $('#txt_answer') : $(this);
+  var this_seq = click_ele == '#descriptive' ? $('#txt_answer') : $(this);
   if(ticket[0] < 1){
     $('#ticket').css({ 'color': 'red' });
   }
@@ -128,7 +131,6 @@ function answer_1(this_seq){
     resInco.unshift([0,'',ans_photo,'',mybgcolor]);
     $('#big_incorrect').css({'display': ''});
     $(this_seq).css({'background-color': 'red'});
-    console.log(click_ele);
     if(click_ele === '#descriptive'){
       $('#correct').css({
         'display': '',
@@ -145,9 +147,7 @@ function answer_1(this_seq){
   
   $('.choice').each(function(i){
     if($('#correct').html() == $('#choice_'+i).html()){
-      $('#choice_'+i).css({
-        'background-color': 'lime',
-      });
+      $('#choice_'+i).css({'background-color':'lime'});
     }
   });
 
@@ -460,7 +460,8 @@ $('#report').click(function(){
 });
 $('.chg_an_type').click(function(){
   localStorage.an_type = $(this).attr('an_type');
-  console.log( $(this).attr('an_type') );
-  return;
-  location.href = "" ;
+  setTimeout(function(){
+    location.href = "" ;
+    return;
+  },100);
 });

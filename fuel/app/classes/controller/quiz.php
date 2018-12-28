@@ -28,12 +28,9 @@ class Controller_Quiz extends Controller
     $cho_3 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_3']) );
     $random_choice = [$cho_0,$cho_1,$cho_2,$cho_3];
 
-    $an_type = '';
     $view = View::forge('quiz');
     if ( isset($_GET['amp']) ) {
       $view = View::forge('quiz_amp');
-    } else if ( (isset($arr_choice_1[0]['choice_1']) AND !$arr_choice_1[0]['choice_1'] )) {
-      $an_type = 'no_choice';
     }
 
     $description = 
@@ -100,7 +97,6 @@ class Controller_Quiz extends Controller
     $view->q_data = '';
     $view->reference = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['reference']) );
     $view->u_id = Model_Cookie::get_usr();
-    $view->an_type = $an_type;
 
     $expires = 3600 * 24;
     header('Last-Modified: Fri Jan 01 2010 00:00:00 GMT');

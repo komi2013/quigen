@@ -44,11 +44,9 @@
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
 
 <table class="textbox">
-  <tr><td><textarea type="text" maxlength="1000" class="txt_99" id="txt_answer"></textarea></td></tr>
+  <tr><td maxlength="1000" class="txt_99" id="txt_answer" contenteditable='true'></td></tr>
 </table>
-<table class="textbox">
-  <tr><td><textarea type="text" class="txt_99" id="correct" style="display:none;"><?=$correct?></textarea></td></tr>
-</table>
+<table class="textbox"><tr><td id="correct" style="display:none;"><?=$correct?></td></tr></table>
 <div class="textbox" style="width:98%;text-align:right;">
   <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="descriptive">
 </div>
@@ -61,11 +59,11 @@
 </table>
 
 </div>
-<a href="/quiz/?q=<?=$question?>&an_type=descriptive"></a>
+
 <table class="alter_an">
   <tr>
-  <td class="another_page chg_an_type" an_type="textbox"> <img src="/assets/img/icon/textbox.png" class="icon"></td>
-  <td class="another_page chg_an_type" an_type="choice_an"> <img src="/assets/img/icon/choice.png" class="icon"> </td>
+  <td id="textbox" class="chg_an_type" an_type="textbox"> <img src="/assets/img/icon/textbox.png" class="icon"></td>
+  <td id="choice_q" class="chg_an_type" an_type="choice_an"> <img src="/assets/img/icon/choice.png" class="icon"> </td>
   </tr>
 </table>
 <table>
@@ -168,14 +166,10 @@
   var shared_quiz = '<?=Config::get("lang.shared_quiz")?>';
   var commented = '<?=Config::get("lang.commented")?>';
   var report = '<?=Config::get("lang.report")?>';
-  var an_type = localStorage.an_type ? localStorage.an_type : 'choice_an';
-  <?php if($an_type === 'no_choice'){?>
-      an_type = 'no_choice';
-  <?php } ?>
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
-<script src="/assets/js/quiz.js?6<?=Config::get("my.cache_v")?>"></script>
+<script src="/assets/js/quiz.js?31<?=Config::get("my.cache_v")?>"></script>
 <script>
 setTimeout(function(){
   ga('set', 'dimension7', iframe);
