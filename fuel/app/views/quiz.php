@@ -169,7 +169,7 @@
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
-<script src="/assets/js/quiz.js?31<?=Config::get("my.cache_v")?>"></script>
+<script src="/assets/js/quiz.js<?=Config::get("my.cache_v")?>"></script>
 <script>
 setTimeout(function(){
   ga('set', 'dimension7', iframe);
