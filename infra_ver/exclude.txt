@@ -8,7 +8,4 @@
 - public/BingSiteAuth.xml
 - public/phpPgAdmin_q/
 - .git*
-- public/data/*
-- db_data/*
-- monitor_log/*
-- httpd_log/*
+
