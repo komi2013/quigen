@@ -27,16 +27,16 @@
 <table style="text-align:center;">
 <tr><td><textarea placeholder="Q." maxlength="2000" class="txt_long" id="q_txt"></textarea></td></tr>
 </table>
-<?php if($q_type == 'textbox'){ ?>
-<table id="from_text" style="text-align:center;">
-<tr><td><input type="text" placeholder="A." maxlength="1000" class="txt_99" id="textbox"></td></tr>
-</table>
-<?php } else { ?>
+<?php if($q_type == 'choice'){ ?>
 <table id="from_text" style="text-align:center;">
 <tr><td><input type="text" placeholder="O" maxlength="1000" class="txt_99" id="choice_0"></td></tr>
 <tr><td><input type="text" placeholder="X" maxlength="1000" class="txt_99" id="choice_1"></td></tr>
 <tr><td><input type="text" placeholder="X" maxlength="1000" class="txt_99" id="choice_2"></td></tr>
 <tr><td><input type="text" placeholder="X" maxlength="1000" class="txt_99" id="choice_3"></td></tr>
+</table>
+<?php } else { ?>
+<table id="from_text" style="text-align:center;">
+<tr><td><input type="text" placeholder="A." maxlength="1000" class="txt_99" id="textbox"></td></tr>
 </table>
 <?php } ?>
 <div style="width:98%;text-align:right;">
@@ -46,10 +46,10 @@
 
 <table>
   <tr>
-  <td class="<?= $q_type == 'textbox' ? 'this_page' : 'another_page' ?>"> <a href="/generate/?q_type=textbox" class="td_a">
+  <td class="<?= $q_type == 'textbox' ? 'this_page' : 'another_page' ?>"> <a href="/generate/" class="td_a">
     <img src="/assets/img/icon/textbox.png" class="icon">
   </a> </td>
-  <td class="<?= $q_type == 'choice' ? 'this_page' : 'another_page' ?>"> <a href="/generate/" class="td_a">
+  <td class="<?= $q_type == 'choice' ? 'this_page' : 'another_page' ?>"> <a href="/generate/?q_type=choice" class="td_a">
     <img src="/assets/img/icon/choice.png" class="icon">
   </a> </td>
   <td class="another_page"> <a href="/gene4word/"class="td_a" >

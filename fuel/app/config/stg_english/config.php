@@ -294,7 +294,7 @@ return array(
 
     'display_error' => true,
     'lang' => 'en',
-    'cache_v' => "?cache_v=98"      
+    'cache_v' => "?cache_v=1"      
   ),
   'lang' => array(
     'you_can_answer_after_this_time' => 'you can answer after this time',

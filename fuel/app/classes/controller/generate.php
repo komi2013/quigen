@@ -4,10 +4,8 @@ class Controller_Generate extends Controller
   public function action_index()
   {
     $usr_id = Model_Cookie::get_usr();
-    $q_type = '';
-    if (strpos($_SERVER["REQUEST_URI"],'q_type=textbox') !== false) {
-        $q_type = 'textbox';
-    } else {
+    $q_type = 'textbox';
+    if ( Input::get('q_type') == 'choice') {
         $q_type = 'choice';
     }
     $view = View::forge('generate');

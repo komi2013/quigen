@@ -42,3 +42,7 @@
   z-index: 3;
   opacity: 0.6;
 }
+#txt_answer{
+  border-bottom: solid;
+  border-top: solid;
+}
