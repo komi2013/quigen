@@ -301,7 +301,7 @@ return array(
     'answer_first' => 'answer first',
     'not_enough_point' => 'not enough point',
     'thanks' => 'thanks. you will know <a href="/htm/?p=news">on this page</a>',
-    'del' => 'delete',
+    'delete' => 'delete',
     'confirm' => 'confirm',
     'checked_chat' => 'checked chat',
     'after' => 'after ',' hours_please' => ' hours please',

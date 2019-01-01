@@ -93,6 +93,7 @@ h1 {
 .td_50{
   width: 50%;
   text-align:center;
+  height: 50px;
 }
 .td_50_c{
   background-color: #F5F5F5;

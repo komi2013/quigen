@@ -20,7 +20,7 @@ class Model_Csrf extends \Model
       die(json_encode($res));
     }
     $yesterday_now = date('m-d',  strtotime('-1day'));
-    if ($yesterday_now > $token[1]) {
+    if ($yesterday_now > $token[1] and $token[1] != '01-01') {
       $res[1] = 'time is wrong';
       Model_Log::warn('time is wrong');
       die(json_encode($res));
