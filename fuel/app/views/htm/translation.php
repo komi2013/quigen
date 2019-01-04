@@ -72,11 +72,11 @@ var answer_first = '<?=Config::get("lang.answer_first")?>';
 var translated = '';
 var u_id = '<?=$u_id?>';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
-
 </script>
 <script src="/assets/js/check_news.js"></script>
 <script src="/assets/js/basic_offline.js"></script>
 <script src="/assets/js/translation.js"></script>
+
 <script>  
 if(navigator.onLine){
   $(function(){ ga('send', 'pageview'); });
