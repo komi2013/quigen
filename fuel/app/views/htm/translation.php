@@ -7,6 +7,7 @@
     <meta name="robots" content="noindex">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
+    <script src="/third/vue.min.js"></script>
     <script> var ua = '<?=Config::get("my.ua")?>'; </script>
     <script src="/assets/js/analytics_offline.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
@@ -25,7 +26,7 @@
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table id="from_text" style="text-align:center;">
-<tr><td><input type="text" placeholder="Q." maxlength="100" class="txt_99" id="trans_q"></td></tr>
+<tr><td><input type="text" placeholder="Q." maxlength="300" class="txt_99" id='trans_q'></td></tr>
 </table>
 <table><tr>
 <td class="td_84_t">
@@ -45,9 +46,22 @@
     <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
 </td>
 </tr></table>
-<table id="cel"></table>
+<table id="cel">
+    <template v-for="(d,k) in translated">
+    <tr v-bind:class="'del_'+k">
+        <td colspan="50" class="td_50">{{ d[0] }}</td>
+        <td colspan="50" class="td_50">{{ d[1] }}</td>
+    </tr>
+    <tr v-bind:class="'del_'+k">
+        <td colspan="50" class="td_49_t"></td>
+        <td colspan="50" class="td_50_t del" v-bind:del_k="k">
+            <img src="/assets/img/icon/trash.png" class="icon">
+        </td>
+    </tr>
+    </template>
+</table>
 </div>
-
+    
 <div id="ad_right"></div>
 <script>
 var domain = '<?=Config::get('my.domain')?>';
@@ -58,6 +72,7 @@ var answer_first = '<?=Config::get("lang.answer_first")?>';
 var translated = '';
 var u_id = '<?=$u_id?>';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
+
 </script>
 <script src="/assets/js/check_news.js"></script>
 <script src="/assets/js/basic_offline.js"></script>
