@@ -1,17 +1,29 @@
-if(localStorage.word_arr_q){
-  var word_arr_q = JSON.parse(localStorage.word_arr_q);
-  for(i = 0; i < 4; i++){
-    if( word_arr_q[i] ){
-      $('#q_'+i).val(word_arr_q[i]);
-    }
+var word4 = localStorage.word4 ? JSON.parse(localStorage.word4) : [];
+var translated = localStorage.translated ? JSON.parse(localStorage.translated) : [];
+var arr_q = [];
+for(i = 0; i < 4; i++){
+  if(word4[i]){
+    arr_q[i] = word4[i][0];
   }
 }
-if(localStorage.word_arr_a){
-  var word_arr_a = JSON.parse(localStorage.word_arr_a);
-  for(i = 0; i < 4; i++){
-    if( word_arr_a[i] ){
-      $('#a_'+i).val(word_arr_a[i]);
-    }
+var trans_i = -1;
+for(i = 0; i < 4; i++){
+  if(word4[i]){
+    $('#q_'+i).val(word4[i][0]);
+    $('#a_'+i).val(word4[i][1]);
+  } else if(translated) {
+      for (var i2 = 0; i2 < translated.length; i2++){
+        console.log('search:'+arr_q.indexOf(translated[i2][0]) + trans_i + i2);
+//        console.log('trans_i:'+trans_i);
+//        console.log('i2:'+i2);
+        if(arr_q.indexOf(translated[i2][0]) == -1 && trans_i < i2 && !translated[i2][2]){
+          $('#q_'+i).val(translated[i2][0]);
+          $('#a_'+i).val(translated[i2][1]);
+          translated[i2][2] = 1;
+          trans_i = i2;
+          i2 = translated.length;
+        }          
+      }
   }
 }
 
@@ -21,26 +33,24 @@ $('#generate').click(function(){
     return;
   }
   var validate = 1;
-  var arr_q = [];
-  var arr_a = [];
+  var word4 = [];
   for(i = 0; i < 4; i++){
     if($('#q_'+i).val()==''){
       $('#q_'+i).css({'border-color':'red'});
       validate=2;
-    }else{
-      arr_q[i] = $('#q_'+i).val();
     }
     if($('#a_'+i).val()==''){
       $('#a_'+i).css({'border-color':'red'});
       validate=2;
-    }else{
-      arr_a[i] = $('#a_'+i).val();
+    }
+    if($('#q_'+i).val() || $('#a_'+i).val()){
+      word4[i] = [$('#q_'+i).val(),$('#a_'+i).val()];
+      
     }
   }
   $('#generate').css({'display': 'none'});  
   $('#success').css({'display': ''});
-  localStorage.word_arr_q = JSON.stringify(arr_q);
-  localStorage.word_arr_a = JSON.stringify(arr_a);
+  localStorage.word4 = JSON.stringify(word4);
   for(i = 0; i < 3; i++){
     if($('#tag_'+i).val().match(/\W/g) && 
       !$('#tag_'+i).val().match(/^[ぁ-んァ-ン一-龥]/)){
@@ -50,32 +60,29 @@ $('#generate').click(function(){
     }
   }
   if(validate==2){
+    $('#success').css({'display': 'none'});
+    $('#generate').css({'display': ''});  
     return;
   }
-  $('#generate').css({'display': 'none'});  
-  $('#success').css({'display': ''});
-  if(localStorage.myphoto){
-    var myphoto = localStorage.myphoto;
-  }else{
-    var myphoto = '';
-  }
+  var myphoto = localStorage.myphoto ? localStorage.myphoto : '';
+  var myname = localStorage.myname ? localStorage.myname : '';
   var param = {
     csrf : csrf
-    ,arr_q : arr_q
-    ,arr_a : arr_a
+    ,word4 : word4
     ,tag_0 : $('#tag_0').val()
     ,tag_1 : $('#tag_1').val()
     ,tag_2 : $('#tag_2').val()
     ,myphoto: myphoto
+    ,myname: myname
   };
   $.post('/4wordadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
-      localStorage.word_arr_q = [];
-      localStorage.word_arr_a = [];
+      localStorage.word4 = [];
+      localStorage.translated = JSON.stringify(translated);
       if(localStorage.genestep){
         localStorage.genestep = localStorage.genestep + 1;
-        location.href = '/myprofile/';
+        location.href = '/myprofile/?list=forum';
       }else{
         localStorage.genestep = 1;
         location.href = '/myprofile/';

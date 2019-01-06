@@ -45,22 +45,28 @@ class Controller_4wordadd extends Controller
       $arr_post[] = preg_replace('/\W+/u', '_', $_POST['tag_0']);
       $arr_post[] = preg_replace('/\W+/u', '_', $_POST['tag_1']);
       $arr_post[] = preg_replace('/\W+/u', '_', $_POST['tag_2']);
-      
+
+
       while ($i < 4) {
         $question = new Model_Question();
         $question_id = $question->get_new_id();
+        if($i == 0){
+            $forum_q = $question_id;
+        }
         $question->id = $question_id;
-        $question->txt = $_POST['arr_q'][$i];
+        $question->txt = $_POST['word4'][$i][0];
         $question->usr_id = $usr_id;
         $question->img = '';
         $question->create_at = date("Y-m-d H:i:s");
         $question->open_time = $open_time;
         $question->save();
-        $arr_a = $_POST['arr_a'];
+        foreach ($_POST['word4'] as $d) {
+            $arr_a[] = $d[1];
+        }
         unset($arr_a[$i]);
-        $arr_incorrect = array_merge($arr_a); 
+        $arr_incorrect = array_merge($arr_a);
         $choice = new Model_Choice();
-        $choice->choice_0 = $_POST['arr_a'][$i];
+        $choice->choice_0 = $_POST['word4'][$i][1];
         $choice->choice_1 = $arr_incorrect[0];
         $choice->choice_2 = $arr_incorrect[1];
         $choice->choice_3 = $arr_incorrect[2];
@@ -92,6 +98,25 @@ class Controller_4wordadd extends Controller
           DB::query($sql)->execute();
         }
       }
+      
+      $myphoto = htmlspecialchars($_POST['myphoto'], ENT_QUOTES);
+      $myname = htmlspecialchars($_POST['myname'], ENT_QUOTES);
+      $txt = htmlspecialchars($_POST['word4'][0][0], ENT_QUOTES);
+      $txt = nl2br($txt);
+      $txt = '<cite><a href="/quiz/?q='.$forum_q.'" contenteditable="false">'.$txt.'</a></cite>';
+      $query = DB::insert('forum');
+      $query->set(array(
+        'txt' => $txt,
+        'usr_id' => $usr_id,
+        'update_at' => date("Y-m-d H:i:s"),
+        'open_time' => date("Y-m-d H:i:s"),
+        'u_img' => $myphoto,
+        'u_name' => $myname,
+        'no_param' => 1,
+      ));
+      $query->execute();
+      DB::query("UPDATE usr SET forum = forum + 1 WHERE id = ".$usr_id)->execute();
+      DB::query("UPDATE usr SET quiz = quiz + 1 WHERE id = ".$usr_id)->execute();
     }
     catch (Orm\ValidationFailed $e)
     {
