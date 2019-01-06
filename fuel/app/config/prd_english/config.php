@@ -77,7 +77,7 @@ return array(
       
     'display_error' => false,
     'lang' => 'en',
-    'cache_v' => "?cache_v=1"
+    'cache_v' => "?cache_v=2"
   ),
   'lang' => array(
     'you_can_answer_after_this_time' => 'you can answer after this time',
