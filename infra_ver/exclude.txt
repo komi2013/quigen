@@ -7,5 +7,6 @@
 - public/robots.txt
 - public/BingSiteAuth.xml
 - public/phpPgAdmin_q/
+- nginx_log/
 - .git*
 
