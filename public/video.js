@@ -31,8 +31,24 @@ $(function() {
 
     $('#room-id').text(roomName);
     step3(room);
-  });
+    
+    // チャットを送信
+    $('#send').click(function(){
+        var msg = $('#send').val();
+        room.send(msg);
+        chatlog('自分> ' + msg);
+        console.log(msg);
+    });
+    // チャットを受信
+    room.on('data', function(data){
+        chatlog('ID: ' + data.src + '> ' + data.data); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+    });
 
+  });
+// チャットログに記録するための関数
+function chatlog(msg){
+    $('#chatLog').append('<p>' + msg + '</p>');
+}
   $('#end-call').on('click', () => {
     room.close();
     step2();
