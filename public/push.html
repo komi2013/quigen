@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Firebase Cloud MessagingによるWeb Push通知テスト</title>
+	<link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+	<h1>Firebase Cloud MessagingによるWeb Push通知テスト</h1>
+	<!--
+	<ul>
+		<li>デスクトップ Chrome / Firefox、スマホはAndroidのみ有効。</li>
+		<li>Androidではブラウザを立ち上げずとも通知が来る。</li>
+		<li>デスクトップ Chrome / Firefoxの場合、配信ドメインのタブが開いていると通知が来ません。</li>
+		<li>ページ遷移するか、配信ドメインのタブが閉じると、ペンドされていた通知が来ます。</li>
+	</ul>
+-->
+	<p>
+		<input type="button" id="btnSubscribe" value="通知を許可する">
+		<input type="button" id="btnUnSubscribe" value="トークン削除" style="display:none;">
+	</p>
+	<p><input type="text" value="YOUR-INCETANCE-ID-TOKEN" id="textInstanceIdToken" style="width:100%;box-sizing:border-box;"></p>
+	<div id="sendWebPushArea" style="display:none;">
+		<p>下記をコピーしてこのタブを閉じ、別ブラウザで見てください</p>
+		<input type="text" value="" id="sendWebPush" style="width:100%;box-sizing:border-box;">
+	</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAv7c9wh78dRtJ_bmfvLyAAvpLNYyM_6-M",
+    authDomain: "first-c2036.firebaseapp.com",
+    databaseURL: "https://first-c2036.firebaseio.com",
+    projectId: "first-c2036",
+    storageBucket: "first-c2036.appspot.com",
+    messagingSenderId: "289998193190"
+  };
+  firebase.initializeApp(config);
+</script>
+
+	<script src="main.js"></script>
+</body>
+
+</html>
