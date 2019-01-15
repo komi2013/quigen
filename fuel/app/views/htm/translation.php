@@ -10,6 +10,7 @@
     <script src="/third/vue.min.js"></script>
     <script> var ua = '<?=Config::get("my.ua")?>'; </script>
     <script src="/assets/js/analytics_offline.js"></script>
+    <script src="/sw.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
     <link rel="stylesheet" href="/assets/css/pc.css" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css" media="only screen and (max-width : 710px)">
@@ -53,10 +54,10 @@
         <td colspan="50" class="td_50">{{ d[1] }}</td>
     </tr>
     <tr v-bind:class="'del_'+k">
-        <td colspan="50" class="td_49_t"></td>
+        <td colspan="50" class="td_49_t switch" v-bind:switch_k="k">
+            <img src="/assets/img/icon/switch.png" class="icon"></td>
         <td colspan="50" class="td_50_t del" v-bind:del_k="k">
-            <img src="/assets/img/icon/trash.png" class="icon">
-        </td>
+            <img src="/assets/img/icon/trash.png" class="icon"></td>
     </tr>
     </template>
 </table>
@@ -69,8 +70,7 @@ var del = '<?=Config::get("lang.delete")?>';
 var no_ = '<?=Config::get("lang.no_")?>';
 var mon = '<?=Config::get("lang.mon")?>';
 var answer_first = '<?=Config::get("lang.answer_first")?>';
-var translated = '';
-var u_id = '<?=$u_id?>';
+var translated = '[]';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
 </script>
 <script src="/assets/js/check_news.js"></script>

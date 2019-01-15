@@ -21,13 +21,20 @@ $('.del').on('click',function(){
     },500);
   }
 });
+$('.switch').on('click',function(){
+  var key = $(this).attr('switch_k');
+  var arr_switch = [translated[key][1],translated[key][0]];
+  translated[key] = arr_switch;
+  Vue.set(translated, key, arr_switch);
+  localStorage.translated = JSON.stringify(translated);
+});
 var clicked = 0;
 $('#generate').click(function(){
   if(clicked == 2){
     return;
   }
   clicked = 2;
-  if(!u_id){
+  if(!localStorage.ua_u_id){
     alert(answer_first);
     return;
   }

@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const CACHE_NAME = 'cache-v34';
+const CACHE_NAME = 'cache-v35';
 const urlsToCache = [
     '/test.html',
     '/third/test3.html',

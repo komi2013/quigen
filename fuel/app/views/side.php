@@ -26,6 +26,10 @@
     <a href="/" class="td_a"><img src="/assets/img/icon/home.png" class="icon"></a></td></tr>
   <tr><td id="page_myanswer"   class="<?= $this_page == 'myanswer'  ? 'this_page' : '' ?>" style="text-align: center;">
     <a href="/htm/myanswer_offline/" rel="nofollow" class="td_a" ><img src="/assets/img/icon/no_internet.png" class="icon"></a></td></tr>
+<?php if(Config::get("my.lang") == 'en'){ ?>
+  <tr><td id="page_translation"   class="<?= $this_page == 'translation'  ? 'this_page' : '' ?>" style="text-align: center;">
+    <a href="/htm/translation/" rel="nofollow" class="td_a" ><img src="/assets/img/icon/translation.png" class="icon"></a></td></tr>
+<?php }?>
 <?php /*
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>
