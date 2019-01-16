@@ -34,7 +34,7 @@
   <!-- Video area -->
   <div id="video-container">
     <div id="their-videos" style="width:100%;"></div>
-    <video id="my-video" muted="true" autoplay playsinline style="display:none;"></video>
+    <video id="my-video" muted="true" autoplay playsinline style="width:100%;"></video>
   </div>
       <div>
       <label for="videoSource">Video source: </label><select id="videoSource"></select>
@@ -74,7 +74,11 @@
     <td class="td_84_t">
         <input type="text" placeholder="message" id="msg" class="td_84_t">
     </td>
-    <td><img src="/assets/img/icon/upload_0.png" class="icon" id="send"></td>
+    <td>
+        <img src="/assets/img/icon/video_0.png" class="icon" id="camera0">
+        <img src="/assets/img/icon/video_1.png" class="icon" id="camera1" style="display:none;">
+        <img src="/assets/img/icon/upload_0.png" class="icon" id="send" style="display:none;">
+    </td>
     </tr></table>
 </div>
     

@@ -82,16 +82,18 @@ var getVal = getUrlVars();
         }
       });
 
-$( "#videoSource" ).each(function( index ) {
-  console.log( index + ": " + $( this ).text() );
-  $( "#content" ).append(index + ": " + $( this ).text());
-  
-});
+//$( "#videoSource" ).each(function( index ) {
+//  console.log( index + ": " + $( this ).text() );
+//  $( "#content" ).append(index + ": " + $( this ).val()+ ": <br>");
+//  
+//});
+//$( "#content" ).append($("#videoSource").text()+'<br>');
       videoSelect.on('change', step1);
       audioSelect.on('change', step1);
     });
 
   function step1() {
+      
     // Get audio/video stream
     const audioSource = $('#audioSource').val();
     const videoSource = $('#videoSource').val();
@@ -102,7 +104,8 @@ $( "#videoSource" ).each(function( index ) {
     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
       $('#my-video').get(0).srcObject = stream;
       localStream = stream;
-//localStream.getVideoTracks()[0].enabled = false;
+      localStream.getVideoTracks()[0].enabled = false;
+      $('#my-video').hide();
       if (room) {
         room.replaceStream(stream);
         return;
@@ -117,6 +120,7 @@ $( "#videoSource" ).each(function( index ) {
 
   function step2() {
     $('#their-videos').empty();
+    $('#their-videos').hide();
     $('#step1, #step3').hide();
     $('#step2').show();
     $('#join-room').focus();
@@ -125,35 +129,70 @@ $( "#videoSource" ).each(function( index ) {
 
   function makeCall() {
     const roomName = getVal.room ? getVal.room : randomStr();
-    console.log('https://zstg-english.quigen.info/htm/video/?room='+roomName);
     room = peer.joinRoom('mesh_video_' + roomName, {stream: localStream});
     $('#room-id').text(roomName);
     step3(room);
     $('#send').click(function(){
-        var msg = $('#msg').val();
-        room.send(msg);
-        $('#chatLog').append('<p>' + msg + '</p>');
+        $('#send').hide();
+        $('#camera1').show();
+        if($('#msg').val()){
+          var data = [$('#msg').val(),0];//0=no change
+          room.send(data);
+          $('#chatLog').append('<p>' + $('#msg').val() + '</p>');
+          $('#msg').val('');
+        }
+    });
+    $('#camera1').click(function(){
+        if(localStream.getVideoTracks()[0].enabled){
+            localStream.getVideoTracks()[0].enabled = false;
+            $('#my-video').hide();
+            var data = [0,2];//2=$('#their-videos').hide();
+            $('#camera1').hide();
+            $('#send').show();
+        }else{
+            localStream.getVideoTracks()[0].enabled = true;
+            $('#my-video').show();
+            var data = [0,1];//videOn 1=$('#their-videos').show();
+            $('#camera1').hide();
+            $('#send').show();
+        }
+        room.send(data);
     });
     // recevie chat message
     room.on('data', function(data){
-        $('#chatLog').append('<p style="color:red;">' + data.data + '</p>');
+        if(data.data[1] == 1){
+          $('#my-video').hide();
+          $('#their-videos').show();
+        }else if(data.data[1] == 2){
+          $('#their-videos').hide();
+        }else{
+          $('#chatLog').append('<p style="color:red;">' + data.data[0] + '</p>');  
+        }
     });
   }
+$('#msg').click(function(){
+    $('#camera1').hide();
+    $('#send').show();
+});
   function step3(room) {
     // Wait for stream on the call, then set peer video display
     room.on('stream', stream => {
       const peerId = stream.peerId;
       const id = 'video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '');
-
+      console.log('komatsu:' +stream.getVideoTracks()[0].enabled);
       $('#their-videos').append($(
         '<div class="video_' + peerId +'" id="' + id + '">' +
-//          '<label>' + stream.peerId + ':' + stream.id + '</label>' +
-          '<video class="remoteVideos" autoplay playsinline>' +
+        '<video class="remoteVideos" autoplay playsinline>' +
         '</div>'));
-      const el = $('#' + id).find('video').get(0);
-//      startRecording(stream);
-      el.srcObject = stream;
-      el.play();
+        const el = $('#' + id).find('video').get(0);
+  //      startRecording(stream);
+        el.srcObject = stream;
+        el.play();
+//      if(stream.getVideoTracks()[0].enabled){
+//        $('#my-video').css({'display':'none'});
+//      }else{
+//
+//      }
     });
 
     room.on('removeStream', function(stream) {
