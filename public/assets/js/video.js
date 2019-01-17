@@ -1,16 +1,3 @@
-var getUrlVars = function(){
-  var vars = {}; 
-  var param = location.search.substring(1).split('&');
-  for(var i = 0; i < param.length; i++) {
-    var keySearch = param[i].search(/=/);
-    var key = '';
-    if(keySearch != -1) key = param[i].slice(0, keySearch);
-    var val = param[i].slice(param[i].indexOf('=', 0) + 1);
-    if(key != '') vars[key] = decodeURI(val);
-  }
-  return vars; 
-}
-var getVal = getUrlVars();
 /* eslint-disable require-jsdoc */
 
   // Peer object
@@ -134,7 +121,11 @@ var getVal = getUrlVars();
     step3(room);
     $('#send').click(function(){
         $('#send').hide();
-        $('#camera1').show();
+        if(localStream.getVideoTracks()[0].enabled){
+          $('#camera1').show();
+        }else{
+          $('#camera0').show();
+        }
         if($('#msg').val()){
           var data = [$('#msg').val(),0];//0=no change
           room.send(data);
@@ -142,35 +133,60 @@ var getVal = getUrlVars();
           $('#msg').val('');
         }
     });
-    $('#camera1').click(function(){
+    $('#msg').keypress(function (e) {
+     var key = e.which;
+      if (key === 13) {
+        $('#send').hide();
         if(localStream.getVideoTracks()[0].enabled){
-            localStream.getVideoTracks()[0].enabled = false;
-            $('#my-video').hide();
-            var data = [0,2];//2=$('#their-videos').hide();
-            $('#camera1').hide();
-            $('#send').show();
+          $('#camera1').show();
         }else{
-            localStream.getVideoTracks()[0].enabled = true;
-            $('#my-video').show();
-            var data = [0,1];//videOn 1=$('#their-videos').show();
-            $('#camera1').hide();
-            $('#send').show();
+          $('#camera0').show();
+        }
+        if($('#msg').val()){
+          var data = [$('#msg').val(),0];//0=no change
+          room.send(data);
+          $('#chatLog').append('<p>' + $('#msg').val() + '</p>');
+          $('#msg').val('');
+        }
+      }
+    });
+    $('.camera').click(function(){
+        if(localStream.getVideoTracks()[0].enabled){
+          localStream.getVideoTracks()[0].enabled = false;
+          $('#my-video').hide();
+          $('#camera1').hide();
+          $('#camera0').show();
+          var data = [0,2];//2=$('#their-videos').hide();
+        }else{
+          localStream.getVideoTracks()[0].enabled = true;
+          $('#their-videos').hide();
+          $('#my-video').show();
+          $('#camera0').hide();
+          $('#camera1').show();
+          var data = [0,1];//videOn 1=$('#their-videos').show();
         }
         room.send(data);
     });
     // recevie chat message
     room.on('data', function(data){
         if(data.data[1] == 1){
+          localStream.getVideoTracks()[0].enabled = false;
           $('#my-video').hide();
+          $('#camera1').hide();
+          $('#camera0').show();
           $('#their-videos').show();
         }else if(data.data[1] == 2){
           $('#their-videos').hide();
+          $('#camera0').hide();
+          $('#camera1').show();
         }else{
-          $('#chatLog').append('<p style="color:red;">' + data.data[0] + '</p>');  
+          $('#chatLog').append('<p style="color:orange;">' + data.data[0] + '</p>');  
         }
     });
   }
+  
 $('#msg').click(function(){
+    $('#camera0').hide();
     $('#camera1').hide();
     $('#send').show();
 });
@@ -179,7 +195,6 @@ $('#msg').click(function(){
     room.on('stream', stream => {
       const peerId = stream.peerId;
       const id = 'video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '');
-      console.log('komatsu:' +stream.getVideoTracks()[0].enabled);
       $('#their-videos').append($(
         '<div class="video_' + peerId +'" id="' + id + '">' +
         '<video class="remoteVideos" autoplay playsinline>' +
@@ -188,11 +203,6 @@ $('#msg').click(function(){
   //      startRecording(stream);
         el.srcObject = stream;
         el.play();
-//      if(stream.getVideoTracks()[0].enabled){
-//        $('#my-video').css({'display':'none'});
-//      }else{
-//
-//      }
     });
 
     room.on('removeStream', function(stream) {

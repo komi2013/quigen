@@ -9,7 +9,7 @@
     <script src="/third/jquery.cookie.js"></script>
     <script src="/third/vue.min.js"></script>
     <script> var ua = '<?=Config::get("my.ua")?>'; </script>
-    <script src="/assets/js/analytics_offline.js"></script>
+    <script src="/assets/js/analytics.js"></script>
     <script src="/sw.js"></script>
     <script type="text/javascript" src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
@@ -23,29 +23,15 @@
             width:100%;
         }
     </style>
-<?php
-  $side = View::forge('side');
-  $side->this_page = 'myanswer';
-  echo $side;
-?>
-<div id="content">
 
-<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-  <!-- Video area -->
-  <div id="video-container">
-    <div id="their-videos" style="width:100%;"></div>
-    <video id="my-video" muted="true" autoplay playsinline style="width:100%;"></video>
-  </div>
-      <div>
+<div id="content">
+<div style="display:none;">
+    <div>
       <label for="videoSource">Video source: </label><select id="videoSource"></select>
     </div>
-<div style="display:none;">
     <div>
       <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
     </div>
-
-
-
     <!-- Get local audio/video stream -->
     <div id="step1">
       <p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
@@ -64,32 +50,29 @@
         <input type="text" placeholder="Join room..." id="join-room">
         <button  id="join" type="submit">Join</button>
       </form>
-      
-      
     </div>
 </div>
-    <div id="chatLog" style="width:100%;height:400px;overflow:scroll;"></div>
-    
-    <table><tr>
-    <td class="td_84_t">
-        <input type="text" placeholder="message" id="msg" class="td_84_t">
-    </td>
-    <td>
-        <img src="/assets/img/icon/video_0.png" class="icon" id="camera0">
-        <img src="/assets/img/icon/video_1.png" class="icon" id="camera1" style="display:none;">
-        <img src="/assets/img/icon/upload_0.png" class="icon" id="send" style="display:none;">
-    </td>
-    </tr></table>
+<div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
+  <!-- Video area -->
+  <div id="video-container" style="position: absolute;">
+    <div id="their-videos" style="width:100%;"></div>
+    <video id="my-video" muted="true" autoplay playsinline style="width:100%;"></video>
+  </div>
+  <div style="position:fixed;z-index:5;width:100%;bottom:2px;">
+  <div style="width:100%;height:300px;overflow:scroll;">
+    <div id="chatLog" style="width:100%;height:300px;display:table-cell;vertical-align:bottom;padding:5px;color:lime;font-size: 20px;"></div>
+  </div>
+  <div style="text-align: center;">
+    <input type="text" placeholder="message" id="msg" class="td_68">
+    <img src="/assets/img/icon/video_0.png" class="icon camera" id="camera0">
+    <img src="/assets/img/icon/video_1.png" class="icon camera" id="camera1" style="display:none;">
+    <img src="/assets/img/icon/upload_0.png" class="icon" id="send" style="display:none;">
+  </div>
+  </div>    
 </div>
     
 <div id="ad_right"></div>
 <script>
-var domain = '<?=Config::get('my.domain')?>';
-var del = '<?=Config::get("lang.delete")?>';
-var no_ = '<?=Config::get("lang.no_")?>';
-var mon = '<?=Config::get("lang.mon")?>';
-var answer_first = '<?=Config::get("lang.answer_first")?>';
-var translated = '';
 var csrf = '<?=Model_Csrf::setcsrf()?>';
 
 </script>
