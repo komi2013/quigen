@@ -147,6 +147,7 @@
           room.send(data);
           $('#chatLog').append('<p>' + $('#msg').val() + '</p>');
           $('#msg').val('');
+          $('#msg').blur();
         }
       }
     });
@@ -177,8 +178,6 @@
           $('#their-videos').show();
         }else if(data.data[1] == 2){
           $('#their-videos').hide();
-          $('#camera0').hide();
-          $('#camera1').show();
         }else{
           $('#chatLog').append('<p style="color:orange;">' + data.data[0] + '</p>');  
         }
