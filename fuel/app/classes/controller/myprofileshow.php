@@ -14,7 +14,7 @@ class Controller_Myprofileshow extends Controller
     $res = DB::query("select count(*) from follow where sender = ".$usr_id." AND status = 2")->execute()->as_array();
     $res['following'] = $res[0]['count'];
     $r = DB::query("select * from usr where id = ".$usr_id)->execute()->as_array();
-    $res['introduce'] = ( isset($r[0]['introduce']) ) ? $r[0]['introduce'] : '';
+    $res['introduce'] = ( isset($r[0]['introduce']) ) ? $r[0]['introduce'] : 'komm';
     $res['myname'] = ( isset($r[0]['name']) ) ? $r[0]['name'] : '';
     $res['nice'] = ( isset($r[0]['nice']) ) ? $r[0]['nice'] : 0;
     $res['certify'] = ( isset($r[0]['certify']) ) ? $r[0]['certify'] : 0;

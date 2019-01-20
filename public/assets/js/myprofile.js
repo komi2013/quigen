@@ -1,3 +1,35 @@
+var content = new Vue({
+  el: '#content',
+  data: {
+      u_id: 111
+      ,myname: localStorage.myname ? localStorage.myname : ''
+      ,introduce: ''
+      ,follower: 0
+      ,following: 0
+      ,nice: 0
+      ,certify:0
+      ,num_ratio:0
+      ,num_answer:0
+      ,list_forum:0
+      ,list_graph:0
+      ,list_answer:0
+//      ,list_msg:0
+      ,amt_forum:0
+      
+  }
+});
+$.get('/myprofileshow/',{},function(){},"json")
+.always(function(res){
+  console.log(res);
+//  Vue.set(content.introduce, 0, 2)
+  content.introduce = res.introduce;
+//  content.follower_url = "/follower/?u="+localStorage.ua_u_id;
+//  content.follower = "/follower/?u="+localStorage.ua_u_id;
+//  content.following_url = "/following/?u="+localStorage.ua_u_id;
+  if(res[0]==1){
+  }else if(res[0]==2){
+  }
+});
 if(getVal.warn){
   alert(please_logout);
   location.href = '/myprofile/';
@@ -30,7 +62,8 @@ if(localStorage.quest){
 
 if(localStorage.follow){
   var follow = JSON.parse(localStorage.follow);
-  $('#num_following').empty().append(follow.length); 
+  content.following = follow.length;
+//  $('#num_following').empty().append(follow.length); 
 }
 if(localStorage.ua_u_id){
   $('#del_cookie').attr('src','/assets/img/icon/power_1.png'); 
