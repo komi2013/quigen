@@ -76,7 +76,20 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
 </tr>
 </table>
 
-<table id="rank"></table>
+<table id="rank">
+<tr>
+  <td class="td_68_c"><?=Config::get('lang.tag_category')?></td>
+  <td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>
+  <td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>
+</tr>
+<template v-for="(d,k) in list_rank">
+<tr>
+  <td class="td_68_c"><a v-bind:href="'/search/?tag='+d['tag']">{{d['tag']}}</a></td>
+  <td class="td_15">{{d['cnt']}}</td>
+  <td class="td_15">{{d['rank']}}</td>
+</tr>
+</template>
+</table>
 
 <table>
 <tr>
@@ -121,17 +134,17 @@ target="_blank" class="pc_disp_none">
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr>
-  <td v-bind:class="answer"> <a href="/myprofile/">
+  <td class="another"> <a href="/myprofile/">
     <img src="/assets/img/icon/answer.png" class="icon">
   </a> </td>
-  <td v-bind:class="graph"> <a href="/myprofile/?list=graph">
+  <td class="graph"> <a href="/myprofile/?list=graph">
     <img src="/assets/img/icon/bar-chart.png" class="icon">
   </a> </td>
-  <td v-bind:class="forum"> <a href="/myprofile/?list=forum">
+  <td class="forum"> <a href="/myprofile/?list=forum">
     <span class="icon_num">{{amt_forum}}</span>
     <img src="/assets/img/icon/list.png" class="icon">
   </a> </td>
-  <td v-bind:class="msg"> <a href="/myprofile/?list=msg">
+  <td class="msg"> <a href="/myprofile/?list=msg">
     <img src="/assets/img/icon/chat.png" class="icon">
   </a> </td>
   </tr>
@@ -156,8 +169,6 @@ target="_blank" class="pc_disp_none">
 </div>
 <div class="graph_bar" v-bind:style="{ width: Math.round(d['answer']/max * 100) +'%' }">&nbsp;</div>
 </template>
-
-<table id="cel"></table>
 
 </div>
 <div id="ad_right"></div>

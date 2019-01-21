@@ -6,7 +6,6 @@ class Controller_Myanswershow extends Controller
     header("Content-Type: application/json; charset=utf-8");
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
-    $description = '';
     if ($usr_id) {
       $query = DB::query("
         select tag, usr_id,cnt,rank from (
@@ -22,24 +21,15 @@ class Controller_Myanswershow extends Controller
       ")->execute()->as_array();
       $i = 0;
       if ( isset($query) ) {
-        foreach($query as $k => $d){
-          if($i < 5){
-            $description .= Security::htmlentities($d['tag']);
-            $description .= 'correct answer is '.$d['cnt'].' ';
-            $description .= 'No.'.$d['rank'];
-            ++$i; 
-          }
-        }
         $arr = [];
         foreach ($query as $k => $d) {
-          $arr[$k][0] = urlencode($d['tag']);
-          $arr[$k][1] = $d['cnt'];
-          $arr[$k][2] = $d['rank'];
-          $arr[$k][3] = Security::htmlentities($d['tag']);
+          $arr[$k]['tag_url'] = urlencode($d['tag']);
+          $arr[$k]['cnt'] = $d['cnt'];
+          $arr[$k]['rank'] = $d['rank'];
+          $arr[$k]['tag'] = Security::htmlentities($d['tag']);
         }
         $res[0] = 1;
         $res[1] = $arr;
-        $res[2] = $description;
       }
     }
     die(json_encode($res));  
