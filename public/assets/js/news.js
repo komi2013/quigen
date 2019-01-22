@@ -33,7 +33,7 @@ function accept(quiz_buy_id){
 }
 
 function follow_confirm(sender){
-  r = confirm(follow_confirm);
+  r = confirm(confirm_msg);
   if(r){
     var param = {
       csrf : csrf

@@ -9,10 +9,10 @@ class Controller_Myprofileshow extends Controller
       die(json_encode($res));
     }
     $res['usr_id'] = $usr_id;
-    $res = DB::query("select count(*) from follow where receiver = ".$usr_id." AND status = 2")->execute()->as_array();
-    $res['follower'] = $res[0]['count'];
-    $res = DB::query("select count(*) from follow where sender = ".$usr_id." AND status = 2")->execute()->as_array();
-    $res['following'] = $res[0]['count'];
+    $r = DB::query("select count(*) from follow where receiver = ".$usr_id." AND status = 2")->execute()->as_array();
+    $res['follower'] = $r[0]['count'];
+    $r = DB::query("select count(*) from follow where sender = ".$usr_id." AND status = 2")->execute()->as_array();
+    $res['following'] = $r[0]['count'];
     $r = DB::query("select * from usr where id = ".$usr_id)->execute()->as_array();
     $res['introduce'] = ( isset($r[0]['introduce']) ) ? $r[0]['introduce'] : 'komm';
     $res['myname'] = ( isset($r[0]['name']) ) ? $r[0]['name'] : '';
@@ -151,6 +151,7 @@ class Controller_Myprofileshow extends Controller
 //    $view->profile_ln_url = $profile_ln_url;
 //    $view->profile_clip_url = $profile_clip_url;
 //    $view->u_id = $usr_id;
+//    echo '<pre>'; var_dump($res); echo '</pre>';
     die(json_encode($res));
   }
 }

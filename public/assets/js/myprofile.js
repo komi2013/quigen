@@ -1,34 +1,21 @@
 var content = new Vue({
   el: '#content',
   data: {
-      u_id: 111
+      u_id: 0
       ,myname: localStorage.myname ? localStorage.myname : ''
       ,introduce: ''
       ,follower: 0
       ,following: 0
       ,nice: 0
       ,certify:0
-      ,num_ratio:0
       ,answer_by_u:JSON.parse(localStorage.answer_by_u)
-      ,num_answer:0
       ,list_rank:[]
       ,list_forum:[]
       ,list_graph:[]
-//      ,list_answer:0
-//      ,list_msg:0
       ,amt_forum:0
   },
   computed: {
-    num_ratio: function () {
-      var num_ratio = 0;
-      if(localStorage.answer_by_u){
-        var answer_by_u = JSON.parse(localStorage.answer_by_u);
-        if(answer_by_u[1] > 0){
-            num_ratio = Math.round(answer_by_u[0]/answer_by_u[1] * 100);
-        }
-      }
-      return num_ratio;
-    }
+
   }
 });
 
@@ -45,8 +32,17 @@ var content = new Vue({
 $.get('/myprofileshow/',{},function(){},"json")
 .always(function(res){
   console.log(res);
-//  Vue.set(content.introduce, 0, 2)
+  content.u_id = res.usr_id;
+  content.myname = res.myname;
   content.introduce = res.introduce;
+  content.follower = res.follower;
+  content.following = res.following;
+  content.nice = res.nice;
+  content.certify = res.certify;
+//  content.list_rank = res.list_rank;
+//  content.list_forum = res.list_forum;
+//  content.list_graph = res.list_graph;
+  content.amt_forum = res.amt_forum;
 //  content.follower_url = "/follower/?u="+localStorage.ua_u_id;
 //  content.follower = "/follower/?u="+localStorage.ua_u_id;
 //  content.following_url = "/following/?u="+localStorage.ua_u_id;
@@ -206,13 +202,8 @@ $('#del_cookie').click(function(){
 //
 $.get('/myanswershow/',{},function(){},"json")
 .always(function(res){
-  console.log(res);
   if(res[0]==1){
     content.list_rank = res[1];
-//    content.list_rank = [
-//        ['komatsu',2,3,'komatsu']
-//        ,['seijiro',1,4,'seijiro']
-//    ];
   }else if(res[0]==2){
   }
 });

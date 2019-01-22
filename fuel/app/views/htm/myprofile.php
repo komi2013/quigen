@@ -75,8 +75,7 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
   </td>
 </tr>
 </table>
-
-<table id="rank">
+<table v-if="list_rank.length > 0">
 <tr>
   <td class="td_68_c"><?=Config::get('lang.tag_category')?></td>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>
@@ -90,13 +89,12 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
 </tr>
 </template>
 </table>
-
 <table>
 <tr>
   <td><img src="/assets/img/icon/circle_big.png" class="icon"></td>
-  <td class="td_34" id="num_ratio">{{num_ratio}} % </td>
+  <td class="td_34" id="num_ratio">{{Math.round(answer_by_u[0]/answer_by_u[1] * 100)}} % </td>
   <td><img src="/assets/img/icon/answer.png" class="icon"></td>
-  <td class="td_34" id="num_answer">{{num_answer}}</td>
+  <td class="td_34" id="num_answer">{{answer_by_u[1]}}</td>
 </tr>
 </table>
 
