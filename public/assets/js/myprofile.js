@@ -1,3 +1,8 @@
+if(getVal.warn){
+  alert(please_logout);
+  location.href = '/myprofile/';
+}
+
 var content = new Vue({
   el: '#content',
   data: {
@@ -12,26 +17,19 @@ var content = new Vue({
       ,list_rank:[]
       ,list_forum:[]
       ,list_graph:[]
+      ,max:0
       ,amt_forum:0
+      ,list:'graph'
   },
   computed: {
 
   }
 });
 
-//if(localStorage.answer_by_u){
-//  var answer_by_u = JSON.parse(localStorage.answer_by_u);
-//  $('#num_answer').empty().append(answer_by_u[1]);
-//  if(answer_by_u[1] > 0){
-//    $('#num_ratio').empty().append(Math.round(answer_by_u[0]/answer_by_u[1] * 100)+' %');
-//  }else{
-//    $('#num_ratio').empty().append('0 %');
-//  }
-//}
 
 $.get('/myprofileshow/',{},function(){},"json")
 .always(function(res){
-  console.log(res);
+  console.log(content.list_forum);
   content.u_id = res.usr_id;
   content.myname = res.myname;
   content.introduce = res.introduce;
@@ -40,8 +38,9 @@ $.get('/myprofileshow/',{},function(){},"json")
   content.nice = res.nice;
   content.certify = res.certify;
 //  content.list_rank = res.list_rank;
-//  content.list_forum = res.list_forum;
-//  content.list_graph = res.list_graph;
+  content.list_forum = res.list_forum;
+  content.list_graph = res.list_graph;
+  content.max = res.max;
   content.amt_forum = res.amt_forum;
 //  content.follower_url = "/follower/?u="+localStorage.ua_u_id;
 //  content.follower = "/follower/?u="+localStorage.ua_u_id;
@@ -50,10 +49,6 @@ $.get('/myprofileshow/',{},function(){},"json")
   }else if(res[0]==2){
   }
 });
-if(getVal.warn){
-  alert(please_logout);
-  location.href = '/myprofile/';
-}
 
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);

@@ -132,42 +132,41 @@ target="_blank" class="pc_disp_none">
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr>
-  <td class="another"> <a href="/myprofile/">
-    <img src="/assets/img/icon/answer.png" class="icon">
-  </a> </td>
-  <td class="graph"> <a href="/myprofile/?list=graph">
+  <td class="td_50" v-on:click="list = 'graph'" v-bind:class="[list == 'graph' ? 'this_page' : 'another_page', '']">
     <img src="/assets/img/icon/bar-chart.png" class="icon">
-  </a> </td>
-  <td class="forum"> <a href="/myprofile/?list=forum">
+  </td>
+  <td class="td_50" v-on:click="list = 'forum'" v-bind:class="[list == 'forum' ? 'this_page' : 'another_page', '']">
     <span class="icon_num">{{amt_forum}}</span>
     <img src="/assets/img/icon/list.png" class="icon">
-  </a> </td>
-  <td class="msg"> <a href="/myprofile/?list=msg">
-    <img src="/assets/img/icon/chat.png" class="icon">
-  </a> </td>
+  </td>
   </tr>
 </table>
 
-
-<div class="div_t">
+<div v-if="list == 'forum'" class="div_t">
 <template v-for="(d,k) in list_forum">
   <img v-bind:src="d['img']" class="icon">
-  {{d['txt']}}
+  <span v-html="d['txt']"></span>
   <template v-if="d['no_param'] == 0">
   &nbsp; &nbsp; <a v-bind:href="'/forum/?f='+d['forum_id']"> >> </a>
   </template>
   <div style="width:100%;text-align:right;">{{d['open_time']}}</div>
 </template>
 </div>
-
+<template v-if="list == 'graph'">
+<table><tr>
+    <td style="width:35%">date</td>
+    <td><img src="/assets/img/icon/answer.png"></td>
+    <td><img src="/assets/img/icon/hourglass.png"></td>
+</tr></table>
 <template v-for="(d,k) in list_graph">
 <div class="graph_frame">
-  <div class="graph_date">{{d['day']}}</div>
-  <div class="graph_txt">{{d['answer']}}answer, spend {{d['time']}}</div>
+  <div class="graph_date" style="width:40%">{{d['day']}}</div>
+  <div class="graph_txt" style="width:10%">{{d['answer']}}</div>
+  <div class="graph_txt">{{d['time']}}</div>
 </div>
 <div class="graph_bar" v-bind:style="{ width: Math.round(d['answer']/max * 100) +'%' }">&nbsp;</div>
 </template>
-
+</template>
 </div>
 <div id="ad_right"></div>
 
