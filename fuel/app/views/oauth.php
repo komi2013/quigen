@@ -43,9 +43,6 @@
       <i id="quiz_num_<?=$k?>"><?=$d[10]?></i>
     </div>
   <?php } ?>
-  <?php foreach ($arr_offline_q as $k => $d){?>
-  
-  <?php } ?>
 </div>
 <script>
 
@@ -55,7 +52,7 @@ localStorage.ua_u_id = '<?=$u_id?>';
 localStorage.answer_by_u = '<?=$js_answer_by_u?>';
 localStorage.myname =  $('#myname').html();
 localStorage.myphoto = $('#myphoto').html();
-localStorage.introduce = $('#introduce').html();
+localStorage.login = 1;
 
 var offline_q = [];
 $(".offline_q").each(function(i){

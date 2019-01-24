@@ -320,5 +320,6 @@ return array(
     'report' => '#report ',
     'checked_rank' => 'checked rank',
     'checked_top' => 'checked top page',
+    'please_login' => 'please login',
   ),
 );

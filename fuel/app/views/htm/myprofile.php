@@ -36,17 +36,21 @@
 <table>
   <tr>
     <td style="width:20%;">
-      <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon auth"
+      <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon auth" v-if="(provider == 0 || provider == 1)"
 data-url="https://www.facebook.com/dialog/oauth?client_id=<?=Config::get('my.fb_id')?>&redirect_uri=https://<?=$_SERVER['HTTP_HOST']?>/fboauth/">
     </td>
     <td style="width:20%">
-      <img src="/assets/img/icon/tw.jpg" alt="twitter" class="icon auth" data-url="/twoauth/">
+      <img v-if="(provider == 0 || provider == 2)" src="/assets/img/icon/tw.jpg" alt="twitter" class="icon auth" data-url="/twoauth/">
     </td>
     <td style="width:20%;">
-      <img src="/assets/img/icon/gp.png" alt="google plus" class="icon auth"
+      <img v-if="(provider == 0 || provider == 3)" src="/assets/img/icon/gp.png" alt="google plus" class="icon auth"
 data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my.gp_id')?>&response_type=code&scope=openid&redirect_uri=<?=Config::get('my.gp_callback')?>">
     </td>
-    <td style="width:20%;"><img src="/assets/img/icon/power_0.png" id="del_cookie" class="icon"></td>
+    <td style="width:20%;" id="del_cookie" >
+        <img v-if="provider" src="/assets/img/icon/power_2.png" class="icon">
+        <img v-else-if="localStorage.ua_u_id" src="/assets/img/icon/power_1.png" class="icon">
+        <img v-else src="/assets/img/icon/power_0.png" class="icon">
+    </td>
     <td style="width:20%;">
       <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
       <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
@@ -58,19 +62,19 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
 <table>
 <tr>
   <td> <a v-bind:href="'/follower/?u='+u_id">
-    <span class="icon_num">{{follower}}</span>
+    <span class="icon_num" v-if="follower">{{follower}}</span>
     <img src="/assets/img/icon/people.png" class="icon">
   </a> </td>
   <td> <a v-bind:href="'/following/?u='+u_id">
-    <span class="icon_num">{{following}}</span>
+    <span class="icon_num" v-if="following">{{following}}</span>
     <img src="/assets/img/icon/star_1.png" class="icon">
   </a> </td>
   <td>
-    <span class="icon_num">{{nice}}</span>
+    <span class="icon_num" v-if="nice">{{nice}}</span>
     <img src="/assets/img/icon/thumbup_1.png" class="icon">
   </td>
   <td>
-    <span class="icon_num">{{certify}}</span>
+    <span class="icon_num" v-if="certify">{{certify}}</span>
     <img src="/assets/img/icon/medal_1.png" class="icon">
   </td>
 </tr>
@@ -92,7 +96,7 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
 <table>
 <tr>
   <td><img src="/assets/img/icon/circle_big.png" class="icon"></td>
-  <td class="td_34" id="num_ratio">{{Math.round(answer_by_u[0]/answer_by_u[1] * 100)}} % </td>
+  <td class="td_34" id="num_ratio">{{answer_by_u[0] ? Math.round(answer_by_u[0]/answer_by_u[1] * 100) : 0}} % </td>
   <td><img src="/assets/img/icon/answer.png" class="icon"></td>
   <td class="td_34" id="num_answer">{{answer_by_u[1]}}</td>
 </tr>
@@ -178,7 +182,7 @@ target="_blank" class="pc_disp_none">
   var please_logout = '<?=Config::get("lang.please_logout")?>';
   var checked_mypage = '<?=Config::get("lang.checked_mypage")?>';
   var login = '<?=Config::get("lang.login")?>';
-  var answer_first = '<?=Config::get("lang.answer_first")?>';
+  var please_login = '<?=Config::get("lang.please_login")?>';
   var change_profile = '<?=Config::get("lang.change_profile")?>';
   var logout = '<?=Config::get("lang.logout")?>';
   var tag_category = '<?=Config::get("lang.tag_category")?>';

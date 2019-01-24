@@ -19,13 +19,11 @@ class Controller_Myprofileshow extends Controller
     $res['nice'] = ( isset($r[0]['nice']) ) ? $r[0]['nice'] : 0;
     $res['certify'] = ( isset($r[0]['certify']) ) ? $r[0]['certify'] : 0;
     $res['amt_quiz'] = ( isset($r[0]['quiz']) ) ? $r[0]['quiz'] : 0;
-    $res['amt_forum'] = ( isset($r[0]['forum']) ) ? $r[0]['forum'] + $r[0]['forum_comment'] : 0;
+    $res['amt_forum'] = ( isset($r[0]['forum']) ) ? $r[0]['forum'] : 0;
+    $res['provider'] = ( isset($r[0]['provider']) ) ? $r[0]['provider'] : 0;
     
     $r = DB::query("select count(*) as cnt from answer_key_u where usr_id = ".$usr_id)->execute()->as_array();
     $res['amt_answer'] = $r[0]['cnt'];
-
-//    $res['forum'] = DB::query("select * from forum where usr_id = ".$usr_id)->execute()->as_array();
-//    $res['forum_comment'] = DB::query("select * from forum_comment where usr_id = ".$usr_id)->execute()->as_array();
 
     $arr_list = [];
     $day = [];
@@ -42,19 +40,17 @@ class Controller_Myprofileshow extends Controller
       $arr1['no_param'] = $d['no_param'];
       $arr_list[$d['open_time']] = $arr1;
     }
-    $res['forum'] = $arr_forum;
-    
-    $arr_forum_comment = [];
-    $arr = DB::query("select * from forum_comment where usr_id = ".$usr_id." order by open_time desc")->execute()->as_array();
-    foreach ($arr as $k => $d) {
-      $arr1['forum_id'] = $d['forum_id'];
-      $arr1['txt'] = $d['txt'];
-      $arr1['img'] = $d['img'];
-      $date = new DateTime($d['open_time']);
-      $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
-      $arr1['no_param'] = 0;
-      $arr_list[$d['open_time']] = $arr1;
-    }
+//    $arr_forum_comment = [];
+//    $arr = DB::query("select * from forum_comment where usr_id = ".$usr_id." order by open_time desc")->execute()->as_array();
+//    foreach ($arr as $k => $d) {
+//      $arr1['forum_id'] = $d['forum_id'];
+//      $arr1['txt'] = $d['txt'];
+//      $arr1['img'] = $d['img'];
+//      $date = new DateTime($d['open_time']);
+//      $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+//      $arr1['no_param'] = 0;
+//      $arr_list[$d['open_time']] = $arr1;
+//    }
     krsort($arr_list);
     $res['list_forum'] = $arr_list;
     $date = new DateTime();

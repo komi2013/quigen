@@ -13,13 +13,15 @@ var content = new Vue({
       ,following: 0
       ,nice: 0
       ,certify:0
-      ,answer_by_u:JSON.parse(localStorage.answer_by_u)
+      ,answer_by_u:
+localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
       ,list_rank:[]
       ,list_forum:[]
       ,list_graph:[]
       ,max:0
       ,amt_forum:0
       ,list:'graph'
+      ,provider:0
   },
   computed: {
 
@@ -37,11 +39,11 @@ $.get('/myprofileshow/',{},function(){},"json")
   content.following = res.following;
   content.nice = res.nice;
   content.certify = res.certify;
-//  content.list_rank = res.list_rank;
   content.list_forum = res.list_forum;
   content.list_graph = res.list_graph;
   content.max = res.max;
   content.amt_forum = res.amt_forum;
+  content.provider = res.provider;
 //  content.follower_url = "/follower/?u="+localStorage.ua_u_id;
 //  content.follower = "/follower/?u="+localStorage.ua_u_id;
 //  content.following_url = "/following/?u="+localStorage.ua_u_id;
@@ -78,13 +80,6 @@ if(localStorage.quest){
 if(localStorage.follow){
   var follow = JSON.parse(localStorage.follow);
   content.following = follow.length;
-//  $('#num_following').empty().append(follow.length); 
-}
-if(localStorage.ua_u_id){
-  $('#del_cookie').attr('src','/assets/img/icon/power_1.png'); 
-}
-if(localStorage.login_db){
-  $('#del_cookie').attr('src','/assets/img/icon/power_2.png');
 }
 
 $('.auth').click(function(){
@@ -102,8 +97,8 @@ $('.auth').click(function(){
 
 var childWindow;
 $('#photo').click(function() {
-  if(!u_id){
-    alert(answer_first);
+  if(!localStorage.login){
+    alert(please_login);
     return;
   }
   childWindow = window.open("/htm/photo/", "winB");
@@ -125,8 +120,8 @@ function winCloseB(){
 }
 
 $('#generate').click(function(){
-  if(!u_id){
-    alert(answer_first);
+  if(!localStorage.login){
+    alert(please_login);
     return;
   }
   var validate = 1;
@@ -188,13 +183,6 @@ $('#del_cookie').click(function(){
   }
 });
 
-//var rank = ''
-//  +'<tr>'
-//    +'<td class="td_68_c">'+tag_category+'</td>'
-//    +'<td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>'
-//    +'<td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>'
-//  +'</tr>';
-//
 $.get('/myanswershow/',{},function(){},"json")
 .always(function(res){
   if(res[0]==1){
