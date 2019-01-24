@@ -28,26 +28,24 @@ localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
   }
 });
 
-
 $.get('/myprofileshow/',{},function(){},"json")
 .always(function(res){
-  console.log(content.list_forum);
-  content.u_id = res.usr_id;
-  content.myname = res.myname;
-  content.introduce = res.introduce;
-  content.follower = res.follower;
-  content.following = res.following;
-  content.nice = res.nice;
-  content.certify = res.certify;
-  content.list_forum = res.list_forum;
-  content.list_graph = res.list_graph;
-  content.max = res.max;
-  content.amt_forum = res.amt_forum;
-  content.provider = res.provider;
 //  content.follower_url = "/follower/?u="+localStorage.ua_u_id;
 //  content.follower = "/follower/?u="+localStorage.ua_u_id;
 //  content.following_url = "/following/?u="+localStorage.ua_u_id;
   if(res[0]==1){
+    content.u_id = res.usr_id;
+    content.myname = res.myname;
+    content.introduce = res.introduce;
+    content.follower = res.follower;
+    content.following = res.following;
+    content.nice = res.nice;
+    content.certify = res.certify;
+    content.list_forum = res.list_forum;
+    content.list_graph = res.list_graph;
+    content.max = res.max;
+    content.amt_forum = res.amt_forum;
+    content.provider = res.provider;
   }else if(res[0]==2){
   }
 });

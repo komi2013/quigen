@@ -101,7 +101,7 @@ class Controller_Myprofileshow extends Controller
       $msg_usr[$usr]['usr_id'] = $usr;
     }
     $res['msg_usr'] = $msg_usr;
-
+    $res[0] = 1;
     die(json_encode($res));
   }
 }
