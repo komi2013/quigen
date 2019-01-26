@@ -147,7 +147,6 @@
           room.send(data);
           $('#chatLog').append('<p>' + $('#msg').val() + '</p>');
           goBottom('scrollBottom');
-          console.log('test');
           $('#msg').val('');
           $('#msg').blur();
         }
