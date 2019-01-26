@@ -1,18 +1,36 @@
 <?php
+require APPPATH.'vendor/twitteroauth-1.0.1/autoload.php';
+use Abraham\TwitterOAuth\TwitterOAuth;
 class Controller_TwCallback extends Controller
 {
   public function action_index()
   {
-    require APPPATH.'vendor/tw/twitteroauth/twitteroauth.php';
     $consumer_key = Config::get('my.tw_key');
     $consumer_secret = Config::get('my.tw_secret');
-    
-    $verifier = $_GET['oauth_verifier'];
-    
-    $to = new TwitterOAuth($consumer_key,$consumer_secret,Cookie::get('request_token'),Cookie::get('request_token_secret'));
-    $access_token = $to->getAccessToken($verifier);
-    $to->host = 'https://api.twitter.com/1.1/'; // By default library uses API version 1.  
-    $profile = $to->get('/users/show.json?screen_name='.$access_token['screen_name'].'&user_id='.$access_token['user_id']);
+    //login.phpでセットしたセッション
+    $request_token = [];  // [] は array() の短縮記法。詳しくは以下の「追々記」参照
+    $request_token['oauth_token'] = Cookie::get('oauth_token');  //Cookie::get('oauth_token_secret')
+    $request_token['oauth_token_secret'] = Cookie::get('oauth_token_secret');
+
+    //Twitterから返されたOAuthトークンと、あらかじめlogin.phpで入れておいたセッション上のものと一致するかをチェック
+    if (isset($_REQUEST['oauth_token']) && $request_token['oauth_token'] !== $_REQUEST['oauth_token']) {
+        die( 'Error!' );
+    }
+
+    //OAuth トークンも用いて TwitterOAuth をインスタンス化
+    $connection = new TwitterOAuth($consumer_key, $consumer_secret, $request_token['oauth_token'], $request_token['oauth_token_secret']);
+
+    //アプリでは、access_token(配列になっています)をうまく使って、Twitter上のアカウントを操作していきます
+    $access_token = $connection->oauth("oauth/access_token", array("oauth_verifier" => $_REQUEST['oauth_verifier']));
+//    Cookie::set('oauth_token',$request_token['oauth_token']);
+//    echo '<pre>'; var_dump($access_token); echo '</pre>'; die;
+//    
+////    $verifier = $_GET['oauth_verifier'];
+//    
+//    $to = new TwitterOAuth($consumer_key,$consumer_secret,Cookie::get('request_token'),Cookie::get('request_token_secret'));
+//    $access_token = $to->getAccessToken($verifier);
+//    $to->host = 'https://api.twitter.com/1.1/'; // By default library uses API version 1.  
+//    $profile = $to->get('/users/show.json?screen_name='.$access_token['screen_name'].'&user_id='.$access_token['user_id']);
     $id = $access_token['user_id'];
     $arr_pv_usr = DB::query("SELECT * FROM usr WHERE pv_u_id = '".$id."' AND provider = 2 ")->execute()->as_array();
     $follow = [];
