@@ -16,7 +16,11 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
-
+    <style>
+        .logined {
+            opacity:0.2;
+        }
+    </style>
 <?php 
   $side = View::forge('side');
   $side->this_page = 'myprofile';
@@ -36,14 +40,14 @@
 <table>
   <tr>
     <td style="width:20%;">
-      <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon auth" v-if="(provider == 0 || provider == 1)"
+      <img src="/assets/img/icon/fb.jpg" class="icon" v-bind:class="logined" v-if="(provider == 0 || provider == 1)"
 data-url="https://www.facebook.com/dialog/oauth?client_id=<?=Config::get('my.fb_id')?>&redirect_uri=https://<?=$_SERVER['HTTP_HOST']?>/fboauth/">
     </td>
     <td style="width:20%">
-      <img v-if="(provider == 0 || provider == 2)" src="/assets/img/icon/tw.jpg" alt="twitter" class="icon auth" data-url="/twoauth/">
+      <img src="/assets/img/icon/tw.jpg" class="icon" v-bind:class="logined" v-if="(provider == 0 || provider == 2)" data-url="/twoauth/">
     </td>
     <td style="width:20%;">
-      <img v-if="(provider == 0 || provider == 3)" src="/assets/img/icon/gp.png" alt="google plus" class="icon auth"
+      <img src="/assets/img/icon/gp.png" class="icon" v-bind:class="logined" v-if="(provider == 0 || provider == 3)"
 data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my.gp_id')?>&response_type=code&scope=openid&redirect_uri=<?=Config::get('my.gp_callback')?>">
     </td>
     <td style="width:20%;" id="del_cookie" >

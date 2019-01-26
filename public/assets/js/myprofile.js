@@ -22,6 +22,7 @@ localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
       ,amt_forum:0
       ,list:'graph'
       ,provider:0
+      ,logined:localStorage.login? 'logined' : 'auth'
   },
   computed: {
 
