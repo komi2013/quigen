@@ -59,7 +59,7 @@
     <video id="my-video" muted="true" autoplay playsinline style="width:100%;"></video>
   </div>
   <div style="position:fixed;z-index:5;width:100%;bottom:2px;">
-  <div style="width:100%;height:300px;overflow:scroll;">
+  <div id='scrollBottom' style="width:100%;height:300px;overflow:scroll;">
     <div id="chatLog" style="width:100%;height:300px;display:table-cell;vertical-align:bottom;padding:5px;color:lime;font-size: 20px;"></div>
   </div>
   <div style="text-align: center;">

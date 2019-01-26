@@ -146,6 +146,8 @@
           var data = [$('#msg').val(),0];//0=no change
           room.send(data);
           $('#chatLog').append('<p>' + $('#msg').val() + '</p>');
+          goBottom('scrollBottom');
+          console.log('test');
           $('#msg').val('');
           $('#msg').blur();
         }
@@ -251,4 +253,9 @@ function randomStr(){
       r += c[Math.floor(Math.random()*cl)];
     }
     return r;
+}
+function goBottom(targetId) {
+    var obj = document.getElementById(targetId);
+    if(!obj) return;
+    obj.scrollTop = obj.scrollHeight;
 }
