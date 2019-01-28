@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -13,8 +14,8 @@
   <button onclick="stopRecording()">Stop Recording</button>
   <a href="#" id="downloadlink">Download</a>
   <br />
-  <video id="local_video" controls="1" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
-  <video id="playback_video" controls="1" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
+  <video id="local_video" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
+  <video id="playback_video" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
   <br />
 </body>
 <script type="text/javascript">
@@ -40,8 +41,8 @@
   function startVideo() {
     // Chrome 53から使える、新しい書き方。 promise を返す
     navigator.mediaDevices.getUserMedia({
-      video: false,
-      audio: true
+      video: true,
+      audio: false
     })
     .then(function (stream) { // success
       localStream = stream;
@@ -129,8 +130,7 @@
     }
 
     // Blob
-    //var videoBlob = new Blob(chunks, { type: "video/webm" });
-    var videoBlob = new Blob(chunks, { type: "audio/webm" });
+    var videoBlob = new Blob(chunks, { type: "video/webm" });
     
     // 再生できるようにURLを生成
     blobUrl = window.URL.createObjectURL(videoBlob);
@@ -159,3 +159,4 @@
 
 </script>
 </html>
+

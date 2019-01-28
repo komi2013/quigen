@@ -55,7 +55,7 @@
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
   <!-- Video area -->
   <div id="video-container" style="position: absolute;">
-    <div id="their-videos" style="width:100%;"></div>
+    <video class="remoteVideos" id="their-videos" autoplay playsinline style="width:100%;"></video>
     <video id="my-video" muted="true" autoplay playsinline style="width:100%;"></video>
   </div>
   <div style="position:fixed;z-index:5;width:100%;bottom:2px;">
@@ -68,7 +68,12 @@
     <img src="/assets/img/icon/video_1.png" class="icon camera" id="camera1" style="display:none;">
     <img src="/assets/img/icon/upload_0.png" class="icon" id="send" style="display:none;">
   </div>
-  </div>    
+  </div>
+  <div style="position:absolute;top:-500px;">
+  <a href="#" id="downloadlink">Download</a><br>
+  <a href="#" onclick="playRecorded();">makeVideo</a><br>
+  <video id="playback_video" controls="1" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
+  </div>
 </div>
     
 <div id="ad_right"></div>
