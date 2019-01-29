@@ -8,11 +8,6 @@ const peer = new Peer({
 
 let localStream;
 let theirStream;
-let combined = localStream;
-if(localStream && theirStream){
-    combined = new MediaStream([localStream.getAudioTracks(), theirStream.getAudioTracks()]);
-}
-
 let room;
 peer.on('open', () => {
   $('#my-id').text(peer.id);
@@ -112,9 +107,8 @@ function step2() {
   $('#join-room').focus();
   makeCall();
 }
-
+const roomName = getVal.room ? getVal.room : randomStr();
 function makeCall() {
-    const roomName = getVal.room ? getVal.room : randomStr();
     room = peer.joinRoom('mesh_video_' + roomName, {stream: localStream});
 
     $('#room-id').text(roomName);
@@ -134,15 +128,15 @@ function makeCall() {
           $('#my-video').hide();
           $('#camera1').hide();
           $('#camera0').show();
-          var data = [0,2];//2=$('#their-videos').hide();
-          stopRecording();
+          var data = [0,2];
+          stopRecording(localStream);
         }else{
           localStream.getVideoTracks()[0].enabled = true;
           $('#their-videos').hide();
           $('#my-video').show();
           $('#camera0').hide();
           $('#camera1').show();
-          var data = [0,1];//videOn 1=$('#their-videos').show();
+          var data = [0,1];
           startRecording(localStream);
         }
         room.send(data);
@@ -155,11 +149,11 @@ function makeCall() {
           $('#camera1').hide();
           $('#camera0').show();
           $('#their-videos').show();
-          stopRecording();
+          stopRecording(localStream);
           startRecording(theirStream);
         }else if(data.data[1] == 2){
           $('#their-videos').hide();
-          stopRecording();
+          stopRecording(theirStream);
         }else{
           $('#chatLog').append('<p style="color:orange;">' + data.data[0] + '</p>');  
         }
@@ -173,7 +167,7 @@ function sendMsg(room){
       $('#camera0').show();
     }
     if($('#msg').val()){
-      var data = [$('#msg').val(),0];//0=no change
+      var data = [$('#msg').val(),0];
       room.send(data);
       $('#chatLog').append('<p>' + $('#msg').val() + '</p>');
       goBottom('scrollBottom');
@@ -187,28 +181,17 @@ $('#msg').click(function(){
     $('#send').show();
 });
 function step3(room) {
-  // Wait for stream on the call, then set peer video display
   room.on('stream', stream => {
     const peerId = stream.peerId;
-//    const id = 'video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '');
-//    $('#their-videos').append($(
-//      '<div class="video_' + peerId +'" id="' + id + '">' +
-//      '<video class="remoteVideos" autoplay playsinline>' +
-//      '</div>'));
-//      localStream.getVideoTracks()[0].enabled = false;
-//      console.log('komatsu' +stream.getVideoTracks()[0].enabled);
       const el = $('#their-videos').get(0);
       el.srcObject = stream;
       el.play();
       theirStream = stream;
-      combined = new MediaStream([localStream.getAudioTracks(), theirStream.getAudioTracks()]);
-      startAudio(combined);
-      setTimeout("stopAudio()", 5000);
+      startAudio(localStream);
+      setTimeout("stopAudio()", 1000 * 60 * 5);
   });
 
   room.on('removeStream', function(stream) {
-//    const peerId = stream.peerId;
-//    $('#video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '')).remove();
     $('#their-videos').remove();
   });
 
@@ -225,15 +208,15 @@ var blobUrl = null;
 var anchor = document.getElementById('downloadlink');
 var playbackVideo =  document.getElementById('playback_video');
 var chunks = []; // 格納場所をクリア
+const calling = getVal.calling;
 function startRecording(stream) {
+  if (calling == 'receiver') {
+      return;
+  }
   if (! stream) {
     console.warn('stream not ready');
     return;
   }
-//  if (recorder !== 'undefined') {
-//    console.warn('already recording');
-//    return;
-//  }
   recorder = new MediaRecorder(stream);
   
   recorder.ondataavailable = function(evt) {
@@ -243,48 +226,75 @@ function startRecording(stream) {
   recorder.onstop = function(evt) {
     console.log('recorder.onstop(), so playback');
     recorder = null;
-//    playRecorded();
+    var videoBlob = new Blob(chunks, { type: "video/webm" });
+    var fd = new FormData();
+    fd.append('room', roomName);
+    fd.append('media', 'video');
+    fd.append('u_id', localStorage.ua_u_id);
+    fd.append('split', splitRec);
+    fd.append('data', videoBlob);
+    $.ajax({
+        type: 'POST',
+        url: '/videoup/',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+        console.log(data);
+    });
   };
   recorder.start(1000); // インターバルは1000ms
   console.log('start recording');
 }
 // -- 録画停止 -- 
-
-function stopRecording() {
+var splitRec = 0;
+function stopRecording(stream) {
   if (recorder) {
     recorder.stop();
-    console.log("stop recording");
+    startRecording(stream);
+    splitRec++;
   }
 }
-var audioRec = null;
+var chunksAudio = [];
 function startAudio(stream) {
   if (! stream) {
-    console.warn(' audio stream not ready');
     return;
   }
   audioRec = new MediaRecorder(stream);
   
   audioRec.ondataavailable = function(evt) {
-    console.log("audio available: evt.data.type=" + evt.data.type + " size=" + evt.data.size);
-    chunks.push(evt.data);
+    chunksAudio.push(evt.data);
   };
   audioRec.onstop = function(evt) {
-    console.log('audio.onstop(), so playback');
     audioRec = null;
-//    playRecorded();
+    var videoBlob = new Blob(chunksAudio, { type: "audio/webm" });
+    var fd = new FormData();
+    fd.append('room', roomName);
+    fd.append('media', 'audio');
+    fd.append('u_id', localStorage.ua_u_id);
+    fd.append('split', splitAudio);
+    fd.append('data', videoBlob);
+    $.ajax({
+        type: 'POST',
+        url: '/videoup/',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+        console.log(data);
+    });
   };
   audioRec.start(1000); // インターバルは1000ms
-  console.log('audio start recording');
 }
-// -- 録画停止 -- 
-function stopAudio() {
+var splitAudio = 0;
+function stopAudio(stream) {
   if (audioRec) {
     audioRec.stop();
-    console.log("audio stop recording");
+    startAudio(stream);
+    splitAudio++;
   }
 }
 
-//  setTimeout("stopRecording()", 5000);
 // -- 再生 --
 function playRecorded() {
     if (! blobUrl) {
@@ -293,9 +303,23 @@ function playRecorded() {
     }
 
     // Blob
-    var videoBlob = new Blob(chunks, { type: "video/webm" });
-//    var videoBlob = new Blob(chunks, { type: "audio/webm" });
-    
+//    var videoBlob = new Blob(chunks, { type: "video/webm" });
+    var videoBlob = new Blob(chunks, { type: "audio/webm" });
+
+    var fd = new FormData();
+    fd.append('fname', 'test_'+splitAudio+'.webm');
+    fd.append('data', videoBlob);
+    $.ajax({
+        type: 'POST',
+        url: '/videoup/',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+        console.log(data);
+    });
+
+
     // 再生できるようにURLを生成
     blobUrl = window.URL.createObjectURL(videoBlob);
     
