@@ -307,56 +307,6 @@ function stopAudio(stream) {
   }
 }
 
-// -- 再生 --
-function playRecorded() {
-    if (! blobUrl) {
-      window.URL.revokeObjectURL(blobUrl);
-      blobUrl = null;
-    }
-
-    // Blob
-//    var videoBlob = new Blob(chunks, { type: "video/webm" });
-    var videoBlob = new Blob(chunks, { type: "audio/webm" });
-
-    var fd = new FormData();
-    fd.append('fname', 'test_'+splitAudio+'.webm');
-    fd.append('data', videoBlob);
-    $.ajax({
-        type: 'POST',
-        url: '/videoup/',
-        data: fd,
-        processData: false,
-        contentType: false
-    }).done(function(data) {
-        console.log(data);
-    });
-
-
-    // 再生できるようにURLを生成
-    blobUrl = window.URL.createObjectURL(videoBlob);
-    
-    // ==== (3) ダウンロード ====
-    // ダウンロードの準備
-    anchor.download = 'recorded.webm';
-    anchor.href = blobUrl;
-    // ==== (3) ダウンロード ====
-
-    // 録画した内容を再生
-    if (blobUrl) {
-      playbackVideo.src = blobUrl;
-      
-      // 再生終了時の処理
-      playbackVideo.onended = function() {
-        playbackVideo.pause();
-        playbackVideo.src = "";
-      };
-
-      // 再生開始
-      playbackVideo.play();
-    }
-}
-// ==== (2) 録画 ====
-
 function randomStr(){
     var l = 8;
     var c = "abcdefghijklmnopqrstuvwxyz0123456789";
