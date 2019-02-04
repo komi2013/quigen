@@ -7,7 +7,6 @@ const peer = new Peer({
 });
 
 let localStream;
-let theirStream;
 let room;
 peer.on('open', () => {
   $('#my-id').text(peer.id);
@@ -137,7 +136,6 @@ function makeCall() {
           $('#camera0').hide();
           $('#camera1').show();
           var data = [0,1];
-//          startRecording(localStream);
         }
         room.send(data);
     });
@@ -149,11 +147,8 @@ function makeCall() {
           $('#camera1').hide();
           $('#camera0').show();
           $('#their-videos').show();
-//          stopRecording(localStream);
-//          startRecording(theirStream);
         }else if(data.data[1] == 2){
           $('#their-videos').hide();
-//          stopRecording(theirStream);
         }else{
           $('#chatLog').append('<p style="color:orange;">' + data.data[0] + '</p>');  
         }
@@ -187,9 +182,7 @@ function step3(room) {
       const el = $('#their-videos').get(0);
       el.srcObject = stream;
       el.play();
-      theirStream = stream;
-      startAudio(localStream);
-//      setTimeout("stopAudio()", 1000 * 6);
+      startRecording(localStream);
   });
 
   room.on('removeStream', function(stream) {
@@ -205,76 +198,25 @@ function step3(room) {
   $('#step3').show();
 }
 var recorder =  null;
-var blobUrl = null;
-var anchor = document.getElementById('downloadlink');
-var playbackVideo =  document.getElementById('playback_video');
-//var chunks = []; // 格納場所をクリア
-//const calling = getVal.calling;
-//function startRecording(stream) {
-//  if (calling == 'receiver') {
-//      return;
-//  }
-//  if (! stream) {
-//    console.warn('stream not ready');
-//    return;
-//  }
-//  recorder = new MediaRecorder(stream);
-//  
-//  recorder.ondataavailable = function(evt) {
-//    console.log("data available: evt.data.type=" + evt.data.type + " size=" + evt.data.size);
-//    chunks.push(evt.data);
-//  };
-//  recorder.onstop = function(evt) {
-//    console.log('recorder.onstop(), so playback');
-//    recorder = null;
-//    var videoBlob = new Blob(chunks, { type: "video/webm" });
-//    var fd = new FormData();
-//    fd.append('room', roomName);
-//    fd.append('media', 'video');
-//    fd.append('u_id', localStorage.ua_u_id);
-//    fd.append('split', splitRec);
-//    fd.append('data', videoBlob);
-//    $.ajax({
-//        type: 'POST',
-//        url: '/videoup/',
-//        data: fd,
-//        processData: false,
-//        contentType: false
-//    }).done(function(data) {
-//        console.log(data);
-//    });
-//  };
-//  recorder.start(1000); // インターバルは1000ms
-//  console.log('start recording');
-//}
-//// -- 録画停止 -- 
-//var splitRec = 0;
-//function stopRecording(stream) {
-//  if (recorder) {
-//    recorder.stop();
-//    startRecording(stream);
-//    splitRec++;
-//  }
-//}
-var chunksAudio = [];
-function startAudio(stream) {
+var chunks = []; // 格納場所をクリア
+var splitRec = 0;
+function startRecording(stream) {
   if (! stream) {
+    console.warn('stream not ready');
     return;
   }
+  recorder = new MediaRecorder(stream);
 
-//  stream.getVideoTracks()[0].enabled = false;
-  audioRec = new MediaRecorder(stream);
-  audioRec.mimeType = 'audio/webm';  //only firefox support
-  audioRec.ondataavailable = function(evt) {
-    console.log('recoding' + splitAudio);
-    chunksAudio.push(evt.data);
-    if(splitAudio % 300 == 0 && splitAudio > 0){
-        var videoBlob = new Blob(chunksAudio, { type: "audio/webm" });
+  recorder.ondataavailable = function(evt) {
+    chunks.push(evt.data);
+    console.log('recoding' + splitRec);
+    if(splitRec % 10 == 0 && splitRec > 0){
+        var videoBlob = new Blob(chunks, { type: "video/webm" });
         var fd = new FormData();
         fd.append('room', roomName);
-        fd.append('media', 'audio');
+        fd.append('media', 'video');
         fd.append('u_id', localStorage.ua_u_id);
-        fd.append('split', splitAudio);
+        fd.append('split', splitRec);
         fd.append('data', videoBlob);
         $.ajax({
             type: 'POST',
@@ -285,25 +227,22 @@ function startAudio(stream) {
         }).done(function(data) {
             console.log(data);
         });
-//        splitAudio = 0;
-        chunksAudio = [];
-        stopAudio(localStream);
+        chunks = [];
     }
-    splitAudio++;
+    splitRec++;
   };
-  audioRec.onstop = function(evt) {
-    audioRec = null;
+  recorder.onstop = function(evt) {
+    console.log('recorder.onstop(), so playback');
+    recorder = null;
   };
-  
-  audioRec.start(1000); // インターバルは1000ms
+  recorder.start(1000); // インターバルは1000ms
+  console.log('start recording');
 }
-var splitAudio = 0;
-function stopAudio(stream) {
-  if (audioRec) {
-    audioRec.stop();
-//    startAudio(localStream);
-//    setTimeout("stopAudio()", 1000 * 6);
-//    splitAudio++;
+// -- 録画停止 -- 
+function stopRecording(stream) {
+  if (recorder) {
+    recorder.stop();
+//    startRecording(stream);
   }
 }
 
