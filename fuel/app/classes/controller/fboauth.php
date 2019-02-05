@@ -76,6 +76,9 @@ class Controller_FbOAuth extends Controller
     foreach ($arr_follow as $d) {
       $arr[] = $d['receiver'];
     }
+    $geo = file_get_contents('http://ip-api.com/json/'.$_SERVER["REMOTE_ADDR"]);
+    $geo = json_decode($geo,true);
+    DB::update('usr')->value('latitude', $geo['lat'])->value('longitude', $geo['lon'])->where('id', $usr_id)->execute();
     Model_Cookie::set_usr($usr_id);
     
     $view = View::forge('oauth');
