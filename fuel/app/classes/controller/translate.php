@@ -4,18 +4,12 @@ class Controller_Translate extends Controller
   public function action_index()
   {
     $res[0] = 2;
-    Model_Csrf::check();
+//    Model_Csrf::check();
     $usr_id = Model_Cookie::get_usr();
     if (!$usr_id) {
       Model_Log::warn('wrong usr');
       die(json_encode($res));
     }
-//    $lan_q = 'ja';
-//    $lan_a = 'en';
-//    if(strlen($_POST['trans_q']) == mb_strlen($_POST['trans_q'],'utf8')) {
-//        $lan_q = 'en';
-//        $lan_a = 'ja';
-//    }
 
     $key = '07c8bcc481584897aa614043953ca99d';
     $host = "https://api.cognitive.microsofttranslator.com";
