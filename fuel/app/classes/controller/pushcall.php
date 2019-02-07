@@ -24,16 +24,13 @@ class Controller_Pushcall extends Controller
   }
   public function push_call($token)
   {
-    $json = '{
-    "notification":
-    {
-        "title": "タイトルが入ります",
-        "body": "本文が入ります",
-        "icon": "https://zstg-english.quigen.info/apple-touch-icon-precomposed.png",
-        "click_action": "https://zstg-english.quigen.info/"
-    },
-    "to": "'.$token.'"
-    }';
+    
+    $arr['notification']['title'] = '本当ですか？';
+    $arr['notification']['body'] = '本文が入ります';
+    $arr['notification']['icon'] = 'https://zstg-english.quigen.info/apple-touch-icon-precomposed.png';
+    $arr['notification']['click_action'] = 'https://zstg-english.quigen.info/';
+    $arr['to'] = $token;
+    $json = json_encode($arr);
 
     $ch = curl_init();
 
