@@ -189,3 +189,27 @@ $.get('/myanswershow/',{},function(){},"json")
   }else if(res[0]==2){
   }
 });
+
+if(localStorage.login){
+
+    messaging.getToken().then(function(currentToken) {
+        if (currentToken != localStorage.push_token) {
+            messaging.requestPermission().then(function() {
+                messaging.getToken().then(function(token) {
+                    $.post('/pushadd/',{csrf:csrf,token:token},function(){},"json")
+                    .always(function(res){
+                      if(res[0]==1){
+                        localStorage.push_token = token;
+                      }
+                    });
+                }).catch(function(err) {
+                    alert(err);
+                });
+            }).catch(function(err) {
+                alert(err);
+            });
+        }
+    }).catch(function(err) {
+        alert(err);
+    });
+}

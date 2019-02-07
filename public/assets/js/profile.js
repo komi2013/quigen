@@ -20,6 +20,7 @@ $('#right').click(function(){
     alert('wait 2 seconds');
     return;
   }
+
   second_1 = Math.round(new Date().getTime() /1000);
   if(status > 0){
     var url_1 = '/followingdel/';
@@ -170,3 +171,17 @@ if(list == 'answer'){
     });
   });
 }
+$('#call').click(function(){
+  var param = {
+    csrf : csrf
+    ,receiver : receiver
+    ,myphoto : myphoto
+  };
+  $.post('/pushcall/',param,function(){},"json")
+  .always(function(res){
+    if(res[0]==1){
+      
+    }else{
+    }
+  });
+});

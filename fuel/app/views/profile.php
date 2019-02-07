@@ -151,15 +151,16 @@
 <script src="/third/img-touch-canvas_1.js<?=Config::get("my.cache_v")?>"></script>
 <div class="forum_form" id="txt" contenteditable="true"></div>
 <table><tr>
-  <td class="td_33">
+  <td>
     <input type="file" id="file_load" >
     <img src="/assets/img/icon/camera.png" class="icon" id="camera">
   </td>
-  <td class="td_33"><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
-  <td class="td_33">
+  <td><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
+  <td>
     <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
     <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
   </td>
+  <td><img src="/assets/img/icon/telephone.png" class="icon" id="call"></td>
 </tr></table>
 
 <table style="display:none;" id="canvas_menu">

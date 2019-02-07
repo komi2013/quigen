@@ -8,6 +8,7 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script src="/third/vue.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
@@ -162,7 +163,7 @@ target="_blank" class="pc_disp_none">
 </div>
 <template v-if="list == 'graph'">
 <table><tr>
-    <td style="width:35%">date</td>
+    <td style="width:35%"><img src="/assets/img/icon/calendar.png"></td>
     <td><img src="/assets/img/icon/answer.png"></td>
     <td><img src="/assets/img/icon/hourglass.png"></td>
 </tr></table>
@@ -190,6 +191,19 @@ target="_blank" class="pc_disp_none">
   var change_profile = '<?=Config::get("lang.change_profile")?>';
   var logout = '<?=Config::get("lang.logout")?>';
   var tag_category = '<?=Config::get("lang.tag_category")?>';
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAv7c9wh78dRtJ_bmfvLyAAvpLNYyM_6-M",
+    authDomain: "first-c2036.firebaseapp.com",
+    databaseURL: "https://first-c2036.firebaseio.com",
+    projectId: "first-c2036",
+    storageBucket: "first-c2036.appspot.com",
+    messagingSenderId: "289998193190"
+  };
+  firebase.initializeApp(config);
+  const messaging = firebase.messaging();
+  messaging.usePublicVapidKey("BD_N3qR5bZuczRat6fJwWFTKIEalOXbm6o6ALYMiLPkFqaTmXLiyOum5SZpSjScWfPMGA29nzuzWUqKCYNt7M2c");
+
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
