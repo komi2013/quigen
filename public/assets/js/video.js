@@ -106,7 +106,7 @@ function step2() {
   $('#join-room').focus();
   makeCall();
 }
-const roomName = getVal.room ? getVal.room : randomStr();
+const roomName = getVal.room;
 function makeCall() {
     room = peer.joinRoom('mesh_video_' + roomName, {stream: localStream});
 
@@ -246,18 +246,26 @@ function stopRecording(stream) {
   }
 }
 
-function randomStr(){
-    var l = 8;
-    var c = "abcdefghijklmnopqrstuvwxyz0123456789";
-    var cl = c.length;
-    var r = "";
-    for(var i=0; i<l; i++){
-      r += c[Math.floor(Math.random()*cl)];
-    }
-    return r;
-}
 function goBottom(targetId) {
     var obj = document.getElementById(targetId);
     if(!obj) return;
     obj.scrollTop = obj.scrollHeight;
+}
+if(getVal.who == 'caller'){
+    var param = {
+      csrf : csrf
+      ,receiver : getVal.receiver
+      ,myphoto : localStorage.myphoto
+      ,myname : localStorage.myname
+      ,room : getVal.room
+    };
+    $.post('/pushcall/',param,function(){},"json")
+    .always(function(res){
+      if(res[0]==1){
+
+      }else{
+      }
+    });
+}else{
+    
 }

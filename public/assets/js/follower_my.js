@@ -37,7 +37,7 @@ $('#delete').click(function(){
 });
 
 $('#confirm').click(function(){
-  r = confirm(confirm);
+  r = confirm(confirm_my);
   if(r){
     var arr_u=[];
     $('[name="u_id"]:checked').each(function(){

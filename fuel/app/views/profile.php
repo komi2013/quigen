@@ -5,7 +5,7 @@
     <title><?=$usr_name?></title>
 <?php if( $seo_index ){ ?>
     <meta name="description" content="<?=$meta_description?>, <?=$follower?> follower, <?=$following?> following user">
-    <link rel="canonical" href="http://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
+    <link rel="canonical" href="https://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
 <?php } else { ?>
     <meta name="robots" content="noindex,follow">
 <?php } ?>

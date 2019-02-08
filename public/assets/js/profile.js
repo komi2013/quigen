@@ -171,17 +171,24 @@ if(list == 'answer'){
     });
   });
 }
+$("#call").attr("href","/video/?who=caller&receiver="+receiver+"&room="+randomStr());
+
 $('#call').click(function(){
-  var param = {
-    csrf : csrf
-    ,receiver : receiver
-    ,myphoto : myphoto
-  };
-  $.post('/pushcall/',param,function(){},"json")
-  .always(function(res){
-    if(res[0]==1){
-      
-    }else{
-    }
-  });
+//  if(!localStorage.point){
+//    return;
+//  }
+  r = confirm('calling?');
+  if(r){
+    window.open("/video/?who=caller&receiver="+receiver+"&room="+randomStr());
+  }
 });
+function randomStr(){
+    var l = 8;
+    var c = "abcdefghijklmnopqrstuvwxyz0123456789";
+    var cl = c.length;
+    var r = "";
+    for(var i=0; i<l; i++){
+      r += c[Math.floor(Math.random()*cl)];
+    }
+    return r;
+}

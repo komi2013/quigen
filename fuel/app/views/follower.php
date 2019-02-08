@@ -34,7 +34,7 @@
   var receiver = '<?=$receiver?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
   var del = '<?=Config::get("lang.delete")?>';
-  var confirm = '<?=Config::get("lang.confirm")?>';
+  var confirm_my = '<?=Config::get("lang.confirm")?>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
