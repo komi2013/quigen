@@ -10,9 +10,12 @@ class Controller_Newsshow extends Controller
       die(json_encode($res));
     }    
     $comma_q_id = '0';
-    foreach ($_GET['arr_myanswer_id'] as $k => $d) {
-      $comma_q_id .= ','.$d;
+    if ( isset($_GET['arr_myanswer_id'][0]) ) {
+        foreach ($_GET['arr_myanswer_id'] as $k => $d) {
+          $comma_q_id .= ','.$d;
+        }        
     }
+
     $comma_following_u_id = '0';
     if ( isset($_GET['follow']) ) {
       foreach ($_GET['follow'] as $k => $d) {
@@ -102,7 +105,7 @@ class Controller_Newsshow extends Controller
     $res[1] = array_merge($res[1], $arr_res);  
     $query = DB::query("select * from pay_answered_news where usr_id = ".$usr_id)->execute()->as_array();
     DB::query("delete from pay_answered_news where usr_id = ".$usr_id)->execute();  
-    $arr_res = array();  
+    $arr_res = array();
     foreach ($query as $d) {
       $q_img = preg_replace('/http/', 'url', $d['q_img']);
       $q_img = $q_img ?: '/assets/img/icon/quiz_generator.png';

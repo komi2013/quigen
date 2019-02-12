@@ -30,15 +30,16 @@ if(localStorage.notify){  //[396105,396413,"read",1,2]
 function getNews(){
   var notify = JSON.parse(localStorage.notify);
   var resData = JSON.parse(localStorage.offline_q);
-
   var celNum = 0;
   var arrCellId = [];
-  while(celNum < 1000){
-    arrCellId[celNum] = resData[celNum][7];
-    ++celNum;
-    if(!resData[celNum]){
-      celNum = 1000;
-    }
+  if(resData.length){
+    while(celNum < 1000){
+      arrCellId[celNum] = resData[celNum][7];
+      ++celNum;
+      if(!resData[celNum]){
+        celNum = 1000;
+      }
+    }      
   }
   if(localStorage.follow){
     var follow = JSON.parse(localStorage.follow);

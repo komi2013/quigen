@@ -58,7 +58,7 @@
     <video class="remoteVideos" id="their-videos" autoplay playsinline style="width:100%;"></video>
     <video id="my-video" muted="true" autoplay playsinline style="width:100%;"></video>
   </div>
-  <div style="position:fixed;z-index:5;width:100%;bottom:2px;">
+  <div style="position:fixed;z-index:5;width:100%;bottom:2px;right:2px;">
   <div id='scrollBottom' style="width:100%;height:300px;overflow:scroll;">
     <div id="chatLog" style="width:100%;height:300px;display:table-cell;vertical-align:bottom;padding:5px;color:lime;font-size: 20px;"></div>
   </div>
@@ -75,7 +75,7 @@
   <video id="playback_video" controls="1" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
   </div>
 </div>
-    
+
 <div id="ad_right"></div>
 <script>
 var csrf = '<?=Model_Csrf::setcsrf()?>';
