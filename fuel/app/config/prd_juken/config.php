@@ -365,13 +365,15 @@ return array(
     'display_error' => false,
     'lang' => 'jp',
     'cache_v' => "?cache_v=98",
+//https://console.firebase.google.com/project/first-c2036/settings/cloudmessaging/android:first.test.komatsuseijiro.com?hl=ja
+    'push_key' => 'AAAAQ4U9QiY:APA91bGSYhGZD4z_gOhkx5wdbVrRmhHt_6ETd7Vb4nm_mN0-fkTeiIHknXdKtiD2XZXbjX2AiDhjwYK3ScJTlZtyCXr2tA0tmlV3ebl2yk3LlUbgCQaaQnU-9BRY3JVfy4DhpHqkKCuY',
   ),
   'lang' => array(
     'you_can_answer_after_this_time' => 'you can answer after this time',
     'answer_first' => 'answer first',
     'not_enough_point' => 'not enough point',
     'thanks' => 'thanks. you will know <a href="/htm/?p=news">on this page</a>',
-    'del' => 'delete',
+    'delete' => 'delete',
     'confirm' => 'confirm',
     'checked_chat' => 'checked chat',
     'after' => 'after ',' hours_please' => ' hours please',
@@ -391,5 +393,6 @@ return array(
     'checked_rank' => 'checked rank',
     'checked_top' => 'checked top page',
     'please_login' => 'please login',
+    'calling' => 'calling',
   ),
 );
