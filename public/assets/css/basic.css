@@ -379,3 +379,6 @@ blockquote {
   width: 100%;
   text-align: center;
 }
+.str_cp {
+  pointer-events: none;
+}

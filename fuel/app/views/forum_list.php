@@ -72,15 +72,14 @@
 <div id="timeline_frame">
 <?php foreach($arr_forum as $k => $d){ ?>
 <div class="trigger">
-<table>
-  <tr>
-    <td> <a href="/profile/?u=<?=$d['usr_id']?>"> <img src="<?=$d['u_img']?>" class="icon" <?=$d['eto_css']?> > <?=$d['u_name']?> </a> </td>
-    <td> <?=date('m-d H:i:s',strtotime($d['open_time']))?> </td>
-  </tr>
-</table>
+
+<div style="display:inline-block;"> <a href="/profile/?u=<?=$d['usr_id']?>"> <img src="<?=$d['u_img']?>" class="icon" <?=$d['eto_css']?> > </a> </div>
+<div style="display:inline-block;text-align:right;vertical-align:bottom;"> <?=date('M/jS',strtotime($d['open_time']))?> </div>
 
 <div class="forum_txt" contenteditable="true"> <?=$d['txt']?></div>
+<?php if($d['img']){ ?>
 <div class="forum_img"><a href="/forum/?f=<?=$d['id']?>"><img src="<?=$d['img']?>"></a></div>
+<?php }?>
 <?php if($d['view_all']){?>
 <div class="div_100_c"><a href="/forum/?f=<?=$d['id']?>"> ... View All ... </a></div>
 <?php } ?>

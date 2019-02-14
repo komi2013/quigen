@@ -76,7 +76,7 @@ class Controller_Forumlist extends Controller
       foreach ($arr3 as $k3 => $d3) {
         if ($k3 < 3) {
           $arr4[$i] = $d3;
-          $arr4[$i]['txt'] = Str::truncate(Security::htmlentities($d3['txt']),60);
+          $arr4[$i]['txt'] = Str::truncate($d3['txt'],60);
           $arr4[$i]['eto_css'] = '';
           if (!$d3['u_img']) {
             $util->eto($d3['usr_id']);

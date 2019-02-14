@@ -123,16 +123,20 @@ class Controller_Myquestionadd extends Controller
       
       $txt = htmlspecialchars($_POST['q_txt'], ENT_QUOTES);
       $txt = nl2br($txt);
-      $txt = '<cite><a href="/quiz/?q='.$question_id.'" contenteditable="false">'.$txt.'</a></cite>';
+      $txt2 = '<a href="/quiz/?q='.$question_id.'" class="str_cp">';
+      $txt2 .= $txt;
+      $txt2 .= '</a>';
+
       $query = DB::insert('forum');
       $query->set(array(
-        'txt' => $txt,
+        'txt' => $txt2,
         'usr_id' => $usr_id,
         'update_at' => date("Y-m-d H:i:s"),
         'open_time' => date("Y-m-d H:i:s"),
         'u_img' => $myphoto,
         'u_name' => $myname,
-        'no_param' => 1,
+        'img' => $web_path,
+        'question_id' => $question_id,
       ));
       $query->execute();
       DB::query("UPDATE usr SET forum = forum + 1 WHERE id = ".$usr_id)->execute();
