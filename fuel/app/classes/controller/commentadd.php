@@ -16,24 +16,25 @@ class Controller_CommentAdd extends Controller
     }
     try
     {
-      if (isset($_GET['pay'])) {
-        $comment = new Model_PayComment();
-        $comment->txt = $_POST['txt'];
-        $comment->usr_id = $usr_id;
-        $comment->pay_q_id = $_POST['q'];
-        $comment->create_at = date("Y-m-d H:i:s");
-        $comment->save();
-      } else {
-        $query = DB::insert('comment');
-        $query->set(array(
-          'txt' => $_POST['txt'],
-          'u_img' => htmlspecialchars($_POST['u_img'], ENT_QUOTES),
-          'usr_id' => $usr_id,
-          'question_id' => $_POST['q'],
-          'create_at' => date("Y-m-d H:i:s"),
-        ));
-        $query->execute();
-      }
+      $query = DB::insert('comment');
+      $query->set(array(
+        'txt' => htmlspecialchars($_POST['txt'], ENT_QUOTES),
+        'u_img' => htmlspecialchars($_POST['u_img'], ENT_QUOTES),
+        'usr_id' => $usr_id,
+        'question_id' => $_POST['q'],
+        'create_at' => date("Y-m-d H:i:s"),
+      ));
+      $query->execute();
+      
+      $query = DB::insert('forum_comment');
+      $query->set(array(
+        'txt' => htmlspecialchars($_POST['txt'], ENT_QUOTES),
+        'u_img' => htmlspecialchars($_POST['u_img'], ENT_QUOTES),
+        'usr_id' => $usr_id,
+        'question_id' => $_POST['q'],
+        'create_at' => date("Y-m-d H:i:s"),
+      ));
+      $query->execute();
       
       $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
       $txt = nl2br($txt);

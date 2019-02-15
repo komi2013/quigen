@@ -410,7 +410,8 @@ $('#comment_add').click(function(){
     return;
   }
   var validate = 1;
-  if($('#comment_data').val()==''){
+  if($('#comment_data').val().length < 10){
+    alert('you must input more');
     $('#comment_data').css({'border-color':'red'});
     validate=2;
   }
@@ -454,10 +455,7 @@ $('#comment_add').click(function(){
   ga('send','event','comment',usr,$('#comment_data').val(),1);  
   return false;
 });
-$('#report').click(function(){
-  $('#comment_data').append(report);
-  location.hash = "comment_data" ;
-});
+
 $('.chg_an_type').click(function(){
   localStorage.an_type = $(this).attr('an_type');
   setTimeout(function(){

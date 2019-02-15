@@ -144,10 +144,6 @@
 
 <table id="next_prev"></table>
 
-<div style="width:98%;text-align:right;">
-  <img src="/assets/img/icon/exclamation.png" alt="report" class="icon" id="report">
-</div>
-
 </div>
 <?php if( !isset($_GET['iframe']) ){?>
 <div id="ad_right"></div>
