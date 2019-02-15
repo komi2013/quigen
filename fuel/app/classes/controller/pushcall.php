@@ -49,7 +49,7 @@ class Controller_Pushcall extends Controller
     $arr['notification']['title'] = Config::get('lang.calling');
     $arr['notification']['body'] = $name;
     $arr['notification']['icon'] = $photo;
-    $arr['notification']['click_action'] = 'https://'.Config::get('my.domain').'/video/?room='.$room;
+    $arr['notification']['click_action'] = 'https://'.Config::get('my.push_key').'/video/?room='.$room;
     $arr['to'] = $token;
     $json = json_encode($arr);
 

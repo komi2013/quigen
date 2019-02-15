@@ -179,7 +179,7 @@ $('#call').click(function(){
 //  }
   r = confirm('calling?');
   if(r){
-    window.open("/video/?who=caller&receiver="+receiver+"&room="+randomStr());
+    location.href = "/video/?who=caller&receiver="+receiver+"&room="+randomStr();
   }
 });
 function randomStr(){
