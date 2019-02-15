@@ -75,40 +75,24 @@
 
 <div style="display:inline-block;"> <a href="/profile/?u=<?=$d['usr_id']?>"> <img src="<?=$d['u_img']?>" class="icon" <?=$d['eto_css']?> > </a> </div>
 <div style="display:inline-block;text-align:right;vertical-align:bottom;"> <?=date('M/jS',strtotime($d['open_time']))?> </div>
-
+<div f-id="<?=$d['id']?>" q-id="<?=$d['question_id']?>" class="goDetail">
 <div class="forum_txt" contenteditable="true"> <?=$d['txt']?></div>
 <?php if($d['img']){ ?>
-<div class="forum_img"><a href="/forum/?f=<?=$d['id']?>"><img src="<?=$d['img']?>"></a></div>
+<div class="forum_img"><a><img src="<?=$d['img']?>"></a></div>
 <?php }?>
 <?php if($d['view_all']){?>
-<div class="div_100_c"><a href="/forum/?f=<?=$d['id']?>"> ... View All ... </a></div>
+<div class="div_100_c"><a> ... View All ... </a></div>
 <?php } ?>
 <div style="background-color:#F5F5F5;">
-<?php if(!$d['no_param']){?>
-<table>
-  <tr>
-    <td style="width:20%;border-width:0px;"></td>
-    <td data-forum="<?=$d['id']?>"  data-f_u_id="<?=$d['usr_id']?>" class="nice param">
-      <span class="icon_num" id="f_nice_amt_<?=$d['id']?>" <?php if($d['nice'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['nice']?></span>
-      <img src="/assets/img/icon/thumbup_0.png" class="icon" id="f_nice_img_<?=$d['id']?>">
-    </td>
-    <td data-forum="<?=$d['id']?>" data-f_u_id="<?=$d['usr_id']?>" class="certify param">
-      <span class="icon_num" id="f_certify_amt_<?=$d['id']?>" <?php if($d['certify'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['certify']?></span>
-      <img src="/assets/img/icon/medal_0.png" class="icon" id="f_certify_img_<?=$d['id']?>">
-    </td>
-    <td class="param">
-      <span class="icon_num" <?php if($d['comment_amt'] < 1){ ?> style="display:none;" <?php } ?>><?=$d['comment_amt']?></span>
-      <a href="/forum/?f=<?=$d['id']?>"><img src="/assets/img/icon/pencil.png" class="icon f_menu"></a>
-    </td>
-  </tr>
-</table>
-<?php } ?>
 <?php foreach($d['arr_comment'] as $k2 => $d2){ ?>
 <div class="forum_comment" contenteditable="true">
   <span><?=$d2['txt']?></span>
-  <a href="/forum/?f=<?=$d['id']?>" contenteditable="false"><img src="<?=$d2['img']?>" class="icon" ></a>
+  <?php if($d2['img']){ ?>
+  <img src="<?=$d2['img']?>" class="icon" >
+  <?php } ?>
 </div>
 <?php } ?>
+</div>
 </div>
 </div>
 <?php } ?>

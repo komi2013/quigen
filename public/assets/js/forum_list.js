@@ -186,3 +186,11 @@ $(window).scroll(function(){
   }
 });
 
+$('.goDetail').click(function(){
+  if($(this).attr('q-id') > 0){
+    location.href = '/quiz/?q='+$(this).attr('q-id');
+  }else{
+    location.href = '/forum/?f='+$(this).attr('f-id');
+  }
+});
+
