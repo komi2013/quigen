@@ -446,7 +446,7 @@ $('#comment_add').click(function(){
   $.post('/commentadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
-      location.href = '';
+      location.reload();
     }else{
       alert('connection error');
     }

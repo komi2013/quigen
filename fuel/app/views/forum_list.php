@@ -71,7 +71,7 @@
 </div>
 <div id="timeline_frame">
 <?php foreach($arr_forum as $k => $d){ ?>
-<div class="trigger">
+<div class="trigger" style="padding: 0px 0px 30px 0px;">
 
 <div style="display:inline-block;"> <a href="/profile/?u=<?=$d['usr_id']?>"> <img src="<?=$d['u_img']?>" class="icon" <?=$d['eto_css']?> > </a> </div>
 <div style="display:inline-block;text-align:right;vertical-align:bottom;"> <?=date('M/jS',strtotime($d['open_time']))?> </div>

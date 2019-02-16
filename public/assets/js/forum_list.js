@@ -12,7 +12,8 @@ $('#generate').click(function(){
   }else{
     var imgdata = 'no';
   }
-  if(imgdata == 'no' && $('#txt').html()==''){
+  if(imgdata == 'no' && $('#txt').html().length < 30){
+    alert('you must input more');
     $('#txt').css({'border-color':'red'});
     validate=2
   }
