@@ -98,10 +98,10 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
 </tr>
 </template>
 </table>
-<table>
+<table >
 <tr>
   <td><img src="/assets/img/icon/circle_big.png" class="icon"></td>
-  <td class="td_34" id="num_ratio">{{answer_by_u[0] ? Math.round(answer_by_u[0]/answer_by_u[1] * 100) : 0}} % </td>
+  <td class="td_34" id="num_ratio">{{ answer_by_u[0] ? Math.round( answer_by_u[0] / answer_by_u[1] * 100 ) : 0 }} % </td>
   <td><img src="/assets/img/icon/answer.png" class="icon"></td>
   <td class="td_34" id="num_answer">{{answer_by_u[1]}}</td>
 </tr>
@@ -139,28 +139,23 @@ target="_blank" class="pc_disp_none">
 </table>
 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
+
 <table>
   <tr>
-  <td class="td_50" v-on:click="list = 'graph'" v-bind:class="[list == 'graph' ? 'this_page' : 'another_page', '']">
+  <td class="td_33" v-on:click="list = 'graph'" v-bind:class="[list == 'graph' ? 'this_page' : 'another_page', '']">
     <img src="/assets/img/icon/bar-chart.png" class="icon">
   </td>
-  <td class="td_50" v-on:click="list = 'forum'" v-bind:class="[list == 'forum' ? 'this_page' : 'another_page', '']">
+  <td class="td_33" v-on:click="list = 'forum'" v-bind:class="[list == 'forum' ? 'this_page' : 'another_page', '']">
     <span class="icon_num">{{amt_forum}}</span>
     <img src="/assets/img/icon/list.png" class="icon">
+  </td>
+  <td class="td_33" v-on:click="list = 'msg'" v-bind:class="[list == 'msg' ? 'this_page' : 'another_page', '']">
+    <span class="icon_num">{{amt_msg}}</span>
+    <img src="/assets/img/icon/chat.png" class="icon">
   </td>
   </tr>
 </table>
 
-<div v-if="list == 'forum'" class="div_t">
-<template v-for="(d,k) in list_forum">
-  <img v-bind:src="d['img']" class="icon">
-  <span v-html="d['txt']"></span>
-  <template v-if="d['no_param'] == 0">
-  &nbsp; &nbsp; <a v-bind:href="'/forum/?f='+d['forum_id']"> >> </a>
-  </template>
-  <div style="width:100%;text-align:right;">{{d['open_time']}}</div>
-</template>
-</div>
 <template v-if="list == 'graph'">
 <table><tr>
     <td style="width:35%"><img src="/assets/img/icon/calendar.png"></td>
@@ -176,6 +171,24 @@ target="_blank" class="pc_disp_none">
 <div class="graph_bar" v-bind:style="{ width: Math.round(d['answer']/max * 100) +'%' }">&nbsp;</div>
 </template>
 </template>
+
+<div v-if="list == 'forum'" class="div_t">
+<template v-for="(d,k) in list_forum">
+  <img v-bind:src="d['img']" class="icon">
+  <span v-html="d['txt']"></span>
+  <template v-if="d['no_param'] == 0">
+  &nbsp; &nbsp; <a v-bind:href="'/forum/?f='+d['forum_id']"> >> </a>
+  </template>
+  <div style="width:100%;text-align:right;">{{d['open_time']}}</div>
+</template>
+</div>
+<table v-if="list == 'msg'">
+  <tr v-for="(d,k) in list_msg">
+    <td class='td_15'><a v-bind:href="'/profile/?u='+d['usr_id']+'&list=msg'"><img v-bind:src="d['u_img']" class="icon"></a></td>
+    <td><a v-bind:href="'/profile/?u='+d['usr_id']+'&list=msg'">{{ d['last_txt'] }}</a></td>
+  </tr>
+</table>
+
 </div>
 <div id="ad_right"></div>
 
