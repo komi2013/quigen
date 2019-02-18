@@ -10,13 +10,14 @@ class Controller_Myquestionadd extends Controller
       Model_Log::warn('no usr');
       die(json_encode($res));
     }
-    
+
     $now_limit = new DateTime("now");
     $now_limit->add(new DateInterval('P30D'));
-    
+
     $query = DB::select()->from('question')
       ->where('usr_id','=',$usr_id)
       ->order_by('open_time', 'desc')
+      ->limit(1)
       ->execute()->as_array();
     if ( isset($query[0]['open_time']) ) {
       if ( $query[0]['open_time'] > "2100-01-01 00:00:00" ) {
@@ -29,13 +30,12 @@ class Controller_Myquestionadd extends Controller
     } else {
       $open_time = date("Y-m-d H:i:s");
     } 
-//    $open_time = Model_Cookie::get('open_time');
-    
     $post_open_time = new DateTime($open_time);
     if ($now_limit < $post_open_time) {
       Model_Log::warn('limited');
       die(json_encode($res));
     }
+    
     $auth = false;
     foreach (Config::get('my.adm') as $d) {
       if ($d == $usr_id) {
@@ -49,6 +49,7 @@ class Controller_Myquestionadd extends Controller
     $query = DB::select()->from('mt_block_generate')
       ->where('usr_id','=',$usr_id)
       ->execute()->as_array();
+    
     if ( isset($query[0]) ) {
       Model_Log::warn('blocked');
       die( json_encode($res) );
@@ -70,6 +71,7 @@ class Controller_Myquestionadd extends Controller
       imagesavealpha($image, TRUE);
       imagepng($image ,$img_path);
     }
+    
     try
     {
       $question = new Model_Question();

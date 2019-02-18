@@ -83,8 +83,8 @@ $('#generate').click(function(){
       }
     }else{
       $('#success').css({'display': 'none'});
-      $('#generate').css({'display': ''});  
-      alert('connection error');
+      $('#generate').css({'display': ''});
+      alert(JSON.stringify(res));
     }
   });
   var hour_stamp = Math.floor(new Date().getTime() /1000 /60 /60); 
