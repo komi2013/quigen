@@ -8,6 +8,7 @@ var content = new Vue({
   data: {
       u_id: 0
       ,myname: localStorage.myname ? localStorage.myname : ''
+      ,myphoto: localStorage.myphoto ? localStorage.myphoto : ''
       ,introduce: ''
       ,follower: 0
       ,following: 0

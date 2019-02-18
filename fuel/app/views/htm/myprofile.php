@@ -30,8 +30,8 @@
 
 <div id="content">
 <div class="img_input">
-  <span id="photo_res"><img src="/assets/img/icon/camera.png" id="photo" class="icon"></span>
-  <input type="text" placeholder="name" maxlength="12" id="myname" class="input_with" v-model="myname">
+  <span id="photo_res"><img src="/assets/img/icon/camera.png" id="photo" class="icon" v-if="myphoto === ''"></span>
+  <div style='display:inline-block;padding: 15px 0px 15px 0px;'>{{myname}}</div>
 </div>
 
 <div style="text-align:center;width:100%;">
