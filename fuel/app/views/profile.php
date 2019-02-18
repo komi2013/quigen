@@ -194,10 +194,10 @@
 
 <?php foreach($msg_list as $d ){?>
   <?php if($d['sender'] == $u_id){ ?>
-  <div class="my_img"><img src="<?=$d['img']?>"></div>
+  <?php if($d['img']){?><div class="my_img"><img src="<?=$d['img']?>"></div><?php }?>
   <div class="my_msg"><?=$d['txt']?> <div style="width:100%;text-align:right;"><?=$d['create_at']?></div></div>
   <?php } else { ?>
-  <div class="other_img"><img src="<?=$d['img']?>"></div>
+  <?php if($d['img']){?><div class="other_img"><img src="<?=$d['img']?>"></div><?php }?>
   <div class="other_msg"><img src="<?=$d['u_img']?>" class="icon"><?=$d['txt']?>
     <div><?=$d['create_at']?></div>
   </div>
