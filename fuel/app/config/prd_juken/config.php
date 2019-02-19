@@ -394,5 +394,6 @@ return array(
     'checked_top' => 'checked top page',
     'please_login' => 'please login',
     'calling' => 'calling',
+    'no_point_for_msg' => "you don't have enough point"."\r\n"."you can send tomorrow without point",
   ),
 );
