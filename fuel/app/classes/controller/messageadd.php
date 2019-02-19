@@ -18,10 +18,29 @@ class Controller_Messageadd extends Controller
       Model_Log::warn('blocked');
       die( json_encode($res) );
     }
-     $query = DB::query("select nextval('message_id_seq')")->execute();
-     foreach ($query as $d) {
-       $message_id = $d['nextval'];
-     }
+    $query = DB::select()->from('message')
+            ->where('create_at','>',date("Y-m-d H:i:s", strtotime("-20 hours")))
+            ->execute()->as_array();
+    $already = false;
+    foreach ($query as $d) {
+        if ($d['sender'] == $usr_id) {
+            $already = true;
+        }
+    }
+    $query = DB::select()->from('usr')->where('id','=',$usr_id)->execute()->as_array();
+    if ( isset($query[0]['id']) ) {
+      if ($query[0]['point'] < 10 & $already) {
+        $res[1] = Config::get("lang.no_point_for_msg");
+        die(json_encode($res));
+      }
+    } else {
+      $res[1] = "you don't login";
+      die(json_encode($res));
+    }
+    $query = DB::query("select nextval('message_id_seq')")->execute();
+    foreach ($query as $d) {
+      $message_id = $d['nextval'];
+    }
     if ($_POST["img"] == 'no') {
       $web_path = '';
     } else {
@@ -56,7 +75,12 @@ class Controller_Messageadd extends Controller
         'receiver' => $_POST['receiver'],
       ));
       $query->execute();
-      //DB::query("UPDATE usr SET message = message + 1 WHERE id = ".$usr_id)->execute();
+      if ($already) {
+        DB::query("UPDATE usr SET point = point - 10 WHERE id = ".$usr_id)->execute();
+        if ( is_numeric($_POST['receiver']) ) {
+            DB::query("UPDATE usr SET point = point + 5 WHERE id = ".$_POST['receiver'])->execute();
+        }
+      }
     } catch (Exception $e) {
       $res[1] = $e->getMessage();
       Model_Log::warn($res[1]);
