@@ -10,7 +10,6 @@ class Controller_Forumcommentadd extends Controller
       Model_Log::warn('no usr');
       die(json_encode($res));
     }
-    //$open_time = date("Y-m-d H:i:s",strtotime("+100 year"));
     $open_time = date("Y-m-d H:i:s");
     $query = DB::select()->from('mt_block_generate')
       ->where('usr_id','=',$usr_id)
@@ -37,17 +36,11 @@ class Controller_Forumcommentadd extends Controller
       imagesavealpha($image, TRUE);
       imagepng($image ,$img_path);
     }
-    //echo '<pre>';
     $forum_id = $_POST['f_id'];
-    //var_dump($_POST['txt']);
-    $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
-    //var_dump($txt);
+    $txt = $_POST['txt'];
     $search = array_keys(Model_Emoji::$table);
     $replace = array_values(Model_Emoji::$table);
     $txt = str_replace($search,$replace,$txt);
-    //var_dump($txt);
-    //echo '</pre>';
-    //die();
     try {
       $query = DB::insert('forum_comment');
       $query->set(array(

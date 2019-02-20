@@ -16,6 +16,7 @@ class Controller_Forum extends Controller
     $forum_u_id = 0;
     foreach ($arr as $k => $d) {
       $forum_u_id = $d['usr_id'];
+      $d['esc_txt'] = htmlspecialchars($d['txt']);
       $arr_forum[0] = $d;
       if ($d['u_img']) {
         $arr_forum[0]['eto_css'] = '';
@@ -41,6 +42,7 @@ class Controller_Forum extends Controller
     $arr_comment_id = [];
     $same_u_id = true;
     foreach ($arr as $k => $d) {
+      $d['esc_txt'] = htmlspecialchars($d['txt']);
       if ($d['usr_id'] == $forum_u_id AND $same_u_id) {
         $arr_forum[$k+1] = $d;
         if ($d['u_img']) {

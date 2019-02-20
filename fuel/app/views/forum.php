@@ -36,7 +36,7 @@
   </tr>
 </table>
   <?php } ?>
-<div class="forum_txt"><?=$d['txt']?></div>
+<div class="forum_txt"><?=$d['esc_txt']?></div>
 <div class="forum_img"><img src="<?=$d['img']?>"></div>
 <?php } ?>
 
@@ -77,7 +77,7 @@
     <td> <?=date('m-d H:i:s',strtotime($d['open_time']))?> </td>
   </tr>
 </table>
-<div class="forum_txt"><?=$d['txt']?></div>
+<div class="forum_txt"><?=$d['esc_txt']?></div>
 <div class="forum_img"><img src="<?=$d['img']?>"></div>
 <table>
   <tr>
