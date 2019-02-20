@@ -55,14 +55,13 @@ class Controller_Messageadd extends Controller
       imagesavealpha($image, TRUE);
       imagepng($image ,$img_path);
     }
-    $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
+    $txt = nl2br($_POST['txt']);
     $arr = Model_Emoji::$table;
     $arr['&lt;br&gt;'] = '<br>';
     $arr['&amp;nbsp;'] = ' ';
     $search = array_keys($arr);
     $replace = array_values($arr);
     $txt = str_replace($search,$replace,$txt);
-    
     try {
       $query = DB::insert('message');
       $query->set(array(

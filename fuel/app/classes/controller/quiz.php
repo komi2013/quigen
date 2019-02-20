@@ -51,7 +51,7 @@ class Controller_Quiz extends Controller
       foreach ($query as $k => $d) {
         $arr_u_id[] = $d['usr_id'];
         $arr_comment[$k]['usr_id'] = $d['usr_id'];
-        $arr_comment[$k]['txt'] = nl2br( Security::htmlentities($d['txt']) );
+        $arr_comment[$k]['txt'] = nl2br(htmlspecialchars($d['txt']) );
         if ($d['u_img']) {
           $arr_comment[$k]['u_img'] = $d['u_img'];
           $arr_comment[$k]['eto_css'] = '';

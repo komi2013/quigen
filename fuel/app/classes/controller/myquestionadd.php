@@ -120,23 +120,14 @@ class Controller_Myquestionadd extends Controller
       $answer_by_q->update_at = $open_time;
       $answer_by_q->save();
       
-      $myphoto = htmlspecialchars($_POST['myphoto'], ENT_QUOTES);
-      $myname = htmlspecialchars($_POST['myname'], ENT_QUOTES);
-      
-      $txt = htmlspecialchars($_POST['q_txt'], ENT_QUOTES);
-      $txt = nl2br($txt);
-      $txt2 = '<a href="/quiz/?q='.$question_id.'" class="str_cp">';
-      $txt2 .= $txt;
-      $txt2 .= '</a>';
-
       $query = DB::insert('forum');
       $query->set(array(
-        'txt' => $txt2,
+        'txt' => nl2br($_POST['q_txt']),
         'usr_id' => $usr_id,
         'update_at' => date("Y-m-d H:i:s"),
         'open_time' => date("Y-m-d H:i:s"),
-        'u_img' => $myphoto,
-        'u_name' => $myname,
+        'u_img' => $_POST['myphoto'],
+        'u_name' => $_POST['myname'],
         'img' => $web_path,
         'question_id' => $question_id,
       ));

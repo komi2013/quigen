@@ -99,20 +99,17 @@ class Controller_4wordadd extends Controller
         }
       }
       
-      $myphoto = htmlspecialchars($_POST['myphoto'], ENT_QUOTES);
-      $myname = htmlspecialchars($_POST['myname'], ENT_QUOTES);
-      $txt = htmlspecialchars($_POST['word4'][0][0], ENT_QUOTES);
-      $txt = nl2br($txt);
-      $txt = '<cite><a href="/quiz/?q='.$forum_q.'" contenteditable="false">'.$txt.'</a></cite>';
+      $txt = nl2br($_POST['word4'][0][0]);
       $query = DB::insert('forum');
       $query->set(array(
         'txt' => $txt,
         'usr_id' => $usr_id,
         'update_at' => date("Y-m-d H:i:s"),
         'open_time' => date("Y-m-d H:i:s"),
-        'u_img' => $myphoto,
-        'u_name' => $myname,
+        'u_img' => $_POST['myphoto'],
+        'u_name' => $_POST['myname'],
         'no_param' => 1,
+        'question_id' => $forum_q,
       ));
       $query->execute();
       DB::query("UPDATE usr SET forum = forum + 1 WHERE id = ".$usr_id)->execute();
