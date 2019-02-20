@@ -26,6 +26,7 @@ class Controller_Forumlist extends Controller
     foreach ($arr as $k => $d) {
       $d['esc_txt'] = htmlspecialchars($d['txt']);
       $d['u_img'] = htmlspecialchars($d['u_img']);
+      $d['u_name'] = htmlspecialchars($d['u_name']);
       $arr_forum_id[] = $d['id'];
       $arr_forum[$d['id']] = $d;
       $arr_forum[$d['id']]['arr_comment'] = [];
@@ -57,6 +58,7 @@ class Controller_Forumlist extends Controller
     foreach ($arr as $d) {
       $d['esc_txt'] = htmlspecialchars($d['txt']);
       $d['u_img'] = htmlspecialchars($d['u_img']);
+      $d['u_name'] = htmlspecialchars($d['u_name']);
       $arr2[$d['forum_id']][] = $d;
     }
     foreach ($arr2 as $k => $d) {
