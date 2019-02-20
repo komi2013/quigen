@@ -41,12 +41,12 @@ class Controller_CommentAdd extends Controller
           'u_name' => $_POST['u_name'],
           'nice' => 0,
         ));
-        $query->execute();          
+        $query->execute();
+        DB::update('forum')
+            ->value("open_time",date("Y-m-d H:i:s"))
+            ->where('id','=',$arr[0]['id'])
+            ->execute();   
       }
-      DB::update('forum')
-        ->value("open_time",date("Y-m-d H:i:s"))
-        ->where('id','=',$arr[0]['id'])
-        ->execute();
     }
     catch (Orm\ValidationFailed $e)
     {
