@@ -24,6 +24,8 @@ class Controller_Forumlist extends Controller
     $arr_forum = [];
     $util = new Model_Util();
     foreach ($arr as $k => $d) {
+      $d['esc_txt'] = htmlspecialchars($d['txt']);
+      $d['u_img'] = htmlspecialchars($d['u_img']);
       $arr_forum_id[] = $d['id'];
       $arr_forum[$d['id']] = $d;
       $arr_forum[$d['id']]['arr_comment'] = [];
@@ -53,6 +55,8 @@ class Controller_Forumlist extends Controller
       ->execute()->as_array();
     $arr2 = [];
     foreach ($arr as $d) {
+      $d['esc_txt'] = htmlspecialchars($d['txt']);
+      $d['u_img'] = htmlspecialchars($d['u_img']);
       $arr2[$d['forum_id']][] = $d;
     }
     foreach ($arr2 as $k => $d) {
