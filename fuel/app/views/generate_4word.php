@@ -59,6 +59,7 @@
 <script>
   var u_id = '<?=$u_id?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
+  var please_login = '<?=Config::get("lang.please_login")?>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>

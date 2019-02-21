@@ -405,8 +405,8 @@ function addNavi(res,nextPrev) {
   $('#next_prev').append(append);
 }
 $('#comment_add').click(function(){
-  if(!u_id){
-    alert(answer_first);
+  if(!localStorage.login){
+    alert(please_login);
     return;
   }
   var validate = 1;

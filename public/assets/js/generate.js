@@ -156,3 +156,7 @@ $('[name=scale]').change(function(){
   localStorage.scale = $('[name=scale] option:selected').text();
 });
 
+if(!localStorage.login){
+  alert(please_login);
+  location.href = '/htm/myprofile/';
+}

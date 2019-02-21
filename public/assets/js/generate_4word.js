@@ -117,3 +117,8 @@ if(localStorage.notify){
 localStorage.notify = JSON.stringify(notify);
 // .end. make notify arr
 
+if(!localStorage.login){
+  alert(please_login);
+  location.href = '/htm/myprofile/';
+}
+

@@ -161,6 +161,7 @@
   var shared_quiz = '<?=Config::get("lang.shared_quiz")?>';
   var commented = '<?=Config::get("lang.commented")?>';
   var report = '<?=Config::get("lang.report")?>';
+  var please_login = '<?=Config::get("lang.please_login")?>';
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>

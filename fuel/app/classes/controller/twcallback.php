@@ -40,6 +40,7 @@ class Controller_TwCallback extends Controller
     $js_answer = [];
     $js_answer_by_u = [];
     $introduce = '';
+    echo '<pre>'; var_dump($access_token); echo '</pre>'; die;
     if ( isset($arr_pv_usr[0]['id']) ) {
       if ( isset($usr_id) AND $usr_id != $arr_pv_usr[0]['id']) {
         Response::redirect('/myprofile/?warn=logout');
@@ -56,7 +57,7 @@ class Controller_TwCallback extends Controller
       $usr->pv_u_id = $id;
       $usr->provider = 2;
       $usr->name = $myname = $access_token['screen_name'];
-      $usr->img = $myphoto = $profile->profile_image_url_https;
+      $usr->img = $myphoto = $access_token['profile_image_url_https'];
       $usr->update_at = date("Y-m-d H:i:s");
       $usr->save();
       $point = 0;
