@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />
+    <meta property="og:image" content="https://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />

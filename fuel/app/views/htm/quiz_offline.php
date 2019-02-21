@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics_offline.js"></script>
-    <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
+    <meta property="og:image" content="https://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css" />
     <link rel="stylesheet" href="/assets/css/pc.css" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css" media="only screen and (max-width : 710px)">

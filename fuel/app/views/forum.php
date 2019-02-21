@@ -6,12 +6,12 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="description" content="<?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
-    <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
+    <link rel="canonical" href="https://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
-    <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
+    <meta property="og:image" content="https://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
     <link rel="stylesheet" href="/assets/css/pc.css<?=Config::get("my.cache_v")?>" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>" media="only screen and (max-width : 710px)">

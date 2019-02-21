@@ -4,8 +4,8 @@
     <title><?=$title?></title>
     <meta name="description" content="<?=$q_txt?> <?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
-    <link rel="canonical" href="http://<?=Config::get('my.domain').'/quiz/?q='.$question?>" />
-    <meta property="og:image" content="http://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
+    <link rel="canonical" href="https://<?=Config::get('my.domain').'/quiz/?q='.$question?>" />
+    <meta property="og:image" content="https://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <meta name="viewport" content="width=device-width, user-scalable=no" >
 <style amp-custom>
 body {
