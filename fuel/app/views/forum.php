@@ -65,7 +65,6 @@
       <img src="/assets/img/icon/clip.png" alt="line" class="icon">
       </a>
     </td>
-    <td> <img src="/assets/img/icon/exclamation.png" class="icon report" data-f_report="<?=$f_id?>"> </td>
   </tr>
 </table>
 
@@ -77,26 +76,27 @@
     <td> <?=date('m-d H:i:s',strtotime($d['open_time']))?> </td>
   </tr>
 </table>
-<div class="forum_txt"><?=$d['esc_txt']?></div>
+<div class="forum_txt">
+    <?php if($d['point'] > 0){?>
+      <div><img src="/assets/img/icon/coin.png" class="icon"> = <?=$d['point']?></div>
+    <?php }?>
+    <?=$d['esc_txt']?>
+</div>
 <div class="forum_img"><img src="<?=$d['img']?>"></div>
 <table>
   <tr>
     <td style="width:48px;"></td>
-    <td class="reply" data-fc_u_name="<?=$d['u_name']?>" data-fc_u_id="<?=$d['usr_id']?>"> <img src="/assets/img/icon/reply.png" class="icon"> </td>
+    <td class="reply" fc_u_name="<?=$d['u_name']?>"> <img src="/assets/img/icon/reply.png" class="icon"> </td>
     <td data-comment="<?=$d['id']?>" data-fc_u_id="<?=$d['usr_id']?>" class="nice_c param">
       <span class="icon_num" id="fc_nice_amt_<?=$d['id']?>" <?php if($d['nice'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['nice']?></span>
       <img src="/assets/img/icon/thumbup_0.png" class="icon" id="fc_nice_img_<?=$d['id']?>">
     </td>
-    <td data-comment="<?=$d['id']?>" data-fc_u_id="<?=$d['usr_id']?>" class="certify_c param">
-      <span class="icon_num" id="fc_certify_amt_<?=$d['id']?>" <?php if($d['certify'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['certify']?></span>
-      <img src="/assets/img/icon/medal_0.png" class="icon" id="fc_certify_img_<?=$d['id']?>">
-    </td>
-    <td class="report" data-comment="<?=$d['id']?>"> <img src="/assets/img/icon/exclamation.png" class="icon"> </td>
+    <td class="coin" fc_u_name="<?=$d['u_name']?>"> <img src="/assets/img/icon/coin.png" class="icon"> </td>
   </tr>
 </table>
 <?php } ?>
 
-<div class="forum_form" id="txt" contenteditable="true"></div>
+<div class="forum_form" id="txt" contenteditable="true" style='overflow: scroll;'></div>
 
 <table><tr>
   <td class="td_33">
