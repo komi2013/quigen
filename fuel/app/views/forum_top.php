@@ -6,7 +6,7 @@
     <meta name="description" content="<?=Config::get("my.forum_list_description")?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( isset($top) ){  ?>    
-    <link rel="canonical" href="http://<?=Config::get('my.domain').'/forumlist/'?>" />
+    <link rel="canonical" href="https://<?=Config::get('my.domain').'/forumlist/'?>" />
 <?php } ?>
 <?php if( isset($_GET['page']) ){ ?>
     <meta name="robots" content="noindex,follow">

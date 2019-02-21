@@ -34,7 +34,7 @@ $('#generate').click(function(){
   }
   var param = {
     csrf : csrf
-    ,txt : $('#txt').html()
+    ,txt : $('#txt').text()
     ,img : imgdata
     ,myphoto : myphoto
     ,myname : myname

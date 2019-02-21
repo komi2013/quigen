@@ -16,6 +16,10 @@ class Controller_Forum extends Controller
     $forum_u_id = 0;
     foreach ($arr as $k => $d) {
       $forum_u_id = $d['usr_id'];
+      $d['esc_txt'] = htmlspecialchars($d['txt']);
+      $d['esc_txt'] = nl2br($d['esc_txt']);
+      $d['u_img'] = htmlspecialchars($d['u_img']);
+      $d['u_name'] = htmlspecialchars($d['u_name']);
       $arr_forum[0] = $d;
       if ($d['u_img']) {
         $arr_forum[0]['eto_css'] = '';
@@ -41,6 +45,10 @@ class Controller_Forum extends Controller
     $arr_comment_id = [];
     $same_u_id = true;
     foreach ($arr as $k => $d) {
+      $d['esc_txt'] = htmlspecialchars($d['txt']);
+      $d['esc_txt'] = nl2br($d['esc_txt']);
+      $d['u_img'] = htmlspecialchars($d['u_img']);
+      $d['u_name'] = htmlspecialchars($d['u_name']);
       if ($d['usr_id'] == $forum_u_id AND $same_u_id) {
         $arr_forum[$k+1] = $d;
         if ($d['u_img']) {
@@ -67,17 +75,17 @@ class Controller_Forum extends Controller
     }
     
     $view = View::forge('forum');
-    $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
+    $view->fb_url = 'https://www.facebook.com/sharer.php?u=https://'.
         Config::get('my.domain').
         '/forum/?f='.
         $_GET['f'].'%26cpn=share_fb';
     $view->tw_url = 
-        'https://twitter.com/intent/tweet?url=http://'.
+        'https://twitter.com/intent/tweet?url=https://'.
         Config::get('my.domain').
         '/forum/?f='.$_GET['f'].'%26cpn=share_tw'.
         '&text='.
         $title.','.$description.'+@quigen2015';
-    $view->clip_url = 'http://'.
+    $view->clip_url = 'https://'.
         Config::get('my.domain').
         '/forum/?f='.
         $_GET['f'];

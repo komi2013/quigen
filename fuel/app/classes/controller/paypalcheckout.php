@@ -76,8 +76,7 @@ if ( $PaymentOption == "PayPal")
         //'
         //' This is set to the value entered on the Integration Assistant 
         //'------------------------------------
-        //$returnURL = "http://generator-stg.komahana.info/testpaypal_2/ordercomp.php";
-        $returnURL = "http://".Config::get('my.domain')."/paypalordercomp/";
+        $returnURL = "https://".Config::get('my.domain')."/paypalordercomp/";
 
         //'------------------------------------
         //' The cancelURL is the location buyers are sent to when they hit the
@@ -85,7 +84,6 @@ if ( $PaymentOption == "PayPal")
         //'
         //' This is set to the value entered on the Integration Assistant 
         //'------------------------------------
-        //$cancelURL = "http://generator-stg.komahana.info/testpaypal_2/cancel_3c.php";
         $cancelURL = $_POST['cancel_url'];
 
         //'------------------------------------

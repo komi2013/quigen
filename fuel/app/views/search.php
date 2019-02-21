@@ -11,7 +11,7 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <meta property="og:title" content="<?=$tag?>" />
-    <meta property="og:url" content="<?='http://'.Config::get("my.domain").'/search/?tag='.urlencode($tag)?>" />
+    <meta property="og:url" content="<?='https://'.Config::get("my.domain").'/search/?tag='.urlencode($tag)?>" />
 
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>

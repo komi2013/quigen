@@ -33,6 +33,10 @@ $('#generate').click(function(){
   .always(function(res){
     if(res[0]==1){
       location.href = '';
+    }else if(res[0]==2){
+      alert(res[1]);
+      $('#success').css({'display': 'none'});
+      $('#generate').css({'display': ''});  
     }else{
       $('#success').css({'display': 'none'});
       $('#generate').css({'display': ''});  
@@ -41,7 +45,10 @@ $('#generate').click(function(){
   });
   ga('send','event','message','upload',localStorage.ua_u_id,1);
 });
-
+if(localStorage.login){
+  $('#generate').css({'display': ''});
+  $('#call').css({'display': ''});  
+}
 $('div[contenteditable]').keydown(function(e) {
   if (e.keyCode === 13) {
     document.execCommand('insertHTML', false, '<br><br>');

@@ -8,7 +8,7 @@
     <meta name="yandex-verification" content="db2684568031d60c" />
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png" />
 <?php if( $exactly_top ){ ?>
-    <link rel="canonical" href="http://<?=Config::get("my.domain")?>/" />
+    <link rel="canonical" href="https://<?=Config::get("my.domain")?>/" />
 <?php }else{ ?>
     <meta name="robots" content="noindex,follow">
 <?php } ?>

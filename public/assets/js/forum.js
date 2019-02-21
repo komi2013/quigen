@@ -36,11 +36,16 @@ $('#generate').click(function(){
     ,myphoto : myphoto
     ,myname : myname
     ,f_id : getVal.f
+    ,good_usr : good_usr
   };
   $.post('/forumcommentadd/',param,function(){},"json")
   .always(function(res){
     if(res[0]==1){
       location.href = '/forum/?f='+res[1];
+    }else if(res[0]==2){
+      alert(res[1]);
+      $('#success').css({'display': 'none'});
+      $('#generate').css({'display': ''});
     }else{
       $('#success').css({'display': 'none'});
       $('#generate').css({'display': ''});  
@@ -128,7 +133,24 @@ $('[name=scale]').change(function(){
 });
 
 $('.reply').click(function(){
-  $('#txt').append('RE:'+$(this).data('fc_u_name')+'　');
+  $('#txt').append('RE:'+$(this).attr('fc_u_name')+'　');
+  window.scrollTo(0,document.body.scrollHeight);
+});
+var coin_click = 0
+var good_usr = 0;
+$('.coin').click(function(){
+  if(good_usr != $(this).attr('fc_u_id')){
+    $('#txt').html('');
+    coin_click = 0;
+  }
+  good_usr = $(this).attr('fc_u_id');
+  if(coin_click < 1){
+      $('#txt').append('RE:'+$(this).attr('fc_u_name')+'<img src="/assets/img/icon/coin.png" class="icon">');
+  }else{
+      $('#txt').append('<img src="/assets/img/icon/coin.png" class="icon">');
+  }
+  ++coin_click;
+  window.scrollTo(0,document.body.scrollHeight);
 });
 
 $('#emoji_show').click(function(){

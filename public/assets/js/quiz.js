@@ -258,7 +258,7 @@ function after_post(correct_answer){
   setTimeout(function(){
     if(next_q){
       if(iframe){
-        top.window.location.href = 'http://'+domain+'/quiz/?q='+next_q;        
+        top.window.location.href = 'https://'+domain+'/quiz/?q='+next_q;        
       }else{
         location.href = '/quiz/?q='+next_q;
       }

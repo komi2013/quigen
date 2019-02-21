@@ -88,19 +88,30 @@ class Controller_Myprofileshow extends Controller
     $res['max'] = $max;
     $res['list_graph'] = $day;
 
-    $sql = "SELECT sender, receiver, u_img FROM message WHERE sender = ".$usr_id." OR receiver = ".$usr_id." GROUP BY sender, receiver, u_img";
+    $sql = "SELECT sender, receiver, u_img, txt FROM message WHERE sender = ".$usr_id." OR receiver = ".$usr_id." ORDER BY create_at DESC";
     $arr = DB::query($sql)->execute()->as_array();
+    $amt_msg = 0;
+    $msg_usr = [];
     foreach ($arr as $d) {
+      $usr = 0;
       if ($usr_id != $d['sender']) {
         $usr = $d['sender'];
       }
       if ($usr_id != $d['receiver']) {
         $usr = $d['receiver'];
       }
-      $msg_usr[$usr] = $d;
-      $msg_usr[$usr]['usr_id'] = $usr;
+      if($usr){
+        $msg_usr[$usr]['u_img'] = $d['u_img'];
+        $msg_usr[$usr]['usr_id'] = $usr;
+        if(!isset($msg_usr[$usr]['last_txt'])){
+            $msg_usr[$usr]['last_txt'] = Str::truncate($d['txt'],30);
+        }
+        ++$amt_msg;          
+      }
     }
-    $res['msg_usr'] = $msg_usr;
+    $res['amt_msg'] = $amt_msg;
+    $res['list_msg'] = $msg_usr;
+    
     $res[0] = 1;
     die(json_encode($res));
   }

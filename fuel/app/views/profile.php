@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
-    <meta property="og:image" content="http://<?=Config::get('my.domain').$usr_img?>" />
+    <meta property="og:image" content="https://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
@@ -151,16 +151,16 @@
 <script src="/third/img-touch-canvas_1.js<?=Config::get("my.cache_v")?>"></script>
 <div class="forum_form" id="txt" contenteditable="true"></div>
 <table><tr>
-  <td>
+  <td style="width:25%;">
     <input type="file" id="file_load" >
     <img src="/assets/img/icon/camera.png" class="icon" id="camera">
   </td>
-  <td><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
+  <td style="width:25%;"><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
   <td>
-    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
+    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon" style="display:none;">
     <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
   </td>
-  <td><img src="/assets/img/icon/telephone.png" class="icon" id="call"></td>
+  <td><img src="/assets/img/icon/telephone.png" class="icon" id="call" style="display:none;"></td>
 </tr></table>
 
 <table style="display:none;" id="canvas_menu">
@@ -194,10 +194,10 @@
 
 <?php foreach($msg_list as $d ){?>
   <?php if($d['sender'] == $u_id){ ?>
-  <div class="my_img"><img src="<?=$d['img']?>"></div>
+  <?php if($d['img']){?><div class="my_img"><img src="<?=$d['img']?>"></div><?php }?>
   <div class="my_msg"><?=$d['txt']?> <div style="width:100%;text-align:right;"><?=$d['create_at']?></div></div>
   <?php } else { ?>
-  <div class="other_img"><img src="<?=$d['img']?>"></div>
+  <?php if($d['img']){?><div class="other_img"><img src="<?=$d['img']?>"></div><?php }?>
   <div class="other_msg"><img src="<?=$d['u_img']?>" class="icon"><?=$d['txt']?>
     <div><?=$d['create_at']?></div>
   </div>

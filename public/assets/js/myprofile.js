@@ -8,6 +8,7 @@ var content = new Vue({
   data: {
       u_id: 0
       ,myname: localStorage.myname ? localStorage.myname : ''
+      ,myphoto: localStorage.myphoto ? localStorage.myphoto : ''
       ,introduce: ''
       ,follower: 0
       ,following: 0
@@ -16,10 +17,12 @@ var content = new Vue({
       ,answer_by_u:
 localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
       ,list_rank:[]
-      ,list_forum:[]
       ,list_graph:[]
+      ,list_forum:[]
+      ,list_msg:[]
       ,max:0
       ,amt_forum:0
+      ,amt_msg:0
       ,list:'graph'
       ,provider:0
       ,logined:localStorage.login? 'logined' : 'auth'
@@ -42,10 +45,26 @@ $.get('/myprofileshow/',{},function(){},"json")
     content.following = res.following;
     content.nice = res.nice;
     content.certify = res.certify;
-    content.list_forum = res.list_forum;
     content.list_graph = res.list_graph;
+    content.list_forum = res.list_forum;
+    content.list_msg = res.list_msg;
     content.max = res.max;
-    content.amt_forum = res.amt_forum;
+    if(res.amt_forum){
+      if(localStorage.amt_forum){
+        content.amt_forum = res.amt_forum - localStorage.amt_forum;
+      }else{
+        content.amt_forum = res.amt_forum;
+      }
+      localStorage.amt_forum = res.amt_forum;
+    }
+    if(res.amt_msg){
+      if(localStorage.amt_msg){
+        content.amt_msg = res.amt_msg - localStorage.amt_msg;
+      }else{
+        content.amt_msg = res.amt_msg;
+      }
+      localStorage.amt_msg = res.amt_msg;
+    }
     content.provider = res.provider;
   }else if(res[0]==2){
   }

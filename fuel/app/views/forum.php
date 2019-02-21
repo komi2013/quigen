@@ -6,12 +6,12 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="description" content="<?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
-    <link rel="canonical" href="http://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
+    <link rel="canonical" href="https://<?=Config::get('my.domain').'/forum/?f='.$f_id?>" />
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
-    <meta property="og:image" content="http://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
+    <meta property="og:image" content="https://<?=Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
     <link rel="stylesheet" href="/assets/css/pc.css<?=Config::get("my.cache_v")?>" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>" media="only screen and (max-width : 710px)">
@@ -36,7 +36,7 @@
   </tr>
 </table>
   <?php } ?>
-<div class="forum_txt"><?=$d['txt']?></div>
+<div class="forum_txt"><?=$d['esc_txt']?></div>
 <div class="forum_img"><img src="<?=$d['img']?>"></div>
 <?php } ?>
 
@@ -46,10 +46,7 @@
       <span class="icon_num" id="f_nice_amt_<?=$d['id']?>" <?php if($forum_nice < 1){ ?> style="display:none;" <?php } ?> ><?=$forum_nice?></span>
       <img src="/assets/img/icon/thumbup_0.png" class="icon" id="f_nice_img_<?=$d['id']?>">
     </td>
-    <td data-forum="<?=$d['id']?>" data-f_u_id="<?=$d['usr_id']?>" class="certify param">
-      <span class="icon_num" id="f_certify_amt_<?=$d['id']?>" <?php if($forum_certify < 1){ ?> style="display:none;" <?php } ?> ><?=$forum_certify?></span>
-      <img src="/assets/img/icon/medal_0.png" class="icon" id="f_certify_img_<?=$d['id']?>">
-    </td>
+    <td class="coin" fc_u_name="<?=$d['u_name']?>" fc_u_id="<?=$d['usr_id']?>"> <img src="/assets/img/icon/coin.png" class="icon"> </td>
     <td>
       <a href="<?=$fb_url?>" target="_blank">
         <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon">
@@ -65,7 +62,6 @@
       <img src="/assets/img/icon/clip.png" alt="line" class="icon">
       </a>
     </td>
-    <td> <img src="/assets/img/icon/exclamation.png" class="icon report" data-f_report="<?=$f_id?>"> </td>
   </tr>
 </table>
 
@@ -77,26 +73,27 @@
     <td> <?=date('m-d H:i:s',strtotime($d['open_time']))?> </td>
   </tr>
 </table>
-<div class="forum_txt"><?=$d['txt']?></div>
+<div class="forum_txt">
+    <?php if($d['point'] > 0){?>
+      <div><img src="/assets/img/icon/coin.png" class="icon"> = <?=$d['point']?></div>
+    <?php }?>
+    <?=$d['esc_txt']?>
+</div>
 <div class="forum_img"><img src="<?=$d['img']?>"></div>
 <table>
   <tr>
     <td style="width:48px;"></td>
-    <td class="reply" data-fc_u_name="<?=$d['u_name']?>" data-fc_u_id="<?=$d['usr_id']?>"> <img src="/assets/img/icon/reply.png" class="icon"> </td>
+    <td class="reply" fc_u_name="<?=$d['u_name']?>"> <img src="/assets/img/icon/reply.png" class="icon"> </td>
     <td data-comment="<?=$d['id']?>" data-fc_u_id="<?=$d['usr_id']?>" class="nice_c param">
       <span class="icon_num" id="fc_nice_amt_<?=$d['id']?>" <?php if($d['nice'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['nice']?></span>
       <img src="/assets/img/icon/thumbup_0.png" class="icon" id="fc_nice_img_<?=$d['id']?>">
     </td>
-    <td data-comment="<?=$d['id']?>" data-fc_u_id="<?=$d['usr_id']?>" class="certify_c param">
-      <span class="icon_num" id="fc_certify_amt_<?=$d['id']?>" <?php if($d['certify'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['certify']?></span>
-      <img src="/assets/img/icon/medal_0.png" class="icon" id="fc_certify_img_<?=$d['id']?>">
-    </td>
-    <td class="report" data-comment="<?=$d['id']?>"> <img src="/assets/img/icon/exclamation.png" class="icon"> </td>
+    <td class="coin" fc_u_name="<?=$d['u_name']?>" fc_u_id="<?=$d['usr_id']?>"> <img src="/assets/img/icon/coin.png" class="icon"> </td>
   </tr>
 </table>
 <?php } ?>
 
-<div class="forum_form" id="txt" contenteditable="true"></div>
+<div class="forum_form" id="txt" contenteditable="true" style='overflow: scroll;'></div>
 
 <table><tr>
   <td class="td_33">

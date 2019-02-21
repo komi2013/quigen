@@ -14,15 +14,12 @@ class Controller_CommentAdd extends Controller
       Model_Log::warn('wrong post q');
       die(json_encode($res));
     }
-    $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
-    $u_img = htmlspecialchars($_POST['u_img'], ENT_QUOTES);
-    $u_name = htmlspecialchars($_POST['u_name'], ENT_QUOTES);
     try
     {
       $query = DB::insert('comment');
       $query->set(array(
-        'txt' => $txt,
-        'u_img' => $u_img,
+        'txt' => $_POST['txt'],
+        'u_img' => $_POST['u_img'],
         'usr_id' => $usr_id,
         'question_id' => $_POST['q'],
         'create_at' => date("Y-m-d H:i:s"),
@@ -36,20 +33,20 @@ class Controller_CommentAdd extends Controller
         $query = DB::insert('forum_comment');
         $query->set(array(
           'forum_id' => $arr[0]['id'],
-          'txt' => $txt,
+          'txt' => $_POST['txt'],
           'usr_id' => $usr_id,
           'update_at' => date("Y-m-d H:i:s"),
           'open_time' => date("Y-m-d H:i:s"),
-          'u_img' => $u_img,
-          'u_name' => $u_name,
+          'u_img' => $_POST['u_img'],
+          'u_name' => $_POST['u_name'],
           'nice' => 0,
         ));
-        $query->execute();          
+        $query->execute();
+        DB::update('forum')
+            ->value("open_time",date("Y-m-d H:i:s"))
+            ->where('id','=',$arr[0]['id'])
+            ->execute();   
       }
-      DB::update('forum')
-        ->value("open_time",date("Y-m-d H:i:s"))
-        ->where('id','=',$arr[0]['id'])
-        ->execute();
     }
     catch (Orm\ValidationFailed $e)
     {

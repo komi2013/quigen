@@ -76,7 +76,7 @@
 <div style="display:inline-block;"> <a href="/profile/?u=<?=$d['usr_id']?>"> <img src="<?=$d['u_img']?>" class="icon" <?=$d['eto_css']?> > </a> </div>
 <div style="display:inline-block;text-align:right;vertical-align:bottom;"> <?=date('M/jS',strtotime($d['open_time']))?> </div>
 <div f-id="<?=$d['id']?>" q-id="<?=$d['question_id']?>" class="goDetail">
-<div class="forum_txt" contenteditable="true"> <?=$d['txt']?></div>
+<div class="forum_txt" contenteditable="true"> <?=$d['esc_txt']?></div>
 <?php if($d['img']){ ?>
 <div class="forum_img"><a><img src="<?=$d['img']?>"></a></div>
 <?php }?>
@@ -86,7 +86,7 @@
 <div style="background-color:#F5F5F5;">
 <?php foreach($d['arr_comment'] as $k2 => $d2){ ?>
 <div class="forum_comment" contenteditable="true">
-  <span><?=$d2['txt']?></span>
+  <span><?=$d2['esc_txt']?></span>
   <?php if($d2['img']){ ?>
   <img src="<?=$d2['img']?>" class="icon" >
   <?php } ?>

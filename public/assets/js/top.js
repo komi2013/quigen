@@ -38,7 +38,6 @@ $('#search').click(function(){
     localStorage.last_tag = $('#tag_name').val();
     location.href = '/search/?tag='+$('#tag_name').val().replace(/#/,'');
   }else{
-//    location.href = 'http://www.google.com/cse?cx=015373518288618476449%3Axapsve96qx0&ie=UTF-8&q='+$('#tag_name').val()+'&sa=Search#gsc.tab=0&gsc.q='+$('#tag_name').val()+'&gsc.page=1';
     location.href = 'https://www.google.co.jp/webhp?hl=ja#hl=ja&q=site:'+mydomain+'+'+$('#tag_name').val();
   }
 });

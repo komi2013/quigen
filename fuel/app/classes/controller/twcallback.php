@@ -7,30 +7,20 @@ class Controller_TwCallback extends Controller
   {
     $consumer_key = Config::get('my.tw_key');
     $consumer_secret = Config::get('my.tw_secret');
-    //login.phpでセットしたセッション
-    $request_token = [];  // [] は array() の短縮記法。詳しくは以下の「追々記」参照
+    $request_token = [];
     $request_token['oauth_token'] = Cookie::get('oauth_token');  //Cookie::get('oauth_token_secret')
     $request_token['oauth_token_secret'] = Cookie::get('oauth_token_secret');
 
-    //Twitterから返されたOAuthトークンと、あらかじめlogin.phpで入れておいたセッション上のものと一致するかをチェック
     if (isset($_REQUEST['oauth_token']) && $request_token['oauth_token'] !== $_REQUEST['oauth_token']) {
         die( 'Error!' );
     }
 
-    //OAuth トークンも用いて TwitterOAuth をインスタンス化
     $connection = new TwitterOAuth($consumer_key, $consumer_secret, $request_token['oauth_token'], $request_token['oauth_token_secret']);
 
-    //アプリでは、access_token(配列になっています)をうまく使って、Twitter上のアカウントを操作していきます
     $access_token = $connection->oauth("oauth/access_token", array("oauth_verifier" => $_REQUEST['oauth_verifier']));
-//    Cookie::set('oauth_token',$request_token['oauth_token']);
-//    echo '<pre>'; var_dump($access_token); echo '</pre>'; die;
-//    
-////    $verifier = $_GET['oauth_verifier'];
-//    
-//    $to = new TwitterOAuth($consumer_key,$consumer_secret,Cookie::get('request_token'),Cookie::get('request_token_secret'));
-//    $access_token = $to->getAccessToken($verifier);
-//    $to->host = 'https://api.twitter.com/1.1/'; // By default library uses API version 1.  
-//    $profile = $to->get('/users/show.json?screen_name='.$access_token['screen_name'].'&user_id='.$access_token['user_id']);
+    $connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+    $user = $connection->get("account/verify_credentials");
+
     $id = $access_token['user_id'];
     $arr_pv_usr = DB::query("SELECT * FROM usr WHERE pv_u_id = '".$id."' AND provider = 2 ")->execute()->as_array();
     $follow = [];
@@ -57,7 +47,11 @@ class Controller_TwCallback extends Controller
       $usr->pv_u_id = $id;
       $usr->provider = 2;
       $usr->name = $myname = $access_token['screen_name'];
+<<<<<<< HEAD
       $usr->img = $myphoto = $access_token['profile_image_url_https'];
+=======
+      $usr->img = $myphoto = $user->profile_image_url_https;
+>>>>>>> 524184bc4e53a3a4460a4fe8ebfd22ffbd593f6b
       $usr->update_at = date("Y-m-d H:i:s");
       $usr->save();
       $point = 0;

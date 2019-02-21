@@ -83,11 +83,11 @@ var u_id = localStorage.ua_u_id;
 var csrf = '';
 var iframe = '';
 
-var fb_url   = 'http://www.facebook.com/sharer.php?u=http://'+domain+'/quiz/?q='+q_id+'%26cpn=share_fb';
-var tw_url   = 'https://twitter.com/intent/tweet?url=http://'+domain+'/quiz/?q='+q_id+'%26cpn=share_tw&text='+q_txt+'+@quigen2015';
-var ln_url   = 'line://msg/text/?'+q_txt+'%0D%0Ahttp://'+domain+'/quiz/?q='+q_id+'%26cpn=share_ln';
-var clip_url = 'http://'+domain+'/quiz/?q='+q_id;
-var whole_url = '<iframe style="width: 100%;" src="http://'+domain+'/quiz/?q='+q_id+'&iframe=true" height="500" frameborder="0" scrolling="no"></iframe>';
+var fb_url   = 'https://www.facebook.com/sharer.php?u=https://'+domain+'/quiz/?q='+q_id+'%26cpn=share_fb';
+var tw_url   = 'https://twitter.com/intent/tweet?url=https://'+domain+'/quiz/?q='+q_id+'%26cpn=share_tw&text='+q_txt+'+@quigen2015';
+var ln_url   = 'line://msg/text/?'+q_txt+'%0D%0Ahttps://'+domain+'/quiz/?q='+q_id+'%26cpn=share_ln';
+var clip_url = 'https://'+domain+'/quiz/?q='+q_id;
+var whole_url = '<iframe style="width: 100%;" src="https://'+domain+'/quiz/?q='+q_id+'&iframe=true" height="500" frameborder="0" scrolling="no"></iframe>';
 
 $('#href_fb').attr({'href':fb_url});
 $('#href_tw').attr({'href':tw_url});

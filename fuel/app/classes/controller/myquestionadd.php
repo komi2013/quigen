@@ -10,13 +10,14 @@ class Controller_Myquestionadd extends Controller
       Model_Log::warn('no usr');
       die(json_encode($res));
     }
-    
+
     $now_limit = new DateTime("now");
     $now_limit->add(new DateInterval('P30D'));
-    
+
     $query = DB::select()->from('question')
       ->where('usr_id','=',$usr_id)
       ->order_by('open_time', 'desc')
+      ->limit(1)
       ->execute()->as_array();
     if ( isset($query[0]['open_time']) ) {
       if ( $query[0]['open_time'] > "2100-01-01 00:00:00" ) {
@@ -29,13 +30,12 @@ class Controller_Myquestionadd extends Controller
     } else {
       $open_time = date("Y-m-d H:i:s");
     } 
-//    $open_time = Model_Cookie::get('open_time');
-    
     $post_open_time = new DateTime($open_time);
     if ($now_limit < $post_open_time) {
       Model_Log::warn('limited');
       die(json_encode($res));
     }
+    
     $auth = false;
     foreach (Config::get('my.adm') as $d) {
       if ($d == $usr_id) {
@@ -49,6 +49,7 @@ class Controller_Myquestionadd extends Controller
     $query = DB::select()->from('mt_block_generate')
       ->where('usr_id','=',$usr_id)
       ->execute()->as_array();
+    
     if ( isset($query[0]) ) {
       Model_Log::warn('blocked');
       die( json_encode($res) );
@@ -70,6 +71,7 @@ class Controller_Myquestionadd extends Controller
       imagesavealpha($image, TRUE);
       imagepng($image ,$img_path);
     }
+    
     try
     {
       $question = new Model_Question();
@@ -118,23 +120,14 @@ class Controller_Myquestionadd extends Controller
       $answer_by_q->update_at = $open_time;
       $answer_by_q->save();
       
-      $myphoto = htmlspecialchars($_POST['myphoto'], ENT_QUOTES);
-      $myname = htmlspecialchars($_POST['myname'], ENT_QUOTES);
-      
-      $txt = htmlspecialchars($_POST['q_txt'], ENT_QUOTES);
-      $txt = nl2br($txt);
-      $txt2 = '<a href="/quiz/?q='.$question_id.'" class="str_cp">';
-      $txt2 .= $txt;
-      $txt2 .= '</a>';
-
       $query = DB::insert('forum');
       $query->set(array(
-        'txt' => $txt2,
+        'txt' => nl2br($_POST['q_txt']),
         'usr_id' => $usr_id,
         'update_at' => date("Y-m-d H:i:s"),
         'open_time' => date("Y-m-d H:i:s"),
-        'u_img' => $myphoto,
-        'u_name' => $myname,
+        'u_img' => $_POST['myphoto'],
+        'u_name' => $_POST['myname'],
         'img' => $web_path,
         'question_id' => $question_id,
       ));

@@ -40,7 +40,7 @@ class Controller_Forumadd extends Controller
       imagesavealpha($image, TRUE);
       imagepng($image ,$img_path);
     }
-    $txt = htmlspecialchars($_POST['txt'], ENT_QUOTES);
+    $txt = $_POST['txt'];
     $arr = Model_Emoji::$table;
     $arr['&lt;br&gt;'] = '<br>';
     $search = array_keys($arr);
