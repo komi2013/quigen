@@ -204,17 +204,17 @@ class Controller_Profile extends Controller
     $view->amt_forum = $amt_forum;
     $view->amt_answer = $amt_answer;
     $view->meta_description = strip_tags($introduce).$description;
-    $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'
+    $view->fb_url = 'https://www.facebook.com/sharer.php?u=https://'
       .Config::get('my.domain')
       .'/profile/?u='.$_GET['u'].'%26cpn=share_fb';
-    $view->tw_url = 'https://twitter.com/intent/tweet?url=http://'
+    $view->tw_url = 'https://twitter.com/intent/tweet?url=https://'
       .Config::get('my.domain')
       .'/profile/?u='.$_GET['u'].'%26cpn=share_tw'
       .'&text='.$description.'+@quigen2015';
-    $view->ln_url = 'line://msg/text/?'.$description.'%0D%0Ahttp://'
+    $view->ln_url = 'line://msg/text/?'.$description.'%0D%0Ahttps://'
       .Config::get('my.domain')
       .'/profile/?u='.$_GET['u'].'%26cpn=share_ln';
-    $view->clip_url = 'http://'
+    $view->clip_url = 'https://'
       .Config::get('my.domain')
       .'/profile/?u='.$_GET['u'];
     die($view);

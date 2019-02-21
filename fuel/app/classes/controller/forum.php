@@ -73,17 +73,17 @@ class Controller_Forum extends Controller
     }
     
     $view = View::forge('forum');
-    $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
+    $view->fb_url = 'https://www.facebook.com/sharer.php?u=https://'.
         Config::get('my.domain').
         '/forum/?f='.
         $_GET['f'].'%26cpn=share_fb';
     $view->tw_url = 
-        'https://twitter.com/intent/tweet?url=http://'.
+        'https://twitter.com/intent/tweet?url=https://'.
         Config::get('my.domain').
         '/forum/?f='.$_GET['f'].'%26cpn=share_tw'.
         '&text='.
         $title.','.$description.'+@quigen2015';
-    $view->clip_url = 'http://'.
+    $view->clip_url = 'https://'.
         Config::get('my.domain').
         '/forum/?f='.
         $_GET['f'];

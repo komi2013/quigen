@@ -69,23 +69,23 @@ class Controller_Quiz extends Controller
     $view->arr_choice = $random_choice;
     $view->question = $question_id;
     $view->usr = $q_u_id;
-    $view->fb_url = 'http://www.facebook.com/sharer.php?u=http://'.
+    $view->fb_url = 'https://www.facebook.com/sharer.php?u=https://'.
         Config::get('my.domain').
         '/quiz/?q='.
         $question_id.'%26cpn=share_fb';
     $view->tw_url = 
-        'https://twitter.com/intent/tweet?url=http://'.
+        'https://twitter.com/intent/tweet?url=https://'.
         Config::get('my.domain').
         '/quiz/?q='.$question_id.'%26cpn=share_tw'.
         '&text='.
         $q_txt.','.$description.'+@quigen2015';
     $view->ln_url = 'line://msg/text/?'.
         $q_txt.
-        '%0D%0Ahttp://'.
+        '%0D%0Ahttps://'.
         Config::get('my.domain').
         '/quiz/?q='.
         $question_id.'%26cpn=share_ln';
-    $view->clip_url = 'http://'.
+    $view->clip_url = 'https://'.
         Config::get('my.domain').
         '/quiz/?q='.
         $question_id;
