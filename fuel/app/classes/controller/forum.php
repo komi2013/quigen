@@ -17,6 +17,7 @@ class Controller_Forum extends Controller
     foreach ($arr as $k => $d) {
       $forum_u_id = $d['usr_id'];
       $d['esc_txt'] = htmlspecialchars($d['txt']);
+      $d['esc_txt'] = nl2br($d['esc_txt']);
       $d['u_img'] = htmlspecialchars($d['u_img']);
       $d['u_name'] = htmlspecialchars($d['u_name']);
       $arr_forum[0] = $d;
@@ -45,6 +46,7 @@ class Controller_Forum extends Controller
     $same_u_id = true;
     foreach ($arr as $k => $d) {
       $d['esc_txt'] = htmlspecialchars($d['txt']);
+      $d['esc_txt'] = nl2br($d['esc_txt']);
       $d['u_img'] = htmlspecialchars($d['u_img']);
       $d['u_name'] = htmlspecialchars($d['u_name']);
       if ($d['usr_id'] == $forum_u_id AND $same_u_id) {

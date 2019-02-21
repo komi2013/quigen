@@ -57,10 +57,12 @@ class Controller_Forumcommentadd extends Controller
         die(json_encode($res));
     }
     if ($point > 0) {
-      $query = DB::select()->from('forum')->where('id','=',$forum_id)->execute()->as_array();
+//      $query = DB::select()->from('forum')->where('id','=',$forum_id)->execute()->as_array();
       DB::query("UPDATE usr SET point = point - ".$point." WHERE id = ".$usr_id)->execute();
-      DB::query("UPDATE usr SET point = point + ". $point/2 ." WHERE id = ".$query[0]['usr_id'])->execute();
+      DB::query("UPDATE usr SET point = point + ". $point/2 ." WHERE id = ".$_POST['good_usr'])->execute();
     }
+    $txt = str_replace(["<br />","<br>","<br/>"],"\r\n",$txt);
+    $txt = str_replace(["&nbsp;"]," ",$txt);
     $search = array_keys(Model_Emoji::$table);
     $replace = array_values(Model_Emoji::$table);
     $txt = str_replace($search,$replace,$txt);

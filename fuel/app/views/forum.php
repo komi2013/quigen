@@ -46,10 +46,7 @@
       <span class="icon_num" id="f_nice_amt_<?=$d['id']?>" <?php if($forum_nice < 1){ ?> style="display:none;" <?php } ?> ><?=$forum_nice?></span>
       <img src="/assets/img/icon/thumbup_0.png" class="icon" id="f_nice_img_<?=$d['id']?>">
     </td>
-    <td data-forum="<?=$d['id']?>" data-f_u_id="<?=$d['usr_id']?>" class="certify param">
-      <span class="icon_num" id="f_certify_amt_<?=$d['id']?>" <?php if($forum_certify < 1){ ?> style="display:none;" <?php } ?> ><?=$forum_certify?></span>
-      <img src="/assets/img/icon/medal_0.png" class="icon" id="f_certify_img_<?=$d['id']?>">
-    </td>
+    <td class="coin" fc_u_name="<?=$d['u_name']?>" fc_u_id="<?=$d['usr_id']?>"> <img src="/assets/img/icon/coin.png" class="icon"> </td>
     <td>
       <a href="<?=$fb_url?>" target="_blank">
         <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon">
@@ -91,7 +88,7 @@
       <span class="icon_num" id="fc_nice_amt_<?=$d['id']?>" <?php if($d['nice'] < 1){ ?> style="display:none;" <?php } ?> ><?=$d['nice']?></span>
       <img src="/assets/img/icon/thumbup_0.png" class="icon" id="fc_nice_img_<?=$d['id']?>">
     </td>
-    <td class="coin" fc_u_name="<?=$d['u_name']?>"> <img src="/assets/img/icon/coin.png" class="icon"> </td>
+    <td class="coin" fc_u_name="<?=$d['u_name']?>" fc_u_id="<?=$d['usr_id']?>"> <img src="/assets/img/icon/coin.png" class="icon"> </td>
   </tr>
 </table>
 <?php } ?>

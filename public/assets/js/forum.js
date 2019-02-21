@@ -36,6 +36,7 @@ $('#generate').click(function(){
     ,myphoto : myphoto
     ,myname : myname
     ,f_id : getVal.f
+    ,good_usr : good_usr
   };
   $.post('/forumcommentadd/',param,function(){},"json")
   .always(function(res){
@@ -136,7 +137,13 @@ $('.reply').click(function(){
   window.scrollTo(0,document.body.scrollHeight);
 });
 var coin_click = 0
+var good_usr = 0;
 $('.coin').click(function(){
+  if(good_usr != $(this).attr('fc_u_id')){
+    $('#txt').html('');
+    coin_click = 0;
+  }
+  good_usr = $(this).attr('fc_u_id');
   if(coin_click < 1){
       $('#txt').append('RE:'+$(this).attr('fc_u_name')+'<img src="/assets/img/icon/coin.png" class="icon">');
   }else{
