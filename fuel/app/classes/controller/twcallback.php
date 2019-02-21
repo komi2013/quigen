@@ -47,11 +47,7 @@ class Controller_TwCallback extends Controller
       $usr->pv_u_id = $id;
       $usr->provider = 2;
       $usr->name = $myname = $access_token['screen_name'];
-<<<<<<< HEAD
       $usr->img = $myphoto = $access_token['profile_image_url_https'];
-=======
-      $usr->img = $myphoto = $user->profile_image_url_https;
->>>>>>> 524184bc4e53a3a4460a4fe8ebfd22ffbd593f6b
       $usr->update_at = date("Y-m-d H:i:s");
       $usr->save();
       $point = 0;
