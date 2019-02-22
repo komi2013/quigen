@@ -309,6 +309,7 @@ function addCel(resData,coinco){
 function quizUsrShow(){
   var param = {
     q : q_id
+    ,u : usr
   };
   var append = '';
   $.get('/quizusrshow/',param,function(){},"json")

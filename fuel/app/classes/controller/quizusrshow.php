@@ -9,11 +9,11 @@ class Controller_Quizusrshow extends Controller
       Model_Log::warn('no q');
       die(json_encode($res));
     }
-    $question = DB::select()->from('question')
-      ->where('id','=',$_GET['q'])
-      ->execute()->as_array();
+//    $question = DB::select()->from('question')
+//      ->where('id','=',$_GET['q'])
+//      ->execute()->as_array();
     
-    $generator_id = $question[0]['usr_id'];  
+    $generator_id = $_GET['u'];  
     $util = new Model_Util();
     $usr = DB::select()->from('usr')
       ->where('id','=',$generator_id)
@@ -46,7 +46,7 @@ class Controller_Quizusrshow extends Controller
     foreach ($arr_answer_key_q as $k => $d)
     {
       if ( $d['u_img'] ) {
-        $u_img = strip_tags( preg_replace('/http/', 'url', $d['u_img']) );
+        $u_img = strip_tags($d['u_img']);
         $css   = '';
       } else {
         $util->eto($d['usr_id']);
