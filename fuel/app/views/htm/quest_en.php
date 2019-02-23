@@ -61,7 +61,7 @@
   <tr><td class="quest_1 td_99_c">answer quiz</td>                                   <td class="td_15_c"><img src="/assets/img/icon/star_1.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/">go other quiz</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/htm/myanswer_offline/">go offline</a></td> <td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/myprofile/">go mypage</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/htm/myprofile/">go mypage</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 
   <tr><td class="quest_2 td_99_c"><a href="/forumlist/">go chat</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">go rule</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>

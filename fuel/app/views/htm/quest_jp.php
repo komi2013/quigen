@@ -61,7 +61,7 @@
   <tr><td class="quest_1 td_99_c">クイズに答える</td>                                   <td class="td_15_c"><img src="/assets/img/icon/star_1.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/">他のクイズを確認</a></td>             <td class="td_15_c" id="img_quest_0"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_1 td_99_c"><a href="/htm/myanswer_offline/">オフラインを確認</a></td> <td class="td_15_c" id="img_quest_1"><img src="/assets/img/icon/star_0.png"></td></tr>
-  <tr><td class="quest_1 td_99_c"><a href="/myprofile/">マイページを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
+  <tr><td class="quest_1 td_99_c"><a href="/htm/myprofile/">マイページを確認</a></td> <td class="td_15_c" id="img_quest_2"><img src="/assets/img/icon/star_0.png"></td></tr>
 
   <tr><td class="quest_2 td_99_c"><a href="/forumlist/">チャットを確認</a></td>         <td class="quest_2 td_15_c" id="img_quest_3"><img src="/assets/img/icon/star_0.png"></td></tr>
   <tr><td class="quest_2 td_99_c"><a href="/htm/rule/">規約を確認</a></td>    <td class="quest_2 td_15_c" id="img_quest_4"><img src="/assets/img/icon/star_0.png"></td></tr>
