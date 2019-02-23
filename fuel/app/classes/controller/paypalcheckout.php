@@ -6,7 +6,6 @@ class Controller_PaypalCheckout extends Controller
     $usr_id = Model_Cookie::get_usr('u_id');
     if (!$usr_id)
     {
-      //Response::redirect('/myprofile/?warn=no_usr');
       $usr_id = 0;
     }
     Model_Log::warn($usr_id.' try to buy');

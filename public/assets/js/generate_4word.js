@@ -82,10 +82,10 @@ $('#generate').click(function(){
       localStorage.translated = JSON.stringify(translated);
       if(localStorage.genestep){
         localStorage.genestep = localStorage.genestep + 1;
-        location.href = '/myprofile/?list=forum';
+        location.href = '/htm/myprofile/?list=forum';
       }else{
         localStorage.genestep = 1;
-        location.href = '/myprofile/';
+        location.href = '/htm/myprofile/';
       }
     }else{
       $('#success').css({'display': 'none'});

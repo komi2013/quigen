@@ -79,7 +79,7 @@ $('#generate').click(function(){
         location.href = '/quiz/?q='+res[1];
       }else{
         localStorage.genestep = 1;
-        location.href = '/myprofile/';
+        location.href = '/htm/myprofile/';
       }
     }else{
       $('#success').css({'display': 'none'});

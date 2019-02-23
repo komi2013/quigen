@@ -1,6 +1,6 @@
 if(getVal.warn){
   alert(please_logout);
-  location.href = '/myprofile/';
+  location.href = '/htm/myprofile/';
 }
 
 var content = new Vue({

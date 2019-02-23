@@ -26,7 +26,7 @@ class Controller_FbOAuth extends Controller
     
     if ( isset($arr_pv_usr[0]['id']) ) {
       if ( isset($usr_id) AND $usr_id != $arr_pv_usr[0]['id']) {
-        Response::redirect('/myprofile/?warn=logout');
+        Response::redirect('/htm/myprofile/?warn=logout');
       }
       $usr_id  = $arr_pv_usr[0]['id'];
       $point   = $arr_pv_usr[0]['point'];
