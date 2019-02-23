@@ -1,3 +1,12 @@
+var content = new Vue({
+  el: '#content',
+  data: {
+      u_id: 0
+      ,myname: localStorage.myname ? localStorage.myname : ''
+      ,myphoto: localStorage.myphoto ? localStorage.myphoto : ''
+      ,logined:localStorage.login? 'logined' : 'auth'
+  }
+});
 if(status == 1){
   $('#following1').css({'display': ''});
 }else if(status == 2){
@@ -192,3 +201,10 @@ function randomStr(){
     }
     return r;
 }
+$('.goDetail').click(function(){
+  if($(this).attr('q-id') > 0){
+    location.href = '/quiz/?q='+$(this).attr('q-id');
+  }else{
+    location.href = '/forum/?f='+$(this).attr('f-id');
+  }
+});

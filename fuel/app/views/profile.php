@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
+    <script src="/third/vue.min.js"></script>
     <meta property="og:image" content="https://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
@@ -108,7 +109,7 @@
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table>
   <tr>
-  <td class="<?= $list == '' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>">
+  <td class="<?= $list == 'answer' ? 'this_page' : 'another_page' ?>"> <a href="/profile/?u=<?=$_GET['u']?>">
     <span class="icon_num"><?=$amt_answer?></span>
     <img src="/assets/img/icon/answer.png" class="icon">
   </a> </td>
@@ -125,19 +126,6 @@
   </tr>
 </table>
 
-<?php foreach($arr_list as $d ){?>
-<div class="div_t" > 
-  <?php if( $d['img']){?>
-    <img src="<?=$d['img']?>" class="icon">
-  <?php }?>
-  <?=$d['txt']?>
-  <?php if( $d['no_param'] == 0 ){?>
-  &nbsp; &nbsp; <a href="/forum/?f=<?=$d['forum_id']?>"> >> </a>
-  <?php }?>
-  <div style="width:100%;text-align:right;"> <?=$d['open_time']?></div>
-</div>
-<?php } ?>
-
 <?php foreach($day as $d ){?>
 <div class="graph_frame">
   <div class="graph_date"><?=$d['day']?></div>
@@ -147,7 +135,17 @@
 </div>
 <div class="graph_bar" style="width:<?= round($d['answer']/$max * 100)  ?>%;">&nbsp;</div>
 <?php } ?>
+
+<?php foreach($arr_list as $d ){?>
+<div class="div_t goDetail" f-id="<?=$d['forum_id']?>" q-id="<?=$d['question_id']?>" >
+  <div style="width:100%;text-align:right;"><?=$d['question_id']?> : <?=$d['open_time']?></div>
+  <?=$d['txt']?>
+  <?php if( $d['img']){?><img src="<?=$d['img']?>" class="icon"><?php }?>
+</div>
+<?php } ?>
+
 <?php if($list == 'msg'){ ?>
+<template v-if="localStorage.login && localStorage.point >= 10">
 <script src="/third/img-touch-canvas_1.js<?=Config::get("my.cache_v")?>"></script>
 <div class="forum_form" id="txt" contenteditable="true"></div>
 <table><tr>
@@ -157,10 +155,10 @@
   </td>
   <td style="width:25%;"><img src="/assets/img/icon/happy.png" class="icon" id="emoji_show"></td>
   <td>
-    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon" style="display:none;">
+    <img src="/assets/img/icon/upload_0.png" alt="submit" id="generate" class="icon">
     <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
   </td>
-  <td><img src="/assets/img/icon/telephone.png" class="icon" id="call" style="display:none;"></td>
+  <td ><img src="/assets/img/icon/telephone.png" class="icon" id="call"></td>
 </tr></table>
 
 <table style="display:none;" id="canvas_menu">
@@ -190,6 +188,10 @@
   <?php } ?>
 </div>
 <script src="/assets/js/message.js<?=Config::get("my.cache_v")?>"></script>
+</template>
+<template v-else>
+    you must login
+</template>
 <?php } ?>
 
 <?php foreach($msg_list as $d ){?>

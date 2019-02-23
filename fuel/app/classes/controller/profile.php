@@ -121,31 +121,43 @@ class Controller_Profile extends Controller
     if ( isset($_GET['list']) AND $_GET['list'] == 'quiz') {
       $list = 'quiz';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum') {
-      $arr = DB::query("select * from forum where usr_id = ".$_GET['u']." order by open_time desc")->execute()->as_array();
+      $arr = DB::query("select * from forum_comment where usr_id = ".$_GET['u'].
+              " order by open_time desc limit 20")->execute()->as_array();
+      $arr_forum_id = '0';
       foreach ($arr as $k => $d) {
-        $arr1['forum_id'] = $d['id'];
-        $arr1['txt'] = $d['txt'];
-        $arr1['img'] = $d['img'];
-        $date = new DateTime($d['open_time']);
-        $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
-        $arr1['no_param'] = $d['no_param'];
-        $arr_list[$d['open_time']] = $arr1;
-      }
-      $arr = DB::query("select * from forum_comment where usr_id = ".$_GET['u']." order by open_time desc")->execute()->as_array();
-      foreach ($arr as $k => $d) {
+        $arr1 = [];
         $arr1['forum_id'] = $d['forum_id'];
         $arr1['txt'] = $d['txt'];
         $arr1['img'] = $d['img'];
         $date = new DateTime($d['open_time']);
         $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
-        $arr1['no_param'] = 0;
-        $arr_list[$d['open_time']] = $arr1;
+        $arr1['question_id'] = 0;
+        $arr_list[$d['forum_id']] = $arr1;
+        $arr_forum_id .= ','.$d['forum_id'];
       }
-      krsort($arr_list);
+
+      $arr = DB::query("select * from forum where usr_id = ".$_GET['u'].
+              " OR id in ( ".$arr_forum_id." )".
+              " order by open_time desc limit 20")->execute()->as_array();
+      foreach ($arr as $k => $d) {
+        if ($d['usr_id'] == $_GET['u']) {
+            $arr1['forum_id'] = $d['id'];
+            $arr1['txt'] = $d['txt'];
+            $arr1['img'] = $d['img'];
+            $date = new DateTime($d['open_time']);
+            $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+            $arr1['question_id'] = $d['question_id'];
+            $arr_list[$d['id']] = $arr1;
+        } else if( isset($arr_list[$d['id']]['question_id']) ) {  //from forum_comment
+            $arr_list[$d['id']]['question_id'] = $d['question_id'];
+        }
+      }
+      $arr_open_time = [];
+      foreach ($arr_list as $k => $d) {
+          $arr_open_time[$k] = $d['open_time'];
+      }
+      array_multisort($arr_open_time, SORT_DESC, $arr_list);
       $list = 'forum';
-//    } else if ( isset($_GET['list']) AND $_GET['list'] == 'forum_comment') {
-//      $arr_list = DB::query("select * from forum_comment where usr_id = ".$_GET['u'])->execute()->as_array();
-//      $list = 'forum_comment';
     } else if ( isset($_GET['list']) AND $_GET['list'] == 'graph') {
       $date = new DateTime();
       $i = 0;
