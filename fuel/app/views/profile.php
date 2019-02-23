@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title><?=$usr_name?></title>
 <?php if( $seo_index ){ ?>
-    <meta name="description" content="<?=$meta_description?>, <?=$follower?> follower, <?=$following?> following user">
+    <meta name="description" content="<?=$meta_description?>, <?=$follower[1]?> follower, <?=$following[1]?> following user">
     <link rel="canonical" href="https://<?=Config::get('my.domain').'/profile/?u='.$_GET['u']?>" />
 <?php } else { ?>
     <meta name="robots" content="noindex,follow">
@@ -63,20 +63,20 @@
 <table cellspacing="1" boroder="0">
 <tr>
   <td> <a href="/follower/?u=<?=$usr_id?>">
-    <span class="icon_num"><?=$follower?></span>
+    <span class="icon_num<?=$follower[2]?>" int_follower="<?=$follower[0]?>"><?=$follower[1]?></span>
     <img src="/assets/img/icon/people.png" class="icon">
   </a> </td>
   <td> <a href="/following/?u=<?=$usr_id?>">
-    <span class="icon_num"><?=$following?></span>
+    <span class="icon_num<?=$following[2]?>" int_following="<?=$following[0]?>"><?=$following[1]?></span>
     <img src="/assets/img/icon/star_1.png" class="icon">
   </a> </td>
   <td>
-    <span class="icon_num"><?=$nice?></span>
+    <span class="icon_num<?=$nice[2]?>" int_nie="<?=$nice[0]?>"><?=$nice[1]?></span>
     <img src="/assets/img/icon/thumbup_1.png" class="icon">
   </td>
   <td>
-    <span class="icon_num"><?=$certify?></span>
-    <img src="/assets/img/icon/medal_1.png" class="icon">
+    <span class="icon_num<?=$point[2]?>" int_point="<?=$point[0]?>"><?=$point[1]?></span>
+    <img src="/assets/img/icon/coin.png" class="icon">
   </td>
 </tr>
 </table>
@@ -126,19 +126,25 @@
   </tr>
 </table>
 
+<?php if($list == 'graph') {?>
+<table><tr>
+    <td style="width:35%"><img src="/assets/img/icon/calendar.png"></td>
+    <td><img src="/assets/img/icon/answer.png"></td>
+    <td><img src="/assets/img/icon/hourglass.png"></td>
+</tr></table>
+<?php } ?>
 <?php foreach($day as $d ){?>
 <div class="graph_frame">
-  <div class="graph_date"><?=$d['day']?></div>
-  <?php if($d['answer']){?>
-  <div class="graph_txt"><?=$d['answer']?>answer, spend <?=$d['time']?></div>
-  <?php }?>
+  <div class="graph_date" style="width:40%"><?=$d['day']?></div>
+  <div class="graph_txt" style="width:10%"><?=$d['answer']?></div>
+  <div class="graph_txt"><?=$d['time']?></div>
 </div>
 <div class="graph_bar" style="width:<?= round($d['answer']/$max * 100)  ?>%;">&nbsp;</div>
 <?php } ?>
 
 <?php foreach($arr_list as $d ){?>
 <div class="div_t goDetail" f-id="<?=$d['forum_id']?>" q-id="<?=$d['question_id']?>" >
-  <div style="width:100%;text-align:right;"><?=$d['question_id']?> : <?=$d['open_time']?></div>
+  <div style="width:100%;text-align:right;"><?=$d['open_time']?></div>
   <?=$d['txt']?>
   <?php if( $d['img']){?><img src="<?=$d['img']?>" class="icon"><?php }?>
 </div>

@@ -29,6 +29,15 @@ localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
   },
   computed: {
 
+  },
+  methods: {
+    goDetail: function (forum_id,question_id) {
+        if(question_id > 0){
+          location.href = '/quiz/?q='+question_id;
+        }else{
+          location.href = '/forum/?f='+forum_id;
+        }
+    }
   }
 });
 
@@ -232,3 +241,12 @@ if(localStorage.login){
         alert(err);
     });
 }
+
+$('.goDetail').click(function(){
+  alert($(this).attr('q-id'));
+  if($(this).attr('q-id') > 0){
+    location.href = '/quiz/?q='+$(this).attr('q-id');
+  }else{
+    location.href = '/forum/?f='+$(this).attr('f-id');
+  }
+});

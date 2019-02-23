@@ -286,6 +286,17 @@ h1 {
   text-align: center;
   opacity: 0.9;
 }
+.icon_num_big {
+  position: absolute;
+  background-color: gray;
+  color: white;
+  border-radius: 12px;
+  width: 48px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  opacity: 0.9;
+}
 .forum_txt {
   width: 98%;
   margin: 10px 0px 10px 1%;

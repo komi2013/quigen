@@ -90,13 +90,11 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" class="icon"></td>
   <td class="td_15"><img src="/assets/img/icon/ranking.png" class="icon"></td>
 </tr>
-<template v-for="(d,k) in list_rank">
-<tr>
+<tr v-for="(d,k) in list_rank">
   <td class="td_68_c"><a v-bind:href="'/search/?tag='+d['tag']">{{d['tag']}}</a></td>
   <td class="td_15">{{d['cnt']}}</td>
   <td class="td_15">{{d['rank']}}</td>
 </tr>
-</template>
 </table>
 <table >
 <tr>
@@ -172,16 +170,14 @@ target="_blank" class="pc_disp_none">
 </template>
 </template>
 
-<div v-if="list == 'forum'" class="div_t">
-<template v-for="(d,k) in list_forum">
-  <img v-bind:src="d['img']" class="icon">
-  <span v-html="d['txt']"></span>
-  <template v-if="d['no_param'] == 0">
-  &nbsp; &nbsp; <a v-bind:href="'/forum/?f='+d['forum_id']"> >> </a>
-  </template>
+<template v-if="list == 'forum'" v-for="(d,k) in list_forum">
+<div class="div_t" v-on:click="goDetail(d['forum_id'],d['question_id'])">
   <div style="width:100%;text-align:right;">{{d['open_time']}}</div>
-</template>
+  <span v-html="d['txt']"></span>
+  <img v-if="d['img']" v-bind:src="d['img']" class="icon">
 </div>
+</template>
+
 <table v-if="list == 'msg'">
   <tr v-for="(d,k) in list_msg">
     <td class='td_15'><a v-bind:href="'/profile/?u='+d['usr_id']+'&list=msg'"><img v-bind:src="d['u_img']" class="icon"></a></td>

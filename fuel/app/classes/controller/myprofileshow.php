@@ -29,29 +29,42 @@ class Controller_Myprofileshow extends Controller
     $day = [];
     $msg_usr = [];
 
-    $arr_forum = [];
-    $arr = DB::query("select * from forum where usr_id = ".$usr_id." order by open_time desc")->execute()->as_array();
+    $arr = DB::query("select * from forum_comment where usr_id = ".$usr_id.
+            " order by open_time desc limit 20")->execute()->as_array();
+    $arr_forum_id = '0';
     foreach ($arr as $k => $d) {
-      $arr1['forum_id'] = $d['id'];
+      $arr1 = [];
+      $arr1['forum_id'] = $d['forum_id'];
       $arr1['txt'] = $d['txt'];
       $arr1['img'] = $d['img'];
       $date = new DateTime($d['open_time']);
       $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
-      $arr1['no_param'] = $d['no_param'];
-      $arr_list[$d['open_time']] = $arr1;
+      $arr1['question_id'] = 0;
+      $arr_list[$d['forum_id']] = $arr1;
+      $arr_forum_id .= ','.$d['forum_id'];
     }
-//    $arr_forum_comment = [];
-//    $arr = DB::query("select * from forum_comment where usr_id = ".$usr_id." order by open_time desc")->execute()->as_array();
-//    foreach ($arr as $k => $d) {
-//      $arr1['forum_id'] = $d['forum_id'];
-//      $arr1['txt'] = $d['txt'];
-//      $arr1['img'] = $d['img'];
-//      $date = new DateTime($d['open_time']);
-//      $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
-//      $arr1['no_param'] = 0;
-//      $arr_list[$d['open_time']] = $arr1;
-//    }
-    krsort($arr_list);
+
+    $arr = DB::query("select * from forum where usr_id = ".$usr_id.
+            " OR id in ( ".$arr_forum_id." )".
+            " order by open_time desc limit 20")->execute()->as_array();
+    foreach ($arr as $k => $d) {
+      if ($d['usr_id'] == $usr_id) {
+          $arr1['forum_id'] = $d['id'];
+          $arr1['txt'] = $d['txt'];
+          $arr1['img'] = $d['img'];
+          $date = new DateTime($d['open_time']);
+          $arr1['open_time'] = $date->format('M/jS').' '.$date->format('D');
+          $arr1['question_id'] = $d['question_id'];
+          $arr_list[$d['id']] = $arr1;
+      } else if( isset($arr_list[$d['id']]['question_id']) ) {  //from forum_comment
+          $arr_list[$d['id']]['question_id'] = $d['question_id'];
+      }
+    }
+    $arr_open_time = [];
+    foreach ($arr_list as $k => $d) {
+        $arr_open_time[$k] = $d['open_time'];
+    }
+    array_multisort($arr_open_time, SORT_DESC, $arr_list);
     $res['list_forum'] = $arr_list;
     $date = new DateTime();
     $i = 0;

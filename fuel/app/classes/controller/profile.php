@@ -30,6 +30,7 @@ class Controller_Profile extends Controller
     $certify = 0;
     $amt_forum = 0;
     $amt_quiz = 0;
+    $point = 0;
     if ( isset($usr[0]['id']) ) {
       $view->usr_name = Security::htmlentities($usr[0]['name']);
       $view->usr_img = $usr[0]['img'] ? Security::htmlentities($usr[0]['img']) : $util->eto_img;
@@ -51,6 +52,7 @@ class Controller_Profile extends Controller
       $certify = $usr[0]['certify'];
       $amt_forum = $usr[0]['forum'] + $usr[0]['forum_comment'];
       $amt_quiz = $usr[0]['quiz'];
+      $point = $usr[0]['point'];
     }
     $res = DB::query("select count(*) as cnt from answer_key_u where usr_id = ".$_GET['u'])->execute()->as_array();
     $amt_answer = $res[0]['cnt'];
@@ -71,7 +73,7 @@ class Controller_Profile extends Controller
     }
     $view->seo_index = $seo_index;
     $view->status = $status;
-    $view->follower = $cnt_follower;
+    $view->follower = Model_Number::big_number($cnt_follower);
     $res = DB::query("select count(*) from answer_key_u where usr_id = ".$_GET['u']." AND create_at > '".date('Y-m-d H:i:s',strtotime('-1 week'))."'" )->execute()->as_array();
     if ($res[0]['count'] > 0) {
       $answer_cnt_1week = $res[0]['count'].' answer within a week';  
@@ -85,7 +87,7 @@ class Controller_Profile extends Controller
     }
     $view->answer_cnt_1week = $answer_cnt_1week;
     $res = DB::query("select count(*) from follow where sender = ".$_GET['u']." AND status = 2")->execute()->as_array();
-    $view->following = $res[0]['count'];
+    $view->following = Model_Number::big_number($res[0]['count']);
     $view->u_id = $usr_id;
     $description = '';
     if( !isset($_GET['list']) ){
@@ -166,6 +168,7 @@ class Controller_Profile extends Controller
         $arr1['day'] = $key_day.' '.$date->format('D');
         $arr1['answer'] = 0;
         $arr1['spend'] = 0;
+        $arr1['time'] = 0;
         $day[$key_day] = $arr1;
         $date->sub(new DateInterval('P1D'));
         ++$i;
@@ -211,10 +214,11 @@ class Controller_Profile extends Controller
     $view->list = $list;
     $view->description = $description;
     $view->introduce = $introduce;
-    $view->nice = $nice;
+    $view->nice = Model_Number::big_number($nice);
     $view->certify = $certify;
     $view->amt_forum = $amt_forum;
     $view->amt_answer = $amt_answer;
+    $view->point = Model_Number::big_number($point);
     $view->meta_description = strip_tags($introduce).$description;
     $view->fb_url = 'https://www.facebook.com/sharer.php?u=https://'
       .Config::get('my.domain')
