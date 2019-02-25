@@ -59,7 +59,7 @@ class Controller_Newsshow extends Controller
       $u_img = strip_tags( $d['u_img'] );
       $arr_res[0] = 
         '<img src="'.$u_img.'" class="icon '.$d['css'].'">'
-        .' answered '
+        .' '.Config::get("lang.answered").' '
         .'<a href="/quiz/?q='.$d['question_id'].'"> '
         .'<img src="'.$q_img.'" class="icon edge_click"></a>';
       $res[0] = 1;

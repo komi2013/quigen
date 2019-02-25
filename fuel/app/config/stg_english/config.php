@@ -325,5 +325,6 @@ return array(
     'please_login' => 'please login',
     'calling' => 'calling',
     'no_point_for_msg' => "you don't have enough point"."\r\n"."you can send tomorrow without point",
+    'answered' => "answered",
   ),
 );
