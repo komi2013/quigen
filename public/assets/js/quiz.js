@@ -366,7 +366,7 @@ function tag_show(){
         $('#tag').append('&nbsp;<a href="/search/?tag='+res[1][i]['txt']+'">#'+res[1][i]['txt']+'</a>&nbsp;');
         ga('set','dimension13',res[1][i]);
       }
-      $('#question').prepend(no_+res[1][0]['quiz_num']+mon);
+      $('#question').prepend(no_+res[1][0]['quiz_num']+mon+' ');
       quiz_num = res[1][0]['quiz_num'];
       if(res[3] && res[3][0]){
         next_q = res[3][0];

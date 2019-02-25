@@ -57,9 +57,9 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
         <img v-else src="/assets/img/icon/power_0.png" class="icon">
     </td>
     <td style="width:20%;">
-      <img src="/assets/img/icon/upload_0.png" alt="generate" class="icon" id="generate">
-      <img src="/assets/img/icon/success.png" alt="success" class="icon" id="success" style="display:none;">
-      <img src="/assets/img/icon/cross_big.png" alt="success" class="icon" id="delete" style="display:none;">
+      <img src="/assets/img/icon/upload_0.png" class="icon" id="generate">
+      <img src="/assets/img/icon/success.png" class="icon" id="success" style="display:none;">
+      <img src="/assets/img/icon/cross_big.png" class="icon" id="delete" style="display:none;">
     </td>
   </tr>
 </table>
@@ -140,20 +140,47 @@ target="_blank" class="pc_disp_none">
 
 <table>
   <tr>
-  <td class="td_33" v-on:click="list = 'graph'" v-bind:class="[list == 'graph' ? 'this_page' : 'another_page', '']">
+  <td v-on:click="list = 'answer'" v-bind:class="[list == 'answer' ? 'this_page' : 'another_page', '']">
+    <span class="icon_num">{{offline_q.length}}</span>
+    <img src="/assets/img/icon/answer.png" class="icon">
+  </td>
+  <td v-on:click="list = 'graph'" v-bind:class="[list == 'graph' ? 'this_page' : 'another_page', '']">
     <img src="/assets/img/icon/bar-chart.png" class="icon">
   </td>
-  <td class="td_33" v-on:click="list = 'forum'" v-bind:class="[list == 'forum' ? 'this_page' : 'another_page', '']">
+  <td v-on:click="list = 'forum'" v-bind:class="[list == 'forum' ? 'this_page' : 'another_page', '']">
     <span class="icon_num">{{amt_forum}}</span>
     <img src="/assets/img/icon/list.png" class="icon">
   </td>
-  <td class="td_33" v-on:click="list = 'msg'" v-bind:class="[list == 'msg' ? 'this_page' : 'another_page', '']">
+  <td v-on:click="list = 'msg'" v-bind:class="[list == 'msg' ? 'this_page' : 'another_page', '']">
     <span class="icon_num">{{amt_msg}}</span>
     <img src="/assets/img/icon/chat.png" class="icon">
   </td>
   </tr>
 </table>
-
+<template v-if="list == 'answer'">
+    <div id="position" class="td_99_c" style="color: blue;">previous offline quiz</div>
+    <table>
+    <template v-for="(d,k) in offline_q">
+    <tr v-bind:class="'del_'+d[7]">
+        <td colspan="100" class="td_84" v-bind:id="'position_'+d[7]">
+            <a v-bind:href="'/quiz/?q='+d[7]">
+                <img v-if="d[5] == d[9]" src="/assets/img/icon/circle_big" class="icon result">
+                <img v-else src="/assets/img/icon/cross_big.png" class="icon result">
+                {{ d[0] }}
+            </a>
+        </td>
+    </tr>
+    <tr v-bind:class="'del_'+d[7]">
+        <td colspan="50" class="td_49_t">
+            <img src="/assets/img/icon/no_internet.png" class="icon goOffline" v-bind:q_id="d[7]">
+        </td>
+        <td colspan="50" class="td_50_t">
+            <img src="/assets/img/icon/trash.png" class="icon delAnswer" v-bind:q_id="d[7]">
+        </td>
+    </tr>
+    </template>
+    </table>
+</template>
 <template v-if="list == 'graph'">
 <table><tr>
     <td style="width:35%"><img src="/assets/img/icon/calendar.png"></td>

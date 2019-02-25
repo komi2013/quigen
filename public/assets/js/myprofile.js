@@ -23,9 +23,11 @@ localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
       ,max:0
       ,amt_forum:0
       ,amt_msg:0
-      ,list:'graph'
+      ,list:'answer'
       ,provider:0
       ,logined:localStorage.login? 'logined' : 'auth'
+      ,offline_q:
+localStorage.offline_q ? JSON.parse(localStorage.offline_q): []              
   },
   computed: {
 
@@ -78,6 +80,11 @@ $.get('/myprofileshow/',{},function(){},"json")
   }else if(res[0]==2){
   }
 });
+
+for(var i = 0; i < content.offline_q.length; i++) {
+  content.offline_q[i][0] = 
+  decodeURIComponent(content.offline_q[i][0].replace(/\+/g,'%20').replace(/<br>/g,' ')).substring(0,90);
+}
 
 if(localStorage.quest){
   var quest = JSON.parse(localStorage.quest);
@@ -249,4 +256,54 @@ $('.goDetail').click(function(){
   }else{
     location.href = '/forum/?f='+$(this).attr('f-id');
   }
+});
+$('.goOffline').click(function(){
+    if(localStorage.quest){
+      var quest = JSON.parse(localStorage.quest);
+      if(quest[1] != 1){
+        quest[1] = 1;
+        localStorage.quest = JSON.stringify(quest);
+        setTimeout(function(){
+          highlighting('#page_news',0,false);
+        },3000);
+        var ticket = JSON.parse(localStorage.ticket);
+        ticket[0] = ticket[0] + 12;
+        localStorage.ticket = JSON.stringify(ticket);
+        notify[2] = 'yet';
+        notify[3] = 1;
+        notify[4] = notify[4]+1;
+        if(localStorage.news){
+          var news = JSON.parse(localStorage.news);
+        }else{
+          var news = [];
+        }
+        news.unshift('<a href="/htm/quest/">offline is completed<img src="/assets/img/icon/star_1.png"></a>');
+        localStorage.news = JSON.stringify(news);
+        localStorage.notify = JSON.stringify(notify);
+      } else {
+        localStorage.current_q = $(this).attr('q_id');
+        location.href = '/htm/quiz_offline/ ';   
+      }
+    }
+});
+$('.delAnswer').click(function(){
+  r = confirm(del);
+  if(r){
+    var new_offline_q = [];
+    var i2 = 0;
+    for(var i=0; i<content.offline_q.length; i++){
+      if(content.offline_q[i][7] != $(this).attr('q_id')){
+        new_offline_q[i2] = content.offline_q[i];
+        i2++;
+      }
+    }
+    $('.del_'+$(this).attr('q_id')).fadeOut(400,function(){$(this).fadeIn(500)});
+    setTimeout(function(){
+      localStorage.offline_q = JSON.stringify(new_offline_q);
+      content.offline_q = new_offline_q;
+    },500);
+  }
+});
+$('#position').click(function(){
+  location.href = '/htm/myprofile/#position_'+localStorage.current_q;
 });
