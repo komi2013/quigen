@@ -52,14 +52,15 @@ class Controller_Newsshow extends Controller
       $asc_a_news[$d['question_id']]['question_id'] = $d['question_id'];
       $asc_a_news[$d['question_id']]['q_img'] = $d['q_img'] ?: '/assets/img/icon/quiz_generator.png';
     }
+
     $arr_res = array();  
     foreach ($asc_a_news as $d) {
-      $q_img = strip_tags( preg_replace('/http/', 'url', $d['q_img']) );
-      $u_img = strip_tags( preg_replace('/http/', 'url', $d['u_img']) );
-      $arr_res[] = 
+      $q_img = strip_tags( $d['q_img'] );
+      $u_img = strip_tags( $d['u_img'] );
+      $arr_res[0] = 
         '<img src="'.$u_img.'" class="icon '.$d['css'].'">'
-        .' answer '
-        .'<a href="/quiz/?q='.$d['question_id'].'">this quiz'
+        .' answered '
+        .'<a href="/quiz/?q='.$d['question_id'].'"> '
         .'<img src="'.$q_img.'" class="icon edge_click"></a>';
       $res[0] = 1;
     }  
@@ -103,21 +104,19 @@ class Controller_Newsshow extends Controller
       $res[0] = 1;
     }
     $res[1] = array_merge($res[1], $arr_res);  
-    $query = DB::query("select * from pay_answered_news where usr_id = ".$usr_id)->execute()->as_array();
-    DB::query("delete from pay_answered_news where usr_id = ".$usr_id)->execute();  
-    $arr_res = array();
-    foreach ($query as $d) {
-      $q_img = preg_replace('/http/', 'url', $d['q_img']);
-      $q_img = $q_img ?: '/assets/img/icon/quiz_generator.png';
-      $arr_res[] = $d['summary'].'other users also answer '.
-        '<a href="/quiz/?q='.$d['question_id'].'">this quiz'.
-        '<img src="'.$q_img.'" class="icon edge_click"></a>';
-      $res[0] = 1;
-    }
-    $res[1] = array_merge($res[1], $arr_res);
+//    $query = DB::query("select * from pay_answered_news where usr_id = ".$usr_id)->execute()->as_array();
+//    DB::query("delete from pay_answered_news where usr_id = ".$usr_id)->execute();  
+//    $arr_res = array();
+//    foreach ($query as $d) {
+//      $q_img = preg_replace('/http/', 'url', $d['q_img']);
+//      $q_img = $q_img ?: '/assets/img/icon/quiz_generator.png';
+//      $arr_res[] = $d['summary'].'other users also answer '.
+//        '<a href="/quiz/?q='.$d['question_id'].'">this quiz'.
+//        '<img src="'.$q_img.'" class="icon edge_click"></a>';
+//      $res[0] = 1;
+//    }
+//    $res[1] = array_merge($res[1], $arr_res);
     
-//    $query = DB::query("select * from mt_public_news where create_at > '".date('Y-m-d H:i:s',$_GET['last_checked'] * 60 * 60)."' AND create_at < ")
-//      ->execute()->as_array();
     $query = DB::query("select * from mt_public_news where create_at > '".date('Y-m-d H:i:s',$_GET['last_checked'] * 60 * 60)."' AND create_at < '".date("Y-m-d H:i:s")."'")
       ->execute()->as_array();
     $arr_res = array();  
