@@ -192,6 +192,9 @@ function step3(room) {
   // UI stuff
   room.on('close', step2);
   room.on('peerLeave', peerId => {
+      alert('callend');
+//    $.post('/callend/',{},function(){},"json")
+//    .always(function(res){});
     $('#their-videos').remove();
   });
   $('#step1, #step2').hide();
@@ -267,5 +270,10 @@ if(getVal.who == 'caller'){
       }
     });
 }else{
-    
+    window.addEventListener('beforeunload', function(e) {
+        $.post('/callend/',{},function(){},"json")
+        .always(function(res){});
+        e.returnValue = '';
+    }, false);  
 }
+
