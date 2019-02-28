@@ -196,7 +196,8 @@
 <script src="/assets/js/message.js<?=Config::get("my.cache_v")?>"></script>
 </template>
 <template v-else>
-    you must login
+    <div style="width:100%;text-align:center;"><img src="/assets/img/icon/telephone.png" class="icon"></div>
+    <div style="width:100%;text-align:center;">you must login</div>
 </template>
 <?php } ?>
 

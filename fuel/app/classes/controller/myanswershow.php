@@ -26,7 +26,7 @@ class Controller_Myanswershow extends Controller
           $arr[$k]['tag_url'] = urlencode($d['tag']);
           $arr[$k]['cnt'] = $d['cnt'];
           $arr[$k]['rank'] = $d['rank'];
-          $arr[$k]['tag'] = Security::htmlentities($d['tag']);
+          $arr[$k]['tag'] = $d['tag'];
         }
         $res[0] = 1;
         $res[1] = $arr;

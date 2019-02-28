@@ -158,7 +158,9 @@ target="_blank" class="pc_disp_none">
   </tr>
 </table>
 <template v-if="list == 'answer'">
-    <div id="position" class="td_99_c" style="color: blue;">previous offline quiz</div>
+    <table><tr>
+        <td id="position" class="td_99_c" style="color: blue;">previous offline quiz</td>
+    </tr></table>
     <table>
     <template v-for="(d,k) in offline_q">
     <tr v-bind:class="'del_'+d[7]">
