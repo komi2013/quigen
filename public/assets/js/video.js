@@ -1,4 +1,28 @@
 /* eslint-disable require-jsdoc */
+var roomName = randomStr();
+if(getVal.who == 'caller'){
+//    const roomName = randomStr();
+    var param = {
+      csrf : csrf
+      ,receiver : getVal.receiver
+      ,myphoto : localStorage.myphoto
+      ,myname : localStorage.myname
+      ,room : roomName
+    };
+    $.post('/pushcall/',param,function(){},"json")
+    .always(function(res){
+      if(res[0]==1){
+      }else{
+      }
+    });
+}else{
+    roomName = getVal.room;
+    window.addEventListener('beforeunload', function(e) {
+        $.post('/calling/end/',{},function(){},"json")
+        .always(function(res){});
+        e.returnValue = '';
+    }, false);
+}
 
 // Peer object
 const peer = new Peer({
@@ -106,7 +130,6 @@ function step2() {
   $('#join-room').focus();
   makeCall();
 }
-const roomName = getVal.room;
 function makeCall() {
     room = peer.joinRoom('mesh_video_' + roomName, {stream: localStream});
 
@@ -183,18 +206,32 @@ function step3(room) {
       el.srcObject = stream;
       el.play();
       startRecording(localStream);
+      if(getVal.receiver == localStorage.ua_u_id){
+        var param = {
+          csrf : csrf
+          ,receiver : getVal.receiver
+          ,sender : getVal.sender
+        };
+        $.post('/calling/start/',param,function(){},"json")
+        .always(function(res){});
+      }
   });
 
   room.on('removeStream', function(stream) {
+    if(getVal.receiver == localStorage.ua_u_id){
+      $.post('/calling/end/',{},function(){},"json")
+      .always(function(res){});
+    }
     $('#their-videos').remove();
   });
 
   // UI stuff
   room.on('close', step2);
   room.on('peerLeave', peerId => {
-      alert('callend');
-//    $.post('/callend/',{},function(){},"json")
-//    .always(function(res){});
+    if(getVal.receiver == localStorage.ua_u_id){
+      $.post('/calling/end/',{},function(){},"json")
+      .always(function(res){});
+    }
     $('#their-videos').remove();
   });
   $('#step1, #step2').hide();
@@ -212,7 +249,6 @@ function startRecording(stream) {
 
   recorder.ondataavailable = function(evt) {
     chunks.push(evt.data);
-    console.log('recoding' + splitRec);
     if(splitRec % 10 == 0 && splitRec > 0){
         var videoBlob = new Blob(chunks, { type: "video/webm" });
         var fd = new FormData();
@@ -241,6 +277,7 @@ function startRecording(stream) {
   recorder.start(1000); // インターバルは1000ms
   console.log('start recording');
 }
+
 // -- 録画停止 -- 
 function stopRecording(stream) {
   if (recorder) {
@@ -254,26 +291,18 @@ function goBottom(targetId) {
     if(!obj) return;
     obj.scrollTop = obj.scrollHeight;
 }
-if(getVal.who == 'caller'){
-    var param = {
-      csrf : csrf
-      ,receiver : getVal.receiver
-      ,myphoto : localStorage.myphoto
-      ,myname : localStorage.myname
-      ,room : getVal.room
-    };
-    $.post('/pushcall/',param,function(){},"json")
-    .always(function(res){
-      if(res[0]==1){
 
-      }else{
-      }
-    });
-}else{
-    window.addEventListener('beforeunload', function(e) {
-        $.post('/callend/',{},function(){},"json")
-        .always(function(res){});
-        e.returnValue = '';
-    }, false);  
+function randomStr(){
+    var l = 8;
+    var c = "abcdefghijklmnopqrstuvwxyz0123456789";
+    var cl = c.length;
+    var r = "";
+    for(var i=0; i<l; i++){
+      r += c[Math.floor(Math.random()*cl)];
+    }
+    return r;
 }
+
+
+
 

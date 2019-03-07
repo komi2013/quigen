@@ -180,27 +180,14 @@ if(list == 'answer'){
     });
   });
 }
-$("#call").attr("href","/video/?who=caller&receiver="+receiver+"&room="+randomStr());
 
 $('#call').click(function(){
-//  if(!localStorage.point){
-//    return;
-//  }
   r = confirm('calling?');
   if(r){
-    location.href = "/video/?who=caller&receiver="+receiver+"&room="+randomStr();
+    location.href = "/video/?who=caller&receiver="+receiver;
   }
 });
-function randomStr(){
-    var l = 8;
-    var c = "abcdefghijklmnopqrstuvwxyz0123456789";
-    var cl = c.length;
-    var r = "";
-    for(var i=0; i<l; i++){
-      r += c[Math.floor(Math.random()*cl)];
-    }
-    return r;
-}
+
 $('.goDetail').click(function(){
   if($(this).attr('q-id') > 0){
     location.href = '/quiz/?q='+$(this).attr('q-id');

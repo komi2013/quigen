@@ -14,8 +14,6 @@ class Controller_Video extends Controller
                 ->order_by('create_at', 'desc')
                 ->limit(1)->execute()->as_array();
             if ( $query[0]['create_at'] > date("Y-m-d H:i:s",strtotime("-1 minute")) ) {
-                Session::set('sender', $_GET['sender']);
-                Session::set('start', time());
                 die($view);
             }
         }

@@ -63,16 +63,12 @@
     <div id="chatLog" style="width:100%;height:300px;display:table-cell;vertical-align:bottom;padding:5px;color:lime;font-size: 20px;"></div>
   </div>
   <div style="text-align: center;">
-    <input type="text" placeholder="message" id="msg" class="td_68">
+    <a href="/profile/?u=<?=$_GET['receiver']?>&list=msg"><img src="/assets/img/icon/reply.png" class="icon"></a>
+    <input type="text" placeholder="message" id="msg" style="width:60%;height:50px;">
     <img src="/assets/img/icon/video_0.png" class="icon camera" id="camera0">
     <img src="/assets/img/icon/video_1.png" class="icon camera" id="camera1" style="display:none;">
     <img src="/assets/img/icon/upload_0.png" class="icon" id="send" style="display:none;">
   </div>
-  </div>
-  <div style="position:absolute;top:-500px;">
-  <a href="#" id="downloadlink">Download</a><br>
-  <a href="#" onclick="playRecorded();">makeVideo</a><br>
-  <video id="playback_video" controls="1" autoplay style="width: 240px; height: 180px; border: 1px solid black;"></video>
   </div>
 </div>
 
