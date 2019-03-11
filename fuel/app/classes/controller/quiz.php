@@ -3,7 +3,7 @@ class Controller_Quiz extends Controller
 {
   public function action_index()
   {
-    if ( isset($_GET['q']) AND is_numeric($_GET['q']) ) {
+    if ( isset($_GET['q']) AND is_numeric($_GET['q']) AND strlen( $_GET['q'] ) < 20 ) {
       $arr_question = DB::select()->from('question')->where('id','=',$_GET['q'])->execute()->as_array();
       if ( isset($arr_question[0]['id']) ) {
         $question_id =  $arr_question[0]['id'];

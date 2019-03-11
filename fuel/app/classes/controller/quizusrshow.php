@@ -13,7 +13,7 @@ class Controller_Quizusrshow extends Controller
 //      ->where('id','=',$_GET['q'])
 //      ->execute()->as_array();
     
-    $generator_id = $_GET['u'];  
+    $generator_id = isset($_GET['u']) ? $_GET['u'] : 0;  
     $util = new Model_Util();
     $usr = DB::select()->from('usr')
       ->where('id','=',$generator_id)
