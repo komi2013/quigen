@@ -89,7 +89,7 @@ return array(
     'delete' => 'delete',
     'confirm' => 'confirm',
     'checked_chat' => 'checked chat',
-    'after' => 'after ',' hours_please' => ' hours please',
+    'after' => 'after ','hours_please' => ' hours please',
     'made_quiz' => 'made quiz',
     'no_' => 'No.', 'mon' => '',
     'checked_offline' => 'checked offline',
