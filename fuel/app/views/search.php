@@ -33,7 +33,7 @@
   <datalist id="tag_list"></datalist>
   <img src="/assets/img/icon/magnifier.png" alt="search" class="icon" id="search">
 </div>
-<div class="tag_desc"><?=$tag?>(total <?=$cnt?> quiz) <?=$description?></div>
+<div class="tag_desc"><?=$tag?>( <?=Config::get("lang.total")?> <?=$cnt?> ) <?=$description?></div>
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <table id="cel">
 <?php foreach($question as $k => $d){ ?>

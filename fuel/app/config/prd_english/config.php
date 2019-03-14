@@ -109,5 +109,6 @@ return array(
     'calling' => 'calling',
     'no_point_for_msg' => "you don't have enough point"."\r\n"."you can send tomorrow without point",
     'answered' => "answered",
+    'total' => "total",
   ),
 );

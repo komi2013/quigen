@@ -108,5 +108,6 @@ return array(
     'calling' => '呼び出し中',
     'no_point_for_msg' => "ポイントが足りません"."\r\n"."明日送信できます",
     'answered' => "回答",
+    'total' => "全",
   ),
 );
