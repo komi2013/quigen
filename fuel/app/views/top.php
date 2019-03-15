@@ -44,7 +44,12 @@
 ?>
 <?php foreach($question as $k => $d){ ?>
 <?php if( $exactly_top AND $prev_tag != $d['tag']){ ?>
-    <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$d['tag']?>"><?=$d['tag']?>(<?=$d['country']?>)</a></td></tr>
+    <tr><td colspan="100" class="td_99_c"><a href="/search/?tag=<?=$d['tag']?>">
+        <?=$d['tag']?>
+        <?php if($d['country']){?>
+        (<?=$d['country']?>)
+        <?php } ?>
+        </a></td></tr>
 <?php } ?>    
 <tr>
   <?php if($d['img']){ ?>
