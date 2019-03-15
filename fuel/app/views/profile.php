@@ -16,6 +16,7 @@
     <meta property="og:image" content="https://<?=Config::get('my.domain').$usr_img?>" />
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
+    <script src="/third/img-touch-canvas_1.js<?=Config::get("my.cache_v")?>"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
     <link rel="stylesheet" href="/assets/css/pc.css<?=Config::get("my.cache_v")?>" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>" media="only screen and (max-width : 710px)">
@@ -152,7 +153,7 @@
 
 <?php if($list == 'msg'){ ?>
 <template v-if="localStorage.login && localStorage.point >= 10">
-<script src="/third/img-touch-canvas_1.js<?=Config::get("my.cache_v")?>"></script>
+
 <div class="forum_form" id="txt" contenteditable="true"></div>
 <table><tr>
   <td style="width:25%;">
@@ -193,11 +194,12 @@
     <?=$d?>
   <?php } ?>
 </div>
-<script src="/assets/js/message.js<?=Config::get("my.cache_v")?>"></script>
+
 </template>
 <template v-else>
-    <div style="width:100%;text-align:center;"><img src="/assets/img/icon/telephone.png" class="icon"></div>
-    <div style="width:100%;text-align:center;">you must login</div>
+    <div style="width:100%;height:50px;text-align:center;padding:20px;">
+       <a href="/htm/exchange_point/">get point</a>
+    </div>
 </template>
 <?php } ?>
 
@@ -226,6 +228,7 @@
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/profile.js<?=Config::get("my.cache_v")?>"></script>
+<script src="/assets/js/message.js<?=Config::get("my.cache_v")?>"></script>
 <script>
   $(function(){ ga('send', 'pageview'); });
 </script>
