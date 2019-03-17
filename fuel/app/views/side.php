@@ -28,6 +28,8 @@
   <tr><td id="page_translation"   class="<?= $this_page == 'translation'  ? 'this_page' : '' ?>" style="text-align: center;">
     <a href="/htm/translation/" rel="nofollow" class="td_a" ><img src="/assets/img/icon/translation.png" class="icon"></a></td></tr>
 <?php }?>
+  <tr><td class="<?= $this_page == 'rule'       ? 'this_page' : '' ?>" style="text-align: center;">
+    <a href="/htm/rule/" class="td_a"><img src="/assets/img/icon/audit.png" class="icon"></a></td></tr>
 <?php /*
   <tr><td id="page_paid"        >  <a href="/paid/" rel="nofollow"         >&nbsp;&nbsp;&nbsp;有料クイズ</a></td></tr>
   <tr><td id="page_mypacklist"  >  <a href="/mypacklist/" rel="nofollow"   >&nbsp;&nbsp;&nbsp;クイズで稼ぐ</a></td></tr>

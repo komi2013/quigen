@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>rule and term</title>
+    <title>term and condition</title>
     <meta name="robots" content="noindex">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <script src="/third/jquery-2.1.1.min.js"></script>
@@ -41,6 +41,46 @@
 <li>Violation of these Terms of Use may, in Quigen's sole discretion, result in termination of your Quigen account. You understand and agree that Quigen cannot and will not be responsible for the Content posted on the Service and you use the Service at your own risk. If you violate the letter or spirit of these Terms of Use, or otherwise create risk or possible legal exposure for Quigen, we can stop providing all or part of the Service to you.</li>
       </td></tr>  
 </table>
+Act on specified commercial transactions
+<table>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">seller</td></tr>
+  <tr><td>
+      Quigen Seijiro Komatsu
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">responsible</td></tr>
+  <tr><td>
+      Seijiro Komatsu
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">postal code</td></tr>
+  <tr><td>
+      181-0021
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">address</td></tr>
+  <tr><td>
+      suimire 102 5-22-1 Kamirenjaku Mitaka city Tokyo-to
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">payment</td></tr>
+  <tr><td>
+      credit card
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">service</td></tr>
+  <tr><td>
+      Quigen
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">telephone no.</td></tr>
+  <tr><td>
+      050-5899-8649
+  </td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">mail address</td></tr>
+  <tr><td>
+      hamahikoz@gmail.com
+  </td></tr>
+</table>
+<table>
+  <tr><td class="td_99_c"><a href="https://www.youtube.com/watch?v=ZQlq1a-jPHw" target="_blank">how to use(video)</a></td></tr>
+  <tr><td class="td_99_c"><a href="http://quizgenerator-help.hatenadiary.jp/archive/2015" target="_blank">how to use(blog)</a></td></tr>
+</table>
+
 </div>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
