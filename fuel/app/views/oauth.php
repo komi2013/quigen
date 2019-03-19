@@ -73,7 +73,12 @@ $(".offline_q").each(function(i){
 
 localStorage.offline_q = JSON.stringify(offline_q);
 
-location.href = '/htm/myprofile/ ';
+if($.cookie('after_in')){
+    location.href = $.cookie('after_in');
+}else{
+    location.href = '/htm/myprofile/ ';
+}
+
 
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>

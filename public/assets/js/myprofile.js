@@ -1,6 +1,8 @@
-if(getVal.warn){
+if(getVal.warn == 'logout'){
   alert(please_logout);
   location.href = '/htm/myprofile/';
+} else if(getVal.warn == 'login'){
+  alert(please_login);
 }
 
 var content = new Vue({
@@ -13,7 +15,7 @@ var content = new Vue({
       ,follower: 0
       ,following: 0
       ,nice: 0
-      ,certify:0
+      ,point:big_number(localStorage.point)
       ,answer_by_u:
 localStorage.answer_by_u ? JSON.parse(localStorage.answer_by_u): []
       ,list_rank:[]
@@ -307,3 +309,28 @@ $('.delAnswer').click(function(){
 $('#position').click(function(){
   location.href = '/htm/myprofile/#position_'+localStorage.current_q;
 });
+
+function big_number(number) {
+    var format = '';
+    var big = 'icon_num';
+    if (number < 100) {
+        format = number;
+        big = 'icon_num';
+    } else if (number < 1000) {
+        format = number;
+        big = 'icon_num_big';
+    } else if (number < 1000000) {
+        // Anything less than a billion
+        format = Math.round(number / 100) * 100 / 1000 + 'K';
+        big = 'icon_num_big';
+    } else if (number < 1000000000) {
+        // Anything less than a billion
+        format = Math.round(number / 100000) * 100000 / 1000000 + 'M';
+        big = 'icon_num_big';
+    } else {
+        format = Math.round(number / 100000000) * 100000000 / 1000000000 + 'B';
+        big = 'icon_num_big';
+    }
+    
+    return [number,format,big];
+  }

@@ -79,8 +79,8 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
     <img src="/assets/img/icon/thumbup_1.png" class="icon">
   </td>
   <td>
-    <span class="icon_num" v-if="certify">{{certify}}</span>
-    <img src="/assets/img/icon/medal_1.png" class="icon">
+    <span v-bind:class="point[2]" v-if="point[0]">{{ point[1] }}</span>
+    <a href="/htm/exchange_point/"><img src="/assets/img/icon/coin.png" class="icon"></a>
   </td>
 </tr>
 </table>

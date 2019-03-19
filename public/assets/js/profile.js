@@ -195,3 +195,7 @@ $('.goDetail').click(function(){
     location.href = '/forum/?f='+$(this).attr('f-id');
   }
 });
+
+setInterval(function(){
+    $('#coin').fadeOut(500,function(){$(this).fadeIn(500)});
+},1000);

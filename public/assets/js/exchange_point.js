@@ -1,3 +1,7 @@
+if(!localStorage.login){
+  $.cookie('after_in','/htm/exchange_point/'); 
+  location.href = '/htm/myprofile/?warn=login';
+}
 if(localStorage.point){
   var point = localStorage.point;
 }else{

@@ -198,7 +198,8 @@
 </template>
 <template v-else>
     <div style="width:100%;height:50px;text-align:center;padding:20px;">
-       <a href="/htm/exchange_point/">get point</a>
+      <span class="icon_num" >{{ localStorage.point }}</span>
+      <a href="/htm/exchange_point/"><img src="/assets/img/icon/coin.png" class="icon" id="coin"></a>
     </div>
 </template>
 <?php } ?>
