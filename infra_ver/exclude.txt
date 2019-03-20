@@ -4,6 +4,7 @@
 - public/assets/img/profile/*
 - public/assets/img/forum/*
 - public/assets/img/message/*
+- public/assets/img/forumcomment/*
 - public/assets/video/*
 - public/robots.txt
 - public/BingSiteAuth.xml

@@ -101,11 +101,6 @@
 <?php if($next_page){ ?> <div colspan="100" class="div_100_c"><a href="/forumlist/?page=<?=$next_page?>" target=”_blank”>* * open another page * *</a></div> <?php } ?>
 <span id="nextPage" style="display:none;"><?=$next_page?></span> 
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<table>
-  <tr><td class="td_99_c"><a href="https://www.youtube.com/watch?v=ZQlq1a-jPHw" target="_blank">how to use(video)</a></td></tr>
-  <tr><td class="td_99_c"><a href="http://quizgenerator-help.hatenadiary.jp/archive/2015" target="_blank">how to use(blog)</a></td></tr>
-  <tr><td class="td_99_c"><a href="/htm/rule/">rule</a></td></tr>
-</table>
 
 </div>
 
