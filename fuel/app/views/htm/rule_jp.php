@@ -102,9 +102,9 @@
   <tr><td>
       東京都三鷹市上連雀 5-22-1 すみれ荘 102
   </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">お支払い方法</td></tr>
+  <tr><td class="td_99" style="background-color:#CBFFD3;">お支払い方法と引き渡し時期</td></tr>
   <tr><td>
-      クレジットカード決済
+      クレジットカード決済、即時
   </td></tr>
   <tr><td class="td_99" style="background-color:#CBFFD3;">屋号またはサービス名</td></tr>
   <tr><td>
