@@ -8,6 +8,8 @@
     <script src="/third/jquery-2.1.1.min.js"></script>
     <script src="/third/jquery.cookie.js"></script>
     <script src="/third/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
     <script>var ua = '<?=Config::get("my.ua")?>';</script>
     <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
@@ -161,8 +163,7 @@ target="_blank" class="pc_disp_none">
     <table><tr>
         <td id="position" class="td_99_c" style="color: blue;">previous offline quiz</td>
     </tr></table>
-    <table>
-    <template v-for="(d,k) in offline_q">
+    <table v-for="(d,k) in offline_q">
     <tr v-bind:class="'del_'+d[7]">
         <td colspan="100" class="td_84" v-bind:id="'position_'+d[7]">
             <a v-bind:href="'/quiz/?q='+d[7]">
@@ -180,7 +181,6 @@ target="_blank" class="pc_disp_none">
             <img src="/assets/img/icon/trash.png" class="icon delAnswer" v-bind:q_id="d[7]">
         </td>
     </tr>
-    </template>
     </table>
 </template>
 <template v-if="list == 'graph'">
