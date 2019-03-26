@@ -71,8 +71,8 @@
     </select>
       0,000</td><td class="currecncy">pt</td>
   </tr>
-  <tr><td class="explain">手数料</td><td id="fee" class="numeric">1000</td><td class="currecncy">yen</td></tr>
-  <tr><td class="explain">受取額</td><td id="money" class="numeric"></td><td class="currecncy">yen</td></tr>
+  <tr><td class="explain">手数料</td><td id="fee" class="numeric">1000</td><td class="currecncy">円</td></tr>
+  <tr><td class="explain">受取額</td><td id="money" class="numeric"></td><td class="currecncy">円</td></tr>
 </table>
 <table>
   <tr><td id="info"><textarea placeholder="銀行情報" id="bank_info"></textarea></td></tr>
