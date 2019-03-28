@@ -302,7 +302,6 @@ return array(
     'you_can_answer_after_this_time' => 'you can answer after this time',
     'answer_first' => 'answer first',
     'not_enough_point' => 'not enough point',
-    'thanks' => 'thanks. you will know <a href="/htm/?p=news">on this page</a>',
     'delete' => 'delete',
     'confirm' => 'confirm',
     'checked_chat' => 'checked chat',

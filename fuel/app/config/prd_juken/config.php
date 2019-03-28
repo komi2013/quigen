@@ -372,7 +372,6 @@ return array(
     'you_can_answer_after_this_time' => 'この時間まで待ってください',
     'answer_first' => '答えてください',
     'not_enough_point' => 'ポイント不足',
-    'thanks' => '<a href="/htm/news/">このページへ</a>',
     'delete' => '削除',
     'confirm' => 'いいですか？',
     'checked_chat' => 'チャット確認',
