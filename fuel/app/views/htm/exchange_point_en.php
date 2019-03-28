@@ -29,9 +29,7 @@
 <table>
   <tr> <td class="td_99">
 choose which point you want
-I will contact with you later
-then you would put the money my bacnk account
-as soon as I confirm, I will give you point
+please input your creditcard information
   </td> </tr>
 </table>
 
