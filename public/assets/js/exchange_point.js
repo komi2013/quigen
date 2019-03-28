@@ -1,5 +1,5 @@
 if(!localStorage.login){
-  $.cookie('after_in','/htm/exchange_point/'); 
+  $.cookie('after_in',location.pathname); 
   location.href = '/htm/myprofile/?warn=login';
 }
 if(localStorage.point){
@@ -8,6 +8,7 @@ if(localStorage.point){
   var point = 0;
 }
 $('#point').empty().append(point+' pt');
+$('#current_point').empty().append(point+' pt');
 var current_point = point;
 var fee =$('#fee').text();
 
@@ -78,23 +79,32 @@ $('#generate_send').click(function(){
   }
   $('#generate_send').css({'display': 'none'});
   $('#success').css({'display': ''});  
-  var param = {
-    csrf : csrf
-    ,txt : $('input[name=buy_point]:checked').val()+'pt, bank name:'+$('#sender').val()
-    ,img : 'no'
-    ,myphoto : 'no'
-  };
-  $.post('/forumadd/',param,function(){},"json")
-  .always(function(res){
-    if(res[0]==1){
-      $('#after_post').empty().append(thanks);
-      csrf = res[1];
-    }else{
-      $('#success').css({'display': 'none'});  
-      $('#generate').css({'display': ''});
-      alert('connection error');
-    }
-  });
+//  var param = {
+//    csrf : csrf
+//    ,txt : $('input[name=buy_point]:checked').val()+'pt, bank name:'+$('#sender').val()
+//    ,img : 'no'
+//    ,myphoto : 'no'
+//  };
+//  $.post('/forumadd/',param,function(){},"json")
+//  .always(function(res){
+//    if(res[0]==1){
+//      $('#after_post').empty().append(thanks);
+      localStorage.point = (localStorage.point*1 + $('input[name=buy_point]:checked').attr('point')*1 );
+//      $('#current_point').empty().append(localStorage.point + ' pt');
+        $({count: current_point}).animate({count: localStorage.point}, {
+                duration: 1000,
+                easing: 'swing',
+                progress: function() { 
+                    $('#current_point').text(Math.ceil(this.count)); 
+                }
+        });
+//      csrf = res[1];
+//    }else{
+//      $('#success').css({'display': 'none'});  
+//      $('#generate').css({'display': ''});
+//      alert('connection error');
+//    }
+//  });
 });
 
 $('#unit').change(function(){

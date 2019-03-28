@@ -82,7 +82,7 @@ data-url="https://accounts.google.com/o/oauth2/auth?client_id=<?=Config::get('my
   </td>
   <td>
     <span v-bind:class="point[2]" v-if="point[0]">{{ point[1] }}</span>
-    <a href="/htm/exchange_point/"><img src="/assets/img/icon/coin.png" class="icon"></a>
+    <a href="/htm/exchange_point/?send=1"><img src="/assets/img/icon/coin.png" class="icon"></a>
   </td>
 </tr>
 </table>

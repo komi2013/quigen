@@ -37,25 +37,54 @@ as soon as I confirm, I will give you point
 
 <table>
   <tr>
-    <td class="td_15"><input type="radio" name="buy_point" value="100"></td>
+    <td class="td_15"><input type="radio" name="buy_point" value="100" point="200"></td>
     <td class="td_42">100 yen</td>
     <td class="td_42">200 pt</td>
   </tr>
   <tr>
-    <td class="td_15"><input type="radio" name="buy_point" value="800"></td>
+    <td class="td_15"><input type="radio" name="buy_point" value="800" point="1700"></td>
     <td class="td_42">800 yen</td>
     <td class="td_42">1700 pt</td>
   </tr>
   <tr>
-    <td class="td_15"><input type="radio" name="buy_point" value="1400"></td>
+    <td class="td_15"><input type="radio" name="buy_point" value="1400" point="3000"></td>
     <td class="td_42">1400 yen</td>
     <td class="td_42">3000 pt</td>
   </tr>
 </table>
 
 <table>
-  <tr><td><input type="text" placeholder="bank account" id="sender" class="txt_99"></td></tr>
+  <tr><td><input type="text" placeholder="card info" id="sender" class="txt_99"></td></tr>
 </table>
+<table><tr>
+    <td>
+        <select name=”month” class="txt_99">
+        <option value=”01”>01</option>
+        <option value=”02”>02</option>
+        <option value=”03”>03</option>
+        <option value=”04”>04</option>
+        <option value=”05”>05</option>
+        <option value=”06”>06</option>
+        <option value=”07”>07</option>
+        <option value=”08”>08</option>
+        <option value=”09”>09</option>
+        <option value=”10”>10</option>
+        <option value=”11”>11</option>
+        <option value=”12”>12</option>
+        </select>
+    </td>
+    <td>
+        <select name=”year” class="txt_99">
+        <?php for($i = $e = date('Y'); $i < $e + 10; $i++){ ?>
+        <option value=”<?=$i?>”><?=$i?></option>
+        <?php } ?>
+        </select>
+    </td>
+</tr></table>
+<table>
+  <tr><td><input type="text" placeholder="security code" id="sender" class="txt_99"></td></tr>
+</table>
+<table><tr><td><img src="/assets/img/icon/coin.png"></td><td id="current_point">0</td></tr></table>
 </div>
 <?php }else{ ?>
 <table>
@@ -93,7 +122,7 @@ as soon as I confirm, I will give you point
   var u_id = '<?=$u_id?>';
   var send = '<?= isset($_GET['send']) ? $_GET['send'] : 0 ; ?>';
   var csrf = '<?=Model_Csrf::setcsrf()?>';
-  var thanks = '<?=Config::get("lang.thanks")?>';
+  var thanks = 'thanks. you will know <a href="/htm/?p=news">on this page</a>';
 </script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
