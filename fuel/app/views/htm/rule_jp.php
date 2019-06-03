@@ -22,6 +22,7 @@
   echo $side;
 ?>
 <div id="content">
+
 <table>
   <tr><td class="td_99" style="background-color:#CBFFD3;">利用規約</td></tr>
   <tr><td class="td_99_c">第1条(本規約の適用)</td></tr>  
@@ -83,41 +84,6 @@
 弊社は、利用停止・強制退会とした理由について、当該利用者に回答する義務を負わないものとします。</td></tr>  
   <tr><td class="td_99_c">第8条(準拠法・裁判管轄)</td></tr>  
   <tr><td>本規約は、日本法に従って解釈され、弊社と利用者との紛争については、東京簡易裁判所または東京地方裁判所を第1審の専属的合意管轄裁判所とすることを予め合意します。</td></tr>  
-</table>
-特定商取引法に基づく表記
-<table>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">販売業者</td></tr>
-  <tr><td>
-      クイジェン　小松清二郎
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">運営統括責任者名</td></tr>
-  <tr><td>
-      小松清二郎
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">郵便番号</td></tr>
-  <tr><td>
-      181-0021
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">住所</td></tr>
-  <tr><td>
-      東京都三鷹市上連雀 5-22-1 すみれ荘 102
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">お支払い方法と引き渡し時期</td></tr>
-  <tr><td>
-      クレジットカード決済、即時
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">屋号またはサービス名</td></tr>
-  <tr><td>
-      クイジェン
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">電話番号</td></tr>
-  <tr><td>
-      050-5899-8649
-  </td></tr>
-  <tr><td class="td_99" style="background-color:#CBFFD3;">メールアドレス</td></tr>
-  <tr><td>
-      hamahikoz@gmail.com
-  </td></tr>
 </table>
 <table>
   <tr><td class="td_99_c"><a href="https://www.youtube.com/watch?v=ZQlq1a-jPHw" target="_blank">使い方(ビデオ)</a></td></tr>
