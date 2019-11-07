@@ -1,4 +1,4 @@
-.choice{
+.cho_css{
   background-color: #F5F5F5;
   width: 99%;
   cursor: pointer;
@@ -45,4 +45,9 @@
 #txt_answer{
   border-bottom: solid;
   border-top: solid;
+}
+.cho_pic{
+  width: 49%;
+  text-align:center;
+  padding: 1px;
 }

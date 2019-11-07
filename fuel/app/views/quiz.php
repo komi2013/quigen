@@ -43,6 +43,7 @@
 <img src="/assets/img/icon/circle_big.png" alt="correct" class="big_icon" id="big_correct" style="display:none;">
 <img src="/assets/img/icon/cross_big.png" alt="incorrect" class="big_icon" id="big_incorrect" style="display:none;">
 
+<?php if($question_type == 0) {?>
 <table class="textbox"><tr><td class="txt_99" id="txt_answer" contenteditable='true'></td></tr></table>
 <table class="textbox"><tr><td class="txt_99" id="correct" style="display:none;"><?=$correct?></td></tr></table>
 
@@ -51,20 +52,31 @@
 </div>
 
 <table class="choice_q" >
-  <tr><td class="choice" id="choice_0"><?=$arr_choice[0]?></td></tr>
-  <tr><td class="choice" id="choice_1"><?=$arr_choice[1]?></td></tr>
-  <tr><td class="choice" id="choice_2"><?=$arr_choice[2]?></td></tr>
-  <tr><td class="choice" id="choice_3"><?=$arr_choice[3]?></td></tr>
+  <tr><td class="choice cho_css" id="choice_0"><?=$arr_choice[0]?></td></tr>
+  <tr><td class="choice cho_css" id="choice_1"><?=$arr_choice[1]?></td></tr>
+  <tr><td class="choice cho_css" id="choice_2"><?=$arr_choice[2]?></td></tr>
+  <tr><td class="choice cho_css" id="choice_3"><?=$arr_choice[3]?></td></tr>
 </table>
+<?php } else if ($question_type == 1) { ?>
+<table class="textbox"><tr><td class="txt_99" id="correct" style="display:none;"><img src="<?=$correct?>"></td></tr></table>
+<table><tr>
+    <td class="choice cho_pic" id="choice_0"><img src="<?=$arr_choice[0]?>"></td>
+    <td class="choice cho_pic" id="choice_1"><img src="<?=$arr_choice[1]?>"></td>
+</tr><tr>
+    <td class="choice cho_pic" id="choice_2"><img src="<?=$arr_choice[2]?>"></td>
+    <td class="choice cho_pic" id="choice_3"><img src="<?=$arr_choice[3]?>"></td>
+</tr></table>
+<?php } ?>
 
 </div>
-
+<?php if($question_type == 0) {?>
 <table class="alter_an">
   <tr>
   <td id="textbox" class="chg_an_type" an_type="textbox"> <img src="/assets/img/icon/textbox.png" class="icon"></td>
   <td id="choice_q" class="chg_an_type" an_type="choice_an"> <img src="/assets/img/icon/choice.png" class="icon"> </td>
   </tr>
 </table>
+<?php } ?>
 <table>
 <tr>
   <td class="td_15"><img src="/assets/img/icon/circle_big.png" alt="correct ratio" class="icon"></td>
