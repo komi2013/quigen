@@ -28,7 +28,8 @@
   $side->this_page = '';
   echo $side;
 ?>
-
+<audio id="audio" controls style="position:absolute;top:-10000px;"><source src="<?=$sound?>"></audio>
+<div id="play">
 <div id="content">
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 <?php if($img){?>
@@ -159,6 +160,7 @@
 </div>
 <?php if( !isset($_GET['iframe']) ){?>
 <div id="ad_right"></div>
+</div>
 <?php } ?>
 <script>
   var q_id = '<?=$question?>';

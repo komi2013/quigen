@@ -3,38 +3,40 @@ class Controller_AdminSitemapQ extends Controller
 {
   public function action_index()
   {
-    if ( isset($_GET['mail']) ) {
-      //mail("seijirok@gmail.com", "TEST MAIL", "This is a test message.", "From: from@example.com");
-      //mb_send_mail("seijirok@gmail.com", "TEST MAIL", "This is a test message.", "From: from@", "-f from@mail.komahana.info" );
-      die('mail was sent');
+    require_once(APPPATH.'vendor/simple_html_dom.php');
+//    $html = file_get_html($_GET['url']);
+    $url = 'https://kids.yahoo.co.jp/zukan/animal/a/a/';
+    $next = true;
+    $html = file_get_html($url);
+    $arr_txt = [];
+    $arr_img = [];
+    foreach($html->find('p a') as $k => $d) {
+//        echo $d->plaintext;
+//        echo '<br>------------------------<br><br><br><br>';
+        $arr_txt[] = $d->plaintext;
     }
-    $usr_id = Model_Cookie::get_usr();
-    $auth = false;
-    foreach (Config::get('my.adm') as $d)
-    {
-      if ($d == $usr_id)
-      {
-        $auth = true;
-      }
+    array_splice($arr_txt, 0, 3);
+    array_splice($arr_txt, -1);
+    var_dump($arr_txt);
+    foreach($html->find('dt a img') as $k => $d) {
+        $arr_img[] = $d->src;
     }
-    if (!$auth AND $_SERVER['REMOTE_ADDR'] != '133.242.146.131')
-    {
-      $view = View::forge('404');
-      
-      die($view);
+    var_dump($arr_img);
+    foreach ($arr_txt as $k => $d) {
+        $img = file_get_contents($arr_img[$k]);
+
+        file_put_contents('/var/www/picture/public/assets/img/animal/' .$arr_txt[$k].'.jpg', $img);
+        echo $arr_txt[$k];
+        echo '<br>------------------------<br><br><br><br>';
     }
-    
-    //センター英語基本,センター英語必須,センター英語重要
-    //$arr_question = DB::query("SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$_GET['txt']."') AND create_at > '2015-10-14 00:00:01' order by open_time desc")->execute()->as_array();
-    //$arr_question = DB::query('SELECT * FROM question ORDER BY ID DESC')->execute()->as_array();
-    
-    
+    echo '<br>------------------------<br><br><br><br>';
+
+    die('koko1made');
     if ( isset($_GET['url']) ) {
       require_once(APPPATH.'vendor/simple_html_dom.php');
       $html = file_get_html($_GET['url']);
       //echo '<pre>';
-      $arr_q = [];
-      $arr_a = [];
+
             
       foreach($html->find('table td') as $k => $d) {
         if ($k % 2 == 1) {

@@ -6,14 +6,22 @@ $('.textbox').hide();
 $('.choice_q').hide();
 $('.alter_an').hide();
 var click_ele = '#descriptive';
-if(!$('#choice_1').text() && $('table').hasClass('choice_q')){
+var clicked = 0;
+if(!$('table').hasClass('choice_q')){
+  $('a').css({ 'pointer-events': 'none' });
+  setTimeout(function(){
+    $('a').css({ 'pointer-events': 'none' });
+  },2000);
+  clicked = 2;
+  click_ele = '.choice';
+} else if (!$('#choice_1').text()) {
   $('.textbox').show();
-} else if (localStorage.an_type == 'choice_an' || !$('table').hasClass('choice_q')) {
+} else if (localStorage.an_type == 'choice_an') {
   $('.choice_q').show();
   $('.alter_an').show();
   $('#choice_q').addClass("this_page");
   $('#textbox').addClass("another_page");
-  click_ele = '.choice';    
+  click_ele = '.choice';
 } else {
   $('.textbox').show();
   $('.alter_an').show();
@@ -72,7 +80,7 @@ for(var i = 0; i < offline_q.length; i++){
     already = 1;
   }
 }
-var clicked = 0;
+
 $(click_ele).click(function(){
   if(clicked == 2){
     return;
@@ -120,7 +128,7 @@ function answer_day(){
 }
 function answer_1(this_seq){
   var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';
-  if($('#correct').html() == $(this_seq).html()){
+  if($('#correct').html() == $(this_seq).html() || $('#correct').text() == $(this_seq).text()){
     var correct_answer = 1;
     resCo.unshift([0,'',ans_photo,'',mybgcolor]);
     amt_co++;
@@ -452,4 +460,11 @@ $('.chg_an_type').click(function(){
     location.href = "" ;
     return;
   },100);
+});
+
+var a = document.getElementById("audio");
+$('#play').click(function(){
+    a.play();
+    $('a').css({ 'pointer-events': '' });
+    clicked = 0;
 });

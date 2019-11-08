@@ -97,6 +97,7 @@ class Controller_Quiz extends Controller
     $view->q_data = '';
     $view->reference = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['reference']) );
     $view->question_type = $arr_choice_1[0]['question_type'];
+    $view->sound = $arr_choice_1[0]['sound'];
     $view->u_id = Model_Cookie::get_usr();
 
     $expires = 3600 * 24;
