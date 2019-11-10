@@ -128,7 +128,8 @@ function answer_day(){
 }
 function answer_1(this_seq){
   var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';
-  if($('#correct').html() == $(this_seq).html() || $('#correct').text() == $(this_seq).text()){
+  if($('#correct').html() == $(this_seq).html() || 
+          ($('#correct').text() == $(this_seq).text() && $('#correct').text())){
     var correct_answer = 1;
     resCo.unshift([0,'',ans_photo,'',mybgcolor]);
     amt_co++;
@@ -152,10 +153,13 @@ function answer_1(this_seq){
     'border-color': 'silver',
     'border-style': 'solid'
   });
-  
+  $('.cho_pic').css({ 'opacity': '0.3' });
   $('.choice').each(function(i){
     if($('#correct').html() == $('#choice_'+i).html()){
-      $('#choice_'+i).css({'background-color':'lime'});
+      $('#choice_'+i).css({
+          'background-color':'lime',
+          'opacity':'1'
+      });
     }
   });
 
@@ -463,8 +467,13 @@ $('.chg_an_type').click(function(){
 });
 
 var a = document.getElementById("audio");
+var played = 0;
 $('#play').click(function(){
-    a.play();
-    $('a').css({ 'pointer-events': '' });
-    clicked = 0;
+    if(played < 1){ a.play(); }
+    setTimeout(function(){
+      $('a').css({ 'pointer-events': '' });
+      clicked = 0;
+      played = 1;
+    },2000);
+    $('.cho_pic').css({ 'opacity': '1' });
 });

@@ -34,6 +34,8 @@ class Model_Choice extends \Orm\Model
       'validation' => array( 'max_length' => array(500) ),
       'default' => '',
     ),
+    'question_type',
+    'sound',
   );
   protected static $_table_name = 'choice';
   protected static $_primary_key = array('question_id');

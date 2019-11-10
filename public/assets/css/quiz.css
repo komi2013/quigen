@@ -50,4 +50,8 @@
   width: 49%;
   text-align:center;
   padding: 1px;
+  opacity: 0;
+}
+.cho_pic img{
+  max-width: 99%;
 }

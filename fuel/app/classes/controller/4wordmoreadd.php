@@ -3,21 +3,22 @@ class Controller_4wordmoreadd extends Controller
 {
   public function action_index()
   {
-    die('close');
+//    die('close');
     ini_set("memory_limit","1256M");
     ini_set('max_execution_time', 30000);
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
     $i2 = 0;
-    $arr = DB::query("select * from w_eiwa order by random() ")->execute()->as_array();
+    $arr = DB::query("select * from z_pic_sound order by random() ")->execute()->as_array();
     $ii = 1; $i2++;
     $wh_time = 1468558311; //change
     try {
       DB::start_transaction();
       foreach ($arr as $d) {
         //change
-        $arr_word_q[] = $d['col3'].' を意味する単語は？';
-        $arr_word_a[] = $d['col2'];
+        $arr_word_q[] = $d['name'].'は？';
+        $arr_word_a[] = '/assets/img/animal/' .$d['name'].'.jpg';
+//        /assets/sound/animal/アイアイ.mp3
         //$arr_comment[] = $d['col3'];
 
         if ( ($ii % 4) == 0 ) {
@@ -43,6 +44,9 @@ class Controller_4wordmoreadd extends Controller
             $choice->choice_2 = $arr_incorrect[1];
             $choice->choice_3 = $arr_incorrect[2];
             $choice->question_id = $question_id;
+            $choice->question_type = 1;
+            $sound = str_replace("img", "sound", $arr_word_a[$i]);
+            $choice->sound = str_replace("jpg", "mp3", $sound);
             $choice->save();
 
             $answer_by_q = new Model_AnswerByQ();
@@ -54,7 +58,7 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'英語','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
 //            if ($arr_comment[$i]) {
 //              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".
