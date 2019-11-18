@@ -126,6 +126,8 @@ function answer_day(){
   day_sum[day_stamp] = arr_stamp;
   localStorage.day_sum = JSON.stringify(day_sum);
 }
+var audio_correct = document.getElementById("audio_correct");
+var audio_incorrect = document.getElementById("audio_incorrect");
 function answer_1(this_seq){
   var ans_photo = myphoto ? myphoto : '/assets/img/icon/guest.png';
   if($('#correct').html() == $(this_seq).html() || 
@@ -135,6 +137,7 @@ function answer_1(this_seq){
     amt_co++;
     $('#big_correct').css({'display': ''});
     $(this_seq).css({'background-color': 'lime'});
+    audio_correct.play();
   }else{
     var correct_answer = 0; 
     resInco.unshift([0,'',ans_photo,'',mybgcolor]);
@@ -146,6 +149,7 @@ function answer_1(this_seq){
         'background-color': 'lime'
       });
     }
+    audio_incorrect.play();
   }
 
   $(this_seq).css({

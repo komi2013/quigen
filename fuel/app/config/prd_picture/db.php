@@ -8,7 +8,7 @@ return array(
 		'connection'  => array(
 			'dsn'        => "pgsql:host=localhost dbname=picture ",
 			'username'   => 'postgres',
-			'password'   => '',
+			'password'   => 'sde5tuft',
 		),
 	),
 );

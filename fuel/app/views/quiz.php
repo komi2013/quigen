@@ -28,7 +28,11 @@
   $side->this_page = '';
   echo $side;
 ?>
-<audio id="audio" controls style="position:absolute;top:-10000px;"><source src="<?=$sound?>"></audio>
+<div style="position:absolute;top:-10000px;">
+  <audio id="audio" controls><source src="<?=$sound?>"></audio>
+  <audio id="audio_correct" controls><source src="/assets/sound/effect/correct.mp3"></audio>
+  <audio id="audio_incorrect" controls><source src="/assets/sound/effect/incorrect.mp3"></audio>
+</div>
 <div id="play">
 <div id="content">
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
