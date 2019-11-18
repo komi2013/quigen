@@ -6,11 +6,35 @@ class Controller_AdminSitemapQ extends Controller
     if (isset($_GET['api'])) {
         // you need to get 586 mp3,  
 //        $arr = DB::query("select * from z_pic_sound where id > 637 and big_category = '".$_GET['api']."' order by id ")->execute()->as_array();
-        $arr = DB::query("select * from z_pic_sound where big_category = '".$_GET['api']."' order by id ")->execute()->as_array();
+        $arr = DB::query("select * from z_pic_sound where id > 1621 and big_category = '".$_GET['api']."' order by id ")->execute()->as_array();
         foreach ($arr as $d) {
             echo '<div class="object">'.$d['name'].'</div>';
         }
         die('api is done');
+        
+//        $data = '{
+//  "engine": "Google",
+//  "data": {
+//    "text": "Hello, world",
+//    "voice": "en-US"
+//  }
+//}';
+//	$options = array(
+//		CURLOPT_RETURNTRANSFER => true,
+//		CURLOPT_FOLLOWLOCATION => true,
+//		CURLOPT_AUTOREFERER => true,
+//	);
+//	$ch = curl_init();
+//	curl_setopt($ch, CURLOPT_URL, $url);
+//	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+//	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+//	curl_setopt($ch, CURLOPT_VERBOSE, true);
+//	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+//	curl_setopt($ch, CURLOPT_POST, true);
+//	curl_setopt_array($ch, $options);
+//	$result = curl_exec($ch);
+//	curl_close($ch);
     }
 //https://kids.yahoo.co.jp/zukan/plant/season/spring/
 //    https://kids.yahoo.co.jp/zukan/plant/season/summer/
