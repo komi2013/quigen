@@ -9,21 +9,23 @@ class Controller_4wordmoreadd extends Controller
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
     $i2 = 0;
-    $arr = DB::query("select * from z_pic_sound order by random() ")->execute()->as_array();
+    $arr = DB::query("select * from z_pic_sound where big_category = 'animal' and representative is not null"
+            . " order by small_category, id ")->execute()->as_array();
     $ii = 1; $i2++;
     $wh_time = 1468558311; //change
     try {
       DB::start_transaction();
       foreach ($arr as $d) {
         //change
-        $arr_word_q[] = $d['name'].'は？';
-        $arr_word_a[] = '/assets/img/animal/' .$d['name'].'.jpg';
+        $arr_word_q[] = $d['representative'].'は？';
+        $arr_word_a[] = '/content/image/animal/' .$d['name'].'.jpg';
 //        /assets/sound/animal/アイアイ.mp3
         //$arr_comment[] = $d['col3'];
 
         if ( ($ii % 4) == 0 ) {
           $i = 0;
 
+          
           while ($i < 4) {
             $wh_time += 60; //sometimes change
             $question = new Model_Question();
@@ -45,7 +47,7 @@ class Controller_4wordmoreadd extends Controller
             $choice->choice_3 = $arr_incorrect[2];
             $choice->question_id = $question_id;
             $choice->question_type = 1;
-            $sound = str_replace("img", "sound", $arr_word_a[$i]);
+            $sound = str_replace("image", "sound", $arr_word_a[$i]);
             $choice->sound = str_replace("jpg", "mp3", $sound);
             $choice->save();
 
@@ -58,7 +60,7 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'幼児がわかる動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
 //            if ($arr_comment[$i]) {
 //              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".

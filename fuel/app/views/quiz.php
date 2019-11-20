@@ -28,6 +28,7 @@
   $side->this_page = '';
   echo $side;
 ?>
+
 <div style="position:absolute;top:-10000px;">
   <audio id="audio" controls><source src="<?=$sound?>"></audio>
   <audio id="audio_correct" controls><source src="/assets/sound/effect/correct.mp3"></audio>

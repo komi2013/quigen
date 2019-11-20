@@ -10,4 +10,5 @@
 - public/BingSiteAuth.xml
 - nginx_log/
 - .git*
+- public/content/
 

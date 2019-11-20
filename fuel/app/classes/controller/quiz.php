@@ -21,7 +21,6 @@ class Controller_Quiz extends Controller
       $view = View::forge('404');
       die($view);
     }
-    
     $cho_0 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_0']) );
     $cho_1 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_1']) );
     $cho_2 = Security::htmlentities( preg_replace('/\[|\[|[\n\r\t]|\\\/u', ' ', $arr_choice_1[0]['choice_2']) );
