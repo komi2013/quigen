@@ -5,10 +5,10 @@ class Controller_AdminSitemapQ extends Controller
   {
     if (isset($_GET['api'])) {
         // you need to get 586 mp3,  
-//        $arr = DB::query("select * from z_pic_sound where id > 637 and big_category = '".$_GET['api']."' order by id ")->execute()->as_array();
-        $arr = DB::query("select * from z_pic_sound where big_category = '".$_GET['api']."' order by id ")->execute()->as_array();
+        $arr = DB::query("select * from z_pic_sound where big_category = 'animal' and id >= 221 and small_category = 'mammals' and representative is not null"
+                . " order by small_category, id ")->execute()->as_array();
         foreach ($arr as $d) {
-            echo '<div class="object">'.$d['name'].'</div>';
+            echo '<div class="object">'.$d['representative'].'</div>';
         }
     }
 

@@ -19,6 +19,7 @@ class Controller_4wordmoreadd extends Controller
         //change
         $arr_word_q[] = $d['representative'].'は？';
         $arr_word_a[] = '/content/image/animal/' .$d['name'].'.jpg';
+        $arr_word_s[] = '/content/sound/animal/' .$d['representative'].'.mp3';
 //        /assets/sound/animal/アイアイ.mp3
         //$arr_comment[] = $d['col3'];
 
@@ -47,8 +48,11 @@ class Controller_4wordmoreadd extends Controller
             $choice->choice_3 = $arr_incorrect[2];
             $choice->question_id = $question_id;
             $choice->question_type = 1;
-            $sound = str_replace("image", "sound", $arr_word_a[$i]);
-            $choice->sound = str_replace("jpg", "mp3", $sound);
+//            $sound1 = str_replace("image", "sound", $arr_word_a[$i]);
+//            echo $sound1.$d['name'].$d['representative'].'<br>';
+//            $sound2 = str_replace($d['name'], $d['representative'], $sound1);
+//            echo $sound2.'<br>';
+            $choice->sound = str_replace("jpg", "mp3", $arr_word_s[$i]);
             $choice->save();
 
             $answer_by_q = new Model_AnswerByQ();
@@ -60,7 +64,7 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'幼児がわかる動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'幼児がわかる動物8','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
 //            if ($arr_comment[$i]) {
 //              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".
@@ -71,6 +75,7 @@ class Controller_4wordmoreadd extends Controller
           }
           $arr_word_q = [];
           $arr_word_a = [];
+          $arr_word_s = [];
           $arr_comment = [];
         }
         ++$ii;
