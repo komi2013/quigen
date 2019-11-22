@@ -12,7 +12,53 @@ class Controller_Top extends Controller
     $res = DB::query("select count(*) from question where open_time < '2115-01-01'")
       ->execute()->as_array();
     $this->cnt = ceil($res[0]['count']/200);
-    $query = DB::query("SELECT * FROM mt_seo_tag")->execute()->as_array();
+    
+    $query = DB::query( "SELECT * FROM mt_tag_top" )->execute()->as_array();
+    $renew = false;
+    if ( !isset($query[0]['created_date']) ) {
+        $renew = true;
+    }
+    if (isset($query[0]['created_date'])) {
+        $date1 = new DateTime();
+        $date2 = new DateTime($query[0]['created_date']);
+        $date1->sub(new DateInterval('P10D'));
+        if ($date1 > $date2) {
+            $renew = true;
+        }
+    }
+    if ($renew) {
+        $top_qu = [];
+        $i = 0;
+        $query = DB::query( "SELECT * FROM mt_seo_tag" )->execute()->as_array();
+        foreach ($query as $d) {
+          $arr = DB::query( "SELECT * FROM question WHERE id in ( select question_id from tag where txt = '".$d['tag']."' ) ORDER BY random() LIMIT ".Config::get('my.top_limit') )->execute()->as_array();
+          $seq = rand(0, 1000);
+          foreach ($arr as $kk => $dd) {
+            $top_qu[$i]['tag'] = $d['tag'];
+            $top_qu[$i]['question_id'] = $dd['id'];
+            $top_qu[$i]['img'] = $dd['img'];
+            $txt = Security::htmlentities($dd['txt']);
+            $top_qu[$i]['txt'] = $txt;
+            $top_qu[$i]['seq'] = $seq;
+            $top_qu[$i]['country'] = $d['country'];
+            ++$i;
+          }
+        }
+        DB::query("DELETE FROM mt_tag_top")->execute();
+        $sql = "INSERT INTO mt_tag_top (tag, question_id, img, txt, seq, country) VALUES ";
+        foreach ($top_qu as $k => $d) {
+          if ($k < 1) {
+            $sql .= "  ('".$d['tag']."',".$d['question_id'].",'".$d['img']."','".$d['txt']."',".$d['seq'].",'".$d['country']."') ";  
+          } else {
+            $sql .= ", ('".$d['tag']."',".$d['question_id'].",'".$d['img']."','".$d['txt']."',".$d['seq'].",'".$d['country']."') ";  
+          }
+        }
+        DB::query($sql)->execute();
+//        $query = DB::query("SELECT * FROM mt_seo_tag")->execute()->as_array();
+    }
+
+
+    
 //    $arr_tag = [];
 //    foreach($query as $k => $d){
 //      $arr_tag[$k]['url_txt'] = urlencode($d['tag']);

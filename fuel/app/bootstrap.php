@@ -20,7 +20,7 @@ Autoloader::register();
  * Fuel::PRODUCTION
  */
 
-Fuel::$env = 'prd_picture';
+Fuel::$env = 'stg_english';
 //Fuel::$env = (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : Fuel::PRODUCTION);
 
 // Initialize the framework with the config file.
