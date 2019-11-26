@@ -3,13 +3,13 @@ class Controller_4wordmoreadd extends Controller
 {
   public function action_index()
   {
-    die('close');
+//    die('close');
     ini_set("memory_limit","1256M");
     ini_set('max_execution_time', 30000);
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
     $i2 = 0;
-    $arr = DB::query("select * from z_pic_sound where big_category = 'animal' and representative is not null"
+    $arr = DB::query("select * from z_pic_sound where big_category = 'food'"
             . " order by small_category, id ")->execute()->as_array();
     $ii = 1; $i2++;
     $wh_time = 1468558311; //change
@@ -17,11 +17,9 @@ class Controller_4wordmoreadd extends Controller
       DB::start_transaction();
       foreach ($arr as $d) {
         //change
-        $arr_word_q[] = $d['representative'].'は？';
-        $arr_word_a[] = '/content/image/animal/' .$d['name'].'.jpg';
-        $arr_word_s[] = '/content/sound/animal/' .$d['representative'].'.mp3';
-//        /assets/sound/animal/アイアイ.mp3
-        //$arr_comment[] = $d['col3'];
+        $arr_word_q[] = $d['name'].'は？';
+        $arr_word_a[] = '/content/image/food/' .$d['name'].'.jpg';
+        $arr_word_s[] = '/content/sound/food/' .$d['name'].'.mp3';
 
         if ( ($ii % 4) == 0 ) {
           $i = 0;
@@ -64,7 +62,7 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'幼児でもわかる動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'食べ物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
 //            if ($arr_comment[$i]) {
 //              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".
