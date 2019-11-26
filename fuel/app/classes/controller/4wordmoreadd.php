@@ -3,7 +3,7 @@ class Controller_4wordmoreadd extends Controller
 {
   public function action_index()
   {
-//    die('close');
+    die('close');
     ini_set("memory_limit","1256M");
     ini_set('max_execution_time', 30000);
     $res[0] = 2;
@@ -52,7 +52,7 @@ class Controller_4wordmoreadd extends Controller
 //            echo $sound1.$d['name'].$d['representative'].'<br>';
 //            $sound2 = str_replace($d['name'], $d['representative'], $sound1);
 //            echo $sound2.'<br>';
-            $choice->sound = str_replace("jpg", "mp3", $arr_word_s[$i]);
+            $choice->sound = $arr_word_s[$i];
             $choice->save();
 
             $answer_by_q = new Model_AnswerByQ();
@@ -64,7 +64,7 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'幼児がわかる動物8','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'幼児でもわかる動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
 //            if ($arr_comment[$i]) {
 //              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".
