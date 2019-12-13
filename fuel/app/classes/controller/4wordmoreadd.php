@@ -3,7 +3,7 @@ class Controller_4wordmoreadd extends Controller
 {
   public function action_index()
   {
-//    die('close');
+    //9525 ~ 9542
     ini_set("memory_limit","1256M");
     ini_set('max_execution_time', 30000);
     $res[0] = 2;
@@ -23,8 +23,6 @@ class Controller_4wordmoreadd extends Controller
 
         if ( ($ii % 4) == 0 ) {
           $i = 0;
-
-          
           while ($i < 4) {
             $wh_time += 60; //sometimes change
             $question = new Model_Question();

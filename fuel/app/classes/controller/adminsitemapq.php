@@ -3,6 +3,12 @@ class Controller_AdminSitemapQ extends Controller
 {
   public function action_index()
   {
+    $arr = DB::query("select * from z_pic_sound where big_category = '".$_GET['api']."' order by small_category, id ")->execute()->as_array();
+    foreach ($arr as $d) {
+        echo '<div class="object">'.$d['name'].'<img style="max-width:100px;" src="/content/image/'.$_GET['api'].'/'.$d['name'].'.jpg">'.'</div>';
+    }
+    
+    die('showed picture and name');
     if (isset($_GET['api'])) {
         // you need to get 586 mp3,  
         $arr = DB::query("select * from z_pic_sound where big_category = 'animal' and id >= 322 and updated_at = '2019-01-01' and representative is not null"
@@ -13,12 +19,7 @@ class Controller_AdminSitemapQ extends Controller
     }
 
     die('api is done');
-    $arr = DB::query("select * from z_pic_sound where big_category = '".$_GET['api']."' order by small_category, id ")->execute()->as_array();
-    foreach ($arr as $d) {
-        echo '<div class="object">'.$d['name'].'<img style="max-width:100px;" src="/content/image/'.$_GET['api'].'/'.$d['name'].'.jpg">'.'</div>';
-    }
-    
-    die('showed picture and name');
+
     if (isset($_GET['api'])) {
         // you need to get 586 mp3,  
         $arr = DB::query("select * from z_pic_sound where big_category = 'animal' and id >= 221 and small_category = 'mammals' and representative is not null"

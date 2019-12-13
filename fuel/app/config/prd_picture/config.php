@@ -73,7 +73,7 @@ return array(
     'top_description' => '一回タップすると画像が表示して、音が出るのでどれが正解かを答えよう',
     'forum_list_title' => "ここになんでも書き込んでてください",
     'forum_list_description' => 'クイズの質問や、このアプリについても回答します',
-    'top_limit' => '2',
+    'top_limit' => '5',
       
     'display_error' => true,
     'lang' => 'jp',
