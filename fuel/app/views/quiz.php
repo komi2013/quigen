@@ -30,10 +30,13 @@
 ?>
 
 <div style="position:absolute;top:-10000px;">
+  <?php if($sound){ ?>
   <audio id="audio" controls><source src="<?=$sound?>"></audio>
+  <?php } ?>
   <audio id="audio_correct" controls><source src="/assets/sound/effect/correct.mp3"></audio>
   <audio id="audio_incorrect" controls><source src="/assets/sound/effect/incorrect.mp3"></audio>
 </div>
+
 <div id="play">
 <div id="content">
 <div id="ad"><iframe src="/htm/ad_blank/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
@@ -181,10 +184,12 @@
   var commented = '<?=Config::get("lang.commented")?>';
   var report = '<?=Config::get("lang.report")?>';
   var please_login = '<?=Config::get("lang.please_login")?>';
+  var sound = '<?=$sound?>';
 </script>
 <script src="/assets/js/basic.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/check_news.js<?=Config::get("my.cache_v")?>"></script>
 <script src="/assets/js/quiz.js<?=Config::get("my.cache_v")?>"></script>
+
 <script>
 setTimeout(function(){
   ga('set', 'dimension7', iframe);

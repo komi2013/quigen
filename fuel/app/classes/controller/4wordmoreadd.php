@@ -9,7 +9,7 @@ class Controller_4wordmoreadd extends Controller
     $res[0] = 2;
     $usr_id = Model_Cookie::get_usr();
     $i2 = 0;
-    $arr = DB::query("select * from z_pic_sound where big_category = 'food'"
+    $arr = DB::query("select * from z_pic_sound where big_category = 'animal' and representative is not null"
             . " order by small_category, id ")->execute()->as_array();
     $ii = 1; $i2++;
     $wh_time = 1468558311; //change
@@ -18,8 +18,8 @@ class Controller_4wordmoreadd extends Controller
       foreach ($arr as $d) {
         //change
         $arr_word_q[] = $d['name'].'は？';
-        $arr_word_a[] = '/content/image/food/' .$d['name'].'.jpg';
-        $arr_word_s[] = '/content/sound/food/' .$d['name'].'.mp3';
+        $arr_word_a[] = '/content/image/animal/' .$d['name'].'.jpg';
+        $arr_word_s[] = '/content/sound/baby_animal/' .$d['representative'].'.mp3';
 
         if ( ($ii % 4) == 0 ) {
           $i = 0;
@@ -60,7 +60,7 @@ class Controller_4wordmoreadd extends Controller
             $answer_by_q->save();
 
             DB::query("INSERT INTO tag (question_id,txt,open_time,quiz_num) VALUES (".
-            $question_id.",'食べ物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
+            $question_id.",'幼児でもわかる動物','".date("Y-m-d H:i:s", $wh_time)."',".$i2.")")
             ->execute(); //change
 //            if ($arr_comment[$i]) {
 //              $sql = "INSERT INTO comment (txt,usr_id,question_id,create_at,u_img) VALUES (:txt".

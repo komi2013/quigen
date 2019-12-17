@@ -469,15 +469,16 @@ $('.chg_an_type').click(function(){
     return;
   },100);
 });
-
-var a = document.getElementById("audio");
-var played = 0;
-$('#play').click(function(){
-    if(played < 1){ a.play(); }
-    setTimeout(function(){
-      $('a').css({ 'pointer-events': '' });
-      clicked = 0;
-      played = 1;
-    },2000);
-    $('.cho_pic').css({ 'opacity': '1' });
-});
+if(sound){
+    var a = document.getElementById("audio");
+    var played = 0;
+    $('#play').click(function(){
+        if(played < 1){ a.play(); }
+        setTimeout(function(){
+          $('a').css({ 'pointer-events': '' });
+          clicked = 0;
+          played = 1;
+        },2000);
+        $('.cho_pic').css({ 'opacity': '1' });
+    });
+}
