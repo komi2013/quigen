@@ -16,17 +16,17 @@ if(!$('table').hasClass('choice_q')){
   click_ele = '.choice';
 } else if (!$('#choice_1').text()) {
   $('.textbox').show();
-} else if (localStorage.an_type == 'choice_an') {
+} else if (localStorage.an_type == 'text_an') {
+  $('.textbox').show();
+  $('.alter_an').show();
+  $('#choice_q').addClass("another_page");
+  $('#textbox').addClass("this_page");
+} else {
   $('.choice_q').show();
   $('.alter_an').show();
   $('#choice_q').addClass("this_page");
   $('#textbox').addClass("another_page");
   click_ele = '.choice';
-} else {
-  $('.textbox').show();
-  $('.alter_an').show();
-  $('#choice_q').addClass("another_page");
-  $('#textbox').addClass("this_page");
 }
 
 function shuffle(array) {

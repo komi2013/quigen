@@ -69,7 +69,7 @@
 <?php if($question_type == 0) {?>
 <table class="alter_an">
   <tr>
-  <td id="textbox" class="chg_an_type" an_type="textbox"> <img src="/assets/img/icon/textbox.png" class="icon"></td>
+  <td id="textbox" class="chg_an_type" an_type="text_an"> <img src="/assets/img/icon/textbox.png" class="icon"></td>
   <td id="choice_q" class="chg_an_type" an_type="choice_an"> <img src="/assets/img/icon/choice.png" class="icon"> </td>
   </tr>
 </table>
