@@ -6,19 +6,7 @@
     <meta name="description" content="<?=$q_txt?> <?=$description?>">
     <link rel="shortcut icon" href="/assets/img/icon/quiz_generator.png">
     <link rel="canonical" href="https://<?=Config::get('my.domain').'/quiz/?q='.$question?>" />
-    <script src="/third/jquery-2.1.1.min.js"></script>
-    <script src="/third/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css<?=Config::get("my.cache_v")?>" />
-    <script>var ua = '<?=Config::get("my.ua")?>';</script>
-    <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
     <meta property="og:image" content="https://<?=$img ?: Config::get('my.domain').'/assets/img/icon/qg_big.png'?>" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
-<?php if( isset($_GET['iframe']) ){?>
-    <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>">
-<?php }else{ ?>
-    <link rel="stylesheet" href="/assets/css/pc.css<?=Config::get("my.cache_v")?>" media="only screen and (min-width : 711px)">
-    <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>" media="only screen and (max-width : 710px)">
-<?php } ?>    
     <meta name="viewport" content="width=device-width, user-scalable=no" >
   </head>
 <body>
@@ -170,6 +158,19 @@
 <div id="ad_right"></div>
 </div>
 <?php } ?>
+
+    <script src="/third/jquery-2.1.1.min.js"></script>
+    <script src="/third/jquery.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/quiz.css<?=Config::get("my.cache_v")?>" />
+    <script>var ua = '<?=Config::get("my.ua")?>';</script>
+    <script src="/assets/js/analytics.js<?=Config::get("my.cache_v")?>"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/basic.css<?=Config::get("my.cache_v")?>" />
+<?php if( isset($_GET['iframe']) ){?>
+    <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>">
+<?php }else{ ?>
+    <link rel="stylesheet" href="/assets/css/pc.css<?=Config::get("my.cache_v")?>" media="only screen and (min-width : 711px)">
+    <link rel="stylesheet" href="/assets/css/sp.css<?=Config::get("my.cache_v")?>" media="only screen and (max-width : 710px)">
+<?php } ?>    
 <script>
   var q_id = '<?=$question?>';
   var usr = '<?=$usr?>';
