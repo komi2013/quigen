@@ -1,4 +1,4 @@
-- fuel/app/logs/*
+- fuel/app/logs/
 - fuel/app/bootstrap.php
 - public/assets/img/quiz/*
 - public/assets/img/profile/*
