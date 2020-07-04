@@ -42,10 +42,6 @@
 
 <table>
   <tr>
-    <td style="width:20%;">
-      <img src="/assets/img/icon/fb.jpg" class="icon" v-bind:class="logined" v-if="(provider == 0 || provider == 1)"
-data-url="https://www.facebook.com/dialog/oauth?client_id=<?=Config::get('my.fb_id')?>&redirect_uri=https://<?=$_SERVER['HTTP_HOST']?>/fboauth/">
-    </td>
     <td style="width:20%">
       <img src="/assets/img/icon/tw.jpg" class="icon" v-bind:class="logined" v-if="(provider == 0 || provider == 2)" data-url="/twoauth/">
     </td>

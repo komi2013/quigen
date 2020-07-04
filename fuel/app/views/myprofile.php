@@ -38,9 +38,6 @@
 
 <table>
   <tr>
-    <td style="width:20%;">
-      <img src="/assets/img/icon/fb.jpg" alt="facebook" class="icon auth" data-url="<?=$fb_url?>">
-    </td>
     <td style="width:20%">
       <img src="/assets/img/icon/tw.jpg" alt="twitter" class="icon auth" data-url="/twoauth/">
     </td>
