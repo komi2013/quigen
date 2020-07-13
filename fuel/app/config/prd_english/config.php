@@ -75,7 +75,7 @@ return array(
     'forum_list_description' => 'If you post your comment, teacher correct your part of wrong comment. you can get used to english more ',
     'top_limit' => '2',
 
-    'display_error' => false,
+    'display_error' => true,
     'lang' => 'en',
     'cache_v' => "?cache_v=A01",
 //https://console.firebase.google.com/project/first-c2036/settings/cloudmessaging/android:first.test.komatsuseijiro.com?hl=ja
